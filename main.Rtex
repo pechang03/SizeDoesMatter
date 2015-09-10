@@ -1,0 +1,413 @@
+\documentclass[12pt]{beamer}
+
+\usetheme{Air}
+\usepackage{thumbpdf}
+\usepackage{wasysym}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{verbatim}
+\usepackage{comment}
+\geometry{paperwidth=140mm,paperheight=105mm}
+
+\usepackage{lipsum}
+
+\pdfinfo
+{
+  /Title       (Data manipulation in R: a program to use when size matters)
+  /Creator     (Peter Shaw)
+  /Author      (Peter Shaw)
+}
+
+
+\title{Data manipulation in R}
+\subtitle{A program to use when size matters}
+\author{Peter Shaw}
+
+%-------------------------------------------------------------------------------------
+\begin{document}
+\frame{\titlepage}
+
+\section*{}
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[section=1,hidesubsections]
+\end{frame}
+
+\AtBeginSection[]
+{
+  \frame<handout:0>
+  {
+    \frametitle{Outline}
+    \tableofcontents[currentsection,hideallsubsections]
+  }
+}
+\AtBeginSubsection[]
+{
+  \frame<handout:0>
+  {
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+  }
+}
+
+\newcommand<>{\highlighton}[1]{%
+  \alt#2{\structure{#1}}{{#1}}
+}
+
+\newcommand{\icon}[1]{\pgfimage[height=1em]{#1}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Introduction}
+\begin{frame}
+  \vfill
+  \centering
+  \highlighton{
+  \usebeamerfont*{frametitle}A common scenario
+  \usebeamerfont*{framesubtitle}A friend has emailed you her data in a spreadsheet
+  
+  \vfill
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Why use R?}
+  \framesubtitle{Why not use a spreadsheet?}
+
+  \begin{block}{Why not use a spreadsheet?}
+  \begin{itemize}
+    \item Data manipulation in Excel is VERY risk and time consuming
+    \item A rage of software packages are available for Excel
+    \item Large datasets can exceed the size limits of standard programs
+    \item Spreadsheets don't have the inherent understanding of statistics that R has
+    \item For example handling of N\/A's
+    \item R is hot!
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Why use R?}
+  \begin{block}{Why use R?}
+  \begin{itemize}
+    \item Its free
+    \item Its available on most operating systems Windows, OS X, Linux
+    \item There are huge numbers of packages available
+    \item Its becoming the international standard for statistics
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+%@book{Teetor:2011:RC:2011867,
+% author = {Teetor, Paul},
+% title = {R Cookbook},
+% year = {2011},
+% isbn = {0596809158, 9780596809157},
+% edition = {1st},
+% publisher = {O'Reilly Media, Inc.},
+%} 
+
+\begin{frame}[allowframebreaks]
+\frametitle{Getting Started}
+  \framesubtitle{Some References}
+  \begin{thebibliography}{10}    
+  \setbeamertemplate{bibliography item}[book]
+  \bibitem{Teetor:2011:RC:2011867}
+    James P. Howard.
+    \newblock {\em R Cookbook}.
+    \newblock O'Reilly Media, Inc, 2011.
+ 
+  \setbeamertemplate{bibliography item}[book]
+  \bibitem{Jemand2000}
+    Phil Spector.
+    \newblock {\em Data Manipulation with R.}
+    \newblock Use R series 
+    \newblock Springer, 2008
+%@book{R:Spector:2008,
+%  author = {Phil Spector},
+%  title = {Data Manipulation with R},
+%  publisher = {Springer},
+%  year = {2008}
+%}   
+%  \setbeamertemplate{bibliography item}[article]
+%  \bibitem{Jemand2000}
+%    Phil Spector.
+%    \newblock {\em Data Manipulation with R.}
+%    \item Use R series 
+%    \newblock Springer, 2008
+  \end{thebibliography}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Getting Started}
+  \framesubtitle{Installing R!}
+
+  \begin{block}{Download it}
+  \begin{itemize}
+    \item Open {\url http://www.r-project.org}
+    \item Click CRAN (Under download on Top Left)
+    \item Click {\url http://cran.ms.unimelb.edu.au/} University of Melbourne
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Windows}
+  \begin{itemize}
+    \item Select Windows
+    \item Select Base
+    \item Download R (suggest latest version)
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{OS X}
+  \begin{itemize}
+    \item Select Select OS X
+    \item Select R-3.2.2.pkg (or the version that matches your OS version)
+  \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Getting Started}
+  \framesubtitle{Basic steps}
+
+<<chunk1>>=
+2+5
+# Create a sequence of numbers
+X = 2:10
+
+# Display basic statistical measures
+summary(X)
+# use q() to quit
+@
+\clearpage
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Getting Started}
+  \framesubtitle{Help Functions}
+\begin{block}{To access the documentation type}
+help.start()
+\end{block}
+<<chunk2>>=
+help(summary)
+args(summary)
+example(sd)
+@
+\clearpage
+\end{frame}
+
+\section*{Some manners}
+\begin{frame}
+  \frametitle{Iterative development}
+  \framesubtitle{Working Creatively}
+Some discussion recently on how to work creatively. Research out of  successful R&D projects developed into Agile
+\begin{itemize}
+\item Keep the manages away
+\item work sustainably
+\item people over process
+\item iterative development
+\end{itemize}
+\end{frame}
+
+\section*{R Data types}
+
+\section*{How do I import my data into R}
+
+\section*{Date Formats}
+
+\section*{Missing Data}
+\begin{frame}
+  \frametitle{Missing Data}
+  \framesubtitle{N/A and Null}
+\end{frame}  
+  
+\begin{frame}
+  \frametitle{Missing Data}
+  \framesubtitle{Dropping columns and rows}
+We want to be able to drop any rows or columns that are all NA's
+\begin{block}{Dropping columns that are all N/As} 
+\end{block}
+\begin{block}{Dropping rows that are all N/As} 
+\end{block}
+\end{frame}  
+
+\section*{How to I merge two data sets}
+\begin{frame}
+  \frametitle{How to I merge two data sets}
+  \framesubtitle{merge command}
+\end{frame}  
+\begin{frame}
+  \frametitle{How to I merge two data sets}
+  \framesubtitle{Two primary keys}
+\end{frame}
+\section*{Getting help on packages}
+\begin{frame}
+  \frametitle{R Packages}
+  \framesubtitle{CRAN}
+  \begin{block}{Where from}
+  \item install command
+  \end{block}
+  \begin{block}{Citing}
+  \begin{itemize}
+  \item citing packages
+  \end{itemize}
+
+  \end{block}
+\end{frame}
+\begin{frame}
+  \frametitle{R package}
+  \framesubtitle{Rsqlite}
+\end{frame}
+\begin{frame}
+  \frametitle{R package}
+  \framesubtitle{svUnit}
+  Another important component of TDD is refactoring and unit tests
+  \begin{itemize}
+  \item Ref refactoring
+  \item Version Control tortiseSVN
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Morning Tea Time}
+  %\framesubtitle{}
+\end{frame}
+\begin{frame}
+  \frametitle{How to I merge two data sets}
+  \framesubtitle{What if the keys don't match}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Lunch Time}
+  %\framesubtitle{}
+\end{frame}
+\begin{frame}
+  \frametitle{Adding a new column}
+  \framesubtitle{Calculating the number of days}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{How to I append two data sets}
+  %\framesubtitle{}
+\end{frame}
+\begin{frame}
+  \frametitle{Another Break}
+  %\framesubtitle{}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Now lets have some fun}
+  \framesubtitle{Making a heat map}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What next}
+  \framesubtitle{Proposed future talks}
+  \begin{block}
+  \begin{itemize}
+  \item Using Sweave
+  \item Using 
+  \end{itemize}
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+
+
+You can type R commands in your \LaTeX{} document and they will be properly run and the output printed in the document.
+
+%<<chunk1>>=
+%# Create a sequence of numbers
+%X = 2:10
+%
+%# Display basic statistical measures
+%summary(X)
+%
+%@
+%--------------------------------------------------------------------------------
+
+%So, the mean of the data is $\Sexpr{mean(X)}$ %Inline command
+
+
+%\clearpage
+%Plots
+%--------------------------------------------------------------------------------
+%<<plot1, fig.pos="t", fig.height=4, fig.width=4, fig.cap="First plot">>=
+
+%xdata = read.csv(file="data.txt", head=TRUE,sep=" ")
+
+%hist(xdata$data, main="ShareLaTeX histogram", xlab="Data")
+
+%@
+%--------------------------------------------------------------------------------
+
+%The figure \ref{fig:plot1} is simple histogram.
+
+%\clearpage
+
+The chunk below will not be printed
+
+%R code imported from external file
+%--------------------------------------------------------------------------------
+%<<echo=FALSE, cache=FALSE>>=
+%read_chunk("mycode.R")
+%@
+
+%The code must show up here
+
+%<<myrcode2>>=
+
+%@
+%--------------------------------------------------------------------------------
+\section*{}
+\frame{
+  \vfill
+  \centering
+  \highlighton{
+  \usebeamerfont*{frametitle}And now?
+
+  \usebeamerfont*{framesubtitle}Enter the secret section
+  }
+  \vfill
+}
+
+\begin{frame}
+  \frametitle{Resources}
+  \framesubtitle{If you want to improve this style}
+  \begin{thebibliography}{10}
+
+  \beamertemplatearticlebibitems
+
+  \bibitem{beamer-homepage}
+    LaTeX Beamer
+    \newblock {\tt http://latex-beamer.sourceforge.net/}
+
+  \bibitem{}
+    Sharelatex Site % a link to my slides
+    \newblock {\tt https://www.sharelatex.com}
+  \bibitem{}
+    A Data Cleaning Mooc % a link to my slides
+    \newblock {\tt https://www.sharelatex.com}    
+  \end{thebibliography}
+\end{frame}
+
+\frame{
+  \vspace{2cm}
+  {\huge Questions ?}
+
+  \vspace{3cm}
+  \begin{flushright}
+    Peter Shaw
+
+    \structure{\footnotesize{peter.shaw@cdu.edu.au}}
+  \end{flushright}
+}
+\end{document}
