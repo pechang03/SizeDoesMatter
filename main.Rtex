@@ -64,15 +64,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Introduction}
-\begin{frame}
-  \vfill
-  \centering
-  \highlighton{
-  \usebeamerfont*{frametitle}A common scenario
-  \usebeamerfont*{framesubtitle}A friend has emailed you her data in a spreadsheet
+%\begin{frame}
+%  \vfill
+%  \centering
+%  \highlighton{
+%  \usebeamerfont*{frametitle}A common scenario
+%  \usebeamerfont*{framesubtitle}A friend has emailed you her data in a spreadsheet
   
-  \vfill
-\end{frame}
+%  \vfill
+%\end{frame}
 
 
 \begin{frame}
@@ -83,7 +83,7 @@
   \begin{itemize}
     \item Data manipulation in Excel is VERY risk and time consuming
     \item A rage of software packages are available for Excel
-    \item Large datasets can exceed the size limits of standard programs
+    \item Large data sets can exceed the size limits of standard programs
     \item Spreadsheets don't have the inherent understanding of statistics that R has
     \item For example handling of N\/A's
     \item R is hot!
@@ -207,7 +207,7 @@ example(sd)
 \begin{frame}
   \frametitle{Iterative development}
   \framesubtitle{Working Creatively}
-Some discussion recently on how to work creatively. Research out of  successful R&D projects developed into Agile
+Some discussion recently on how to work creatively. Research out of  successful R\&D projects developed into Agile
 \begin{itemize}
 \item Keep the manages away
 \item work sustainably
@@ -217,25 +217,15 @@ Some discussion recently on how to work creatively. Research out of  successful 
 \end{frame}
 
 \section*{R Data types}
-
-\section*{How do I import my data into R}
-
-\section*{Date Formats}
-
-\section*{Missing Data}
 \begin{frame}
-  \frametitle{Missing Data}
-  \framesubtitle{N/A and Null}
-\end{frame}  
-  
-\begin{frame}
-  \frametitle{Missing Data}
-  \framesubtitle{Dropping columns and rows}
-We want to be able to drop any rows or columns that are all NA's
-\begin{block}{Dropping columns that are all N/As} 
-\end{block}
-\begin{block}{Dropping rows that are all N/As} 
-\end{block}
+  \frametitle{R Data types}
+  \framesubtitle{Lists, frames and tables}
+  \begin{block}{Lists}
+      \begin{itemize}
+         \item $l=c(1,3,4)$
+         \item $bbb$
+      \end{itemize}
+  \end{block}
 \end{frame}  
 
 \section*{How to I merge two data sets}
@@ -243,6 +233,7 @@ We want to be able to drop any rows or columns that are all NA's
   \frametitle{How to I merge two data sets}
   \framesubtitle{merge command}
 \end{frame}  
+
 \begin{frame}
   \frametitle{How to I merge two data sets}
   \framesubtitle{Two primary keys}
@@ -261,10 +252,12 @@ We want to be able to drop any rows or columns that are all NA's
 
   \end{block}
 \end{frame}
+
 \begin{frame}
   \frametitle{R package}
   \framesubtitle{Rsqlite}
 \end{frame}
+
 \begin{frame}
   \frametitle{R package}
   \framesubtitle{svUnit}
@@ -283,6 +276,7 @@ We want to be able to drop any rows or columns that are all NA's
   \frametitle{How to I merge two data sets}
   \framesubtitle{What if the keys don't match}
 \end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Lunch Time}
@@ -292,7 +286,6 @@ We want to be able to drop any rows or columns that are all NA's
   \frametitle{Adding a new column}
   \framesubtitle{Calculating the number of days}
 \end{frame}
-
 
 \begin{frame}
   \frametitle{How to I append two data sets}
@@ -311,18 +304,48 @@ We want to be able to drop any rows or columns that are all NA's
 \begin{frame}
   \frametitle{What next}
   \framesubtitle{Proposed future talks}
-  \begin{block}
+  \begin{block}{Your feedback on some ideas}
   \begin{itemize}
   \item Using Sweave
   \item Using 
   \end{itemize}
-  \end{itemize}
   \end{block}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Resources}
+  \framesubtitle{If you want to improve this style}
+  \begin{thebibliography}{10}
+
+  \beamertemplatearticlebibitems
+
+  \bibitem{beamer-homepage}
+    LaTeX Beamer
+    \newblock {\tt http://latex-beamer.sourceforge.net/}
+
+  \bibitem{}
+    Sharelatex Site % a link to my slides
+    \newblock {\tt https://www.sharelatex.com}
+  \bibitem{}
+    A Data Cleaning Mooc % a link to my slides
+    \newblock {\tt https://www.sharelatex.com}    
+  \end{thebibliography}
+\end{frame}
+
+\frame{
+  \vspace{2cm}
+  {\huge Questions ?}
+
+  \vspace{3cm}
+  \begin{flushright}
+    Peter Shaw
+
+    \structure{\footnotesize{peter.shaw@cdu.edu.au}}
+  \end{flushright}
+}
 
 
-You can type R commands in your \LaTeX{} document and they will be properly run and the output printed in the document.
+%You can type R commands in your \LaTeX{} document and they will be properly run and the output printed in the document.
 
 %<<chunk1>>=
 %# Create a sequence of numbers
@@ -367,47 +390,17 @@ The chunk below will not be printed
 
 %@
 %--------------------------------------------------------------------------------
-\section*{}
-\frame{
-  \vfill
-  \centering
-  \highlighton{
-  \usebeamerfont*{frametitle}And now?
 
-  \usebeamerfont*{framesubtitle}Enter the secret section
-  }
-  \vfill
-}
 
-\begin{frame}
-  \frametitle{Resources}
-  \framesubtitle{If you want to improve this style}
-  \begin{thebibliography}{10}
+%\frame{
+%  \vspace{2cm}
+%  {\huge Questions ?}
 
-  \beamertemplatearticlebibitems
+%  \vspace{3cm}
+%  \begin{flushright}
+%    Peter Shaw
 
-  \bibitem{beamer-homepage}
-    LaTeX Beamer
-    \newblock {\tt http://latex-beamer.sourceforge.net/}
-
-  \bibitem{}
-    Sharelatex Site % a link to my slides
-    \newblock {\tt https://www.sharelatex.com}
-  \bibitem{}
-    A Data Cleaning Mooc % a link to my slides
-    \newblock {\tt https://www.sharelatex.com}    
-  \end{thebibliography}
-\end{frame}
-
-\frame{
-  \vspace{2cm}
-  {\huge Questions ?}
-
-  \vspace{3cm}
-  \begin{flushright}
-    Peter Shaw
-
-    \structure{\footnotesize{peter.shaw@cdu.edu.au}}
-  \end{flushright}
-}
+%    \structure{\footnotesize{peter.shaw@cdu.edu.au}}
+%  \end{flushright}
+%}
 \end{document}
