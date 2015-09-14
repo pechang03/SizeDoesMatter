@@ -38,14 +38,14 @@
 %^\end{frame}
 
 \section*{}
-%\AtBeginSection[]
-%{
+\AtBeginSection[]
+{
 \begin{frame}
   \frametitle{Outline}
-%  \tableofcontents[section=1,hidesubsections]
-  \tableofcontents
+  \tableofcontents[section=1,hidesubsections]
+  %\tableofcontents
 \end{frame}
-%}
+}
 
 %\AtBeginSection[]
 %{
@@ -242,7 +242,7 @@ RSiteSearch("key phrase")
 \end{block}
 
 \begin{block}{Coding Q\&A site}
-{\url http://stackoverflow.com}\\
+{\url http://stackoverflow.com}
 {\url http://stats.stakexchange.com}
 \end{block}
 
@@ -305,6 +305,31 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
 \end{block}
 \end{frame}
 
+\section*{Getting help on packages}
+\begin{frame}
+  \frametitle{R Packages}
+  \framesubtitle{CRAN}
+  
+   \begin{block}{Where from}
+  \begin{itemize} 
+  \item install command
+  \item $install.packages(pkgs)$
+  \end{itemize}
+  \end{block}
+  
+  \begin{block}{Citing}
+  \begin{itemize}
+  \item citing packages
+  \item 
+%  x<-citation()
+%  toBibtex(x)
+%See also url 
+{\url https://cran.r-project.org/web/packages/RefManageR/vignettes/TestRmd.html}
+  \end{itemize}
+
+  \end{block}
+\end{frame}
+
 \begin{frame}[fragile, allowframebreaks]
   \frametitle{Lets read the table}
   \framesubtitle{Reading a table}
@@ -332,26 +357,15 @@ z=setNames(data.frame(t(table1[,-1])),table1[,1])
 \begin{frame}
   \frametitle{How to I merge two data sets}
   \framesubtitle{merge command}
+  using merge commend
 \end{frame}  
 
 \begin{frame}
   \frametitle{How to I merge two data sets}
   \framesubtitle{Two primary keys}
+  using RSQLite
 \end{frame}
-\section*{Getting help on packages}
-\begin{frame}
-  \frametitle{R Packages}
-  \framesubtitle{CRAN}
-  \begin{block}{Where from}
-  \item install command
-  \end{block}
-  \begin{block}{Citing}
-  \begin{itemize}
-  \item citing packages
-  \end{itemize}
 
-  \end{block}
-\end{frame}
 
 \begin{frame}
   \frametitle{R package}
@@ -361,17 +375,19 @@ z=setNames(data.frame(t(table1[,-1])),table1[,1])
 \begin{frame}
   \frametitle{R package}
   \framesubtitle{svUnit}
-  Another important component of TDD is refactoring and unit tests
+     Another important component of TDD is refactoring and unit tests
   \begin{itemize}
-  \item Ref refactoring
-  \item Version Control tortiseSVN
+     \item Ref refactoring
+     \item Version Control tortiseSVN
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Morning Tea Time}
-  %\framesubtitle{}
+  \framesubtitle{Back in 20min}
+  Need coffee
 \end{frame}
+
 \begin{frame}
   \frametitle{How to I merge two data sets}
   \framesubtitle{What if the keys don't match}
@@ -380,11 +396,14 @@ z=setNames(data.frame(t(table1[,-1])),table1[,1])
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Lunch Time}
-  %\framesubtitle{}
+  \framesubtitle{Back in 30 min}
+  Provided
 \end{frame}
+
 \begin{frame}
   \frametitle{Adding a new column}
   \framesubtitle{Calculating the number of days}
+  Using the $is.Date$ command
 \end{frame}
 
 \begin{frame}
@@ -429,20 +448,21 @@ z=setNames(data.frame(t(table1[,-1])),table1[,1])
   \bibitem{}
     A Data Cleaning Mooc % a link to my slides
     \newblock {\tt https://www.sharelatex.com}    
+%    https://www.coursera.org/course/repdata
   \end{thebibliography}
 \end{frame}
 
-\frame{
-  \vspace{2cm}
-  {\huge Questions ?}
-
-  \vspace{3cm}
-  \begin{flushright}
-    Peter Shaw
-
-    \structure{\footnotesize{peter.shaw@cdu.edu.au}}
-  \end{flushright}
-}
+%\frame{
+%  \vspace{2cm}
+%  {\huge Questions ?}
+%
+%  \vspace{3cm}
+%  \begin{flushright}
+%    Peter Shaw
+%
+%    \structure{\footnotesize{peter.shaw@cdu.edu.au}}
+%  \end{flushright}
+%}
 
 
 %You can type R commands in your \LaTeX{} document and they will be properly run and the output printed in the document.
