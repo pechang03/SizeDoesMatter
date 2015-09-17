@@ -1,0 +1,265 @@
+sapply(table2f,mode)
+sapply(table2f,class)
+getwd()
+able2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
+table2f$Spill.date<-as.Date(table2f$Spill.date,"%d-%b-%y")
+sapply(table2f,class)
+able2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("factor","numeric",rep("character",3)),endRow=4)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
+sapply(table2,class)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric","character","date(%d-%b-%y)",rep("character",2)),endRow=4)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric","character","date(%d-%b-%y)",rep("character",2)),endRow=4)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:8),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
+table2
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:8),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",2),endRow=4)
+)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:8),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",2)),endRow=4)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:18),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",2)),endRow=4)
+table2
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:18),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",5)),endRow=4)
+table2
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:10),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",5)),endRow=4)
+table2
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",5)),endRow=4)
+table2
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",6)),endRow=4)
+table2
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:10),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",5)),endRow=4)
+table2
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:10),stringsAsFactors=FALSE,colClasses=c("character",rep(numeric",3),rep("character",2),rep("numeric",5)),endRow=4)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:10),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",3),rep("character",2),rep("numeric",5)),endRow=4)
+table2
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",3),rep("character",2),rep("numeric",6)),endRow=4)
+table2
+table2a<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
+table2a
+table2f<-table2#
+table2f$Spill.date<-as.Date(table2f$Spill.date,"%d-%b-%y")#
+sapply(table2f,mode)#
+sapply(table2f,class)
+table2f$Sample.collection.data<-as.Date(table2f$Sample.collection.data,"%d.%b.%y")
+help(date)
+help(as.date)
+??as.date
+table2f$Sample.collection.data<-as.Date(table2f$Sample.collection.data,"%d.%m.%y")
+table2f
+??as.date
+table2f$Sample.collection.data<-as.Date(table2f$Sample.collection.data,"%D")
+table2f$Sample.collection.data
+table2f$Sample.collection.date
+table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%D")
+table2f$Sample.collection.date
+table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%")
+table2f$Sample.collection.date
+table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
+table2f$Sample.collection.date
+table2f<-table2
+table2f$Sample.collection.date
+table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
+table2f$Sample.collection.date
+table2f$Spill.date<-as.Date(table2f$Spill.date,"%d-%b-%y")
+sapply(table2f,mode)#
+sapply(table2f,class)
+head(table2f)
+table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",3),rep("character",2),rep("numeric",6)))
+table2b
+sapply(table2b,mode)#
+sapply(table2b,class)
+table2bf<-table2b
+table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")
+table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")
+table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")
+sapply(table2bf,mode)#
+sapply(table2bf,class)
+table2bf$Group<-as.factor(table2bf$Group)
+sapply(table2bf,mode)#
+sapply(table2bf,class)
+table2bf
+table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))#
+table2bf<-table2#
+table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")#
+table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")#
+table2bf$Group<-as.factor(table2bf$Group)
+table2
+table2bf
+table2b
+table2bf
+table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))#
+table2bf<-table2b#
+table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")#
+table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")#
+table2bf$Group<-as.factor(table2bf$Group)
+table2bf
+table2bf[,1:6]
+summary(table2bf[,1:6])
+help(summary)
+str(summary)
+str(table2bf)
+na_count <-sapply(table2bf, function(y) sum(length(which(is.na(y)))))
+na_count
+table2bf$Rep<-as.Factor(table2bf$Rep)
+table2bf$Rep<-as.factor(table2bf$Rep)
+str(table2bf)
+table2
+table2b
+table2bf
+table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d[./]%m[./]%y")
+table2bf$Sample.collection.date
+table2bf<-table2b
+table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d[./]%m[./]%y")
+table2bf<-table2b
+table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d[./]%m[./]%y")
+table2bf$Sample.collection.date
+cdate1<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")
+cdate2<-as.Date(table2bf$Sample.collection.date,"%d/%m/%y")
+cdate1
+cdate2
+table2bf<-table2b
+cdate1<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")
+cdate1
+cdate2<-as.Date(table2bf$Sample.collection.date,"%d/%m/%y")
+cdate2
+cdate3<-is.Na(cdate1)
+cdate3<-is.na(cdate1)
+cdate1
+cdate3
+help(if)
+help(then)
+cdate3<-ifelse(!is.na(cdate1),cdate1,cdata2)
+cdate3<-ifelse(!is.na(cdate1),cdate1,cdate2)
+cdate3
+cdate1
+cdate2
+cdate3<-as.date(ifelse(!is.na(cdate1),cdate1,cdate2))
+cdate3<-as.Date(ifelse(!is.na(cdate1),cdate1,cdate2))
+cdate3
+table2bf$Sample.collection.date<-as.Date(ifelse(!is.na(cdate1),cdate1,cdate2))
+table2bf
+sapply(table2bf,class)
+table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")
+dated<-table2bf$Sample.collection.date-table2bf$Spill.date
+dated
+table2bf
+table2bf$Rep
+substr(table2bf$Rep,1,1)
+substr(table2bf$Rep,3,3)
+substr(table2bf$Rep,4,4)
+strlen
+help(strlen)
+??strlen
+str_length
+require(string)
+install(string)
+require(stringr)
+help(package.stringr)
+?stringr
+help(stringr)
+str_c("rep1","rep")
+str_replace(table2bf$Rep,"rep?",?)
+str_replace(table2bf$Rep,"rep\1",\1)
+table2bf$Rep
+str_replace(table2bf$Rep,"rep\1",\1)
+str_replace(table2bf$Rep,"rep\1","\1")
+str_replace(table2bf$Rep,"rep\1","\1")
+str_replace_all(table2bf$Rep,"rep\1","\1")
+str_replace_all(table2bf$Rep,"rep?","\1")
+str_replace_all(table2bf$Rep,"(rep)??","\1")
+str_replace_all(table2bf$Rep,"(rep)??","\2")
+str_replace(table2bf$Rep,"(rep)??","\2")
+str_replace(table2bf$Rep,"(rep)??","\\2")
+str_replace(table2bf$Rep,"(rep)??","\\1")
+str_replace(table2bf$Rep,"(rep)?","\\1")
+str_replace(table2bf$Rep,"[rep]{3}?","\\1")
+str_replace(table2bf$Rep,"[rep]{3}?","\\2")
+str_replace(table2bf$Rep,"[rep]{3}?","\\3")
+str_replace(table2bf$Rep,"[rep]{3}?","\\4")
+str_replace(table2bf$Rep,"A","1")
+str_replace(table2bf$Rep,"A","2")
+str_replace(table2bf$Rep,"A","2")
+table2bf$Rep
+table2bf$Rep<-str_replace(table2bf$Rep,"[rep]{3}?","\\1")
+table2bf$Rep<-str_replace(table2bf$Rep,"A","1")
+table2bf$Rep<-str_replace(table2bf$Rep,"B","2")
+table2bf$Rep<-str_replace(table2bf$Rep,"C","3")
+table2bf$Rep
+table2bf$Rep<-as.factor(table2bf$Rep)
+table2bf
+able2bf$Group<-as.factor(table2bf$Group)
+table2bf$Group<-as.factor(table2bf$Group)
+table2bf
+str(table2bf)
+head(table1t)
+head(table1t,1:18)
+head(table1t,c(1:18))
+table1t[,c(1:18)]
+head(table1t)
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=FALSE,transpose=TRUE,endRow=18)
+table1
+table1t=setNames(data.frame(t(table1[,-1])),table1[,1])
+table1t
+head(table1t)
+table1t[1,]
+table1t[2,]
+str(table1t)
+table1t$Group
+table1t$Group[]
+table1t
+table1t$Group
+table1t$Group[-1]
+cdown<-ifelse(is.na,1,0)
+cdown<-ifelse(is.na(tablet$Group),1,0)
+cdown<-ifelse(is.na(table1t$Group),1,0)
+cdown
+cdown<-ifelse(!is.na(table1t$Group),1,0)
+cdown
+cdown<-ifelse(table1t$Group=="",1,0)
+cdown
+cdown<-ifelse(table1t$Group=="" & table1t$Group[-1]=="Contaminated",1,0)
+uprow<-table1t$Group[-1]
+cdown<-ifelse(table1t$Group=="",uprow,0)
+cdown
+uprow
+uprow[,1]
+uprow[1,]
+uprow<-table1t$Group[+1]
+uprow
+table1t[Group="Contaminated",]
+table1t[Group="Contaminated Control",]
+uprow<-table1t$Group[-1]
+uprow
+table1t$Group
+help(tapply)
+str(table1t)
+dol<-table1t$Group
+dol[2:5,]<-fred
+dol[2:5,]<-"fred"
+dol[2:5,]<-"Contaminated"
+dol[2:5,]<-1
+dol[2:5,]
+dol<-table1t$Group
+dol
+dol[2,]<-1
+dol[2,]<-"Contaminated"
+dol[2]<-"Contaminated"
+dol[2:5]<-"Contaminated"
+dol
+dol[2:24]<-"Contaminated"
+dol[2:24]<-"Contaminated"
+dol
+dol[25:49]<-"Control"
+dol
+which(table1t$Group,"Control")
+help(which)
+which(table1t$Group=="Control")
+ctridx<-which(table1t$Group=="Control")
+test1<-table1t$group[1:ctridx]="Contaminated"
+table1t$group[1:ctridx]="Contaminated"
+table1t$group
+ctridx
+table1t$group[1:ctridx]<-"Contaminated"
+table1t$group[ctridx+1:48]<-"Contaminated"
+table1t$group[ctridx+1:48]<-"Control"
+table1t$group[(ctridx+1):48]<-"Control"
+table1t$group
