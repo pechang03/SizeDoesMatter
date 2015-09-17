@@ -1,0 +1,743 @@
+\documentclass[12pt]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+%\documentclass[10pt,handout,english]{beamer}
+\usetheme{Air}
+\usepackage{thumbpdf}
+\usepackage{wasysym}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{verbatim}
+\usepackage{comment}
+\usepackage{listings,relsize} 
+\lstloadlanguages{R} 
+
+
+\geometry{paperwidth=140mm,paperheight=105mm}
+\usepackage{pgfpages}
+
+\usepackage{lipsum}
+
+\pdfinfo
+{
+  /Title       (Data manipulation in R: a program to use when size matters)
+  /Creator     (Peter Shaw)
+  /Author      (Peter Shaw)
+}
+%\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]
+%\pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm,landscape]
+\title{Data manipulation in R}
+\subtitle{A program to use when size matters}
+\author{Peter Shaw}
+
+%-------------------------------------------------------------------------------------
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\lstset{language=R,basicstyle=\smaller[2]}
+%,commentstyle=\rmfamily\smaller,  showstringspaces=false,%xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1} 
+%\lstset{escapeinside={(*}{*)}}   % for (*\ref{ }*) inside lstlistings (S code) 
+\frame{\titlepage}
+%^\end{frame}
+
+\section*{}
+\AtBeginSection[]
+{
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[section=1,hidesubsections]
+  %\tableofcontents
+\end{frame}
+}
+
+%\AtBeginSection[]
+%{
+%  \frame<handout:0>
+%  {
+%    \frametitle{Outline}
+%    \tableofcontents[currentsection,hideallsubsections]
+%  }
+%}
+%\AtBeginSubsection[]
+%{
+%  \frame<handout:0>
+%  {
+%    \frametitle{Outline}
+%    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+%  }
+%}
+
+\newcommand<>{\highlighton}[1]{%
+  \alt#2{\structure{#1}}{{#1}}
+}
+
+\newcommand{\icon}[1]{\pgfimage[height=1em]{#1}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Introduction}
+%\begin{frame}
+%  \vfill
+%  \centering
+%  \highlighton{
+%  \usebeamerfont*{frametitle}A common scenario
+%  \usebeamerfont*{framesubtitle}A friend has emailed you her data in a spreadsheet
+  
+%  \vfill
+%\end{frame}
+
+
+\begin{frame}
+  \frametitle{Why use R?}
+  \framesubtitle{Why not use a spreadsheet?}
+
+  \begin{block}{Why not use a spreadsheet?}
+  \begin{itemize}
+    \item Data manipulation in Excel is VERY risk and time consuming
+    \item A rage of software packages are available for Excel
+    \item Large data sets can exceed the size limits of standard programs
+    \item Spreadsheets don't have the inherent understanding of statistics that R has
+    \item For example handling of N\/A's
+    \item R is hot!
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Why use R?}
+  \begin{block}{Why use R?}
+  \begin{itemize}
+    \item Its free
+    \item Its available on most operating systems Windows, OS X, Linux
+    \item There are huge numbers of packages available
+    \item Its becoming the international standard for statistics
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+%@book{Teetor:2011:RC:2011867,
+% author = {Teetor, Paul},
+% title = {R Cookbook},
+% year = {2011},
+% isbn = {0596809158, 9780596809157},
+% edition = {1st},
+% publisher = {O'Reilly Media, Inc.},
+%} 
+
+\begin{frame}[allowframebreaks]
+\frametitle{Getting Started}
+  \framesubtitle{Some References}
+  \begin{thebibliography}{10}    
+  \setbeamertemplate{bibliography item}[book]
+  \bibitem{Teetor:2011:RC:2011867}
+    James P. Howard.
+    \newblock {\em R Cookbook}.
+    \newblock O'Reilly Media, Inc, 2011.
+ 
+  \setbeamertemplate{bibliography item}[book]
+  \bibitem{Jemand2000}
+    Phil Spector.
+    \newblock {\em Data Manipulation with R.}
+    \newblock Use R series 
+    \newblock Springer, 2008
+%@book{R:Spector:2008,
+%  author = {Phil Spector},
+%  title = {Data Manipulation with R},
+%  publisher = {Springer},
+%  year = {2008}
+%}   
+%  \setbeamertemplate{bibliography item}[article]
+%  \bibitem{Jemand2000}
+%    Phil Spector.
+%    \newblock {\em Data Manipulation with R.}
+%    \item Use R series 
+%    \newblock Springer, 2008
+  \end{thebibliography}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Getting Started}
+  \framesubtitle{Installing R!}
+
+  \begin{block}{Download it}
+  \begin{itemize}
+    \item Open {\url http://www.r-project.org}
+    \item Click CRAN (Under download on Top Left)
+    \item Click {\url http://cran.ms.unimelb.edu.au/} University of Melbourne
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Windows}
+  \begin{itemize}
+    \item Select Windows
+    \item Select Base
+    \item Download R (suggest latest version)
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{OS X}
+  \begin{itemize}
+    \item Select Select OS X
+    \item Select R-3.2.2.pkg (or the version that matches your OS version)
+  \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Getting Started}
+\framesubtitle{Installing a GUI}
+\begin{block}{How about RStudio}
+{\url https://www.rstudio.com/products/rstudio/download/}
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Getting Started}
+  \framesubtitle{Basic steps}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlnum{2}\hlopt{+}\hlnum{5}
+\end{alltt}
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Create a sequence of numbers}
+\hlstd{X} \hlkwb{=} \hlnum{2}\hlopt{:}\hlnum{10}
+
+\hlcom{# Display basic statistical measures}
+\hlkwd{summary}\hlstd{(X)}
+\end{alltt}
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##       2       4       6       6       8      10
+\end{verbatim}
+\begin{alltt}
+\hlcom{# use q() to quit}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\clearpage
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Getting Started}
+  \framesubtitle{Help Functions}
+\begin{block}{To access the documentation type}
+help.start()
+\end{block}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{help}\hlstd{(summary)}
+\hlkwd{args}\hlstd{(summary)}
+\end{alltt}
+\begin{verbatim}
+## function (object, ...) 
+## NULL
+\end{verbatim}
+\begin{alltt}
+\hlkwd{example}\hlstd{(sd)}
+\end{alltt}
+\begin{verbatim}
+## 
+## sd> sd(1:2) ^ 2
+## [1] 0.5
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\clearpage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Help Functions}
+  \framesubtitle{Search the Web}
+\begin{block}{To search R documentation}
+RSiteSearch("key phrase")
+%help(adf.test,package="tseries")
+%to search for a tutorial for a package
+%vignette(package="packagename")
+%For an intro to vignettes see
+%https://cran.r-project.org/web/packages/sos/vignettes/sos.pdf
+%examples on the web
+%http://shiny.rstudio.com/gallery/
+\end{block}
+\begin{block}{Custom Google search focused on R-specific websites}
+{\url http://rseek.org}
+\end{block}
+
+\begin{block}{Coding Q\&A site}
+{\url http://stackoverflow.com}
+{\url http://stats.stakexchange.com}
+\end{block}
+
+\end{frame}
+
+\section*{Some manners}
+\begin{frame}
+  \frametitle{Iterative development}
+  \framesubtitle{Working Creatively}
+Some discussion recently on how to work creatively. Research out of  successful R\&D projects developed into Agile
+\begin{itemize}
+\item Keep the manages away
+\item work sustainably
+\item people over process
+\item iterative development
+\end{itemize}
+\end{frame}
+
+\section*{R Data types}
+\begin{frame}
+  \frametitle{R Data types}
+  \framesubtitle{Lists, frames and tables}
+  \begin{block}{Lists}
+      \begin{itemize}
+         \item $l=c(1,3,4)$
+         \item $bbb$
+      \end{itemize}
+  \end{block}
+\end{frame}  
+
+\section*{Reading our file}
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the table}
+  \framesubtitle{Check the current directory}
+\begin{block}{Where are we}
+\begin{lstlisting} 
+getwd()
+setwd("/Users/pcru")
+dir() #This lists the files
+ls()  #This lists the variables
+\end{lstlisting}
+{\url http://www.statmethods.net/input/contents.html}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the table}
+  \framesubtitle{Reading a table}
+\begin{block}{To read a csv table as a table try}
+\begin{lstlisting} 
+tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
+\end{lstlisting}
+\end{block}
+\begin{block}{But our table is an excel file}
+\begin{itemize}
+\item What about a package?
+\item {\url http://www.thertrader.com/2014/02/11/a-million-ways-to-connect-r-and-excel/}
+\item Lets use the R package xlsx
+\end{itemize}
+\end{block}
+\end{frame}
+
+\section*{Getting help on packages}
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{R Packages}
+  \framesubtitle{CRAN}
+  
+   \begin{block}{Where from}
+  \begin{itemize} 
+  \item install command
+  \item $install.packages(pkgs)$
+  \end{itemize}
+  \end{block}
+  
+  \begin{block}{Citing Packages}
+%  \begin{itemize}
+%  \item Citing packages
+
+%  x<-citation()
+%  toBibtex(x)
+%See also url 
+{\url https://cran.r-project.org/web/packages/RefManageR/vignettes/TestRmd.html}
+%  \end{itemize}
+  \end{block}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+ \hlstd{x}\hlkwb{<-}\hlkwd{citation}\hlstd{()}
+ \hlkwd{toBibtex}\hlstd{(x)}
+\end{alltt}
+\begin{verbatim}
+## @Manual{,
+##   title = {R: A Language and Environment for Statistical Computing},
+##   author = {{R Core Team}},
+##   organization = {R Foundation for Statistical Computing},
+##   address = {Vienna, Austria},
+##   year = {2014},
+##   url = {http://www.R-project.org/},
+## }
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the table}
+  \framesubtitle{Reading a table}
+\begin{itemize}  
+\item {\url http://www.statmethods.net/input/importingdata.html}
+\item Input files from Stata
+\begin{lstlisting} 
+library(foreign)
+mydata <- read.dta("c:/mydata.dta")  
+\end{lstlisting} 
+%table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=TRUE)
+%http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally
+%http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC
+\end{itemize}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: xlsx}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: package 'xlsx' was built under R version 3.1.3}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: rJava}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: package 'rJava' was built under R version 3.1.3}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: methods\\\#\# Loading required package: xlsxjars\\\#\# Loading required package: xtable}}\end{kframe}
+\end{knitrout}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{setwd}\hlstd{(}\hlstr{"/Users/pcru/SizeDoesMatter1"}\hlstd{)}
+\hlstd{table1}\hlkwb{<-}\hlkwd{read.xlsx2}\hlstd{(}\hlstr{"1_R Wkshp_dummy data_OTU table.xlsx"}\hlstd{,} \hlkwc{sheetName} \hlstd{=} \hlstr{"Sheet1"}\hlstd{,}\hlkwc{header}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{rowNames}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{transpose}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{endRow}\hlstd{=}\hlnum{18}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+% latex table generated in R 3.1.2 by xtable 1.7-4 package
+% Tue Sep 15 22:21:21 2015
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlllllll}
+  \hline
+ & X1 & X2 & X3 & X4 & X5 & X6 & X7 \\ 
+  \hline
+1 & Group & Contaminated &  &  &  &  &  \\ 
+  2 & Site & 1 &  &  & 2 &  &  \\ 
+  3 & Sample ID & 10000 & 10001 & 10002 & 10003 & 10004 & 10005 \\ 
+  4 & Rep & 1 & 2 & 3 & 1 & 2 & 3 \\ 
+  5 & phormidiaceae & 24872 & 24872 & 5822 & 7538 & 7201 & 7538 \\ 
+  6 & streptococcaceae & 11 & 7 & 14 & 8 & 10 & 8 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the table}
+  \framesubtitle{Reading a table}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{table1t}\hlkwb{=}\hlkwd{setNames}\hlstd{(}\hlkwd{data.frame}\hlstd{(}\hlkwd{t}\hlstd{(table1[,}\hlopt{-}\hlnum{1}\hlstd{])),table1[,}\hlnum{1}\hlstd{])}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+%{\url http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC}
+{\url http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally}
+% latex table generated in R 3.1.2 by xtable 1.7-4 package
+% Tue Sep 15 22:21:21 2015
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlllll}
+  \hline
+ & Group & Site & Sample ID & Rep & phormidiaceae \\ 
+  \hline
+X2 & Contaminated & 1 & 10000 & 1 & 24872 \\ 
+  X3 &  &  & 10001 & 2 & 24872 \\ 
+  X4 &  &  & 10002 & 3 & 5822 \\ 
+  X5 &  & 2 & 10003 & 1 & 7538 \\ 
+  X6 &  &  & 10004 & 2 & 7201 \\ 
+  X7 &  &  & 10005 & 3 & 7538 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 3.1.2 by xtable 1.7-4 package
+% Tue Sep 15 22:21:21 2015
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlllll}
+  \hline
+ &          Group &    Site &   Sample ID &      Rep & phormidiaceae \\ 
+  \hline
+1 &             :46   &      :32   & 10003  : 3   & A      :8   & 115    : 2   \\ 
+  2 & Contaminated: 1   & 1    : 4   & 10004  : 3   & B      :8   & 24872  : 2   \\ 
+  3 & Control     : 1   & 2    : 4   & 10005  : 3   & C      :8   & 33     : 2   \\ 
+  4 & FALSE       : 1   & 3    : 4   & 10006  : 3   & 1      :6   & 36     : 2   \\ 
+  5 & TRUE        : 1   & 4    : 4   & 10007  : 3   & 2      :6   & 7538   : 2   \\ 
+  6 &  & FALSE: 1   & 10008  : 3   & 3      :6   & 800    : 2   \\ 
+  7 &  & TRUE : 1   & (Other):32   & (Other):8   & (Other):38   \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+\clearpage
+\end{frame}
+
+\section*{Working with dates}
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the next table}
+  \framesubtitle{Reading a table}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{table2}\hlkwb{<-}\hlkwd{read.xlsx2}\hlstd{(}\hlstr{"2_R Wkshp_dummy data_Env Data.xlsx"}\hlstd{,} \hlkwc{sheetName} \hlstd{=} \hlstr{"Sheet1"}\hlstd{,}\hlkwc{header}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{rowNames}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{transpose}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in read.xlsx2("{}2\_R Wkshp\_dummy data\_Env Data.xlsx"{}, sheetName = "{}Sheet1"{}, : Cannot find the sheet you requested in the file!}}\end{kframe}
+\end{knitrout}
+\begin{kframe}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in head(table2[, 1:5]): error in evaluating the argument 'x' in selecting a method for function 'head': Error: object 'table2' not found}}\end{kframe}
+\clearpage
+\end{frame}
+
+
+\section*{How to I merge two data sets}
+\begin{frame}
+  \frametitle{How to I merge two data sets}
+  \framesubtitle{merge command}
+  using merge commend
+\end{frame}  
+
+\section*{Fat or wide}
+\begin{frame}
+  \frametitle{Reshaping Tables}
+  \framesubtitle{reshape2}
+  \begin{block}{reshape2}
+  vignette(reshape)
+  \end{block}
+\end{frame}  
+
+\begin{frame}
+  \frametitle{How to I merge two data sets}
+  \framesubtitle{Two primary keys}
+  using RSQLite
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{R package}
+  \framesubtitle{Rsqlite}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R package}
+  \framesubtitle{svUnit}
+     Another important component of TDD is refactoring and unit tests
+  \begin{itemize}
+     \item Refactoring {\url http://refactoring.com/}
+     \item {\url http://www.r-bloggers.com/my-experience-of-learning-r-from-basic-graphs-to-performance-tuning/}
+     \item TDD in R {\url http://www.slideserve.com/andrew/test-driven-development-in-r}
+     \item Version Control tortiseSVN {\url http://tortoisesvn.net/}
+     \item GitHub {\url https://github.com/}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Morning Tea Time}
+  \framesubtitle{Back in 20min}
+  Need coffee
+\end{frame}
+
+\begin{frame}
+  \frametitle{How to I merge two data sets}
+  \framesubtitle{What if the keys don't match}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Lunch Time}
+  \framesubtitle{Back in 30 min}
+  Provided
+\end{frame}
+
+\begin{frame}
+  \frametitle{Adding a new column}
+  \framesubtitle{Calculating the number of days}
+  Using the $is.Date$ command
+\end{frame}
+
+\begin{frame}
+  \frametitle{How to I append two data sets}
+  %\framesubtitle{}
+\end{frame}
+\begin{frame}
+  \frametitle{Another Break}
+  %\framesubtitle{}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Now lets have some fun}
+  \framesubtitle{Making a heat map}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What next}
+  \framesubtitle{Proposed future talks}
+  \begin{block}{Your feedback on some ideas}
+  \begin{itemize}
+  \item Using Sweave or Knitr
+  \item Advanced Data Cleaning 
+  \item Network Centric data analysis
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Resources}
+  \framesubtitle{If you want to improve this style}
+  \begin{thebibliography}{10}
+
+  \beamertemplatearticlebibitems
+%https://www.getdatajoy.com/
+  \bibitem{beamer-homepage}
+    LaTeX Beamer
+    \newblock {\tt http://latex-beamer.sourceforge.net/}
+
+  \bibitem{}
+    Sharelatex Site % a link to my slides
+    \newblock {\tt https://www.sharelatex.com}
+  \bibitem{}
+    A Data Cleaning Mooc % a link to my slides
+    \newblock {\tt https://www.sharelatex.com}    
+%    https://www.coursera.org/course/repdata
+  \end{thebibliography}
+\end{frame}
+
+%\frame{
+%  \vspace{2cm}
+%  {\huge Questions ?}
+%
+%  \vspace{3cm}
+%  \begin{flushright}
+%    Peter Shaw
+%
+%    \structure{\footnotesize{peter.shaw@cdu.edu.au}}
+%  \end{flushright}
+%}
+
+
+%You can type R commands in your \LaTeX{} document and they will be properly run and the output printed in the document.
+
+%<<chunk1>>=
+%# Create a sequence of numbers
+%X = 2:10
+%
+%# Display basic statistical measures
+%summary(X)
+%
+%@
+%--------------------------------------------------------------------------------
+
+%So, the mean of the data is $mean(X)$ %Inline command
+
+
+%\clearpage
+%Plots
+%--------------------------------------------------------------------------------
+%<<plot1, fig.pos="t", fig.height=4, fig.width=4, fig.cap="First plot">>=
+
+%xdata = read.csv(file="data.txt", head=TRUE,sep=" ")
+
+%hist(xdata$data, main="ShareLaTeX histogram", xlab="Data")
+
+%@
+%--------------------------------------------------------------------------------
+
+%The figure \ref{fig:plot1} is simple histogram.
+
+%\clearpage
+
+The chunk below will not be printed
+
+%R code imported from external file
+%--------------------------------------------------------------------------------
+%<<echo=FALSE, cache=FALSE>>=
+%read_chunk("mycode.R")
+%@
+
+%The code must show up here
+
+%<<myrcode2>>=
+
+%@
+%--------------------------------------------------------------------------------
+
+
+%\frame{
+%  \vspace{2cm}
+%  {\huge Questions ?}
+
+%  \vspace{3cm}
+%  \begin{flushright}
+%    Peter Shaw
+
+%    \structure{\footnotesize{peter.shaw@cdu.edu.au}}
+%  \end{flushright}
+%}
+\end{document}
