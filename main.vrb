@@ -1,0 +1,25 @@
+\frametitle{How to I merge two data sets}
+  \framesubtitle{Using the merge command}
+
+\begin{block}{The inbuilt command merge}
+\begin{itemize}
+\item R has a command merge
+\item Lets start looking at the first 9 lines of the tables and merge them using the Sample ID
+\item Because otherwise its not uniques
+\end{itemize}
+\begin{lstlisting}
+merge(x, y, by = intersect(names(x), names(y)),
+      by.x = by, by.y = by, all = FALSE, all.x = all, all.y = all,
+      sort = TRUE, suffixes = c(".x",".y"),
+      incomparables = NULL, ...)
+\end{lstlisting}
+\end{block}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{tab1c}\hlkwb{<-}\hlstd{table1t[}\hlnum{1}\hlopt{:}\hlnum{9}\hlstd{,]}
+\hlstd{tab2c}\hlkwb{<-}\hlstd{table2b[}\hlnum{1}\hlopt{:}\hlnum{9}\hlstd{,]}
+\hlstd{m1}\hlkwb{<-}\hlkwd{merge}\hlstd{(tab1c,tab2c,}\hlkwc{by.x}\hlstd{=}\hlstr{"Sample ID"}\hlstd{,}\hlkwc{by.y}\hlstd{=}\hlstr{"Sample.ID"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}

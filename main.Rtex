@@ -12,7 +12,7 @@
 \lstloadlanguages{R} 
 
 
-\geometry{paperwidth=140mm,paperheight=105mm}
+\geometry{paperwidth=160mm,paperheight=105mm}
 \usepackage{pgfpages}
 
 \usepackage{lipsum}
@@ -31,9 +31,11 @@
 
 %-------------------------------------------------------------------------------------
 \begin{document}
-\lstset{language=R,basicstyle=\smaller[2]}
-%,commentstyle=\rmfamily\smaller,  showstringspaces=false,%xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1} 
-%\lstset{escapeinside={(*}{*)}}   % for (*\ref{ }*) inside lstlistings (S code) 
+\lstset{language=R,basicstyle=\smaller[2]%}
+,commentstyle=\rmfamily\smaller,  showstringspaces=false,
+xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1} 
+\lstset{escapeinside={(*}{*)}}   % for (*\ref{ }*) inside lstlistings (S code) 
+\linewidth=325pt
 \frame{\titlepage}
 %^\end{frame}
 
@@ -141,6 +143,7 @@
     \newblock {\em Data Manipulation with R.}
     \newblock Use R series 
     \newblock Springer, 2008
+    
 %@book{R:Spector:2008,
 %  author = {Phil Spector},
 %  title = {Data Manipulation with R},
@@ -153,6 +156,7 @@
 %    \newblock {\em Data Manipulation with R.}
 %    \item Use R series 
 %    \newblock Springer, 2008
+%https://cran.r-project.org/doc/manuals/R-intro.pdf
   \end{thebibliography}
 \end{frame}
 
@@ -214,13 +218,13 @@ summary(X)
   \frametitle{Getting Started}
   \framesubtitle{Help Functions}
 \begin{block}{To access the documentation type}
-help.start()
 \end{block}
-<<chunk2>>=
+\begin{lstlisting} 
+help.start()
 help(summary)
 args(summary)
 example(sd)
-@
+\end{lstlisting} 
 \clearpage
 \end{frame}
 
@@ -306,7 +310,7 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
 \end{frame}
 
 \section*{Getting help on packages}
-\begin{frame}
+\begin{frame}[fragile, allowframebreaks]
   \frametitle{R Packages}
   \framesubtitle{CRAN}
   
@@ -317,68 +321,311 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
   \end{itemize}
   \end{block}
   
-  \begin{block}{Citing}
-  \begin{itemize}
-  \item citing packages
-  \item 
+  \begin{block}{Citing Packages}
+%  \begin{itemize}
+%  \item Citing packages
+
 %  x<-citation()
 %  toBibtex(x)
 %See also url 
 {\url https://cran.r-project.org/web/packages/RefManageR/vignettes/TestRmd.html}
-  \end{itemize}
-
+%  \end{itemize}
   \end{block}
+<<chunk5>>=
+ x<-citation()
+ toBibtex(x)
+@  
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the table}
+  \framesubtitle{An example}
+\begin{lstlisting} 
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = 
+
+"Sheet1",header=FALSE,rowNames=FALSE,transpose=TRUE,endRow=18)
+\end{lstlisting}
+  
+<<chunk3,echo=FALSE>>=
+require(xlsx)
+require(xtable)
+setwd("/Users/pcru/SizeDoesMatter1")
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=FALSE,transpose=TRUE,endRow=18)
+@
+
+<<chunk3iii,results='asis', echo=FALSE>>=
+print(xtable(head(table1[,1:7])))
+@
+\clearpage
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the table}
+  \framesubtitle{Transpose the table}
+  \begin{block}{Transposing}
+  We need to transpose the table and set the column names correctly
+  \end{block}
+<<chunk6, echo=TRUE>>=
+table1t=setNames(data.frame(t(table1[,-1])),table1[,1])
+ctridx<-which(table1t$Group=="Control")
+table1t$Group[1:48]<-"Contaminated"
+table1t$Group[(ctridx+1):48]<-"Control"
+@
+\begin{lstlisting}
+ttt<-table1t$Site
+for(i in c(2:length(table1t$Site)))
+{
+	temp<-as.character(table1t$Site[i])
+	tempb<-as.character(ttt[i-1])
+	if(table1t$Site[i]=="") 
+	{
+		 ttt[i]<-tempb
+ 	}
+	if(!table1t$Site[(i)]=="")
+	{
+		ttt[i]<-temp
+	}
+}
+table1t$Site<-ttt
+\end{lstlisting}
+
+<<chunk6ii, echo=FALSE>>=
+ttt<-table1t$Site
+for(i in c(2:length(table1t$Site)))
+{
+temp<-as.character(table1t$Site[i])
+tempb<-as.character(ttt[i-1])
+#print(i)
+#print(temp)
+#print(tempb)
+if(table1t$Site[i]=="")
+{
+#print("a")
+ ttt[i]<-tempb
+ }
+if(!table1t$Site[(i)]=="")
+{
+#print("b")
+ttt[i]<-temp
+}
+print(ttt[i])
+}
+table1t$Site<-ttt
+@
+
+<<chunk6iii, echo=FALSE>>=
+require(stringr)
+table1t$Rep<-str_replace(table1t$Rep,"[rep]{3}?","\\1")
+table1t$Rep<-str_replace(table1t$Rep,"A","1")
+table1t$Rep<-str_replace(table1t$Rep,"B","2")
+table1t$Rep<-str_replace(table1t$Rep,"C","3")
+table1t$Rep<-as.factor(table1t$Rep)
+@
+
+%{\url http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC}
+{\url http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally}
+<<chunk6i,results='asis', echo=FALSE>>=
+print(xtable(head(table1t[,1:5])))
+print(xtable(summary(table1t[,1:5])))
+@
+\clearpage
 \end{frame}
 
 \begin{frame}[fragile, allowframebreaks]
   \frametitle{Lets read the table}
   \framesubtitle{Reading a table}
-%http://www.statmethods.net/input/importingdata.html
-%From Stata
-%# input Stata file
-%library(foreign)
-%mydata <- read.dta("c:/mydata.dta")  
-
-%  something
-
+\begin{itemize}  
+\item {\url http://www.statmethods.net/input/importingdata.html}
+\item Input files from Stata
 %table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=TRUE)
 %http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally
 %http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC
-<<chunk3>>=
-require(xlsx)
-table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=FALSE,transpose=TRUE,endRow=18)
-z=setNames(data.frame(t(table1[,-1])),table1[,1])
-@
-%#vignette(reshape)
-%\clearpage
+\end{itemize}
+\begin{lstlisting} 
+library(foreign)
+mydata <- read.dta("c:/mydata.dta")  
+\end{lstlisting} 
 \end{frame}
 
-\section*{How to I merge two data sets}
-\begin{frame}
-  \frametitle{How to I merge two data sets}
+\section*{Working with Data Types}
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the next table}
+  \framesubtitle{Reading a table using xlxs}
+<<chunk7, echo=TRUE>>=
+setwd("/Users/pcru/SizeDoesMatter1")
+#dir()
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
+@
+<<chunk7i,results='asis', echo=FALSE>>=
+print(xtable(head(table2[,1:5])))
+@
+%print(xtable(summary(table1t[,1:5])))
+\clearpage
+\end{frame}
+
+%https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
+%In tidy data:
+%\begin{itemize}
+%\item Each variable forms a column.
+%\item Each observation forms a row.
+%\item Each type of observational unit forms a table.
+%http://pj.freefaculty.org/R/Rtips.html#toc-Subsection-1.11
+%\end{itemize}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the next table}
+  \framesubtitle{Reading a table}
+%<<chunk7ii, echo=TRUE>>=
+%print(xtable(str(table2)))
+%@
+\begin{alert}{Oh NO}
+All columns have been set to factors
+\end{alert}
+
+\begin{block}{lets break it down}
+First lets reed a few rows only
+\end{block}
+<<chunk8ii, echo=TRUE>>=
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
+sapply(table2,mode)
+sapply(table2,class)
+@
+\clearpage
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the next table}
+  \framesubtitle{Setting the data types}
+\begin{block}{colClasses}
+\begin{itemize}
+\item The variable colClasses can be used to specify the row types.
+\item We need to set stringsAsFactor=FALSE or all columns with be loaded as factors
+\item The dates are in a non standard format so we need to read them as chars first
+\end{itemize}
+\end{block}
+%#table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = #"Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,col#Classes=c("character",rep("numeric",3),rep("character",2),rep("numeric",6)),endRow=4)
+<<chunk8v, echo=TRUE>>=
+table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))
+sapply(table2,class)
+@
+\clearpage
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the next table}
+  \framesubtitle{Setting the Date Type}
+
+ <<chunk8iii, echo=TRUE>>=
+table2f<-table2
+table2f$Spill.date<-as.Date(table2f$Spill.date,"%d-%b-%y")
+table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
+#sapply(table2f,mode)
+sapply(table2f,class)
+@
+\clearpage
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Lets read the next table}
+  \framesubtitle{Setting the Date Type}
+\begin{block}{colClasses}
+\begin{itemize}
+\item The as.Data method can take a format string as the second variable 
+\item The format strings are described in help on  strptime
+\item But Spill.data has {\bf two formats}
+\item We can use the if else function to combine them
+ \end{itemize}
+ \end{block}
+ <<chunk8vi, echo=TRUE>>=
+table2bf<-table2b
+table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")
+cdate1<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")
+cdate2<-as.Date(table2bf$Sample.collection.date,"%d/%m/%y")
+table2bf$Sample.collection.date<-as.Date(ifelse(!is.na(cdate1),as.Date(cdate1),as.Date(cdate2)), origin="1970-01-01")
+table2bf$Group<-as.factor(table2bf$Group)
+table2bf$Rep<-as.factor(table2bf$Rep)
+na_count <-sapply(table2bf, function(y) sum(length(which(is.na(y)))))
+na_count
+dated<-table2bf$Sample.collection.date-table2bf$Spill.date
+@
+\clearpage
+\end{frame}
+
+\section*{Working with string}
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{How to work with strings}
   \framesubtitle{merge command}
-  using merge commend
+\begin{itemize}
+\item $require(stringer)$ %look at this package
+\item $stri_c(str1,str2)$    concatenates two string
+\item $str_len(str)$
+\end{itemize}
+<<chunk8iv, echo=TRUE>>=
+require(stringr)
+table2bf$Rep<-str_replace(table2bf$Rep,"[rep]{3}?","\\1")
+table2bf$Rep<-str_replace(table2bf$Rep,"A","1")
+table2bf$Rep<-str_replace(table2bf$Rep,"B","2")
+table2bf$Rep<-str_replace(table2bf$Rep,"C","3")
+table2bf$Rep<-as.factor(table2bf$Rep)
+str(table2bf)
+@
 \end{frame}  
 
-\begin{frame}
+\section*{How to I merge two data sets}
+\begin{frame}[fragile, allowframebreaks]
   \frametitle{How to I merge two data sets}
-  \framesubtitle{Two primary keys}
-  using RSQLite
-\end{frame}
+  \framesubtitle{Using the merge command}
+
+\begin{block}{The inbuilt command merge}
+\begin{itemize}
+\item R has a command merge
+\item Lets start looking at the first 9 lines of the tables and merge them using the Sample ID
+\item Because otherwise its not uniques
+\end{itemize}
+\begin{lstlisting}
+merge(x, y, by = intersect(names(x), names(y)),
+      by.x = by, by.y = by, all = FALSE, all.x = all, all.y = all,
+      sort = TRUE, suffixes = c(".x",".y"),
+      incomparables = NULL, ...)
+\end{lstlisting}
+\end{block}
+<<chunk9i, echo=TRUE>>=
+tab1c<-table1t[1:9,] 
+tab2c<-table2b[1:9,]
+m1<-merge(tab1c,tab2c,by.x="Sample ID",by.y="Sample.ID")
+@
+\end{frame}  
 
 
 \begin{frame}
   \frametitle{R package}
   \framesubtitle{Rsqlite}
+  \begin{block}{RSqlite}
+  \end{block}
+<<chunk9ii, echo=TRUE>>=
+
+@  
 \end{frame}
+
+\section*{Fat or wide}
+\begin{frame}
+  \frametitle{Reshaping Tables}
+  \framesubtitle{reshape2}
+  \begin{block}{reshape2}
+  vignette(reshape)
+  \end{block}
+\end{frame}  
 
 \begin{frame}
   \frametitle{R package}
   \framesubtitle{svUnit}
      Another important component of TDD is refactoring and unit tests
   \begin{itemize}
-     \item Ref refactoring
-     \item Version Control tortiseSVN
+     \item Refactoring {\url http://refactoring.com/}
+     \item {\url http://www.r-bloggers.com/my-experience-of-learning-r-from-basic-graphs-to-performance-tuning/}
+     \item TDD in R {\url http://www.slideserve.com/andrew/test-driven-development-in-r}
+     \item Version Control tortiseSVN {\url http://tortoisesvn.net/}
+     \item GitHub {\url https://github.com/}
   \end{itemize}
 \end{frame}
 
@@ -391,6 +638,13 @@ z=setNames(data.frame(t(table1[,-1])),table1[,1])
 \begin{frame}
   \frametitle{How to I merge two data sets}
   \framesubtitle{What if the keys don't match}
+\begin{block}{SQLite}
+\begin{itemize}
+\item dd
+\end{itemize}
+\end{block}
+
+  
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -425,8 +679,9 @@ z=setNames(data.frame(t(table1[,-1])),table1[,1])
   \framesubtitle{Proposed future talks}
   \begin{block}{Your feedback on some ideas}
   \begin{itemize}
-  \item Using Sweave
-  \item Using 
+  \item Using Sweave or Knitr
+  \item Advanced Data Cleaning 
+  \item Network Centric data analysis
   \end{itemize}
   \end{block}
 \end{frame}

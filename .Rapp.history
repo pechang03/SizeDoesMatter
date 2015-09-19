@@ -1,165 +1,3 @@
-sapply(table2f,mode)
-sapply(table2f,class)
-getwd()
-able2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
-table2f$Spill.date<-as.Date(table2f$Spill.date,"%d-%b-%y")
-sapply(table2f,class)
-able2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("factor","numeric",rep("character",3)),endRow=4)
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
-sapply(table2,class)
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric","character","date(%d-%b-%y)",rep("character",2)),endRow=4)
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric","character","date(%d-%b-%y)",rep("character",2)),endRow=4)
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:8),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
-table2
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:8),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",2),endRow=4)
-)
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:8),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",2)),endRow=4)
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:18),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",2)),endRow=4)
-table2
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:18),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",5)),endRow=4)
-table2
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:10),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",5)),endRow=4)
-table2
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",5)),endRow=4)
-table2
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",6)),endRow=4)
-table2
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:10),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2),rep("numeric",5)),endRow=4)
-table2
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:10),stringsAsFactors=FALSE,colClasses=c("character",rep(numeric",3),rep("character",2),rep("numeric",5)),endRow=4)
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:10),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",3),rep("character",2),rep("numeric",5)),endRow=4)
-table2
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",3),rep("character",2),rep("numeric",6)),endRow=4)
-table2
-table2a<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
-table2a
-table2f<-table2#
-table2f$Spill.date<-as.Date(table2f$Spill.date,"%d-%b-%y")#
-sapply(table2f,mode)#
-sapply(table2f,class)
-table2f$Sample.collection.data<-as.Date(table2f$Sample.collection.data,"%d.%b.%y")
-help(date)
-help(as.date)
-??as.date
-table2f$Sample.collection.data<-as.Date(table2f$Sample.collection.data,"%d.%m.%y")
-table2f
-??as.date
-table2f$Sample.collection.data<-as.Date(table2f$Sample.collection.data,"%D")
-table2f$Sample.collection.data
-table2f$Sample.collection.date
-table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%D")
-table2f$Sample.collection.date
-table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%")
-table2f$Sample.collection.date
-table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
-table2f$Sample.collection.date
-table2f<-table2
-table2f$Sample.collection.date
-table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
-table2f$Sample.collection.date
-table2f$Spill.date<-as.Date(table2f$Spill.date,"%d-%b-%y")
-sapply(table2f,mode)#
-sapply(table2f,class)
-head(table2f)
-table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",3),rep("character",2),rep("numeric",6)))
-table2b
-sapply(table2b,mode)#
-sapply(table2b,class)
-table2bf<-table2b
-table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")
-table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")
-table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")
-sapply(table2bf,mode)#
-sapply(table2bf,class)
-table2bf$Group<-as.factor(table2bf$Group)
-sapply(table2bf,mode)#
-sapply(table2bf,class)
-table2bf
-table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))#
-table2bf<-table2#
-table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")#
-table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")#
-table2bf$Group<-as.factor(table2bf$Group)
-table2
-table2bf
-table2b
-table2bf
-table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))#
-table2bf<-table2b#
-table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")#
-table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")#
-table2bf$Group<-as.factor(table2bf$Group)
-table2bf
-table2bf[,1:6]
-summary(table2bf[,1:6])
-help(summary)
-str(summary)
-str(table2bf)
-na_count <-sapply(table2bf, function(y) sum(length(which(is.na(y)))))
-na_count
-table2bf$Rep<-as.Factor(table2bf$Rep)
-table2bf$Rep<-as.factor(table2bf$Rep)
-str(table2bf)
-table2
-table2b
-table2bf
-table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d[./]%m[./]%y")
-table2bf$Sample.collection.date
-table2bf<-table2b
-table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d[./]%m[./]%y")
-table2bf<-table2b
-table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d[./]%m[./]%y")
-table2bf$Sample.collection.date
-cdate1<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")
-cdate2<-as.Date(table2bf$Sample.collection.date,"%d/%m/%y")
-cdate1
-cdate2
-table2bf<-table2b
-cdate1<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")
-cdate1
-cdate2<-as.Date(table2bf$Sample.collection.date,"%d/%m/%y")
-cdate2
-cdate3<-is.Na(cdate1)
-cdate3<-is.na(cdate1)
-cdate1
-cdate3
-help(if)
-help(then)
-cdate3<-ifelse(!is.na(cdate1),cdate1,cdata2)
-cdate3<-ifelse(!is.na(cdate1),cdate1,cdate2)
-cdate3
-cdate1
-cdate2
-cdate3<-as.date(ifelse(!is.na(cdate1),cdate1,cdate2))
-cdate3<-as.Date(ifelse(!is.na(cdate1),cdate1,cdate2))
-cdate3
-table2bf$Sample.collection.date<-as.Date(ifelse(!is.na(cdate1),cdate1,cdate2))
-table2bf
-sapply(table2bf,class)
-table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")
-dated<-table2bf$Sample.collection.date-table2bf$Spill.date
-dated
-table2bf
-table2bf$Rep
-substr(table2bf$Rep,1,1)
-substr(table2bf$Rep,3,3)
-substr(table2bf$Rep,4,4)
-strlen
-help(strlen)
-??strlen
-str_length
-require(string)
-install(string)
-require(stringr)
-help(package.stringr)
-?stringr
-help(stringr)
-str_c("rep1","rep")
-str_replace(table2bf$Rep,"rep?",?)
-str_replace(table2bf$Rep,"rep\1",\1)
-table2bf$Rep
 str_replace(table2bf$Rep,"rep\1",\1)
 str_replace(table2bf$Rep,"rep\1","\1")
 str_replace(table2bf$Rep,"rep\1","\1")
@@ -263,3 +101,505 @@ table1t$group[ctridx+1:48]<-"Contaminated"
 table1t$group[ctridx+1:48]<-"Control"
 table1t$group[(ctridx+1):48]<-"Control"
 table1t$group
+table1t
+table1t$Group[1:ctridx]<-"Contaminated"
+table1t$Group[(ctridx+1):48]<-"Control"
+table1t
+table1
+for(i in c(1:48)){ttt[i]<-ifelse(table1t$Site[i]="",table1t$Site[i-1],table1t$Site[i])}
+for(i in c(1:48)){ttt[i]<-ifelse(table1t$Site[i]=="",table1t$Site[i-1],table1t$Site[i])}
+ttt<-table1t$Site
+for(i in c(1:48)){ttt[i]<-ifelse(table1t$Site[i]=="",table1t$Site[i-1],table1t$Site[i])}
+ifelse(table1t$Site[2]=="",table1t$Site[1],table1t$Site[2])
+for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",table1t$Site[i-1],table1t$Site[i])}
+for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",table1t$Site[(i-1)],table1t$Site[i])}
+table1t$Site
+ttt
+ttt<-table1t$Site
+for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",6,7}
+for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",6,7)}
+ttt
+for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="","6","7")}
+ttt
+for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",as.factor(6),"7")}
+for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",as.factor(6),as.factor(7))}
+ttt
+table1t$Site[2]
+table1t$Site[3]
+as.factor(table1t$Site[3])
+(table1t$Site[3]=="")
+(table1t$Site[1]=="")
+for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="",as.factor(6),as.factor(7))}
+ttt
+for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="",as.factor("6"),as.factor("7"))}
+ttt
+for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="",as.factor("4"),as.factor("3"))}
+ttt
+str(ttt)
+for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="",as.factor("2"),as.factor("3"))}
+str(ttt)
+ttt
+help(ifelse)
+for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="","2","3")}
+ttt
+for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="","2",table1t$Site[i])}
+for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor(table1t$Site[i]))}
+for(i in c(2:48)){temp<-ttt[i]<-table1t$Site[i]; ifelse((table1t$Site[i])=="","2","3")}
+for(i in c(2:48)){temp<-ttt[i]<-table1t$Site[i]; ifelse((table1t$Site[i])=="","2",temp)}
+ttt
+for(i in c(2:48)){temp<-table1t$Site[i]; ifelse((table1t$Site[i])=="","2",temp)}
+ttt
+table1t$Site
+for(i in c(2:48)){temp<-table1t$Site[i]; ttt[i]<-ifelse((table1t$Site[i])=="","2",temp)}
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",temp)}
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor(temp))}
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor(temp))}
+temp<-as.factor(table1t$Site[i])
+temp
+temp<-as.factor(table1t$Site[1])
+temp
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor("1"))}
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor("1"))}
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor(temp))}
+str(ttt)
+str(table1t$Site[i])
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="",as.factor("2"),temp)}
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-as.factor(ifelse((table1t$Site[i])=="","2",temp))}
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-temp}
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse(TRUE,temp,temp}
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse(TRUE,temp,temp)}
+options(stringsAsFactors=FALSE)
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse(TRUE,temp,temp)}
+options(stringsAsFactors=TRUE)
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse(TRUE,temp,temp)}
+for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); print(str(temp);ttt[i]<-ifelse(TRUE,temp,temp)}
+for(i in c(2:48))
+{}
+for(i in c(2:48))
+{
+temp<-as.factor(table1t$Site[i])
+print(str(temp))
+ttt[i]<-ifelse(TRUE,temp,temp)
+}
+for(i in c(2:48))
+{
+temp<-as.factor(table1t$Site[i])
+print(temp)
+ttt[i]<-ifelse(TRUE,temp,temp)
+}
+{
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+print(temp)#
+ttt[i]<-ifelse(TRUE,"3","3")#
+}
+}
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+print(temp)#
+ttt[i]<-ifelse(table1t$Site[i]=="","3","3")#
+}
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+print(temp)#
+ttt[i]<-ifelse(table1t$Site[i]=="","3",temp)#
+}
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+print(temp)#
+ttt[i]<-ifelse(!table1t$Site[i]=="" & !is.na(temp),temp,"3")#
+}
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+print(temp)#
+ttt[i]<-ifelse(!table1t$Site[i]=="" & !temp=="",temp,"3")#
+}
+ttt
+table1t$Site
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+print(temp)#
+if(!table1t$Site[i]=="") ttt[i]=temp)#
+}
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+print(temp)#
+if(!table1t$Site[i]==""){ ttt[i]=temp}#
+}
+ttt
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+tempb<-as.factor(table1t$Site[i-1])#
+print(temp)#
+if(!table1t$Site[i]==""){ ttt[i]=temp}#
+if(table1t$Site[i-1]==""){ ttt[i]=tempb}#
+}
+ttt
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+tempb<-as.factor(table1t$Site[i-1])#
+print(temp)#
+if(!table1t$Site[i]==""){ ttt[i]<-temp}#
+if(table1t$Site[i-1]==""){ ttt[i]<-tempb}#
+}
+ttt
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+tempb<-as.factor(table1t$Site[i-1])#
+print(temp)#
+if(!table1t$Site[i]==""){ ttt[i]<-temp}#
+if(table1t$Site[i-1]==""){ ttt[i]<-tempb}#
+}
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+tempb<-as.factor(table1t$Site[i-1])#
+print(temp)#
+if(!table1t$Site[i]==""){print("a") ttt[i]<-temp}#
+if(table1t$Site[i-1]==""){print(b) ttt[i]<-tempb}#
+}
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+tempb<-as.factor(table1t$Site[i-1])#
+print(temp)#
+if(!table1t$Site[i]==""){print("a") ttt[i]<-temp}#
+if(table1t$Site[i-1]==""){print("b") ttt[i]<-tempb}#
+}
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+tempb<-as.factor(table1t$Site[i-1])#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]==""){print("a") ttt[i]<-temp}#
+if(table1t$Site[i-1]==""){ttt[i]<-tempb}#
+}
+for(i in c(2:48))#
+{#
+temp<-as.factor(table1t$Site[i])#
+tempb<-as.factor(table1t$Site[i-1])#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]==""){ttt[i]<-tempb}#
+}
+ttt
+table1t$Site
+for(i in c(2:10))#
+{#
+temp<-as.factor(table1t$Site[i])#
+tempb<-as.factor(table1t$Site[i-1])#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]==""){ttt[i]<-tempb}#
+}
+for(i in c(2:10))#
+{#
+temp<-table1t$Site[i]#
+tempb<-table1t$Site[i-1]#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]=="")#
+{#
+print("a")#
+ttt[i]<-tempb}#
+}
+for(i in c(2:10))#
+{#
+temp<-table1t$Site[i]#
+tempb<-table1t$Site[(i-1)]#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]=="")#
+{#
+print("a")#
+ttt[i]<-tempb}#
+}
+for(i in c(2:10))#
+{#
+temp<-table1t$Site[i]#
+tempb<-table1t$Site[(i-1)]#
+print(i)#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]=="")#
+{#
+print("a")#
+ttt[i]<-tempb}#
+}
+table1t$Site[i]
+table1t$Site[1]
+print(table1t$Site[1])
+print(table1t$Site[1,1])
+print(table1t$Site[1,0])
+as.character(print(table1t$Site[1])
+)
+as.character(table1t$Site[1])
+for(i in c(2:10))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(table1t$Site[(i-1)])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]=="")#
+{#
+print("b")#
+ttt[i]<-tempb}#
+}
+for(i in c(2:10))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(ttt[i])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]=="")#
+{#
+print("b")#
+ttt[i]<-tempb}#
+}
+ttt
+for(i in c(2:10))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(table1t$Site[(i-1)])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]=="")#
+{#
+print("b")#
+ttt[i]<-tempb}#
+}
+ttt<-table1t$Site
+for(i in c(2:10))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(ttt[i])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]=="")#
+{#
+print("b")#
+ttt[i]<-tempb}#
+}
+ttt[1]
+ttt[(2-1)]
+as.character(ttt[(2-1)])
+ttt[2]<-as.character(ttt[(2-1)])
+ttt[2]
+for(i in c(2:10))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(ttt[i-1])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]=="")#
+{#
+print("b")#
+ttt[i]<-tempb}#
+}
+tt
+tttt
+ttt
+ttt<-table1t$Site
+for(i in c(2:10))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(ttt[i-1])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]=="")#
+{#
+print("b")#
+ttt[i]<-tempb}#
+}
+for(i in c(2:10))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(ttt[i-1])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]=="")#
+{#
+print("b")#
+ttt[i]<-tempb#
+}#
+}
+for(i in c(2:10))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(ttt[i-1])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(!table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-temp#
+ }#
+if(table1t$Site[i-1]=="")#
+{#
+print("b")#
+ttt[i]<-tempb#
+}#
+print(ttt[i])#
+}
+for(i in c(2:10))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(ttt[i-1])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-tempb#
+ }#
+if(!table1t$Site[(i)]=="")#
+{#
+print("b")#
+ttt[i]<-temp#
+}#
+print(ttt[i])#
+}
+ttt
+for(i in c(2:length(table1t$Site)))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(ttt[i-1])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-tempb#
+ }#
+if(!table1t$Site[(i)]=="")#
+{#
+print("b")#
+ttt[i]<-temp#
+}#
+print(ttt[i])#
+}
+ttt
+ttt<-table1t$Site#
+for(i in c(2:length(table1t$Site)))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(ttt[i-1])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-tempb#
+ }#
+if(!table1t$Site[(i)]=="")#
+{#
+print("b")#
+ttt[i]<-temp#
+}#
+print(ttt[i])#
+}#
+table1t$Site<-ttt
+ttt<-table1t$Site#
+for(i in c(2:length(table1t$Site)))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(ttt[i-1])#
+print(i)#
+print(temp)#
+print(tempb)#
+if(table1t$Site[i]=="")#
+{#
+print("a")#
+ ttt[i]<-tempb#
+ }#
+if(!table1t$Site[(i)]=="")#
+{#
+print("b")#
+ttt[i]<-temp#
+}#
+print(ttt[i])#
+}#
+table1t
+table1
