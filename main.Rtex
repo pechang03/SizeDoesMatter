@@ -593,27 +593,65 @@ merge(x, y, by = intersect(names(x), names(y)),
 tab1c<-table1t[1:9,] 
 tab2c<-table2b[1:9,]
 m1<-merge(tab1c,tab2c,by.x="Sample ID",by.y="Sample.ID")
+m2<-merge(table1t,table2b,by.x=c("Group","Site","Sample ID"),by.y=c("Group","Site","Sample.ID"))
 @
 \end{frame}  
 
 
-\begin{frame}
+\begin{frame}[fragile, allowframebreaks]
   \frametitle{R package}
-  \framesubtitle{Rsqlite}
-  \begin{block}{RSqlite}
+  \framesubtitle{RQLlite}
+  \begin{block}{RSQLite}
+  \begin{itemize}
+  \item Suppose merge is not enough? I know about SQL and want to do joins
+  \item Lets Install RSQLite
+  \item We also need to install DBI
+  \end{itemize}
   \end{block}
-<<chunk9ii, echo=TRUE>>=
+<<chunk9ii, echo=FALSE>>=
+library(DBI)
+require(RSQLite)
+require(gsubfn)
+require(chron)
+require(tcltk)
+library(sqldf)
+#library(RSQLite.extfuns)
+@
 
+<<chunk9iii, echo=TRUE>>=
+ db <- dbConnect(SQLite(), dbname="Test.sqlite")
+# sqldf(attach "Test1.sqlite" as new)
+dbWriteTable(db,"table1",table1t)
+dbReadTable(db,"table1")
+dbListFields(db,"table1")
+dbListTables(db)
+dbGetQuery(db, "SELECT * from table1")
+#dbDisconnect(db)
 @  
+%{\url http://stackoverflow.com/questions/12307685/join-more-than-2-tables-in-r-using-rsqlite}
+%select coalesce(fileA,fileB),valA,valB
+%               from t1 LEFT OUTER JOIN t2 On t1.fileA= t2.fileB
+%UNION select coalesce(fileA,fileB),valA,valB
+%               from t2 LEFT OUTER JOIN t1 ON t1.fileA= t2.fileB
+%(CREATE TABLE all_files AS SELECT fileA FROM t1 UNION SELECT fileB from t2 UNION ...). 
+               
+
+%https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages
+
+%https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+
 \end{frame}
 
 \section*{Fat or wide}
-\begin{frame}
+\begin{frame}[fragile, allowframebreaks]
   \frametitle{Reshaping Tables}
   \framesubtitle{reshape2}
   \begin{block}{reshape2}
   vignette(reshape)
   \end{block}
+%  <<chunk10i, echo=TRUE>>=
+%  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
+%  @
 \end{frame}  
 
 \begin{frame}
@@ -635,17 +673,17 @@ m1<-merge(tab1c,tab2c,by.x="Sample ID",by.y="Sample.ID")
   Need coffee
 \end{frame}
 
-\begin{frame}
-  \frametitle{How to I merge two data sets}
-  \framesubtitle{What if the keys don't match}
-\begin{block}{SQLite}
-\begin{itemize}
-\item dd
-\end{itemize}
-\end{block}
+%\begin{frame}
+%  \frametitle{How to I merge two data sets}
+%  \framesubtitle{What if the keys don't match}
+%\begin{block}{SQLite}
+%\begin{itemize}
+%\item dd
+%\end{itemize}
+%\end{block}
 
   
-\end{frame}
+%\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}

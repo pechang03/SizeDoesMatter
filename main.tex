@@ -441,7 +441,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
 \end{knitrout}
 
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Sat Sep 19 22:58:21 2015
+% Tue Sep 22 07:38:23 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -659,7 +659,7 @@ table1t$Site<-ttt
 %{\url http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC}
 {\url http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Sat Sep 19 22:58:21 2015
+% Tue Sep 22 07:38:23 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllll}
@@ -676,7 +676,7 @@ X2 & Contaminated & 1 & 10000 & 1 & 24872 \\
 \end{tabular}
 \end{table}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Sat Sep 19 22:58:21 2015
+% Tue Sep 22 07:38:23 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllll}
@@ -727,7 +727,7 @@ mydata <- read.dta("c:/mydata.dta")
 \end{kframe}
 \end{knitrout}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Sat Sep 19 22:58:21 2015
+% Tue Sep 22 07:38:23 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllll}
@@ -868,7 +868,6 @@ First lets reed a few rows only
 \begin{alltt}
 \hlstd{table2bf}\hlkwb{<-}\hlstd{table2b}
 \hlstd{table2bf}\hlopt{$}\hlstd{Spill.date}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(table2bf}\hlopt{$}\hlstd{Spill.date,}\hlstr{"%d-%b-%y"}\hlstd{)}
-\hlcom{#table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")}
 \hlstd{cdate1}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(table2bf}\hlopt{$}\hlstd{Sample.collection.date,}\hlstr{"%d.%m.%y"}\hlstd{)}
 \hlstd{cdate2}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(table2bf}\hlopt{$}\hlstd{Sample.collection.date,}\hlstr{"%d/%m/%y"}\hlstd{)}
 \hlstd{table2bf}\hlopt{$}\hlstd{Sample.collection.date}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(}\hlkwd{ifelse}\hlstd{(}\hlopt{!}\hlkwd{is.na}\hlstd{(cdate1),}\hlkwd{as.Date}\hlstd{(cdate1),}\hlkwd{as.Date}\hlstd{(cdate2)),} \hlkwc{origin}\hlstd{=}\hlstr{"1970-01-01"}\hlstd{)}
@@ -961,31 +960,666 @@ merge(x, y, by = intersect(names(x), names(y)),
 \hlstd{tab1c}\hlkwb{<-}\hlstd{table1t[}\hlnum{1}\hlopt{:}\hlnum{9}\hlstd{,]}
 \hlstd{tab2c}\hlkwb{<-}\hlstd{table2b[}\hlnum{1}\hlopt{:}\hlnum{9}\hlstd{,]}
 \hlstd{m1}\hlkwb{<-}\hlkwd{merge}\hlstd{(tab1c,tab2c,}\hlkwc{by.x}\hlstd{=}\hlstr{"Sample ID"}\hlstd{,}\hlkwc{by.y}\hlstd{=}\hlstr{"Sample.ID"}\hlstd{)}
+\hlstd{m2}\hlkwb{<-}\hlkwd{merge}\hlstd{(table1t,table2b,}\hlkwc{by.x}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample ID"}\hlstd{),}\hlkwc{by.y}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 \end{frame}  
 
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{R package}
+  \framesubtitle{RQLlite}
+  \begin{block}{RSQLite}
+  \begin{itemize}
+  \item Suppose merge is not enough? I know about SQL and want to do joins
+  \item Lets Install RSQLite
+  \item We also need to install DBI
+  \end{itemize}
+  \end{block}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: RSQLite\\\#\# Loading required package: gsubfn\\\#\# Loading required package: proto}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in doTryCatch(return(expr), name, parentenv, handler): unable to load shared object '/Library/Frameworks/R.framework/Resources/modules//R\_X11.so':\\\#\#\ \  dlopen(/Library/Frameworks/R.framework/Resources/modules//R\_X11.so, 6): Library not loaded: /opt/X11/lib/libSM.6.dylib\\\#\#\ \  Referenced from: /Library/Frameworks/R.framework/Resources/modules//R\_X11.so\\\#\#\ \  Reason: image not found}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Could not load tcltk.\ \ Will use slower R code instead.\\\#\# Loading required package: chron}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: package 'chron' was built under R version 3.1.3}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: tcltk}}\end{kframe}
+\end{knitrout}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+ \hlstd{db} \hlkwb{<-} \hlkwd{dbConnect}\hlstd{(}\hlkwd{SQLite}\hlstd{(),} \hlkwc{dbname}\hlstd{=}\hlstr{"Test.sqlite"}\hlstd{)}
+\hlcom{# sqldf(attach "Test1.sqlite" as new)}
+\hlkwd{dbWriteTable}\hlstd{(db,}\hlstr{"table1"}\hlstd{,table1t)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: Table table1 exists in database, and both overwrite and append are FALSE}}\begin{alltt}
+\hlkwd{dbReadTable}\hlstd{(db,}\hlstr{"table1"}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##                  Group  Site Sample.ID   Rep phormidiaceae
+## X2        Contaminated     1     10000     1         24872
+## X3        Contaminated     1     10001     2         24872
+## X4        Contaminated     1     10002     3          5822
+## X5        Contaminated     2     10003     1          7538
+## X6        Contaminated     2     10004     2          7201
+## X7        Contaminated     2     10005     3          7538
+## X8        Contaminated     1     10006  rep1          8467
+## X9        Contaminated     1     10007  rep2          7340
+## X10       Contaminated     1     10008  rep3          8467
+## X11       Contaminated     2     10000  rep1          2000
+## X12       Contaminated     2     10001  rep2          2083
+## X13       Contaminated     2     10002  rep3          1899
+## X14       Contaminated     1     10003     1          1947
+## X15       Contaminated     1     10004     2          2733
+## X16       Contaminated     1     10005     3          2385
+## X17       Contaminated     2     10006     1           800
+## X18       Contaminated     2     10007     2           738
+## X19       Contaminated     2     10008     3           800
+## X20       Contaminated     1     10003     1           200
+## X21       Contaminated     1     10004     2           189
+## X22       Contaminated     1     10005     3           271
+## X23       Contaminated     2     10006     1            46
+## X24       Contaminated     2     10007     2            62
+## X25       Contaminated     2     10008     3            94
+## X26       Contaminated     3     10009     A            24
+## X27            Control     3     10010     B            64
+## X28            Control     3     10011     C            21
+## X29            Control     4     10012     A            56
+## X30            Control     4     10013     B            27
+## X31            Control     4     10014     C            53
+## X32            Control     3     10015     A           115
+## X33            Control     3     10016     B            97
+## X34            Control     3     10017     C            45
+## X35            Control     4     10009     A            33
+## X36            Control     4     10010     B            51
+## X37            Control     4     10011     C            47
+## X38            Control     3     10012     A           105
+## X39            Control     3     10013     B            72
+## X40            Control     3     10014     C           115
+## X41            Control     4     10015     A            18
+## X42            Control     4     10016     B            54
+## X43            Control     4     10017     C            33
+## X44            Control     3     10012     A            36
+## X45            Control     3     10013     B            58
+## X46            Control     3     10014     C            36
+## X47            Control     4     10015     A            60
+## X48            Control     4     10016     B           164
+## X49            Control     4     10017     C            79
+## rowNames         FALSE FALSE     FALSE FALSE         FALSE
+## transpose         TRUE  TRUE      TRUE  TRUE          TRUE
+##           streptococcaceae vibrionaceae enterobacteriaceae
+## X2                      11           33                131
+## X3                       7           40                200
+## X4                      14           40                200
+## X5                       8           95                151
+## X6                      10           83                140
+## X7                       8           95                151
+## X8                       5           29                132
+## X9                       5           51                168
+## X10                      5           29                132
+## X11                     10           34                 97
+## X12                     17           38                 91
+## X13                     27           31                 51
+## X14                      0            0                  2
+## X15                      1            0                  1
+## X16                      0            0                  2
+## X17                     26           33                 34
+## X18                     22           58                 42
+## X19                     26           33                 34
+## X20                      6            5                 39
+## X21                      2            3                 23
+## X22                      5            1                 39
+## X23                      3            9                 55
+## X24                      1            5                 95
+## X25                      3            0                 55
+## X26                      2            6                 36
+## X27                      3            3                 36
+## X28                      0            4                 30
+## X29                      1           30                 79
+## X30                      5            9                129
+## X31                      1            1                124
+## X32                      0           10                 52
+## X33                      4            6                 13
+## X34                      0            2                  9
+## X35                      4            4                 11
+## X36                      0           10                 41
+## X37                      0            3                 29
+## X38                     10           39                288
+## X39                     10           29                413
+## X40                     12           34                481
+## X41                      5            2                 43
+## X42                      3            5                 50
+## X43                      4            5                 86
+## X44                     10            4                 28
+## X45                     12            1                 28
+## X46                      1            0                 44
+## X47                      4            7                 48
+## X48                      2           11                111
+## X49                      3            5                 88
+## rowNames             FALSE        FALSE              FALSE
+## transpose             TRUE         TRUE               TRUE
+##           verrucomicrobiaceae chloroflexaceae aeromonadaceae
+## X2                        977             351             20
+## X3                       1500             246             76
+## X4                        844             246             76
+## X5                       1006              41              1
+## X6                       1112              83              6
+## X7                       1195              41              0
+## X8                       1805              23              0
+## X9                       1906              28              0
+## X10                      1902              23              0
+## X11                      1244              40              1
+## X12                      1933              40              1
+## X13                      1244              80              0
+## X14                       251               1              0
+## X15                       271               0              1
+## X16                       299               0              0
+## X17                      1348             209              1
+## X18                      3612             205              0
+## X19                      1348             209              3
+## X20                       176               1              0
+## X21                       211               0              3
+## X22                       183               1              0
+## X23                       544               0              9
+## X24                       611               1              0
+## X25                       544               0              1
+## X26                       471               0              0
+## X27                       500               0              1
+## X28                       541               0              0
+## X29                      1405               3              1
+## X30                      1678               1              1
+## X31                      1360               0              0
+## X32                      1590               0              0
+## X33                       398               0              0
+## X34                       195               1              0
+## X35                      1213               7              2
+## X36                      3461              12              1
+## X37                      1688               3              0
+## X38                       590               1              1
+## X39                       598               0              0
+## X40                       639               1              0
+## X41                       949               0              0
+## X42                       974               0              0
+## X43                       662               0              0
+## X44                       267               0              0
+## X45                       249               2              0
+## X46                       337               0              0
+## X47                       625               0              0
+## X48                       886               0              0
+## X49                       791               0              0
+## rowNames                FALSE           FALSE          FALSE
+## transpose                TRUE            TRUE           TRUE
+##           staphylococcaceae clostridiaceae oceanospirillaceae
+## X2                      115            274               1438
+## X3                      342            288               1789
+## X4                      342            258               1789
+## X5                        4            365                  5
+## X6                        9            365                  2
+## X7                        4            365                  9
+## X8                        1            643                 14
+## X9                        1            941                 14
+## X10                       1            711                 14
+## X11                       0            204                 93
+## X12                       0            229                 72
+## X13                       0            285                 93
+## X14                       0              8               1080
+## X15                       0             12               1633
+## X16                       1             12               1080
+## X17                       4            400                747
+## X18                       7            733                636
+## X19                       2            299                747
+## X20                       1             76                256
+## X21                       0             63                263
+## X22                       2             85                256
+## X23                       1            136                284
+## X24                      20            643                293
+## X25                       1            136                293
+## X26                       0             31                189
+## X27                       1             59                510
+## X28                       0             42                215
+## X29                       0            143               2096
+## X30                       0            124                834
+## X31                       0            100                426
+## X32                       0             34                263
+## X33                       0             33               1095
+## X34                       0             18                523
+## X35                       0             96                273
+## X36                       0            100               1432
+## X37                       0             74                330
+## X38                       1            119               4584
+## X39                       1            181               3811
+## X40                       0            202               3165
+## X41                       0             38                380
+## X42                       0             29                548
+## X43                       0             56                403
+## X44                       0             62                394
+## X45                       0             58                311
+## X46                       0             66                376
+## X47                       0             66                773
+## X48                       0            167               1778
+## X49                       0             40               1289
+## rowNames              FALSE          FALSE              FALSE
+## transpose              TRUE           TRUE               TRUE
+##           synechococcaceae rhodospirillaceae corynebacteriaceae
+## X2                     471              1267                  0
+## X3                     498              1597                  0
+## X4                     692              1844                  0
+## X5                      20                70                  0
+## X6                      20                82                  0
+## X7                      48                70                  0
+## X8                      27                97                  0
+## X9                      83                97                  0
+## X10                     27                97                  0
+## X11                     61               579                  0
+## X12                     61               603                  0
+## X13                     61               579                  0
+## X14                    245              2245                  0
+## X15                    245              2001                  0
+## X16                    142              2834                  0
+## X17                     95              1432                  0
+## X18                     70              1834                  0
+## X19                     95              1432                  0
+## X20                    101               786                  0
+## X21                    104               844                  0
+## X22                    101               826                  0
+## X23                     65              1833                  0
+## X24                     53              2528                  0
+## X25                     65              2999                  0
+## X26                     67               568                  0
+## X27                    128              1877                  0
+## X28                    152               582                  0
+## X29                    769              1699                  0
+## X30                    954              3145                  0
+## X31                    555              1171                  0
+## X32                     45               323                  0
+## X33                    164               911                  0
+## X34                    513               485                  0
+## X35                     75               732                  0
+## X36                    414              3101                  0
+## X37                    298              1262                  0
+## X38                    807              3586                  0
+## X39                   1916              5757                  0
+## X40                   1120              4168                  0
+## X41                    276               821                  0
+## X42                    394               489                  0
+## X43                    498               611                  0
+## X44                    212              1001                  0
+## X45                    301               889                  0
+## X46                    330               943                  0
+## X47                    521              1300                  0
+## X48                   1220              3013                  0
+## X49                    383              1255                  0
+## rowNames             FALSE             FALSE              FALSE
+## transpose             TRUE              TRUE               TRUE
+##           porphyromondaceae
+## X2                        0
+## X3                        0
+## X4                        0
+## X5                        0
+## X6                        0
+## X7                        0
+## X8                        0
+## X9                        0
+## X10                       0
+## X11                       0
+## X12                       0
+## X13                       0
+## X14                       0
+## X15                       0
+## X16                       0
+## X17                       0
+## X18                       0
+## X19                       0
+## X20                       0
+## X21                       0
+## X22                       0
+## X23                       0
+## X24                       0
+## X25                       0
+## X26                       0
+## X27                       0
+## X28                       0
+## X29                       0
+## X30                       0
+## X31                       0
+## X32                       0
+## X33                       0
+## X34                       0
+## X35                       0
+## X36                       0
+## X37                       0
+## X38                       0
+## X39                       0
+## X40                       0
+## X41                       0
+## X42                       0
+## X43                       0
+## X44                       0
+## X45                       0
+## X46                       0
+## X47                       0
+## X48                       0
+## X49                       0
+## rowNames              FALSE
+## transpose              TRUE
+\end{verbatim}
+\begin{alltt}
+\hlkwd{dbListFields}\hlstd{(db,}\hlstr{"table1"}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##  [1] "row_names"           "Group"               "Site"               
+##  [4] "Sample ID"           "Rep"                 "phormidiaceae"      
+##  [7] "streptococcaceae"    "vibrionaceae"        "enterobacteriaceae" 
+## [10] "verrucomicrobiaceae" "chloroflexaceae"     "aeromonadaceae"     
+## [13] "staphylococcaceae"   "clostridiaceae"      "oceanospirillaceae" 
+## [16] "synechococcaceae"    "rhodospirillaceae"   "corynebacteriaceae" 
+## [19] "porphyromondaceae"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{dbListTables}\hlstd{(db)}
+\end{alltt}
+\begin{verbatim}
+## [1] "table1"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{dbGetQuery}\hlstd{(db,} \hlstr{"SELECT * from table1"}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##    row_names        Group  Site Sample ID   Rep phormidiaceae
+## 1         X2 Contaminated     1     10000     1         24872
+## 2         X3 Contaminated     1     10001     2         24872
+## 3         X4 Contaminated     1     10002     3          5822
+## 4         X5 Contaminated     2     10003     1          7538
+## 5         X6 Contaminated     2     10004     2          7201
+## 6         X7 Contaminated     2     10005     3          7538
+## 7         X8 Contaminated     1     10006  rep1          8467
+## 8         X9 Contaminated     1     10007  rep2          7340
+## 9        X10 Contaminated     1     10008  rep3          8467
+## 10       X11 Contaminated     2     10000  rep1          2000
+## 11       X12 Contaminated     2     10001  rep2          2083
+## 12       X13 Contaminated     2     10002  rep3          1899
+## 13       X14 Contaminated     1     10003     1          1947
+## 14       X15 Contaminated     1     10004     2          2733
+## 15       X16 Contaminated     1     10005     3          2385
+## 16       X17 Contaminated     2     10006     1           800
+## 17       X18 Contaminated     2     10007     2           738
+## 18       X19 Contaminated     2     10008     3           800
+## 19       X20 Contaminated     1     10003     1           200
+## 20       X21 Contaminated     1     10004     2           189
+## 21       X22 Contaminated     1     10005     3           271
+## 22       X23 Contaminated     2     10006     1            46
+## 23       X24 Contaminated     2     10007     2            62
+## 24       X25 Contaminated     2     10008     3            94
+## 25       X26 Contaminated     3     10009     A            24
+## 26       X27      Control     3     10010     B            64
+## 27       X28      Control     3     10011     C            21
+## 28       X29      Control     4     10012     A            56
+## 29       X30      Control     4     10013     B            27
+## 30       X31      Control     4     10014     C            53
+## 31       X32      Control     3     10015     A           115
+## 32       X33      Control     3     10016     B            97
+## 33       X34      Control     3     10017     C            45
+## 34       X35      Control     4     10009     A            33
+## 35       X36      Control     4     10010     B            51
+## 36       X37      Control     4     10011     C            47
+## 37       X38      Control     3     10012     A           105
+## 38       X39      Control     3     10013     B            72
+## 39       X40      Control     3     10014     C           115
+## 40       X41      Control     4     10015     A            18
+## 41       X42      Control     4     10016     B            54
+## 42       X43      Control     4     10017     C            33
+## 43       X44      Control     3     10012     A            36
+## 44       X45      Control     3     10013     B            58
+## 45       X46      Control     3     10014     C            36
+## 46       X47      Control     4     10015     A            60
+## 47       X48      Control     4     10016     B           164
+## 48       X49      Control     4     10017     C            79
+## 49  rowNames        FALSE FALSE     FALSE FALSE         FALSE
+## 50 transpose         TRUE  TRUE      TRUE  TRUE          TRUE
+##    streptococcaceae vibrionaceae enterobacteriaceae verrucomicrobiaceae
+## 1                11           33                131                 977
+## 2                 7           40                200                1500
+## 3                14           40                200                 844
+## 4                 8           95                151                1006
+## 5                10           83                140                1112
+## 6                 8           95                151                1195
+## 7                 5           29                132                1805
+## 8                 5           51                168                1906
+## 9                 5           29                132                1902
+## 10               10           34                 97                1244
+## 11               17           38                 91                1933
+## 12               27           31                 51                1244
+## 13                0            0                  2                 251
+## 14                1            0                  1                 271
+## 15                0            0                  2                 299
+## 16               26           33                 34                1348
+## 17               22           58                 42                3612
+## 18               26           33                 34                1348
+## 19                6            5                 39                 176
+## 20                2            3                 23                 211
+## 21                5            1                 39                 183
+## 22                3            9                 55                 544
+## 23                1            5                 95                 611
+## 24                3            0                 55                 544
+## 25                2            6                 36                 471
+## 26                3            3                 36                 500
+## 27                0            4                 30                 541
+## 28                1           30                 79                1405
+## 29                5            9                129                1678
+## 30                1            1                124                1360
+## 31                0           10                 52                1590
+## 32                4            6                 13                 398
+## 33                0            2                  9                 195
+## 34                4            4                 11                1213
+## 35                0           10                 41                3461
+## 36                0            3                 29                1688
+## 37               10           39                288                 590
+## 38               10           29                413                 598
+## 39               12           34                481                 639
+## 40                5            2                 43                 949
+## 41                3            5                 50                 974
+## 42                4            5                 86                 662
+## 43               10            4                 28                 267
+## 44               12            1                 28                 249
+## 45                1            0                 44                 337
+## 46                4            7                 48                 625
+## 47                2           11                111                 886
+## 48                3            5                 88                 791
+## 49            FALSE        FALSE              FALSE               FALSE
+## 50             TRUE         TRUE               TRUE                TRUE
+##    chloroflexaceae aeromonadaceae staphylococcaceae clostridiaceae
+## 1              351             20               115            274
+## 2              246             76               342            288
+## 3              246             76               342            258
+## 4               41              1                 4            365
+## 5               83              6                 9            365
+## 6               41              0                 4            365
+## 7               23              0                 1            643
+## 8               28              0                 1            941
+## 9               23              0                 1            711
+## 10              40              1                 0            204
+## 11              40              1                 0            229
+## 12              80              0                 0            285
+## 13               1              0                 0              8
+## 14               0              1                 0             12
+## 15               0              0                 1             12
+## 16             209              1                 4            400
+## 17             205              0                 7            733
+## 18             209              3                 2            299
+## 19               1              0                 1             76
+## 20               0              3                 0             63
+## 21               1              0                 2             85
+## 22               0              9                 1            136
+## 23               1              0                20            643
+## 24               0              1                 1            136
+## 25               0              0                 0             31
+## 26               0              1                 1             59
+## 27               0              0                 0             42
+## 28               3              1                 0            143
+## 29               1              1                 0            124
+## 30               0              0                 0            100
+## 31               0              0                 0             34
+## 32               0              0                 0             33
+## 33               1              0                 0             18
+## 34               7              2                 0             96
+## 35              12              1                 0            100
+## 36               3              0                 0             74
+## 37               1              1                 1            119
+## 38               0              0                 1            181
+## 39               1              0                 0            202
+## 40               0              0                 0             38
+## 41               0              0                 0             29
+## 42               0              0                 0             56
+## 43               0              0                 0             62
+## 44               2              0                 0             58
+## 45               0              0                 0             66
+## 46               0              0                 0             66
+## 47               0              0                 0            167
+## 48               0              0                 0             40
+## 49           FALSE          FALSE             FALSE          FALSE
+## 50            TRUE           TRUE              TRUE           TRUE
+##    oceanospirillaceae synechococcaceae rhodospirillaceae
+## 1                1438              471              1267
+## 2                1789              498              1597
+## 3                1789              692              1844
+## 4                   5               20                70
+## 5                   2               20                82
+## 6                   9               48                70
+## 7                  14               27                97
+## 8                  14               83                97
+## 9                  14               27                97
+## 10                 93               61               579
+## 11                 72               61               603
+## 12                 93               61               579
+## 13               1080              245              2245
+## 14               1633              245              2001
+## 15               1080              142              2834
+## 16                747               95              1432
+## 17                636               70              1834
+## 18                747               95              1432
+## 19                256              101               786
+## 20                263              104               844
+## 21                256              101               826
+## 22                284               65              1833
+## 23                293               53              2528
+## 24                293               65              2999
+## 25                189               67               568
+## 26                510              128              1877
+## 27                215              152               582
+## 28               2096              769              1699
+## 29                834              954              3145
+## 30                426              555              1171
+## 31                263               45               323
+## 32               1095              164               911
+## 33                523              513               485
+## 34                273               75               732
+## 35               1432              414              3101
+## 36                330              298              1262
+## 37               4584              807              3586
+## 38               3811             1916              5757
+## 39               3165             1120              4168
+## 40                380              276               821
+## 41                548              394               489
+## 42                403              498               611
+## 43                394              212              1001
+## 44                311              301               889
+## 45                376              330               943
+## 46                773              521              1300
+## 47               1778             1220              3013
+## 48               1289              383              1255
+## 49              FALSE            FALSE             FALSE
+## 50               TRUE             TRUE              TRUE
+##    corynebacteriaceae porphyromondaceae
+## 1                   0                 0
+## 2                   0                 0
+## 3                   0                 0
+## 4                   0                 0
+## 5                   0                 0
+## 6                   0                 0
+## 7                   0                 0
+## 8                   0                 0
+## 9                   0                 0
+## 10                  0                 0
+## 11                  0                 0
+## 12                  0                 0
+## 13                  0                 0
+## 14                  0                 0
+## 15                  0                 0
+## 16                  0                 0
+## 17                  0                 0
+## 18                  0                 0
+## 19                  0                 0
+## 20                  0                 0
+## 21                  0                 0
+## 22                  0                 0
+## 23                  0                 0
+## 24                  0                 0
+## 25                  0                 0
+## 26                  0                 0
+## 27                  0                 0
+## 28                  0                 0
+## 29                  0                 0
+## 30                  0                 0
+## 31                  0                 0
+## 32                  0                 0
+## 33                  0                 0
+## 34                  0                 0
+## 35                  0                 0
+## 36                  0                 0
+## 37                  0                 0
+## 38                  0                 0
+## 39                  0                 0
+## 40                  0                 0
+## 41                  0                 0
+## 42                  0                 0
+## 43                  0                 0
+## 44                  0                 0
+## 45                  0                 0
+## 46                  0                 0
+## 47                  0                 0
+## 48                  0                 0
+## 49              FALSE             FALSE
+## 50               TRUE              TRUE
+\end{verbatim}
+\begin{alltt}
+\hlcom{#dbDisconnect(db)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+%{\url http://stackoverflow.com/questions/12307685/join-more-than-2-tables-in-r-using-rsqlite}
+%select coalesce(fileA,fileB),valA,valB
+%               from t1 LEFT OUTER JOIN t2 On t1.fileA= t2.fileB
+%UNION select coalesce(fileA,fileB),valA,valB
+%               from t2 LEFT OUTER JOIN t1 ON t1.fileA= t2.fileB
+%(CREATE TABLE all_files AS SELECT fileA FROM t1 UNION SELECT fileB from t2 UNION ...). 
+               
+
+%https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages
+
+%https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+
+\end{frame}
+
 \section*{Fat or wide}
-\begin{frame}
+\begin{frame}[fragile, allowframebreaks]
   \frametitle{Reshaping Tables}
   \framesubtitle{reshape2}
   \begin{block}{reshape2}
   vignette(reshape)
   \end{block}
+%  <<chunk10i, echo=TRUE>>=
+%  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
+%  @
 \end{frame}  
-
-\begin{frame}
-  \frametitle{How to I merge two data sets}
-  \framesubtitle{Two primary keys}
-  using RSQLite
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{R package}
-  \framesubtitle{Rsqlite}
-\end{frame}
 
 \begin{frame}
   \frametitle{R package}
@@ -1006,17 +1640,17 @@ merge(x, y, by = intersect(names(x), names(y)),
   Need coffee
 \end{frame}
 
-\begin{frame}
-  \frametitle{How to I merge two data sets}
-  \framesubtitle{What if the keys don't match}
-\begin{block}{SQLite}
-\begin{itemize}
-\item dd
-\end{itemize}
-\end{block}
+%\begin{frame}
+%  \frametitle{How to I merge two data sets}
+%  \framesubtitle{What if the keys don't match}
+%\begin{block}{SQLite}
+%\begin{itemize}
+%\item dd
+%\end{itemize}
+%\end{block}
 
   
-\end{frame}
+%\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}

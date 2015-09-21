@@ -40,6 +40,7 @@ table1t$Rep<-str_replace(table1t$Rep,"A","1")
 table1t$Rep<-str_replace(table1t$Rep,"B","2")
 table1t$Rep<-str_replace(table1t$Rep,"C","3")
 table1t$Rep<-as.factor(table1t$Rep)
+
 #chunk7
 table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
 
@@ -78,5 +79,23 @@ table2bf$Rep<-as.factor(table2bf$Rep)
 str(table2bf)
 
 
+#chunk9
+tab1c<-table1t[1:9,]
+
+library(DBI)
+require(RSQLite)
+require(gsubfn)
+require(chron)
+require(tcltk)
+library(sqldf)
+%RSQLite.extfuns
+ db <- dbConnect(SQLite(), dbname="Test.sqlite")
+# sqldf(attach "Test1.sqlite" as new)
+dbWriteTable(db,"table1",table1t)
+dbReadTable(db,"table1")
+dbListFields(db,"table1")
+dbListTables(db)
+dbGetQuery(db, "SELECT * from table1")
+#dbDisconnect(db)
 
 
