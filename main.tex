@@ -155,6 +155,14 @@ showstringspaces=false}
   \frametitle{Why use R?}
   \framesubtitle{Why not use a spreadsheet?}
 
+\begin{block}{Todays workshop}
+\begin{itemize}
+\item A common scenario
+\item A friend has emailed you her data in a spreadsheet
+\item Todays workshop is not about impressing with R code
+\end{itemize}
+
+\end{block}
   \begin{block}{Why not use a spreadsheet?}
   \begin{itemize}
     \item Data manipulation in Excel is VERY risk and time consuming
@@ -188,7 +196,7 @@ showstringspaces=false}
 % publisher = {O'Reilly Media, Inc.},
 %} 
 
-\begin{frame}[allowframebreaks]
+\begin{frame}%[allowframebreaks]
 \frametitle{Getting Started}
   \framesubtitle{Some References}
   \begin{thebibliography}{10}    
@@ -254,7 +262,10 @@ showstringspaces=false}
 \begin{frame}{Getting Started}
 \framesubtitle{Installing a GUI}
 \begin{block}{How about RStudio}
-\url{https://www.rstudio.com/products/rstudio/download/}
+\begin{itemize}
+\item \url{https://www.rstudio.com/products/rstudio/download/}
+\item Its also on your thumb drive
+\end{itemize}
 \end{block}
 
 \end{frame}
@@ -300,6 +311,7 @@ help.start()
 help(summary)
 args(summary)
 example(sd)
+??package
 \end{lstlisting} 
 \clearpage
 \end{frame}
@@ -308,14 +320,16 @@ example(sd)
   \frametitle{Help Functions}
   \framesubtitle{Search the Web}
 \begin{block}{To search R documentation}
-RSiteSearch("key phrase")
-help(adf.test,package="tseries")
-%to search for a tutorial for a package
-%vignette(package="packagename")
-%For an intro to vignettes see
-%https://cran.r-project.org/web/packages/sos/vignettes/sos.pdf
-%examples on the web
-%http://shiny.rstudio.com/gallery/
+\begin{itemize}
+\item RSiteSearch("key phrase")
+\item help(adf.test,package="tseries")
+\item To search for a tutorial for a package\\
+ vignette(package="packagename")
+\item For an intro to vignettes see\\
+\url{https://cran.r-project.org/web/packages/sos/vignettes/sos.pdf}
+\item Examples on the web\\
+\url{http://shiny.rstudio.com/gallery/}
+\end{itemize}
 \end{block}
 \begin{block}{Custom Google search focused on R-specific websites}
 \url{http://rseek.org}
@@ -332,25 +346,53 @@ help(adf.test,package="tseries")
 \begin{frame}
   \frametitle{Iterative development}
   \framesubtitle{Working Creatively}
-Some discussion recently on how to work creatively. Research out of  successful R\&D projects developed into Agile
+Research on how to work creatively based on case studies of  successful R\&D projects developed into Agile
 \begin{itemize}
 \item Keep the manages away
-\item work sustainably
-\item people over process
-\item iterative development
+\item Work sustainably
+\item People over process
+\item Iterative development
 \end{itemize}
 \end{frame}
 
-\section*{R Data types}
-\begin{frame}
+\section*{Basic R Data types}
+\begin{frame}[fragile]
   \frametitle{R Data types}
   \framesubtitle{Lists, frames and tables}
-  \begin{block}{Lists}
+  \begin{block}{Vectors}
       \begin{itemize}
-         \item $l=c(1,3,4)$
-         \item $bbb$
-      \end{itemize}
+         \item  Vectors $l\leftarrow c(1,3,4,7,11)$
+         \item  Refer to elements using array $l[c(2,5)]$ 2nd and 5th elements of l
+    \end{itemize}
   \end{block}
+  \begin{block}{Data Frames}
+%      \begin{lstlisting}
+%a <- c(35,23,24,65)      
+%e <- c("Peter", "John", "Mark", NA)
+%f <- c(TRUE,TRUE,TRUE,FALSE)
+%team <- data.frame(a,e,f)
+%names(team) <- c("Age","Names","Passed") # variable names
+%    \end{lstlisting}
+ \end{block} 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{a} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{35}\hlstd{,}\hlnum{23}\hlstd{,}\hlnum{24}\hlstd{,}\hlnum{65}\hlstd{)}
+\hlstd{e} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Peter"}\hlstd{,} \hlstr{"John"}\hlstd{,} \hlstr{"Mark"}\hlstd{,} \hlnum{NA}\hlstd{)}
+\hlstd{f} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{TRUE}\hlstd{,}\hlnum{TRUE}\hlstd{,}\hlnum{TRUE}\hlstd{,}\hlnum{FALSE}\hlstd{)}
+\hlstd{team} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(a,e,f)}
+\hlkwd{names}\hlstd{(team)} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Age"}\hlstd{,}\hlstr{"Names"}\hlstd{,}\hlstr{"Passed"}\hlstd{)} \hlcom{# variable names}
+\hlkwd{str}\hlstd{(team)}
+\end{alltt}
+\begin{verbatim}
+## 'data.frame':	4 obs. of  3 variables:
+##  $ Age   : num  35 23 24 65
+##  $ Names : Factor w/ 3 levels "John","Mark",..: 3 1 2 NA
+##  $ Passed: logi  TRUE TRUE TRUE FALSE
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+ 
 \end{frame}  
 
 \section*{Reading our file}
@@ -455,7 +497,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
   \frametitle{Lets read the table}
   \framesubtitle{The columns are wrong}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Thu Sep 24 21:32:17 2015
+% Thu Sep 24 22:54:33 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -739,6 +781,12 @@ mydata <- read.dta("c:/mydata.dta")
 \end{lstlisting} 
 \end{frame}
 
+\begin{frame}
+  \frametitle{Morning Tea Time}
+  \framesubtitle{Back in 20min}
+  {\bf Need coffee !!} 
+\end{frame}
+
 \section*{Working with Data Types}
 \begin{frame}[fragile]
   \frametitle{Lets read the next table}
@@ -753,19 +801,19 @@ mydata <- read.dta("c:/mydata.dta")
 \end{kframe}
 \end{knitrout}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Thu Sep 24 21:32:17 2015
+% Thu Sep 24 22:54:33 2015
 \begin{table}[ht]
 \centering
-\begin{tabular}{rlllll}
+\begin{tabular}{rllllll}
   \hline
- & Group & Site & Sample.ID & Rep & Spill.date \\ 
+ & Group & Site & Sample.ID & Rep & Spill.date & Sample.collection.date \\ 
   \hline
-1 & Contaminated & 1 & 10000 & 1 & 14-May-14 \\ 
-  2 & Contaminated & 1 & 10001 & 2 & 14-May-14 \\ 
-  3 & Contaminated & 1 & 10002 & 3 & 14-May-14 \\ 
-  4 & Contaminated & 2 & 10003 & 1 & 14-May-14 \\ 
-  5 & Contaminated & 2 & 10004 & 2 & 14-May-14 \\ 
-  6 & Contaminated & 2 & 10005 & 3 & 14-May-14 \\ 
+1 & Contaminated & 1 & 10000 & 1 & 14-May-14 & 15.5.14 \\ 
+  2 & Contaminated & 1 & 10001 & 2 & 14-May-14 & 15.5.14 \\ 
+  3 & Contaminated & 1 & 10002 & 3 & 14-May-14 & 15.5.14 \\ 
+  4 & Contaminated & 2 & 10003 & 1 & 14-May-14 & 15.5.14 \\ 
+  5 & Contaminated & 2 & 10004 & 2 & 14-May-14 & 15.5.14 \\ 
+  6 & Contaminated & 2 & 10005 & 3 & 14-May-14 & 15.5.14 \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -774,13 +822,14 @@ mydata <- read.dta("c:/mydata.dta")
 \clearpage
 \end{frame}
 
-
-
 \begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Reading a table}
   \begin{alert}{Oh NO}
-All columns have been set to factors
+\begin{itemize}  
+\item All columns have been set to factors
+\item Dates have different formats
+\end{itemize}
 \end{alert}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -805,7 +854,7 @@ All columns have been set to factors
 \end{knitrout}
 
 
-\begin{block}{lets break it down}
+\begin{block}{Lets break it down}
 First lets reed a few rows only
 \end{block}
 \begin{knitrout}
@@ -834,17 +883,17 @@ First lets reed a few rows only
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Setting the data types}
 \begin{block}{colClasses}
 \begin{itemize}
 \item The variable colClasses can be used to specify the row types.
-\item We need to set stringsAsFactor=FALSE or all columns with be loaded as factors
+\item We need to set {\bf stringsAsFactor=FALSE} or all columns with be loaded as factors
 \item The dates are in a non standard format so we need to read them as chars first
 \end{itemize}
 \end{block}
-%#table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = #"Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,col#Classes=c("character",rep("numeric",3),rep("character",2),rep("numeric",6)),endRow=4)
+
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -936,13 +985,9 @@ First lets reed a few rows only
 
 \section*{Working with string}
 \begin{frame}[fragile]
-  \frametitle{How to work with strings}
-  \framesubtitle{merge command}
-\begin{itemize}
-\item $require(stringer)$ %look at this package
-\item $stri_c(str1,str2)$    concatenates two string
-\item $str_len(str)$
-\end{itemize}
+  \frametitle{Lets read the next table}
+  \framesubtitle{Just fix the Rep column using the stringer package again}
+
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -1006,6 +1051,12 @@ merge(x, y, by = intersect(names(x), names(y)),
 \end{knitrout}
 \end{frame}  
 
+\begin{frame}
+  \frametitle{Lunch Time}
+  \framesubtitle{Back in 30 min}
+  Provided
+\end{frame}
+
 \begin{frame}[fragile]
   \frametitle{How to I append two data sets}
   \framesubtitle{Lets load a third data set}
@@ -1016,52 +1067,13 @@ merge(x, y, by = intersect(names(x), names(y)),
 \begin{lstlisting} 
 table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName ="Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)))
 table3f<-table3
-table3f$Spill.date<-as.Date(table2f$Spill.date,"%d.%m.%y")
-table3f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
+table3f$Spill.date<-as.Date(table3f$Spill.date,"%d.%m.%y")
+table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y")
 sapply(table3f,mode)
 sapply(table3f,class)
 \end{lstlisting}
   
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in as.Date.default(table2f\$Sample.collection.date, "{}\%d.\%m.\%y"{}): do not know how to convert 'table2f\$Sample.collection.date' to class "{}Date"{}}}\begin{verbatim}
-##                  Group                   Site                    Rep 
-##              "numeric"              "numeric"              "numeric" 
-##             Spill.date Sample.collection.date                 labnum 
-##              "numeric"              "numeric"              "numeric" 
-##        phosphate..ppb.          ammonia..ppb.     chlorophyll..ug.L. 
-##              "numeric"              "numeric"              "numeric" 
-##                 DO....          phormidiaceae       streptococcaceae 
-##              "numeric"              "numeric"              "numeric" 
-##           vibrionaceae     enterobacteriaceae    verrucomicrobiaceae 
-##              "numeric"              "numeric"              "numeric" 
-##        chloroflexaceae         aeromonadaceae      staphylococcaceae 
-##              "numeric"              "numeric"              "numeric" 
-##         clostridiaceae     oceanospirillaceae       synechococcaceae 
-##              "numeric"              "numeric"              "numeric" 
-##      rhodospirillaceae               rowNames 
-##              "numeric"              "logical"
-##                  Group                   Site                    Rep 
-##               "factor"               "factor"               "factor" 
-##             Spill.date Sample.collection.date                 labnum 
-##                 "Date"               "factor"              "numeric" 
-##        phosphate..ppb.          ammonia..ppb.     chlorophyll..ug.L. 
-##              "numeric"              "numeric"              "numeric" 
-##                 DO....          phormidiaceae       streptococcaceae 
-##              "numeric"              "numeric"              "numeric" 
-##           vibrionaceae     enterobacteriaceae    verrucomicrobiaceae 
-##              "numeric"              "numeric"              "numeric" 
-##        chloroflexaceae         aeromonadaceae      staphylococcaceae 
-##              "numeric"              "numeric"              "numeric" 
-##         clostridiaceae     oceanospirillaceae       synechococcaceae 
-##              "numeric"              "numeric"              "numeric" 
-##      rhodospirillaceae               rowNames 
-##              "numeric"              "logical"
-\end{verbatim}
-\end{kframe}
-\end{knitrout}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1071,7 +1083,7 @@ sapply(table3f,class)
   \begin{itemize}
   \item We need to be careful to match everything
   \end{itemize}
-  3%_Follow up data from contaminated site.xlsx
+  %_Follow up data from contaminated site.xlsx
   \end{block}
 \begin{lstlisting} 
 Sample.ID<-rep(20000,3)
@@ -1086,7 +1098,6 @@ setdiff(names(m3i),names(table3fii))
 m3ii<-rename(m3i,c("Sample ID"="Sample.ID"))
 table3fiii<-cbind(table3fii, corynebacteriaceae, porphyromondaceae)
 setdiff(names(m3ii),names(table3fiii))
-
 
 m3ii[,c(7:24)] <- sapply(m3ii[,c(7:24)],as.numeric)
 m3ii[,c(1:4)] <-sapply(m3ii[,c(1:4)],as.character)
@@ -1786,14 +1797,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
 %  @
 \end{frame}  
 
-%https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
-%In tidy data:
-%\begin{itemize}
-%\item Each variable forms a column.
-%\item Each observation forms a row.
-%\item Each type of observational unit forms a table.
-%http://pj.freefaculty.org/R/Rtips.html#toc-Subsection-1.11
-%\end{itemize}
+
 
 \begin{frame}
   \frametitle{R package}
@@ -1808,11 +1812,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Morning Tea Time}
-  \framesubtitle{Back in 20min}
-  Need coffee
-\end{frame}
+
 
 %\begin{frame}
 %  \frametitle{How to I merge two data sets}
@@ -1827,58 +1827,81 @@ table4[,1] <- sapply(table4[,1],as.factor)
 %\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Lunch Time}
-  \framesubtitle{Back in 30 min}
-  Provided
-\end{frame}
+
 
 \section*{Cleaning things up}
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Dropping row and columns}
   \framesubtitle{Dropping selected variables}
-  \begin{block}{dropping variables}
-  
+  \begin{block}{Dropping Row and Columns with too many NAs}  
   \end{block}
-%  numNAs_inData4 <- apply(rawData4, 1, function(z) sum(is.na(z))) # count NAs in Data4
-%
-%lessThan20 <- rawData4[!(numNAs_inData4 > 20),]	   #only select the rows contain less Than 20 NAs
-%
-%# this is the column only contains NAs  "qu11other", "qst51fano_n" (1247), "qst51mono_n" (998)
-%lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qu11other")]  
-%lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qst51fano_n")] 
-%lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qst51mono_n")] 
-%
-%# Trim out the rows that is NA in column "sex"
-%lessThan20 <-lessThan20[!is.na(lessThan20[, "sex"]),]
-%
-%# Trim out the rows that is NA in column "age_year"
-%lessThan20 <-lessThan20[!is.na(lessThan20[, "age_year"]),]
-%
-%#---- Excluded Columns contains loads of NAs (97:111)---
-%lessThan20_cleanCol=subset(lessThan20,select=c(1:96,112:269))
-%
-%
-%# Divide the Less Than 20 data set into three data set (Continuous, Polytomous, Dichotomous)
-%selContinu <- c(1,3,4,5,8,11,14,17,20,22:27,35,36,37,38,46,54,62,72:93,96,100:115,136,141,149,160,185,203,235,236,238,249:253)
-%selPolytomous<- c(6,7,9,10,12,13,15,16,18,19,21,34,45,53,56:61,63:71,94,95,97,98,99,116:135,137:140,142:148,150:159,161:184,186:202,204:234,237,239:248,254)
-%selDichoto<- c(2,28:33,39:44,47:52,55)
+\begin{lstlisting}
+numNAs_inData4_rows <- apply(rawData4, 1, function(z) sum(is.na(z))) 
+numNAs_inData4_col <- apply(table4, 2, function(z) sum(is.na(z))) # count NAs in Data4
+lessThan20 <- table4[!(numNAs_inData4_rows > 20),]	   #only select the rows contain less Than 20 NAs
+lessThan20col <- table4[,!(numNAs_inData4_col > 20)]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Dropping row and columns}
+  \framesubtitle{Dropping selected variables}
+
+\begin{block}{Tidy Data}
+In tidy data:
+\begin{itemize}
+\item Each variable forms a column.
+\item Each observation forms a row.
+\item Each type of observational unit forms a table.
+\item \url{https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html}
+\item \url{http://pj.freefaculty.org/R/Rtips.html#toc-Subsection-1.11}
+\end{itemize}
+\end{block}
+ 
+
+\begin{block}{Spit out the dates and numbers}
+\end{block}
+\begin{lstlisting}
+dates4<-table4[,c(5,6)]
+abundance<-table4[,c(7:25)]
+\end{lstlisting}
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Adding a new column}
   \framesubtitle{Calculating the number of days}
   Using the $is.Date$ command
+  \begin{block}
+  We can just subtract as.Date fields
+  \end{block}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+ \hlstd{days}\hlkwb{<-}\hlstd{dates4[,}\hlnum{2}\hlstd{]}\hlopt{-}\hlstd{dates4[,}\hlnum{1}\hlstd{]}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'dates4' not found}}\end{kframe}
+\end{knitrout}
+  
 \end{frame}
 
 \section*{Centering data}
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{centering data}
   \framesubtitle{Normalizing data}
   \begin{block}{sapply}
-  
+  \begin{itemize}
+  \item We an use sweep to centre the data
+  \item What about divide by 0
+  \end{itemize}
   \end{block}
+  \begin{lstlisting}
+  sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))	
+ afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/") 
+ table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
+  \end{lstlisting}
 %#Center the Data less than 20, only apply on continuous data set
 %sweepOutContinu<-sweep(subset_continu,2,apply(subset_continu,2,min,na.rm=TRUE))	
 %afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/")  
@@ -1894,6 +1917,12 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \begin{frame}
   \frametitle{What next}
   \framesubtitle{Proposed future talks}
+  \begin{block}{Help is on the way}
+  \begin{itemize}
+  \item My PhD students
+  \item PhD student in Bioinformatics from Central South Uni
+  \end{itemize}
+  \end{block}
   \begin{block}{Your feedback on some ideas}
   \begin{itemize}
   \item Using Sweave or Knitr

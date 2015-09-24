@@ -134,8 +134,8 @@ dbGetQuery(db, "SELECT * from table1")
 table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName = "Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)),endRow=4)
 
 table3f<-table3
-table3f$Spill.date<-as.Date(table2f$Spill.date,"%d.%m.%y")
-table3f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
+table3f$Spill.date<-as.Date(table3f$Spill.date,"%d.%m.%y")
+table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y")
 sapply(table3f,mode)
 sapply(table3f,class)
 

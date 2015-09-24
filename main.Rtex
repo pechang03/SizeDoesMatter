@@ -105,6 +105,14 @@ showstringspaces=false}
   \frametitle{Why use R?}
   \framesubtitle{Why not use a spreadsheet?}
 
+\begin{block}{Todays workshop}
+\begin{itemize}
+\item A common scenario
+\item A friend has emailed you her data in a spreadsheet
+\item Todays workshop is not about impressing with R code
+\end{itemize}
+
+\end{block}
   \begin{block}{Why not use a spreadsheet?}
   \begin{itemize}
     \item Data manipulation in Excel is VERY risk and time consuming
@@ -138,7 +146,7 @@ showstringspaces=false}
 % publisher = {O'Reilly Media, Inc.},
 %} 
 
-\begin{frame}[allowframebreaks]
+\begin{frame}%[allowframebreaks]
 \frametitle{Getting Started}
   \framesubtitle{Some References}
   \begin{thebibliography}{10}    
@@ -204,7 +212,10 @@ showstringspaces=false}
 \begin{frame}{Getting Started}
 \framesubtitle{Installing a GUI}
 \begin{block}{How about RStudio}
-\url{https://www.rstudio.com/products/rstudio/download/}
+\begin{itemize}
+\item \url{https://www.rstudio.com/products/rstudio/download/}
+\item Its also on your thumb drive
+\end{itemize}
 \end{block}
 
 \end{frame}
@@ -235,6 +246,7 @@ help.start()
 help(summary)
 args(summary)
 example(sd)
+??package
 \end{lstlisting} 
 \clearpage
 \end{frame}
@@ -243,14 +255,16 @@ example(sd)
   \frametitle{Help Functions}
   \framesubtitle{Search the Web}
 \begin{block}{To search R documentation}
-RSiteSearch("key phrase")
-help(adf.test,package="tseries")
-%to search for a tutorial for a package
-%vignette(package="packagename")
-%For an intro to vignettes see
-%https://cran.r-project.org/web/packages/sos/vignettes/sos.pdf
-%examples on the web
-%http://shiny.rstudio.com/gallery/
+\begin{itemize}
+\item RSiteSearch("key phrase")
+\item help(adf.test,package="tseries")
+\item To search for a tutorial for a package\\
+ vignette(package="packagename")
+\item For an intro to vignettes see\\
+\url{https://cran.r-project.org/web/packages/sos/vignettes/sos.pdf}
+\item Examples on the web\\
+\url{http://shiny.rstudio.com/gallery/}
+\end{itemize}
 \end{block}
 \begin{block}{Custom Google search focused on R-specific websites}
 \url{http://rseek.org}
@@ -267,25 +281,43 @@ help(adf.test,package="tseries")
 \begin{frame}
   \frametitle{Iterative development}
   \framesubtitle{Working Creatively}
-Some discussion recently on how to work creatively. Research out of  successful R\&D projects developed into Agile
+Research on how to work creatively based on case studies of  successful R\&D projects developed into Agile
 \begin{itemize}
 \item Keep the manages away
-\item work sustainably
-\item people over process
-\item iterative development
+\item Work sustainably
+\item People over process
+\item Iterative development
 \end{itemize}
 \end{frame}
 
-\section*{R Data types}
-\begin{frame}
+\section*{Basic R Data types}
+\begin{frame}[fragile]
   \frametitle{R Data types}
   \framesubtitle{Lists, frames and tables}
-  \begin{block}{Lists}
+  \begin{block}{Vectors}
       \begin{itemize}
-         \item $l=c(1,3,4)$
-         \item $bbb$
-      \end{itemize}
+         \item  Vectors $l\leftarrow c(1,3,4,7,11)$
+         \item  Refer to elements using array $l[c(2,5)]$ 2nd and 5th elements of l
+    \end{itemize}
   \end{block}
+  \begin{block}{Data Frames}
+%      \begin{lstlisting}
+%a <- c(35,23,24,65)      
+%e <- c("Peter", "John", "Mark", NA)
+%f <- c(TRUE,TRUE,TRUE,FALSE)
+%team <- data.frame(a,e,f)
+%names(team) <- c("Age","Names","Passed") # variable names
+%    \end{lstlisting}
+ \end{block} 
+<<chunk2,echo=TRUE>>=
+a <- c(35,23,24,65)      
+e <- c("Peter", "John", "Mark", NA)
+f <- c(TRUE,TRUE,TRUE,FALSE)
+team <- data.frame(a,e,f)
+names(team) <- c("Age","Names","Passed") # variable names
+str(team)
+@    
+ 
 \end{frame}  
 
 \section*{Reading our file}
@@ -491,6 +523,12 @@ mydata <- read.dta("c:/mydata.dta")
 \end{lstlisting} 
 \end{frame}
 
+\begin{frame}
+  \frametitle{Morning Tea Time}
+  \framesubtitle{Back in 20min}
+  {\bf Need coffee !!} 
+\end{frame}
+
 \section*{Working with Data Types}
 \begin{frame}[fragile]
   \frametitle{Lets read the next table}
@@ -501,26 +539,27 @@ setwd("/Users/pcru/SizeDoesMatter1")
 table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
 @
 <<chunk7i,results='asis', echo=FALSE>>=
-print(xtable(head(table2[,1:5])))
+print(xtable(head(table2[,1:6]),font=small))
 @
 %print(xtable(summary(table1t[,1:5])))
 \clearpage
 \end{frame}
 
-
-
 \begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Reading a table}
   \begin{alert}{Oh NO}
-All columns have been set to factors
+\begin{itemize}  
+\item All columns have been set to factors
+\item Dates have different formats
+\end{itemize}
 \end{alert}
 <<chunk7ii, echo=TRUE>>=
 str(table2[,1:11])
 @
 
 
-\begin{block}{lets break it down}
+\begin{block}{Lets break it down}
 First lets reed a few rows only
 \end{block}
 <<chunk8ii, echo=TRUE>>=
@@ -531,17 +570,17 @@ sapply(table2,class)
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Setting the data types}
 \begin{block}{colClasses}
 \begin{itemize}
 \item The variable colClasses can be used to specify the row types.
-\item We need to set stringsAsFactor=FALSE or all columns with be loaded as factors
+\item We need to set {\bf stringsAsFactor=FALSE} or all columns with be loaded as factors
 \item The dates are in a non standard format so we need to read them as chars first
 \end{itemize}
 \end{block}
-%#table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = #"Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,col#Classes=c("character",rep("numeric",3),rep("character",2),rep("numeric",6)),endRow=4)
+
 <<chunk8v, echo=TRUE>>=
 table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))
 sapply(table2,class)
@@ -591,13 +630,9 @@ dated<-table2bf$Sample.collection.date-table2bf$Spill.date
 
 \section*{Working with string}
 \begin{frame}[fragile]
-  \frametitle{How to work with strings}
-  \framesubtitle{merge command}
-\begin{itemize}
-\item $require(stringer)$ %look at this package
-\item $stri_c(str1,str2)$    concatenates two string
-\item $str_len(str)$
-\end{itemize}
+  \frametitle{Lets read the next table}
+  \framesubtitle{Just fix the Rep column using the stringer package again}
+
 <<chunk8iv, echo=TRUE>>=
 require(stringr)
 table2bf$Rep<-str_replace(table2bf$Rep,"[rep]{3}?","\\1")
@@ -637,6 +672,12 @@ m3<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID","Rep"),by.y=c("Grou
 @
 \end{frame}  
 
+\begin{frame}
+  \frametitle{Lunch Time}
+  \framesubtitle{Back in 30 min}
+  Provided
+\end{frame}
+
 \begin{frame}[fragile]
   \frametitle{How to I append two data sets}
   \framesubtitle{Lets load a third data set}
@@ -647,8 +688,8 @@ m3<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID","Rep"),by.y=c("Grou
 \begin{lstlisting} 
 table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName ="Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)))
 table3f<-table3
-table3f$Spill.date<-as.Date(table2f$Spill.date,"%d.%m.%y")
-table3f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
+table3f$Spill.date<-as.Date(table3f$Spill.date,"%d.%m.%y")
+table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y")
 sapply(table3f,mode)
 sapply(table3f,class)
 \end{lstlisting}
@@ -660,10 +701,10 @@ setwd("/Users/pcru/SizeDoesMatter1")
 table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName = "Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)))
 
 table3f<-table3
-table3f$Spill.date<-as.Date(table2f$Spill.date,"%d.%m.%y")
-table3f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
-sapply(table3f,mode)
-sapply(table3f,class)
+table3f$Spill.date<-as.Date(table3f$Spill.date,"%d.%m.%y")
+table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y")
+#sapply(table3f,mode)
+#sapply(table3f,class)
 @
 \end{frame}
 
@@ -674,7 +715,7 @@ sapply(table3f,class)
   \begin{itemize}
   \item We need to be careful to match everything
   \end{itemize}
-  3%_Follow up data from contaminated site.xlsx
+  %_Follow up data from contaminated site.xlsx
   \end{block}
 \begin{lstlisting} 
 Sample.ID<-rep(20000,3)
@@ -689,7 +730,6 @@ setdiff(names(m3i),names(table3fii))
 m3ii<-rename(m3i,c("Sample ID"="Sample.ID"))
 table3fiii<-cbind(table3fii, corynebacteriaceae, porphyromondaceae)
 setdiff(names(m3ii),names(table3fiii))
-
 
 m3ii[,c(7:24)] <- sapply(m3ii[,c(7:24)],as.numeric)
 m3ii[,c(1:4)] <-sapply(m3ii[,c(1:4)],as.character)
@@ -788,14 +828,7 @@ dbGetQuery(db, "SELECT * from table1")
 %  @
 \end{frame}  
 
-%https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
-%In tidy data:
-%\begin{itemize}
-%\item Each variable forms a column.
-%\item Each observation forms a row.
-%\item Each type of observational unit forms a table.
-%http://pj.freefaculty.org/R/Rtips.html#toc-Subsection-1.11
-%\end{itemize}
+
 
 \begin{frame}
   \frametitle{R package}
@@ -810,11 +843,7 @@ dbGetQuery(db, "SELECT * from table1")
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Morning Tea Time}
-  \framesubtitle{Back in 20min}
-  Need coffee
-\end{frame}
+
 
 %\begin{frame}
 %  \frametitle{How to I merge two data sets}
@@ -829,58 +858,75 @@ dbGetQuery(db, "SELECT * from table1")
 %\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \frametitle{Lunch Time}
-  \framesubtitle{Back in 30 min}
-  Provided
-\end{frame}
+
 
 \section*{Cleaning things up}
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Dropping row and columns}
   \framesubtitle{Dropping selected variables}
-  \begin{block}{dropping variables}
-  
+  \begin{block}{Dropping Row and Columns with too many NAs}  
   \end{block}
-%  numNAs_inData4 <- apply(rawData4, 1, function(z) sum(is.na(z))) # count NAs in Data4
-%
-%lessThan20 <- rawData4[!(numNAs_inData4 > 20),]	   #only select the rows contain less Than 20 NAs
-%
-%# this is the column only contains NAs  "qu11other", "qst51fano_n" (1247), "qst51mono_n" (998)
-%lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qu11other")]  
-%lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qst51fano_n")] 
-%lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qst51mono_n")] 
-%
-%# Trim out the rows that is NA in column "sex"
-%lessThan20 <-lessThan20[!is.na(lessThan20[, "sex"]),]
-%
-%# Trim out the rows that is NA in column "age_year"
-%lessThan20 <-lessThan20[!is.na(lessThan20[, "age_year"]),]
-%
-%#---- Excluded Columns contains loads of NAs (97:111)---
-%lessThan20_cleanCol=subset(lessThan20,select=c(1:96,112:269))
-%
-%
-%# Divide the Less Than 20 data set into three data set (Continuous, Polytomous, Dichotomous)
-%selContinu <- c(1,3,4,5,8,11,14,17,20,22:27,35,36,37,38,46,54,62,72:93,96,100:115,136,141,149,160,185,203,235,236,238,249:253)
-%selPolytomous<- c(6,7,9,10,12,13,15,16,18,19,21,34,45,53,56:61,63:71,94,95,97,98,99,116:135,137:140,142:148,150:159,161:184,186:202,204:234,237,239:248,254)
-%selDichoto<- c(2,28:33,39:44,47:52,55)
+\begin{lstlisting}
+numNAs_inData4_rows <- apply(rawData4, 1, function(z) sum(is.na(z))) 
+numNAs_inData4_col <- apply(table4, 2, function(z) sum(is.na(z))) # count NAs in Data4
+lessThan20 <- table4[!(numNAs_inData4_rows > 20),]	   #only select the rows contain less Than 20 NAs
+lessThan20col <- table4[,!(numNAs_inData4_col > 20)]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Dropping row and columns}
+  \framesubtitle{Dropping selected variables}
+
+\begin{block}{Tidy Data}
+In tidy data:
+\begin{itemize}
+\item Each variable forms a column.
+\item Each observation forms a row.
+\item Each type of observational unit forms a table.
+\item \url{https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html}
+\item \url{http://pj.freefaculty.org/R/Rtips.html#toc-Subsection-1.11}
+\end{itemize}
+\end{block}
+ 
+
+\begin{block}{Spit out the dates and numbers}
+\end{block}
+\begin{lstlisting}
+dates4<-table4[,c(5,6)]
+abundance<-table4[,c(7:25)]
+\end{lstlisting}
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Adding a new column}
   \framesubtitle{Calculating the number of days}
   Using the $is.Date$ command
+  \begin{block}
+  We can just subtract as.Date fields
+  \end{block}
+ <<chunk11i, echo=TRUE>>=
+  days<-dates4[,2]-dates4[,1]
+@
+  
 \end{frame}
 
 \section*{Centering data}
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{centering data}
   \framesubtitle{Normalizing data}
   \begin{block}{sapply}
-  
+  \begin{itemize}
+  \item We an use sweep to centre the data
+  \item What about divide by 0
+  \end{itemize}
   \end{block}
+  \begin{lstlisting}
+  sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))	
+ afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/") 
+ table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
+  \end{lstlisting}
 %#Center the Data less than 20, only apply on continuous data set
 %sweepOutContinu<-sweep(subset_continu,2,apply(subset_continu,2,min,na.rm=TRUE))	
 %afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/")  
@@ -896,6 +942,12 @@ dbGetQuery(db, "SELECT * from table1")
 \begin{frame}
   \frametitle{What next}
   \framesubtitle{Proposed future talks}
+  \begin{block}{Help is on the way}
+  \begin{itemize}
+  \item My PhD students
+  \item PhD student in Bioinformatics from Central South Uni
+  \end{itemize}
+  \end{block}
   \begin{block}{Your feedback on some ideas}
   \begin{itemize}
   \item Using Sweave or Knitr

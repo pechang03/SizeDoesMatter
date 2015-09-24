@@ -1,8 +1,16 @@
-\frametitle{Reshaping Tables}
-  \framesubtitle{reshape2}
-  \begin{block}{reshape2}
-  vignette(reshape)
+\frametitle{centering data}
+  \framesubtitle{Normalizing data}
+  \begin{block}{sapply}
+  \begin{itemize}
+  \item We an use sweep to centre the data
+  \item What about divide by 0
+  \end{itemize}
   \end{block}
-%  <<chunk10i, echo=TRUE>>=
-%  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
-%  @
+  \begin{lstlisting}
+  sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))
+ afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/")
+ table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
+  \end{lstlisting}
+%#Center the Data less than 20, only apply on continuous data set
+%sweepOutContinu<-sweep(subset_continu,2,apply(subset_continu,2,min,na.rm=TRUE))
+%afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/")
