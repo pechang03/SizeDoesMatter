@@ -1,18 +1,24 @@
 \documentclass[12pt]{beamer}
 %\documentclass[10pt,handout,english]{beamer}
+%\documentclass{article}
+%\usepackage[envcountsect]{beamerarticle}
+
+
+
 \usetheme{Air}
 \usepackage{thumbpdf}
 \usepackage{wasysym}
 \usepackage{ucs}
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 \usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
 \usepackage{verbatim}
 \usepackage{comment}
 \usepackage{listings,relsize} 
+\usepackage{url}
 \lstloadlanguages{R} 
 
 
-\geometry{paperwidth=160mm,paperheight=105mm}
+%\geometry{paperwidth=160mm,paperheight=105mm}
 \usepackage{pgfpages}
 
 \usepackage{lipsum}
@@ -25,6 +31,9 @@
 }
 %\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]
 %\pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm,landscape]
+%\pgfpagesuselayout{1 on 1 with notes}[a4paper,border shrink=5mm]
+%\pgfpagesuselayout{2 on 1 with notes landscape}[a4paper,border shrink=5mm]
+
 \title{Data manipulation in R}
 \subtitle{A program to use when size matters}
 \author{Peter Shaw}
@@ -167,9 +176,9 @@ xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 
   \begin{block}{Download it}
   \begin{itemize}
-    \item Open {\url http://www.r-project.org}
+    \item Open \url{http://www.r-project.org}
     \item Click CRAN (Under download on Top Left)
-    \item Click {\url http://cran.ms.unimelb.edu.au/} University of Melbourne
+    \item Click \url{http://cran.ms.unimelb.edu.au/} University of Melbourne
   \end{itemize}
   \end{block}
 
@@ -193,7 +202,7 @@ xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 \begin{frame}{Getting Started}
 \framesubtitle{Installing a GUI}
 \begin{block}{How about RStudio}
-{\url https://www.rstudio.com/products/rstudio/download/}
+\url{https://www.rstudio.com/products/rstudio/download/}
 \end{block}
 
 \end{frame}
@@ -242,12 +251,12 @@ RSiteSearch("key phrase")
 %http://shiny.rstudio.com/gallery/
 \end{block}
 \begin{block}{Custom Google search focused on R-specific websites}
-{\url http://rseek.org}
+\url{http://rseek.org}
 \end{block}
 
 \begin{block}{Coding Q\&A site}
-{\url http://stackoverflow.com}
-{\url http://stats.stakexchange.com}
+\url{http://stackoverflow.com}
+\url{http://stats.stakexchange.com}
 \end{block}
 
 \end{frame}
@@ -288,7 +297,7 @@ setwd("/Users/pcru")
 dir() #This lists the files
 ls()  #This lists the variables
 \end{lstlisting}
-{\url http://www.statmethods.net/input/contents.html}
+\url{http://www.statmethods.net/input/contents.html}
 \end{block}
 \end{frame}
 
@@ -303,7 +312,7 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
 \begin{block}{But our table is an excel file}
 \begin{itemize}
 \item What about a package?
-\item {\url http://www.thertrader.com/2014/02/11/a-million-ways-to-connect-r-and-excel/}
+\item \url{http://www.thertrader.com/2014/02/11/a-million-ways-to-connect-r-and-excel/}
 \item Lets use the R package xlsx
 \end{itemize}
 \end{block}
@@ -328,7 +337,7 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
 %  x<-citation()
 %  toBibtex(x)
 %See also url 
-{\url https://cran.r-project.org/web/packages/RefManageR/vignettes/TestRmd.html}
+\url{https://cran.r-project.org/web/packages/RefManageR/vignettes/TestRmd.html}
 %  \end{itemize}
   \end{block}
 <<chunk5>>=
@@ -423,7 +432,7 @@ table1t$Rep<-as.factor(table1t$Rep)
 @
 
 %{\url http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC}
-{\url http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally}
+\url{http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally}
 <<chunk6i,results='asis', echo=FALSE>>=
 print(xtable(head(table1t[,1:5])))
 print(xtable(summary(table1t[,1:5])))
@@ -435,7 +444,7 @@ print(xtable(summary(table1t[,1:5])))
   \frametitle{Lets read the table}
   \framesubtitle{Reading a table}
 \begin{itemize}  
-\item {\url http://www.statmethods.net/input/importingdata.html}
+\item \url{http://www.statmethods.net/input/importingdata.html}
 \item Input files from Stata
 %table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=TRUE)
 %http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally
@@ -454,7 +463,7 @@ mydata <- read.dta("c:/mydata.dta")
 <<chunk7, echo=TRUE>>=
 setwd("/Users/pcru/SizeDoesMatter1")
 #dir()
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
 @
 <<chunk7i,results='asis', echo=FALSE>>=
 print(xtable(head(table2[,1:5])))
@@ -486,7 +495,7 @@ All columns have been set to factors
 First lets reed a few rows only
 \end{block}
 <<chunk8ii, echo=TRUE>>=
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
 sapply(table2,mode)
 sapply(table2,class)
 @
@@ -505,7 +514,7 @@ sapply(table2,class)
 \end{block}
 %#table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = #"Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,col#Classes=c("character",rep("numeric",3),rep("character",2),rep("numeric",6)),endRow=4)
 <<chunk8v, echo=TRUE>>=
-table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))
+table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))
 sapply(table2,class)
 @
 \clearpage
@@ -593,10 +602,104 @@ merge(x, y, by = intersect(names(x), names(y)),
 tab1c<-table1t[1:9,] 
 tab2c<-table2b[1:9,]
 m1<-merge(tab1c,tab2c,by.x="Sample ID",by.y="Sample.ID")
-m2<-merge(table1t,table2b,by.x=c("Group","Site","Sample ID"),by.y=c("Group","Site","Sample.ID"))
+m2<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID"),by.y=c("Group","Site","Sample.ID"))
+m3<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID","Rep"),by.y=c("Group","Site","Sample.ID","Rep"))
 @
 \end{frame}  
 
+\begin{frame}
+  \frametitle{How to I append two data sets}
+  \framesubtitle{Lets load a third data set}
+  \begin{block}{Follow up data from contaminated site}
+  3_Follow up data from contaminated site.xlsx
+  \end{block}
+\begin{lstlisting} 
+ttable3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName = "Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)),endRow=4)
+
+table3f<-table3
+table3f$Spill.date<-as.Date(table2f$Spill.date,"%d.%m.%y")
+table3f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
+sapply(table3f,mode)
+sapply(table3f,class)
+\end{lstlisting}
+  
+<<chunk10i,echo=FALSE>>=
+require(xlsx)
+require(xtable)
+setwd("/Users/pcru/SizeDoesMatter1")
+table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName = "Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)))
+
+table3f<-table3
+table3f$Spill.date<-as.Date(table2f$Spill.date,"%d.%m.%y")
+table3f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
+sapply(table3f,mode)
+sapply(table3f,class)
+@
+\end{frame}
+
+\begin{frame}
+  \frametitle{How to I append two data sets}
+  \framesubtitle{Lets load a third data set}
+  \begin{block}{Joining table 3 to are merged tables}
+  \begin{itemize}
+  \item We need to be careful to match everything
+  \end{itemize}
+  3_Follow up data from contaminated site.xlsx
+  \end{block}
+\begin{lstlisting} 
+Sample.ID<-rep(20000,3)
+table3fi<-cbind(table3f,Sample.ID)
+#how many columns I can't count
+ncol(table3fi)
+ncol(m3)
+#now get the cols all right
+table3fii<-table3fi[c(1,2,24,3,4:23)]
+m3i<-m3[c(1:4,19:20,5:18,21:26)]
+setdiff(names(m3i),names(table3fii))
+m3ii<-rename(m3i,c("Sample ID"="Sample.ID"))
+table3fiii<-cbind(table3fii, corynebacteriaceae, porphyromondaceae)
+setdiff(names(m3ii),names(table3fiii))
+
+
+m3ii[,c(7:24)] <- sapply(m3ii[,c(7:24)],as.numeric)
+m3ii[,c(1:4)] <-sapply(m3ii[,c(1:4)],as.character)
+#m3ii[,c("Site")] <-sapply(m3ii[,c("Site")],as.character)
+
+table3fiii[,c(1:4)] <- sapply(table3fiii[,c(1:4)],as.character)
+table3fiii[,c(7:24)] <- sapply(table3fiii[,c(7:24)],as.numeric)
+table4<-rbind(m3ii,table3fiii)
+table4[,1] <- sapply(table4[,1],as.factor)
+\end{lstlisting}
+  
+<<chunk10ii,echo=FALSE>>=
+Sample.ID<-rep(20000,3)
+table3fi<-cbind(table3f,Sample.ID)
+#how many columns I can't count
+ncol(table3fi)
+ncol(m3)
+#now get the cols all right
+table3fii<-table3fi[c(1,2,24,3,4:23)]
+m3i<-m3[c(1:4,19:20,5:18,21:26)]
+setdiff(names(m3i),names(table3fii))
+m3ii<-rename(m3i,c("Sample ID"="Sample.ID"))
+table3fiii<-cbind(table3fii, corynebacteriaceae, porphyromondaceae)
+setdiff(names(m3ii),names(table3fiii))
+
+
+m3ii[,c(7:24)] <- sapply(m3ii[,c(7:24)],as.numeric)
+m3ii[,c(1:4)] <-sapply(m3ii[,c(1:4)],as.character)
+#m3ii[,c("Site")] <-sapply(m3ii[,c("Site")],as.character)
+
+table3fiii[,c(1:4)] <- sapply(table3fiii[,c(1:4)],as.character)
+table3fiii[,c(7:24)] <- sapply(table3fiii[,c(7:24)],as.numeric)
+table4<-rbind(m3ii,table3fiii)
+table4[,1] <- sapply(table4[,1],as.factor)
+@ 
+\end{frame}
+\begin{frame}
+  \frametitle{Another Break}
+  %\framesubtitle{}
+\end{frame}
 
 \begin{frame}[fragile, allowframebreaks]
   \frametitle{R package}
@@ -659,11 +762,11 @@ dbGetQuery(db, "SELECT * from table1")
   \framesubtitle{svUnit}
      Another important component of TDD is refactoring and unit tests
   \begin{itemize}
-     \item Refactoring {\url http://refactoring.com/}
-     \item {\url http://www.r-bloggers.com/my-experience-of-learning-r-from-basic-graphs-to-performance-tuning/}
-     \item TDD in R {\url http://www.slideserve.com/andrew/test-driven-development-in-r}
+     \item Refactoring \url{http://refactoring.com/}
+     \item \url{http://www.r-bloggers.com/my-experience-of-learning-r-from-basic-graphs-to-performance-tuning/}
+     \item TDD in R \url{http://www.slideserve.com/andrew/test-driven-development-in-r}
      \item Version Control tortiseSVN {\url http://tortoisesvn.net/}
-     \item GitHub {\url https://github.com/}
+     \item GitHub \url{https://github.com/}
   \end{itemize}
 \end{frame}
 
@@ -692,20 +795,58 @@ dbGetQuery(db, "SELECT * from table1")
   Provided
 \end{frame}
 
+\section*{Cleaning things up}
+\begin{frame}
+  \frametitle{Dropping row and columns}
+  \framesubtitle{Dropping selected variables}
+  \begin{block}{dropping variables}
+  
+  \end{block}
+%  numNAs_inData4 <- apply(rawData4, 1, function(z) sum(is.na(z))) # count NAs in Data4
+%
+%lessThan20 <- rawData4[!(numNAs_inData4 > 20),]	   #only select the rows contain less Than 20 NAs
+%
+%# this is the column only contains NAs  "qu11other", "qst51fano_n" (1247), "qst51mono_n" (998)
+%lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qu11other")]  
+%lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qst51fano_n")] 
+%lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qst51mono_n")] 
+%
+%# Trim out the rows that is NA in column "sex"
+%lessThan20 <-lessThan20[!is.na(lessThan20[, "sex"]),]
+%
+%# Trim out the rows that is NA in column "age_year"
+%lessThan20 <-lessThan20[!is.na(lessThan20[, "age_year"]),]
+%
+%#---- Excluded Columns contains loads of NAs (97:111)---
+%lessThan20_cleanCol=subset(lessThan20,select=c(1:96,112:269))
+%
+%
+%# Divide the Less Than 20 data set into three data set (Continuous, Polytomous, Dichotomous)
+%selContinu <- c(1,3,4,5,8,11,14,17,20,22:27,35,36,37,38,46,54,62,72:93,96,100:115,136,141,149,160,185,203,235,236,238,249:253)
+%selPolytomous<- c(6,7,9,10,12,13,15,16,18,19,21,34,45,53,56:61,63:71,94,95,97,98,99,116:135,137:140,142:148,150:159,161:184,186:202,204:234,237,239:248,254)
+%selDichoto<- c(2,28:33,39:44,47:52,55)
+\end{frame}
+
+
 \begin{frame}
   \frametitle{Adding a new column}
   \framesubtitle{Calculating the number of days}
   Using the $is.Date$ command
 \end{frame}
 
+\section*{Centering data}
 \begin{frame}
-  \frametitle{How to I append two data sets}
-  %\framesubtitle{}
+  \frametitle{centering data}
+  \framesubtitle{Normalizing data}
+  \begin{block}{sapply}
+  
+  \end{block}
+%#Center the Data less than 20, only apply on continuous data set
+%sweepOutContinu<-sweep(subset_continu,2,apply(subset_continu,2,min,na.rm=TRUE))	
+%afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/")  
 \end{frame}
-\begin{frame}
-  \frametitle{Another Break}
-  %\framesubtitle{}
-\end{frame}
+
+
 
 \begin{frame}
   \frametitle{Now lets have some fun}

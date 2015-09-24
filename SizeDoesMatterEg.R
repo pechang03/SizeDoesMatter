@@ -35,7 +35,8 @@ print(ttt[i])
 table1t$Site<-ttt
 
 #chunk6iii
-able1t$Rep<-str_replace(table1t$Rep,"[rep]{3}?","\\1")
+require(stringr)
+table1t$Rep<-str_replace(table1t$Rep,"[rep]{3}?","\\1")
 table1t$Rep<-str_replace(table1t$Rep,"A","1")
 table1t$Rep<-str_replace(table1t$Rep,"B","2")
 table1t$Rep<-str_replace(table1t$Rep,"C","3")
@@ -56,7 +57,7 @@ table2f$Spill.date<-as.Date(table2f$Spill.date,"%d-%b-%y")
 table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
 sapply(table2f,mode)
 sapply(table2f,class)
-table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))
+table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))
 table2bf<-table2b
 table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")
 #table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")
@@ -79,6 +80,37 @@ table2bf$Rep<-as.factor(table2bf$Rep)
 str(table2bf)
 
 
+tab1c<-table1t[1:9,]
+tab2c<-table2b[1:9,]
+m1<-merge(tab1c,tab2c,by.x="Sample ID",by.y="Sample.ID")
+#m2<-merge(table1t,table2b,by.x=c("Group","Site","Sample ID"),by.y=c("Group","Site","Sample.ID"))
+m3<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID","Rep"),by.y=c("Group","Site","Sample.ID","Rep"))
+
+Sample.ID<-rep(20000,3)
+table3fi<-cbind(table3f,Sample.ID)
+#how many columns I can't count
+ncol(table3fi)
+ncol(m3)
+#now get the cols all right
+table3fii<-table3fi[c(1,2,24,3,4:23)]
+m3i<-m3[c(1:4,19:20,5:18,21:26)]
+setdiff(names(m3i),names(table3fii))
+m3ii<-rename(m3i,c("Sample ID"="Sample.ID"))
+table3fiii<-cbind(table3fii, corynebacteriaceae, porphyromondaceae)
+setdiff(names(m3ii),names(table3fiii))
+
+
+m3ii[,c(7:24)] <- sapply(m3ii[,c(7:24)],as.numeric)
+m3ii[,c(1:4)] <-sapply(m3ii[,c(1:4)],as.character)
+#m3ii[,c("Site")] <-sapply(m3ii[,c("Site")],as.character)
+
+table3fiii[,c(1:4)] <- sapply(table3fiii[,c(1:4)],as.character)
+table3fiii[,c(7:24)] <- sapply(table3fiii[,c(7:24)],as.numeric)
+table4<-rbind(m3ii,table3fiii)
+table4[,1] <- sapply(table4[,1],as.factor)
+
+
+
 #chunk9
 tab1c<-table1t[1:9,]
 
@@ -98,4 +130,12 @@ dbListTables(db)
 dbGetQuery(db, "SELECT * from table1")
 #dbDisconnect(db)
 
+
+table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName = "Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)),endRow=4)
+
+table3f<-table3
+table3f$Spill.date<-as.Date(table2f$Spill.date,"%d.%m.%y")
+table3f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
+sapply(table3f,mode)
+sapply(table3f,class)
 

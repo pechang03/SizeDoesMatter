@@ -1,605 +1,612 @@
-str_replace(table2bf$Rep,"rep\1",\1)
-str_replace(table2bf$Rep,"rep\1","\1")
-str_replace(table2bf$Rep,"rep\1","\1")
-str_replace_all(table2bf$Rep,"rep\1","\1")
-str_replace_all(table2bf$Rep,"rep?","\1")
-str_replace_all(table2bf$Rep,"(rep)??","\1")
-str_replace_all(table2bf$Rep,"(rep)??","\2")
-str_replace(table2bf$Rep,"(rep)??","\2")
-str_replace(table2bf$Rep,"(rep)??","\\2")
-str_replace(table2bf$Rep,"(rep)??","\\1")
-str_replace(table2bf$Rep,"(rep)?","\\1")
-str_replace(table2bf$Rep,"[rep]{3}?","\\1")
-str_replace(table2bf$Rep,"[rep]{3}?","\\2")
-str_replace(table2bf$Rep,"[rep]{3}?","\\3")
-str_replace(table2bf$Rep,"[rep]{3}?","\\4")
-str_replace(table2bf$Rep,"A","1")
-str_replace(table2bf$Rep,"A","2")
-str_replace(table2bf$Rep,"A","2")
-table2bf$Rep
-table2bf$Rep<-str_replace(table2bf$Rep,"[rep]{3}?","\\1")
-table2bf$Rep<-str_replace(table2bf$Rep,"A","1")
-table2bf$Rep<-str_replace(table2bf$Rep,"B","2")
-table2bf$Rep<-str_replace(table2bf$Rep,"C","3")
-table2bf$Rep
-table2bf$Rep<-as.factor(table2bf$Rep)
-table2bf
-able2bf$Group<-as.factor(table2bf$Group)
-table2bf$Group<-as.factor(table2bf$Group)
-table2bf
-str(table2bf)
-head(table1t)
-head(table1t,1:18)
-head(table1t,c(1:18))
-table1t[,c(1:18)]
-head(table1t)
-table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=FALSE,transpose=TRUE,endRow=18)
-table1
-table1t=setNames(data.frame(t(table1[,-1])),table1[,1])
-table1t
-head(table1t)
-table1t[1,]
-table1t[2,]
-str(table1t)
-table1t$Group
-table1t$Group[]
-table1t
-table1t$Group
-table1t$Group[-1]
-cdown<-ifelse(is.na,1,0)
-cdown<-ifelse(is.na(tablet$Group),1,0)
-cdown<-ifelse(is.na(table1t$Group),1,0)
-cdown
-cdown<-ifelse(!is.na(table1t$Group),1,0)
-cdown
-cdown<-ifelse(table1t$Group=="",1,0)
-cdown
-cdown<-ifelse(table1t$Group=="" & table1t$Group[-1]=="Contaminated",1,0)
-uprow<-table1t$Group[-1]
-cdown<-ifelse(table1t$Group=="",uprow,0)
-cdown
-uprow
-uprow[,1]
-uprow[1,]
-uprow<-table1t$Group[+1]
-uprow
-table1t[Group="Contaminated",]
-table1t[Group="Contaminated Control",]
-uprow<-table1t$Group[-1]
-uprow
-table1t$Group
-help(tapply)
-str(table1t)
-dol<-table1t$Group
-dol[2:5,]<-fred
-dol[2:5,]<-"fred"
-dol[2:5,]<-"Contaminated"
-dol[2:5,]<-1
-dol[2:5,]
-dol<-table1t$Group
-dol
-dol[2,]<-1
-dol[2,]<-"Contaminated"
-dol[2]<-"Contaminated"
-dol[2:5]<-"Contaminated"
-dol
-dol[2:24]<-"Contaminated"
-dol[2:24]<-"Contaminated"
-dol
-dol[25:49]<-"Control"
-dol
-which(table1t$Group,"Control")
-help(which)
-which(table1t$Group=="Control")
-ctridx<-which(table1t$Group=="Control")
-test1<-table1t$group[1:ctridx]="Contaminated"
-table1t$group[1:ctridx]="Contaminated"
-table1t$group
-ctridx
-table1t$group[1:ctridx]<-"Contaminated"
-table1t$group[ctridx+1:48]<-"Contaminated"
-table1t$group[ctridx+1:48]<-"Control"
-table1t$group[(ctridx+1):48]<-"Control"
-table1t$group
-table1t
-table1t$Group[1:ctridx]<-"Contaminated"
-table1t$Group[(ctridx+1):48]<-"Control"
-table1t
-table1
-for(i in c(1:48)){ttt[i]<-ifelse(table1t$Site[i]="",table1t$Site[i-1],table1t$Site[i])}
-for(i in c(1:48)){ttt[i]<-ifelse(table1t$Site[i]=="",table1t$Site[i-1],table1t$Site[i])}
-ttt<-table1t$Site
-for(i in c(1:48)){ttt[i]<-ifelse(table1t$Site[i]=="",table1t$Site[i-1],table1t$Site[i])}
-ifelse(table1t$Site[2]=="",table1t$Site[1],table1t$Site[2])
-for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",table1t$Site[i-1],table1t$Site[i])}
-for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",table1t$Site[(i-1)],table1t$Site[i])}
-table1t$Site
-ttt
-ttt<-table1t$Site
-for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",6,7}
-for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",6,7)}
-ttt
-for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="","6","7")}
-ttt
-for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",as.factor(6),"7")}
-for(i in c(2:48)){ttt[i]<-ifelse(table1t$Site[i]=="",as.factor(6),as.factor(7))}
-ttt
-table1t$Site[2]
-table1t$Site[3]
-as.factor(table1t$Site[3])
-(table1t$Site[3]=="")
-(table1t$Site[1]=="")
-for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="",as.factor(6),as.factor(7))}
-ttt
-for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="",as.factor("6"),as.factor("7"))}
-ttt
-for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="",as.factor("4"),as.factor("3"))}
-ttt
-str(ttt)
-for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="",as.factor("2"),as.factor("3"))}
-str(ttt)
-ttt
-help(ifelse)
-for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="","2","3")}
-ttt
-for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="","2",table1t$Site[i])}
-for(i in c(2:48)){ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor(table1t$Site[i]))}
-for(i in c(2:48)){temp<-ttt[i]<-table1t$Site[i]; ifelse((table1t$Site[i])=="","2","3")}
-for(i in c(2:48)){temp<-ttt[i]<-table1t$Site[i]; ifelse((table1t$Site[i])=="","2",temp)}
-ttt
-for(i in c(2:48)){temp<-table1t$Site[i]; ifelse((table1t$Site[i])=="","2",temp)}
-ttt
-table1t$Site
-for(i in c(2:48)){temp<-table1t$Site[i]; ttt[i]<-ifelse((table1t$Site[i])=="","2",temp)}
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",temp)}
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor(temp))}
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor(temp))}
-temp<-as.factor(table1t$Site[i])
-temp
-temp<-as.factor(table1t$Site[1])
-temp
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor("1"))}
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor("1"))}
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="","2",as.factor(temp))}
-str(ttt)
-str(table1t$Site[i])
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse((table1t$Site[i])=="",as.factor("2"),temp)}
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-as.factor(ifelse((table1t$Site[i])=="","2",temp))}
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-temp}
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse(TRUE,temp,temp}
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse(TRUE,temp,temp)}
-options(stringsAsFactors=FALSE)
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse(TRUE,temp,temp)}
-options(stringsAsFactors=TRUE)
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); ttt[i]<-ifelse(TRUE,temp,temp)}
-for(i in c(2:48)){temp<-as.factor(table1t$Site[i]); print(str(temp);ttt[i]<-ifelse(TRUE,temp,temp)}
-for(i in c(2:48))
-{}
-for(i in c(2:48))
-{
-temp<-as.factor(table1t$Site[i])
-print(str(temp))
-ttt[i]<-ifelse(TRUE,temp,temp)
-}
-for(i in c(2:48))
-{
-temp<-as.factor(table1t$Site[i])
-print(temp)
-ttt[i]<-ifelse(TRUE,temp,temp)
-}
-{
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-print(temp)#
-ttt[i]<-ifelse(TRUE,"3","3")#
-}
-}
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-print(temp)#
-ttt[i]<-ifelse(table1t$Site[i]=="","3","3")#
-}
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-print(temp)#
-ttt[i]<-ifelse(table1t$Site[i]=="","3",temp)#
-}
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-print(temp)#
-ttt[i]<-ifelse(!table1t$Site[i]=="" & !is.na(temp),temp,"3")#
-}
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-print(temp)#
-ttt[i]<-ifelse(!table1t$Site[i]=="" & !temp=="",temp,"3")#
-}
-ttt
-table1t$Site
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-print(temp)#
-if(!table1t$Site[i]=="") ttt[i]=temp)#
-}
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-print(temp)#
-if(!table1t$Site[i]==""){ ttt[i]=temp}#
-}
-ttt
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-tempb<-as.factor(table1t$Site[i-1])#
-print(temp)#
-if(!table1t$Site[i]==""){ ttt[i]=temp}#
-if(table1t$Site[i-1]==""){ ttt[i]=tempb}#
-}
-ttt
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-tempb<-as.factor(table1t$Site[i-1])#
-print(temp)#
-if(!table1t$Site[i]==""){ ttt[i]<-temp}#
-if(table1t$Site[i-1]==""){ ttt[i]<-tempb}#
-}
-ttt
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-tempb<-as.factor(table1t$Site[i-1])#
-print(temp)#
-if(!table1t$Site[i]==""){ ttt[i]<-temp}#
-if(table1t$Site[i-1]==""){ ttt[i]<-tempb}#
-}
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-tempb<-as.factor(table1t$Site[i-1])#
-print(temp)#
-if(!table1t$Site[i]==""){print("a") ttt[i]<-temp}#
-if(table1t$Site[i-1]==""){print(b) ttt[i]<-tempb}#
-}
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-tempb<-as.factor(table1t$Site[i-1])#
-print(temp)#
-if(!table1t$Site[i]==""){print("a") ttt[i]<-temp}#
-if(table1t$Site[i-1]==""){print("b") ttt[i]<-tempb}#
-}
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-tempb<-as.factor(table1t$Site[i-1])#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]==""){print("a") ttt[i]<-temp}#
-if(table1t$Site[i-1]==""){ttt[i]<-tempb}#
-}
-for(i in c(2:48))#
-{#
-temp<-as.factor(table1t$Site[i])#
-tempb<-as.factor(table1t$Site[i-1])#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]==""){ttt[i]<-tempb}#
-}
-ttt
-table1t$Site
-for(i in c(2:10))#
-{#
-temp<-as.factor(table1t$Site[i])#
-tempb<-as.factor(table1t$Site[i-1])#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]==""){ttt[i]<-tempb}#
-}
-for(i in c(2:10))#
-{#
-temp<-table1t$Site[i]#
-tempb<-table1t$Site[i-1]#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]=="")#
-{#
-print("a")#
-ttt[i]<-tempb}#
-}
-for(i in c(2:10))#
-{#
-temp<-table1t$Site[i]#
-tempb<-table1t$Site[(i-1)]#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]=="")#
-{#
-print("a")#
-ttt[i]<-tempb}#
-}
-for(i in c(2:10))#
-{#
-temp<-table1t$Site[i]#
-tempb<-table1t$Site[(i-1)]#
-print(i)#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]=="")#
-{#
-print("a")#
-ttt[i]<-tempb}#
-}
-table1t$Site[i]
-table1t$Site[1]
-print(table1t$Site[1])
-print(table1t$Site[1,1])
-print(table1t$Site[1,0])
-as.character(print(table1t$Site[1])
+cpairs(cpairs_cl2,cparis_cl2.order,capirs_cl2.color)
+cpairs(cpairs_cl2,cparis_cl2.order,cpairs_cl2.color)
+cpairs_cl2<-cluster2_tetra$rho#
+cpairs_cl2.color<-dmat.color(abs(cpairs_cl2))#
+cpairs_cl2.order<-order.single(abs(cpairs_cl2))
+cpairs(cpairs_cl2,cparis_cl2.order,cpairs_cl2.color)
+cpairs(cpairs_cl2,cpairs_cl2.order,cpairs_cl2.color)
+cpairs(cpairs_cl2,cpairs_cl2.order,cpairs_cl2.color,main="Cluster 2",gap=0.5)
+help(psych)
+help(scales)
+help(scoreItems)
+clique1
+summary(clique1)
+summary(clique2)
+summary(clique3)
+summary(clique4)
+summary(clique5)
+summary(clique6)
+clique6__tetra
+cluster6_tetra<-tetrachoric(clique6,na.rm=TRUE)
+cluster6_tetra
+selClique1 <- c(7,16,17)
+selClique1
+selClique1<-selClique+2
+selClique1<-selClique1+2
+selClique1 <- c(7,16,17)
+selClique1<-selClique1+1
+selClique1
+rawData <- read.csv(file.choose(), header=T)
+m_cor_r
+help(tetrachoric)
+m_cor_r_18<-m_cor_r#
+m_cor_r_18[,]<-as.numeric(abs(m_cor_r_18)>=0.18)#
+write.table(m_cor_r_18,file="heidi_hilow18A.cvs",sep=" ",row.names=FALSE)
+cor_symptoms
+m_cor_symptoms_80<-cor_symptoms#
+m_cor_symptoms_80[,]<-as.numeric(abs(m_cor_symptoms_80)>=0.80)#
+write.table(m_cor_symptoms_80,file="~/ClinicalH/heidi_symptoms_80.cvs",sep=" ",row.names=FALSE)
+rawData <- read.csv(file.choose(), header=T)
+selColum <- c(10,13,16,17:266,270:284,287:290) 	# Exclude some columns which may be a distraction to the analysis#
+#
+rawData2=subset(rawData,select=selColum)	# Set data with particular columns#
+#
+rawData3 <-na.trim(rawData2,sides="both", is.na="all")	# Trim off the rows with only NA values#
+#
+numNAs <- apply(rawData3, 1, function(z) sum(is.na(z)))    # count the NA's number in each rows#
+#
+meanNAnum <-mean(numNAs)				# get the average number of NA in each rows#
+#
+rawData4 <- rawData3[!(numNAs > 90),]                     # delete the rows if number of NA is greater than 90#
+#15/09/14#
+#--------Clean: Trim off rows contains more than 20 NAs-------------------------------------------------------#
+#
+numNAs_inData4 <- apply(rawData4, 1, function(z) sum(is.na(z))) # count NAs in Data4#
+#
+lessThan20 <- rawData4[!(numNAs_inData4 > 20),]	   #only select the rows contain less Than 20 NAs#
+#
+# this is the column only contains NAs  "qu11other", "qst51fano_n" (1247), "qst51mono_n" (998)#
+lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qu11other")]  #
+lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qst51fano_n")] #
+lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qst51mono_n")] #
+#
+# Trim out the rows that is NA in column "sex"#
+lessThan20 <-lessThan20[!is.na(lessThan20[, "sex"]),]#
+#
+# Trim out the rows that is NA in column "age_year"#
+lessThan20 <-lessThan20[!is.na(lessThan20[, "age_year"]),]#
+#
+#----- Trim Out the rows is NA in column "qst11_5" - num of rows decrease only 650, not apply#
+#TrimOutNARowsIn_qst11_5 <- lessThan20[!is.na(lessThan20[,"qst11_5"]),]#
+#
+#---- Excluded Columns contains loads of NAs (97:111)---#
+lessThan20_cleanCol=subset(lessThan20,select=c(1:96,112:269))#
+#----- Correlation: Apply polychoric function on the data set (Less than 20 NAs)#
+sweepOutLess20<-sweep(lessThan20,2,apply(lessThan20,2,min,na.rm=TRUE))	#Center the Raw Data#
+afterSweepLess20<-sweep(sweepOutLess20,2,apply(sweepOutLess20,2,max,na.rm=TRUE),"/")
+rawData4
+rawData
+selColum <- c(10,13,16,17:266,270:284,287:290) 	# Exclude some columns which may be a distraction to the analysis#
+#
+rawData2=subset(rawData,select=selColum)	# Set data with particular columns#
+#
+rawData3 <-na.trim(rawData2,sides="both", is.na="all")	# Trim off the rows with only NA values#
+#
+numNAs <- apply(rawData3, 1, function(z) sum(is.na(z)))    # count the NA's number in each rows#
+#
+meanNAnum <-mean(numNAs)				# get the average number of NA in each rows#
+#
+rawData4 <- rawData3[!(numNAs > 90),]                     # delete the rows if number of NA is greater than 90
+summary(rawData3)
+summary(rawData)
+selColum <- c(10,13,16,17:266,270:284,287:290) 	# Exclude some columns which may be a distraction to the analysis#
+#
+rawData2=subset(rawData,select=selColum)	# Set data with particular columns
+summary(rawData2)
+rawData3 <-na.trim(rawData2,sides="both", is.na="all")	# Trim off the rows with only NA values#
+#
+numNAs <- apply(rawData3, 1, function(z) sum(is.na(z)))    # count the NA's number in each rows
+summary(rawData3)
+rawData3 <-na.trim(rawData2,sides="both", is.na="all")	# Trim off the rows with only NA values
+library(zoo)
+rawData3 <-na.trim(rawData2,sides="both", is.na="all")	# Trim off the rows with only NA values
+numNAs <- apply(rawData3, 1, function(z) sum(is.na(z)))    # count the NA's number in each rows#
+#
+meanNAnum <-mean(numNAs)				# get the average number of NA in each rows#
+#
+rawData4 <- rawData3[!(numNAs > 90),]                     # delete the rows if number of NA is greater than 90#
+#15/09/14#
+#--------Clean: Trim off rows contains more than 20 NAs-------------------------------------------------------#
+#
+numNAs_inData4 <- apply(rawData4, 1, function(z) sum(is.na(z))) # count NAs in Data4#
+#
+lessThan20 <- rawData4[!(numNAs_inData4 > 20),]	   #only select the rows contain less Than 20 NAs#
+#
+# this is the column only contains NAs  "qu11other", "qst51fano_n" (1247), "qst51mono_n" (998)#
+lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qu11other")]  #
+lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qst51fano_n")] #
+lessThan20 <- lessThan20[,! colnames(lessThan20) %in% c("qst51mono_n")] #
+#
+# Trim out the rows that is NA in column "sex"#
+lessThan20 <-lessThan20[!is.na(lessThan20[, "sex"]),]#
+#
+# Trim out the rows that is NA in column "age_year"#
+lessThan20 <-lessThan20[!is.na(lessThan20[, "age_year"]),]#
+#
+#----- Trim Out the rows is NA in column "qst11_5" - num of rows decrease only 650, not apply#
+#TrimOutNARowsIn_qst11_5 <- lessThan20[!is.na(lessThan20[,"qst11_5"]),]#
+#
+#---- Excluded Columns contains loads of NAs (97:111)---#
+lessThan20_cleanCol=subset(lessThan20,select=c(1:96,112:269))#
+#----- Correlation: Apply polychoric function on the data set (Less than 20 NAs)#
+sweepOutLess20<-sweep(lessThan20,2,apply(lessThan20,2,min,na.rm=TRUE))	#Center the Raw Data#
+afterSweepLess20<-sweep(sweepOutLess20,2,apply(sweepOutLess20,2,max,na.rm=TRUE),"/")
+# Divide the Less Than 20 data set into three data set (Continuous, Polytomous, Dichotomous)#
+selContinu <- c(1,3,4,5,8,11,14,17,20,22:27,35,36,37,38,46,54,62,72:93,96,100:115,136,141,149,160,185,203,235,236,238,249:253)#
+selPolytomous<- c(6,7,9,10,12,13,15,16,18,19,21,34,45,53,56:61,63:71,94,95,97,98,99,116:135,137:140,142:148,150:159,161:184,186:202,204:234,237,239:248,254)#
+selDichoto<- c(2,28:33,39:44,47:52,55)#
+#
+subset_continu=subset(lessThan20_cleanCol, select=selContinu )#
+subset_polytomous=subset(lessThan20_cleanCol, select=selPolytomous )#
+subset_dichoto=subset(lessThan20_cleanCol, select=selDichoto )#
+#
+#Center the Data less than 20, only apply on continuous data set#
+sweepOutContinu<-sweep(subset_continu,2,apply(subset_continu,2,min,na.rm=TRUE))	#
+afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/")#
+#
+# Bind the centered continuous dataset with two other subset (Continuous, Polytmous, Dichotomous)#
+bindThreeSubset <- cbind(afterSweepContinu, subset_polytomous, subset_dichoto)
+bindThreeTran<-t(bindThreeSubset)
+bindThreeTran
+summary(lessThan20_cleanCol)
+lessThan20_cleanCol
+955+654
+bindThreeSubsets
+bindThreeSubset
+654+955
+lessThan20_cleanCol
+nrow(lessThan20_cleanCol)
+nrow(lessThan20_cleanCol[1,]
 )
-as.character(table1t$Site[1])
-for(i in c(2:10))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(table1t$Site[(i-1)])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]=="")#
-{#
-print("b")#
-ttt[i]<-tempb}#
-}
-for(i in c(2:10))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(ttt[i])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]=="")#
-{#
-print("b")#
-ttt[i]<-tempb}#
-}
-ttt
-for(i in c(2:10))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(table1t$Site[(i-1)])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]=="")#
-{#
-print("b")#
-ttt[i]<-tempb}#
-}
-ttt<-table1t$Site
-for(i in c(2:10))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(ttt[i])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]=="")#
-{#
-print("b")#
-ttt[i]<-tempb}#
-}
-ttt[1]
-ttt[(2-1)]
-as.character(ttt[(2-1)])
-ttt[2]<-as.character(ttt[(2-1)])
-ttt[2]
-for(i in c(2:10))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(ttt[i-1])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]=="")#
-{#
-print("b")#
-ttt[i]<-tempb}#
-}
-tt
-tttt
-ttt
-ttt<-table1t$Site
-for(i in c(2:10))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(ttt[i-1])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]=="")#
-{#
-print("b")#
-ttt[i]<-tempb}#
-}
-for(i in c(2:10))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(ttt[i-1])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]=="")#
-{#
-print("b")#
-ttt[i]<-tempb#
-}#
-}
-for(i in c(2:10))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(ttt[i-1])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(!table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-temp#
- }#
-if(table1t$Site[i-1]=="")#
-{#
-print("b")#
-ttt[i]<-tempb#
-}#
-print(ttt[i])#
-}
-for(i in c(2:10))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(ttt[i-1])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-tempb#
- }#
-if(!table1t$Site[(i)]=="")#
-{#
-print("b")#
-ttt[i]<-temp#
-}#
-print(ttt[i])#
-}
-ttt
-for(i in c(2:length(table1t$Site)))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(ttt[i-1])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-tempb#
- }#
-if(!table1t$Site[(i)]=="")#
-{#
-print("b")#
-ttt[i]<-temp#
-}#
-print(ttt[i])#
-}
-ttt
-ttt<-table1t$Site#
-for(i in c(2:length(table1t$Site)))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(ttt[i-1])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-tempb#
- }#
-if(!table1t$Site[(i)]=="")#
-{#
-print("b")#
-ttt[i]<-temp#
-}#
-print(ttt[i])#
-}#
-table1t$Site<-ttt
-ttt<-table1t$Site#
-for(i in c(2:length(table1t$Site)))#
-{#
-temp<-as.character(table1t$Site[i])#
-tempb<-as.character(ttt[i-1])#
-print(i)#
-print(temp)#
-print(tempb)#
-if(table1t$Site[i]=="")#
-{#
-print("a")#
- ttt[i]<-tempb#
- }#
-if(!table1t$Site[(i)]=="")#
-{#
-print("b")#
-ttt[i]<-temp#
-}#
-print(ttt[i])#
-}#
-table1t
+lessThan20_cleanCol[1,]
+lessThan20_cleanCol[0,]
+selTClique1 <- c(43,77,91,119,121,123,129,134,137,138,141,142,146,147,148,149,150,151,152,154,156,157,160,171,174176,177,178,181,183,184,188,189,193,195,197,200,202,204,208,209,213,247,253,345,353,361,394,416,509907,1122,1123)#
+selTClique2 <- c(49,600,613,635,650,677,681,683,688,709,815,1004,1017,1315,1321)#
+selTClique3 <- c(54,279,281,282,288,289,290,293,301,308,315,324,356,532,547,550,551,553,554,556,565,568,569,570,572573,574,577,585,590,693,694,856,861,862,875,882,885,889,893,896,915,916,1129,1132,1135,1136,1138,1141,1142,1143,1145,1147,1148,1149,1152,1155,1157,1158,1159,1160,1162,1163,1164,1165,1166,1172,1174,1175,1177,1178,1179,1181,1182,1193,1207,1213)#
+selTClique4 <- c(56,69,347,403,421,454,463,480,485,495,497,503,508,510,608,611,618,628,648,649,653,658,661,662,671674,675,676,678,682,697,699,706,713,719,725,727,729,732,743,746,747,748,753,757,758,760,762,763,764765,766,767,768,772,773,775,776,777,778,780,781,783,784,785,786,788,789,790,792,793,794,795,796,797798,799,801,820,824,838,841,843,847,870,891,897,957,968,970,975,978,986,988,996,1010,1093,1317)#
+selTClique5 <- c(95,131,158,166,180,186,198,680,692,721,724,726,731,739,770,774,779,782,787,800,825,832,836,845,859864,868,880,884,989)#
+selTClique6 <- c(100,222,231,237,239,240,242,243,251,252,259,263,268,269,270,271,273,274,276,304,344,612,616,625,626627,638,651,652,654,666,667,669,672,673,684,685,686,710,716,722,734,745,750,816,821,831,839,842,849850,851,857,866,872,873,874,877,890,894,898,900,903,913,914,918,922,923,928,932,935,941,942,943,944951,954,955,956,959,960,961,962,963,964,972,976,987,993,994,1024,1032,1036,1044,1047,1049,1125,1252,1254,1258,1261,1272,1281)#
+selTClique7 <- c(144,169,170,466,636,1060,1061,1062,1063,1064,1065,1068,1072,1073,1079,1083,1085,1086,1090,1091,1095,1097,1098,1099,1101,1104,1105,1109,1113,1115,1118,1119,1120,1121,1126,1127,1239,1334)#
+selTClique8 <- c(283,286,300,306,307,310,311,318,319,320,323,327,330,332,434,555,566,691,1051,1183,1186,1188,1194,1197,1201,1202,1204,1209,1214,1216,1218,1219,1225,1227)#
+selTClique9 <- c(352,354,358,368,374,377,391,393,395)#
+selTCliqueA <- c(357,376,380,405,412,420,433,436,607,631,639,715,946,949,1019,1310,1313,1320,1328,1333)#
+selTCliqueB <- c(375,435,447,450,453,464,476,478,484,490,493,511,513,522,525,526,527,528,529,533,534,535,536,538,542543,544,619,620,629,630,632,633,634,645,655,657,665,679,751,754,802,812,826,827,828,829,833,834,835837,840,846,848,853,855,906,909,910,912,921,925,926,929,930,931,936,948,1000,1007,1011,1014,1022,1043,1045,1234,1241,1242,1243,1246,1247,1248,1253,1256,1262,1263,1268,1270,1271,1275,1276,1278,1282,1284,1288,1294,1296,1297,1298,1299,1300,1303,1309,1314,1318,1327,1339,1340,1341)#
+selTCliqueC <- c(399,413,419,427,432,449,455,469,471,477,479,492,498,501,514)#
+selTCliqueD <- c(902,934,939,947,1013,1025,1033,1037,1038,1041,1054,1056,1058,1069,1076,1078,1081,1087,1089,1096,1100,1102,1106,1107,1108,1110,1111,1112,1116,1124,1140,1161,1169,1170,1171,1173,1184,1189,1192,1196,1198,1200,1203,1205,1208,1210,1211,1217,1220,1221,1222,1226,1228,1229,1230,1231,1232,1233,1235,1236,1237,1240,1244,1245,1251,1255,1257,1264,1265,1269,1273,1274,1277,1279,1280,1283,1285,1286,1287,1289,1291,1292,1293,1295,1301,1302,1304,1306,1308,1311,1312,1316,1319,1322,1326,1329,1330,1331,1335,1336,1337,1342,1343,1344,1346,1347)
+lessThan20_cleanCol
+setTClique1R<-selTClique1 +1
+setTClique1R<-selTClique1 +1#
+setTClique2R<-selTClique2 +1#
+setTClique3R<-selTClique3 +1#
+setTClique4R<-selTClique4 +1#
+setTClique5R<-selTClique5 +1#
+setTClique6R<-selTClique6 +1#
+setTClique7R<-selTClique7 +1#
+setTClique8R<-selTClique8 +1#
+setTClique9R<-selTClique9 +1#
+setTCliqueAR<-selTCliqueA +1#
+setTCliqueBR<-selTCliqueB +1#
+setTCliqueCR<-selTCliqueC +1#
+setTCliqueDR<-selTCliqueD +1
+lessThan20_cleanColTC1<-lessThan20_cleanCol[setTClique1R,]
+lessThan20_cleanColTC1
+summary(lessThan20_cleanColTC1)
+summary(lessThan20_cleanColTC1$hba1c)
+lessThan20_cleanColTC1<-lessThan20_cleanCol[setTClique1R,]#
+lessThan20_cleanColTC2<-lessThan20_cleanCol[setTClique2R,]#
+lessThan20_cleanColTC3<-lessThan20_cleanCol[setTClique3R,]#
+lessThan20_cleanColTC4<-lessThan20_cleanCol[setTClique4R,]#
+lessThan20_cleanColTC5<-lessThan20_cleanCol[setTClique5R,]#
+lessThan20_cleanColTC6<-lessThan20_cleanCol[setTClique6R,]#
+lessThan20_cleanColTC7<-lessThan20_cleanCol[setTClique7R,]#
+lessThan20_cleanColTC8<-lessThan20_cleanCol[setTClique8R,]#
+lessThan20_cleanColTC9<-lessThan20_cleanCol[setTClique9R,]#
+lessThan20_cleanColTCA<-lessThan20_cleanCol[setTCliqueAR,]#
+lessThan20_cleanColTCB<-lessThan20_cleanCol[setTCliqueBR,]#
+lessThan20_cleanColTCC<-lessThan20_cleanCol[setTCliqueCR,]#
+lessThan20_cleanColTCD<-lessThan20_cleanCol[setTCliqueDR,]
+summary(lessThan20_cleanColTC1$hba1c)#
+sd(lessThan20_cleanColTC1$hba1c)#
+summary(lessThan20_cleanColTC2$hba1c)#
+sd(lessThan20_cleanColTC2$hba1c)#
+summary(lessThan20_cleanColTC3$hba1c)#
+sd(lessThan20_cleanColTC3$hba1c)#
+summary(lessThan20_cleanColTC4$hba1c)#
+sd(lessThan20_cleanColTC4$hba1c)#
+summary(lessThan20_cleanColTC5$hba1c)#
+sd(lessThan20_cleanColTC5$hba1c)#
+summary(lessThan20_cleanColTC6$hba1c)#
+sd(lessThan20_cleanColTC6$hba1c)#
+summary(lessThan20_cleanColTC7$hba1c)#
+sd(lessThan20_cleanColTC7$hba1c)#
+summary(lessThan20_cleanColTC8$hba1c)#
+sd(lessThan20_cleanColTC8$hba1c)#
+summary(lessThan20_cleanColTC9$hba1c)#
+sd(lessThan20_cleanColTC9$hba1c)#
+summary(lessThan20_cleanColTCA$hba1c)#
+sd(lessThan20_cleanColTCA$hba1c)#
+summary(lessThan20_cleanColTCB$hba1c)#
+sd(lessThan20_cleanColTCB$hba1c)#
+summary(lessThan20_cleanColTCC$hba1c)#
+sd(lessThan20_cleanColTCC$hba1c)#
+summary(lessThan20_cleanColTCD$hba1c)#
+sd(lessThan20_cleanColTCD$hba1c)
+lessThan20_cleanColTCD$hba1c
+sd(lessThan20_cleanColTCD$hba1c)
+help(sd)
+summary(lessThan20_cleanColTC1$hba1c)#
+sd(lessThan20_cleanColTC1$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTC2$hba1c)#
+sd(lessThan20_cleanColTC2$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTC3$hba1c)#
+sd(lessThan20_cleanColTC3$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTC4$hba1c)#
+sd(lessThan20_cleanColTC4$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTC5$hba1c)#
+sd(lessThan20_cleanColTC5$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTC6$hba1c)#
+sd(lessThan20_cleanColTC6$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTC7$hba1c)#
+sd(lessThan20_cleanColTC7$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTC8$hba1c)#
+sd(lessThan20_cleanColTC8$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTC9$hba1c)#
+sd(lessThan20_cleanColTC9$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTCA$hba1c)#
+sd(lessThan20_cleanColTCA$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTCB$hba1c)#
+sd(lessThan20_cleanColTCB$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTCC$hba1c)#
+sd(lessThan20_cleanColTCC$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTCD$hba1c)#
+sd(lessThan20_cleanColTCD$hba1c,na.rm =TRUE)
+summary(lessThan20_cleanCol$hba1c)#
+sd(lessThan20_cleanCol$hba1c,na.rm =TRUE)
+summary(lessThan20_cleanCol)
+summary(lessThan20_cleanColTC1$numketo)#
+sd(lessThan20_cleanColTC1$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC2$numketo)#
+sd(lessThan20_cleanColTC2$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC3$numketo)#
+sd(lessThan20_cleanColTC3$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC4$numketo)#
+sd(lessThan20_cleanColTC4$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC5$numketo)#
+sd(lessThan20_cleanColTC5$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC6$numketo)#
+sd(lessThan20_cleanColTC6$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTC7$numketo)#
+sd(lessThan20_cleanColTC7$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC8$numketo)#
+sd(lessThan20_cleanColTC8$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC9$numketo)#
+sd(lessThan20_cleanColTC9$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCA$numketo)#
+sd(lessThan20_cleanColTCA$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCB$numketo)#
+sd(lessThan20_cleanColTCB$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCC$numketo)#
+sd(lessThan20_cleanColTCC$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCD$numketo)#
+sd(lessThan20_cleanColTCD$numketo,na.rm =TRUE)
+histogram(lessThan20_cleanColTC1)
+histergram(lessThan20_cleanColTC1)
+hist(lessThan20_cleanColTC1)
+hist(lessThan20_cleanColTC1$hba1c)
+hist(lessThan20_cleanColTC2$hba1c)
+hist(lessThan20_cleanColTC3$hba1c)
+hist(lessThan20_cleanColTC4$hba1c)
+hist(lessThan20_cleanColTC5$hba1c)
+hist(lessThan20_cleanColTC6$hba1c)
+hist(lessThan20_cleanColTC7$hba1c)
+hist(lessThan20_cleanColTC8$hba1c)
+hist(lessThan20_cleanColTC9$hba1c)
+hist(lessThan20_cleanColTCA$hba1c)
+hist(lessThan20_cleanColTCB$hba1c)
+hist(lessThan20_cleanColTCC$hba1c)
+print(hist(lessThan20_cleanColTCC$hba1c))
+pdf("Type I diabetes plots.pdf")#
+hist(lessThan20_cleanColTC1$hba1c)#
+hist(lessThan20_cleanColTC2$hba1c)#
+hist(lessThan20_cleanColTC3$hba1c)#
+hist(lessThan20_cleanColTC4$hba1c)#
+hist(lessThan20_cleanColTC5$hba1c)#
+hist(lessThan20_cleanColTC6$hba1c)#
+hist(lessThan20_cleanColTC7$hba1c)#
+hist(lessThan20_cleanColTC8$hba1c)#
+hist(lessThan20_cleanColTC9$hba1c)#
+hist(lessThan20_cleanColTCA$hba1c)#
+hist(lessThan20_cleanColTCB$hba1c)#
+hist(lessThan20_cleanColTCC$hba1c)#
+hist(lessThan20_cleanColTCD$hba1c)#
+dev.off()
+lessThan20_cleanColTC1$numketo
+lessThan20_cleanColTC2$numketo
+lessThan20_cleanColTC3$numketo
+lessThan20_cleanColTC4$numketo
+lessThan20_cleanColTC5$numketo
+lessThan20_cleanColTC6$numketo
+lessThan20_cleanColTC7$numketo
+lessThan20_cleanColTC8$numketo
+lessThan20_cleanColTC9$numketo
+lessThan20_cleanColTC10$numketo
+lessThan20_cleanColTCA$numketo
+lessThan20_cleanColTCB$numketo
+summary(lessThan20_cleanColTC1$numketo)#
+sd(lessThan20_cleanColTC1$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC2$numketo)#
+sd(lessThan20_cleanColTC2$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC3$numketo)#
+sd(lessThan20_cleanColTC3$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC4$numketo)#
+sd(lessThan20_cleanColTC4$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC5$numketo)#
+sd(lessThan20_cleanColTC5$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC6$numketo)#
+sd(lessThan20_cleanColTC6$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTC7$numketo)#
+sd(lessThan20_cleanColTC7$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC8$numketo)#
+sd(lessThan20_cleanColTC8$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC9$numketo)#
+sd(lessThan20_cleanColTC9$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCA$numketo)#
+sd(lessThan20_cleanColTCA$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCB$numketo)#
+sd(lessThan20_cleanColTCB$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCC$numketo)#
+sd(lessThan20_cleanColTCC$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCD$numketo)#
+sd(lessThan20_cleanColTCD$numketo,na.rm =TRUE)
+lessThan20_cleanCol$numketo
+summary(lessThan20_cleanCol$numketo)
+sd(lessThan20_cleanCol$numketo)
+sd(lessThan20_cleanCol$numketo,na.rm=TRUE)
+summary(lessThan20_cleanColTC1$numketo)#
+sd(lessThan20_cleanColTC1$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC2$numketo)#
+sd(lessThan20_cleanColTC2$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC3$numketo)#
+sd(lessThan20_cleanColTC3$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC4$numketo)#
+sd(lessThan20_cleanColTC4$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC5$numketo)#
+sd(lessThan20_cleanColTC5$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC6$numketo)#
+sd(lessThan20_cleanColTC6$hba1c,na.rm =TRUE)#
+summary(lessThan20_cleanColTC7$numketo)#
+sd(lessThan20_cleanColTC7$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC8$numketo)#
+sd(lessThan20_cleanColTC8$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTC9$numketo)#
+sd(lessThan20_cleanColTC9$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCA$numketo)#
+sd(lessThan20_cleanColTCA$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCB$numketo)#
+sd(lessThan20_cleanColTCB$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCC$numketo)#
+sd(lessThan20_cleanColTCC$numketo,na.rm =TRUE)#
+summary(lessThan20_cleanColTCD$numketo)#
+sd(lessThan20_cleanColTCD$numketo,na.rm =TRUE)
+lessThan20_cleanColTC1
+write.table(lessThan20_cleanColTC1,file="DiabetesPatenentsBySymptomCluster1.cvs",sep=" ",row.names=TRUE)
+hist(lessThan20_cleanColTC1$numketo)
+dist(lessThan20_cleanColTC1$numketo)
+help(dist)
+lessThan20_cleanColTC1$numketo
+lessThan20_cleanColTC1[,c(1,numketo)]
+lessThan20_cleanColTC1[,c(numketo)]
+lessThan20_cleanColTC1[c(numketo),]
+lessThan20_cleanColTC1$numketo
+require(xlsx)
+getwd()
+ls()
+ls(/Users/pcru)
+ls(/Users/pcru")
+ls(""/Users/pcru")
+ls("/Users/pcru")
+ls(*.*)
+ls(1_R Wkshp_dummy data_OTU table)
+dir()
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1")
+summary(table1)
 table1
+table1[Group=Control]
+table1[Group="Control"]
+object(table1)
+print(table1)
+names(table1)
+table1[Group]
+names(data.frame)
+help(data.frame)
+table1(Group)
+table1[,10]
+table1[,1]
+table1[,2]
+table1[1:2,2]
+table1[1:3,2]
+table1[1:5,2]
+table1[1:5,1:2]
+table1[1:5,1:20]
+table1[1:5,1:40]
+table1[1:5,Group=Contaminated]
+table1[1:5,Group="Contaminated"]
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=TRUE)
+table1
+table1[1:5,2]
+table1[1:10,2]
+print(table1)
+table1[1:10,2]
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=TRUE,rowNames=True)
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=TRUE,rowNames=TRUE)
+table1
+str(table1)
+table1$Group
+table1$Contaminated
+dim(table1)
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=false,rowNames=TRUE)
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=TRUE)
+table1
+table1[Site=1]
+table1[Site=1,]
+table1$site
+table1$Site
+names(table1)
+str(table1)
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=FALSE)
+str(table1)
+table1t=t(table1)
+table1t
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=TRUE)
+table1t=t(table1)
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=TRUE)
+table1t=t(table1)
+str(table1)
+str(table1t)
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=TRUE,transpose=TRUE)
+table1
+str(table1)
+help(str)
+help(read.xlsx)
+help(data.frame)
+table2<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=TRUE,transpose=TRUE)
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=TRUE,transpose=FALSE)
+str table 1
+str table1
+str(table1)
+str(table2)
+read.dif
+read.DIF
+table1<-read.DIF("1_R Wkshp_dummy data_OTU table.dif",header=FALSE,rowNames=TRUE,transpose=FALSE)
+table1<-read.DIF("1_R Wkshp_dummy data_OTU table.dif",header=FALSE,rowNames=TRUE,transpose=TRUE)
+table1<-read.DIF("1_R Wkshp_dummy data_OTU table.dif",header=FALSE,transpose=TRUE)
+table1
+table1<-read.DIF("1_R Wkshp_dummy data_OTU table.dif",header=TRUE,transpose=TRUE)
+table1
+table1<-read.DIF("1_R Wkshp_dummy data_OTU table.dif",header=TRUE,transpose=TRUE)
+table1
+table1<-read.DIF("1_R Wkshp_dummy data_OTU table.dif",header=FALSE,transpose=TRUE)
+help(read.DIF)
+table1<-read.DIF("1_R Wkshp_dummy data_OTU table.dif",header=FALSE,transpose=TRUE,blank.lines.skip=TRUE)
+table3<-read.DIF("1_R Wkshp_dummy data_OTU table.dif",header=FALSE,transpose=TRUE,blank.lines.skip=TRUE)
+table3
+tt3<-t(table3)
+tt3
+tt2<-t(table2)
+tt2
+require(xlsx)#
+require(xtable)#
+#
+#chunk3#
+setwd("/Users/pcru/SizeDoesMatter1")#
+table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=FALSE,transpose=TRUE,endRow=18)#
+#
+#chunk6#
+table1t=setNames(data.frame(t(table1[,-1])),table1[,1])#
+ctridx<-which(table1t$Group=="Control")#
+table1t$Group[1:48]<-"Contaminated"#
+table1t$Group[(ctridx+1):48]<-"Control"#
+#
+#chunk6ii#
+ttt<-table1t$Site#
+for(i in c(2:length(table1t$Site)))#
+{#
+temp<-as.character(table1t$Site[i])#
+tempb<-as.character(ttt[i-1])#
+#print(i)#
+#print(temp)#
+#print(tempb)#
+if(table1t$Site[i]=="")#
+{#
+#print("a")#
+ ttt[i]<-tempb#
+ }#
+if(!table1t$Site[(i)]=="")#
+{#
+#print("b")#
+ttt[i]<-temp#
+}#
+print(ttt[i])#
+}#
+table1t$Site<-ttt#
+#
+#chunk6iii#
+able1t$Rep<-str_replace(table1t$Rep,"[rep]{3}?","\\1")#
+table1t$Rep<-str_replace(table1t$Rep,"A","1")#
+table1t$Rep<-str_replace(table1t$Rep,"B","2")#
+table1t$Rep<-str_replace(table1t$Rep,"C","3")#
+table1t$Rep<-as.factor(table1t$Rep)#
+#
+#chunk7#
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)#
+#
+#chunk8ii#
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)#
+sapply(table2,mode)#
+sapply(table2,class)#
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",3),rep("character",2),rep("numeric",6)),endRow=4)#
+#
+#chunk8iii#
+table2f<-table2#
+table2f$Spill.date<-as.Date(table2f$Spill.date,"%d-%b-%y")#
+table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")#
+sapply(table2f,mode)#
+sapply(table2f,class)#
+table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))#
+table2bf<-table2b#
+table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")#
+#table2bf$Sample.collection.date<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")#
+cdate1<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")#
+cdate2<-as.Date(table2bf$Sample.collection.date,"%d/%m/%y")#
+table2bf$Sample.collection.date<-as.Date(ifelse(!is.na(cdate1),as.Date(cdate1),as.Date(cdate2)), origin="1970-01-01")#
+table2bf$Group<-as.factor(table2bf$Group)#
+table2bf$Rep<-as.factor(table2bf$Rep)#
+na_count <-sapply(table2bf, function(y) sum(length(which(is.na(y)))))#
+na_count#
+dated<-table2bf$Sample.collection.date-table2bf$Spill.date#
+#
+#chunk8iv#
+require(stringr)#
+table2bf$Rep<-str_replace(table2bf$Rep,"[rep]{3}?","\\1")#
+table2bf$Rep<-str_replace(table2bf$Rep,"A","1")#
+table2bf$Rep<-str_replace(table2bf$Rep,"B","2")#
+table2bf$Rep<-str_replace(table2bf$Rep,"C","3")#
+table2bf$Rep<-as.factor(table2bf$Rep)#
+str(table2bf)#
+#chunk9#
+tab1c<-table1t[1:9,]
+library(sqldf)#
+library(DBI)#
+require(RSQLite)
+library(sqldf)#
+library(DBI)#
+require(RSQLite)
+library(sqldf)
+library(sqldf)#
+library(DBI)#
+require(RSQLite)
+db <- dbConnect(SQLite(), dbname="Test.sqlite")
+sqldf(attach "Test1.sqlite" as new)
+help(packate sqldf)
+load(file = "~/RProject/sqlite/DATA/Class.rda")
+help(dbWriteTable)
+dbWriteTable(db,"table1",table1f)
+table1f
+dbWriteTable(db,"table1",table1t)
+dbReadTable(con,"table1")
+dbReadTable(db,"table1")
+dbListFields(db,"table1")
+dbListTables(db)
+dbGetQuery(db, "SELECT * from table1")
+reshape(table1f)
+reshape(table1t)
+reshape(table1t,wide)
+reshape(table1t,direction=wide)
+help(reshape)
+reshape(table1t,direction="wide")
+reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
+help(reshape2)
+help(package reshape2)
+require(reshape2)
+help(reshape2)
+??reshape2
