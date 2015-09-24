@@ -755,7 +755,6 @@ m3ii<-rename(m3i,c("Sample ID"="Sample.ID"))
 table3fiii<-cbind(table3fii, corynebacteriaceae, porphyromondaceae)
 setdiff(names(m3ii),names(table3fiii))
 
-
 m3ii[,c(7:24)] <- sapply(m3ii[,c(7:24)],as.numeric)
 m3ii[,c(1:4)] <-sapply(m3ii[,c(1:4)],as.character)
 #m3ii[,c("Site")] <-sapply(m3ii[,c("Site")],as.character)
@@ -902,11 +901,13 @@ abundance<-table4[,c(7:25)]
 \begin{frame}[fragile]
   \frametitle{Adding a new column}
   \framesubtitle{Calculating the number of days}
-  Using the $is.Date$ command
-  \begin{block}
+  %Using the $is.Date$ command
+  \begin{block}{Calculating the number of days}
   We can just subtract as.Date fields
   \end{block}
  <<chunk11i, echo=TRUE>>=
+ dates4<-table4[,c(5,6)]
+abundance<-table4[,c(7:25)]
   days<-dates4[,2]-dates4[,1]
 @
   
