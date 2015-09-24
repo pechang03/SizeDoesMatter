@@ -1,6 +1,4 @@
-%\documentclass[12pt]{beamer}
-%\documentclass[10pt,handout,english]{beamer}
-\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[12pt]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -50,8 +48,10 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
-\usepackage[envcountsect]{beamerarticle}
-%usepackage{beamerarticle}
+%\documentclass[10pt,handout,english]{beamer}
+%\documentclass{article}
+%\usepackage[envcountsect]{beamerarticle}
+
 
 
 \usetheme{Air}
@@ -67,7 +67,7 @@
 \lstloadlanguages{R} 
 
 
-%\geometry{paperwidth=160mm,paperheight=105mm}
+\geometry{paperwidth=160mm,paperheight=125mm}
 \usepackage{pgfpages}
 
 \usepackage{lipsum}
@@ -90,9 +90,11 @@
 %-------------------------------------------------------------------------------------
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
-\lstset{language=R,basicstyle=\smaller[2]%}
+\lstset{language=R,basicstyle=\smaller[2]
 ,commentstyle=\rmfamily\smaller,  showstringspaces=false,
-xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1} 
+xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1,
+tabsize=3, 
+showstringspaces=false} 
 \lstset{escapeinside={(*}{*)}}   % for (*\ref{ }*) inside lstlistings (S code) 
 \linewidth=325pt
 \frame{\titlepage}
@@ -257,7 +259,7 @@ xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Getting Started}
   \framesubtitle{Basic steps}
 
@@ -288,7 +290,7 @@ xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Getting Started}
   \framesubtitle{Help Functions}
 \begin{block}{To access the documentation type}
@@ -307,7 +309,7 @@ example(sd)
   \framesubtitle{Search the Web}
 \begin{block}{To search R documentation}
 RSiteSearch("key phrase")
-%help(adf.test,package="tseries")
+help(adf.test,package="tseries")
 %to search for a tutorial for a package
 %vignette(package="packagename")
 %For an intro to vignettes see
@@ -352,7 +354,7 @@ Some discussion recently on how to work creatively. Research out of  successful 
 \end{frame}  
 
 \section*{Reading our file}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the table}
   \framesubtitle{Check the current directory}
 \begin{block}{Where are we}
@@ -366,7 +368,7 @@ ls()  #This lists the variables
 \end{block}
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the table}
   \framesubtitle{Reading a table}
 \begin{block}{To read a csv table as a table try}
@@ -384,7 +386,7 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
 \end{frame}
 
 \section*{Getting help on packages}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{R Packages}
   \framesubtitle{CRAN}
   
@@ -425,7 +427,7 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
 \end{knitrout}
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the table}
   \framesubtitle{An example}
 \begin{lstlisting} 
@@ -433,7 +435,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
 
 "Sheet1",header=FALSE,rowNames=FALSE,transpose=TRUE,endRow=18)
 \end{lstlisting}
-  
+{\bf Loading the xlsx package}  
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 
@@ -448,9 +450,12 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: methods\\\#\# Loading required package: xlsxjars\\\#\# Loading required package: xtable}}\end{kframe}
 \end{knitrout}
-
+\end{frame}
+\begin{frame}[fragile]
+  \frametitle{Lets read the table}
+  \framesubtitle{The columns are wrong}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Tue Sep 22 19:33:16 2015
+% Thu Sep 24 21:32:17 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -470,7 +475,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the table}
   \framesubtitle{Transpose the table}
   \begin{block}{Transposing}
@@ -480,26 +485,43 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{table1t}\hlkwb{=}\hlkwd{setNames}\hlstd{(}\hlkwd{data.frame}\hlstd{(}\hlkwd{t}\hlstd{(table1[,}\hlopt{-}\hlnum{1}\hlstd{])),table1[,}\hlnum{1}\hlstd{])}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\url{http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC}
+\url{http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Fields across many columns}
+  \framesubtitle{Replicating first column}
+\begin{block}{ Lets do it the easy way first}
+\end{block}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
 \hlstd{ctridx}\hlkwb{<-}\hlkwd{which}\hlstd{(table1t}\hlopt{$}\hlstd{Group}\hlopt{==}\hlstr{"Control"}\hlstd{)}
 \hlstd{table1t}\hlopt{$}\hlstd{Group[}\hlnum{1}\hlopt{:}\hlnum{48}\hlstd{]}\hlkwb{<-}\hlstr{"Contaminated"}
 \hlstd{table1t}\hlopt{$}\hlstd{Group[(ctridx}\hlopt{+}\hlnum{1}\hlstd{)}\hlopt{:}\hlnum{48}\hlstd{]}\hlkwb{<-}\hlstr{"Control"}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\begin{lstlisting}
+\lstset{columns=flexible}
+\lstset{keepspaces=true}
+\begin{lstlisting}(tabsize is 4)
 ttt<-table1t$Site
 for(i in c(2:length(table1t$Site)))
 {
-	temp<-as.character(table1t$Site[i])
-	tempb<-as.character(ttt[i-1])
-	if(table1t$Site[i]=="") 
-	{
-		 ttt[i]<-tempb
- 	}
-	if(!table1t$Site[(i)]=="")
-	{
-		ttt[i]<-temp
-	}
+    temp<-as.character(table1t$Site[i])
+    tempb<-as.character(ttt[i-1])
+    if(table1t$Site[i]=="") 
+    {
+         ttt[i]<-tempb
+    }
+    if(!table1t$Site[(i)]=="")
+    {
+        ttt[i]<-temp
+    }
 }
 table1t$Site<-ttt
 \end{lstlisting}
@@ -657,64 +679,59 @@ table1t$Site<-ttt
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: stringr}}\end{kframe}
-\end{knitrout}
-
-%{\url http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC}
-\url{http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally}
-% latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Tue Sep 22 19:33:17 2015
-\begin{table}[ht]
-\centering
-\begin{tabular}{rlllll}
-  \hline
- & Group & Site & Sample ID & Rep & phormidiaceae \\ 
-  \hline
-X2 & Contaminated & 1 & 10000 & 1 & 24872 \\ 
-  X3 & Contaminated & 1 & 10001 & 2 & 24872 \\ 
-  X4 & Contaminated & 1 & 10002 & 3 & 5822 \\ 
-  X5 & Contaminated & 2 & 10003 & 1 & 7538 \\ 
-  X6 & Contaminated & 2 & 10004 & 2 & 7201 \\ 
-  X7 & Contaminated & 2 & 10005 & 3 & 7538 \\ 
-   \hline
-\end{tabular}
-\end{table}
-% latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Tue Sep 22 19:33:17 2015
-\begin{table}[ht]
-\centering
-\begin{tabular}{rlllll}
-  \hline
- &          Group &    Site &   Sample ID &    Rep & phormidiaceae \\ 
-  \hline
-1 &             : 0   &      : 0   & 10003  : 3   & 1    :16   & 115    : 2   \\ 
-  2 & Contaminated:25   & 1    :12   & 10004  : 3   & 2    :16   & 24872  : 2   \\ 
-  3 & Control     :23   & 2    :12   & 10005  : 3   & 3    :16   & 33     : 2   \\ 
-  4 & FALSE       : 1   & 3    :12   & 10006  : 3   & F1LSE: 1   & 36     : 2   \\ 
-  5 & TRUE        : 1   & 4    :12   & 10007  : 3   & TRUE : 1   & 7538   : 2   \\ 
-  6 &  & FALSE: 1   & 10008  : 3   &  & 800    : 2   \\ 
-  7 &  & TRUE : 1   & (Other):32   &  & (Other):38   \\ 
-   \hline
-\end{tabular}
-\end{table}
-
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\section*{Working with strings}
+\begin{frame}[fragile]
+  \frametitle{How to work with strings}
+  \framesubtitle{stringer package}
+\begin{itemize}
+\item \begin{lstlisting}
+require(stringr)
+\end{lstlisting}
+  Lets look at this package
+\item \begin{lstlisting} 
+stri_c(str1,str2)
+\end{lstlisting}    concatenates two string
+\item \begin{lstlisting}
+str_len(str)
+\end{lstlisting}
+\end{itemize}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{require}\hlstd{(stringr)}
+\end{alltt}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: stringr}}\begin{alltt}
+\hlstd{table1t}\hlopt{$}\hlstd{Rep}\hlkwb{<-}\hlkwd{str_replace}\hlstd{(table1t}\hlopt{$}\hlstd{Rep,}\hlstr{"[rep]\{3\}?"}\hlstd{,}\hlstr{"\textbackslash{}\textbackslash{}1"}\hlstd{)}
+\hlstd{table1t}\hlopt{$}\hlstd{Rep}\hlkwb{<-}\hlkwd{str_replace}\hlstd{(table1t}\hlopt{$}\hlstd{Rep,}\hlstr{"A"}\hlstd{,}\hlstr{"1"}\hlstd{)}
+\hlstd{table1t}\hlopt{$}\hlstd{Rep}\hlkwb{<-}\hlkwd{str_replace}\hlstd{(table1t}\hlopt{$}\hlstd{Rep,}\hlstr{"B"}\hlstd{,}\hlstr{"2"}\hlstd{)}
+\hlstd{table1t}\hlopt{$}\hlstd{Rep}\hlkwb{<-}\hlkwd{str_replace}\hlstd{(table1t}\hlopt{$}\hlstd{Rep,}\hlstr{"C"}\hlstd{,}\hlstr{"3"}\hlstd{)}
+\hlstd{table1t}\hlopt{$}\hlstd{Rep}\hlkwb{<-}\hlkwd{as.factor}\hlstd{(table1t}\hlopt{$}\hlstd{Rep)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+%<<chunk6i,results='asis', echo=FALSE>>=
+%print(xtable(head(table1t[,1:5])))
+%print(xtable(summary(table1t[,1:5])))
+%@
+\clearpage
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{Lets read the table}
-  \framesubtitle{Reading a table}
+  \framesubtitle{Reading a table of other types}
 \begin{itemize}  
 \item \url{http://www.statmethods.net/input/importingdata.html}
-\item Input files from Stata
 %table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=TRUE)
-%http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally
-%http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC
+\item \url{http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally}
+\item \url{http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC}
+\item Input files from Stata
 \end{itemize}
 \begin{lstlisting} 
 library(foreign)
@@ -723,7 +740,7 @@ mydata <- read.dta("c:/mydata.dta")
 \end{frame}
 
 \section*{Working with Data Types}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Reading a table using xlxs}
 \begin{knitrout}
@@ -731,12 +748,12 @@ mydata <- read.dta("c:/mydata.dta")
 \begin{alltt}
 \hlkwd{setwd}\hlstd{(}\hlstr{"/Users/pcru/SizeDoesMatter1"}\hlstd{)}
 \hlcom{#dir()}
-\hlstd{table2}\hlkwb{<-}\hlkwd{read.xlsx2}\hlstd{(}\hlstr{"2_R Wkshp_dummy data_Env Data.xlsx"}\hlstd{,} \hlkwc{sheetName} \hlstd{=}\hlstr{"Sheet2"}\hlstd{,}\hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{rowNames}\hlstd{=}\hlnum{FALSE}\hlstd{)}
+\hlstd{table2}\hlkwb{<-}\hlkwd{read.xlsx2}\hlstd{(}\hlstr{"2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx"}\hlstd{,} \hlkwc{sheetName} \hlstd{=}\hlstr{"Sheet2"}\hlstd{,}\hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{rowNames}\hlstd{=}\hlnum{FALSE}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Tue Sep 22 19:33:17 2015
+% Thu Sep 24 21:32:17 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllll}
@@ -757,24 +774,36 @@ mydata <- read.dta("c:/mydata.dta")
 \clearpage
 \end{frame}
 
-%https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
-%In tidy data:
-%\begin{itemize}
-%\item Each variable forms a column.
-%\item Each observation forms a row.
-%\item Each type of observational unit forms a table.
-%http://pj.freefaculty.org/R/Rtips.html#toc-Subsection-1.11
-%\end{itemize}
 
-\begin{frame}[fragile, allowframebreaks]
+
+\begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Reading a table}
-%<<chunk7ii, echo=TRUE>>=
-%print(xtable(str(table2)))
-%@
-\begin{alert}{Oh NO}
+  \begin{alert}{Oh NO}
 All columns have been set to factors
 \end{alert}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{str}\hlstd{(table2[,}\hlnum{1}\hlopt{:}\hlnum{11}\hlstd{])}
+\end{alltt}
+\begin{verbatim}
+## 'data.frame':	48 obs. of  11 variables:
+##  $ Group                 : Factor w/ 2 levels "Contaminated",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Site                  : Factor w/ 4 levels "1","2","3","4": 1 1 1 2 2 2 1 1 1 2 ...
+##  $ Sample.ID             : Factor w/ 18 levels "10000","10001",..: 1 2 3 4 5 6 7 8 9 1 ...
+##  $ Rep                   : Factor w/ 9 levels "1","2","3","A",..: 1 2 3 1 2 3 7 8 9 7 ...
+##  $ Spill.date            : Factor w/ 2 levels "14-May-14","N/A": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Sample.collection.date: Factor w/ 4 levels "15.5.14","17/5/14",..: 1 1 1 1 1 1 2 2 2 2 ...
+##  $ labnum                : Factor w/ 36 levels "2000","2001",..: 1 2 3 4 5 6 7 8 9 19 ...
+##  $ phosphate..ppb.       : Factor w/ 39 levels "10","105","108",..: 27 30 28 26 25 27 12 15 13 7 ...
+##  $ ammonia..ppb.         : Factor w/ 41 levels "10","103","1042",..: 10 14 15 6 7 4 31 34 32 28 ...
+##  $ chlorophyll..ug.L.    : Factor w/ 38 levels "1","10","11",..: 20 23 21 25 17 18 16 14 15 12 ...
+##  $ DO....                : Factor w/ 31 levels "100","120","31",..: 5 4 3 7 6 5 8 7 9 11 ...
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
 
 \begin{block}{lets break it down}
 First lets reed a few rows only
@@ -782,7 +811,7 @@ First lets reed a few rows only
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{table2}\hlkwb{<-}\hlkwd{read.xlsx2}\hlstd{(}\hlstr{"2_R Wkshp_dummy data_Env Data.xlsx"}\hlstd{,} \hlkwc{sheetName} \hlstd{=} \hlstr{"Sheet2"}\hlstd{,}\hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{rowNames}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{as.Data.frame}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colIndex}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{5}\hlstd{),}\hlkwc{stringsAsFactors}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colClasses}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlstr{"numeric"}\hlstd{,}\hlstr{"numeric"}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlnum{2}\hlstd{)),}\hlkwc{endRow}\hlstd{=}\hlnum{4}\hlstd{)}
+\hlstd{table2}\hlkwb{<-}\hlkwd{read.xlsx2}\hlstd{(}\hlstr{"2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx"}\hlstd{,} \hlkwc{sheetName} \hlstd{=} \hlstr{"Sheet2"}\hlstd{,}\hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{rowNames}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{as.Data.frame}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colIndex}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{5}\hlstd{),}\hlkwc{stringsAsFactors}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colClasses}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlstr{"numeric"}\hlstd{,}\hlstr{"numeric"}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlnum{2}\hlstd{)),}\hlkwc{endRow}\hlstd{=}\hlnum{4}\hlstd{)}
 \hlkwd{sapply}\hlstd{(table2,mode)}
 \end{alltt}
 \begin{verbatim}
@@ -819,7 +848,7 @@ First lets reed a few rows only
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{table2b}\hlkwb{<-}\hlkwd{read.xlsx2}\hlstd{(}\hlstr{"2_R Wkshp_dummy data_Env Data.xlsx"}\hlstd{,} \hlkwc{sheetName} \hlstd{=} \hlstr{"Sheet2"}\hlstd{,}\hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{rowNames}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{as.Data.frame}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colIndex}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{11}\hlstd{),}\hlkwc{stringsAsFactors}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colClasses}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlstr{"numeric"}\hlstd{,}\hlnum{2}\hlstd{),}\hlstr{"character"}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlnum{2}\hlstd{),}\hlkwd{rep}\hlstd{(}\hlstr{"numeric"}\hlstd{,}\hlnum{6}\hlstd{)))}
+\hlstd{table2b}\hlkwb{<-}\hlkwd{read.xlsx2}\hlstd{(}\hlstr{"2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx"}\hlstd{,} \hlkwc{sheetName} \hlstd{=} \hlstr{"Sheet2"}\hlstd{,}\hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{rowNames}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{as.Data.frame}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colIndex}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{11}\hlstd{),}\hlkwc{stringsAsFactors}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colClasses}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlstr{"numeric"}\hlstd{,}\hlnum{2}\hlstd{),}\hlstr{"character"}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlnum{2}\hlstd{),}\hlkwd{rep}\hlstd{(}\hlstr{"numeric"}\hlstd{,}\hlnum{6}\hlstd{)))}
 \hlkwd{sapply}\hlstd{(table2,class)}
 \end{alltt}
 \begin{verbatim}
@@ -833,7 +862,7 @@ First lets reed a few rows only
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Setting the Date Type}
 
@@ -861,7 +890,7 @@ First lets reed a few rows only
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Setting the Date Type}
 \begin{block}{colClasses}
@@ -906,7 +935,7 @@ First lets reed a few rows only
 \end{frame}
 
 \section*{Working with string}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{How to work with strings}
   \framesubtitle{merge command}
 \begin{itemize}
@@ -946,7 +975,7 @@ First lets reed a few rows only
 \end{frame}  
 
 \section*{How to I merge two data sets}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{How to I merge two data sets}
   \framesubtitle{Using the merge command}
 
@@ -956,27 +985,154 @@ First lets reed a few rows only
 \item Lets start looking at the first 9 lines of the tables and merge them using the Sample ID
 \item Because otherwise its not uniques
 \end{itemize}
+\end{block}
 \begin{lstlisting}
 merge(x, y, by = intersect(names(x), names(y)),
       by.x = by, by.y = by, all = FALSE, all.x = all, all.y = all,
       sort = TRUE, suffixes = c(".x",".y"),
       incomparables = NULL, ...)
 \end{lstlisting}
-\end{block}
+
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{tab1c}\hlkwb{<-}\hlstd{table1t[}\hlnum{1}\hlopt{:}\hlnum{9}\hlstd{,]}
 \hlstd{tab2c}\hlkwb{<-}\hlstd{table2b[}\hlnum{1}\hlopt{:}\hlnum{9}\hlstd{,]}
 \hlstd{m1}\hlkwb{<-}\hlkwd{merge}\hlstd{(tab1c,tab2c,}\hlkwc{by.x}\hlstd{=}\hlstr{"Sample ID"}\hlstd{,}\hlkwc{by.y}\hlstd{=}\hlstr{"Sample.ID"}\hlstd{)}
-\hlstd{m2}\hlkwb{<-}\hlkwd{merge}\hlstd{(table1t,table2b,}\hlkwc{by.x}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample ID"}\hlstd{),}\hlkwc{by.y}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{))}
+\hlstd{m2}\hlkwb{<-}\hlkwd{merge}\hlstd{(table1t,table2bf,}\hlkwc{by.x}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample ID"}\hlstd{),}\hlkwc{by.y}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{))}
+\hlstd{m3}\hlkwb{<-}\hlkwd{merge}\hlstd{(table1t,table2bf,}\hlkwc{by.x}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}\hlkwc{by.y}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 \end{frame}  
 
+\begin{frame}[fragile]
+  \frametitle{How to I append two data sets}
+  \framesubtitle{Lets load a third data set}
+  \begin{block}{Follow up data from contaminated site}
+  %3_Follow up data from contaminated site.xlsx
 
-\begin{frame}[fragile, allowframebreaks]
+  \end{block}
+\begin{lstlisting} 
+table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName ="Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)))
+table3f<-table3
+table3f$Spill.date<-as.Date(table2f$Spill.date,"%d.%m.%y")
+table3f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
+sapply(table3f,mode)
+sapply(table3f,class)
+\end{lstlisting}
+  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in as.Date.default(table2f\$Sample.collection.date, "{}\%d.\%m.\%y"{}): do not know how to convert 'table2f\$Sample.collection.date' to class "{}Date"{}}}\begin{verbatim}
+##                  Group                   Site                    Rep 
+##              "numeric"              "numeric"              "numeric" 
+##             Spill.date Sample.collection.date                 labnum 
+##              "numeric"              "numeric"              "numeric" 
+##        phosphate..ppb.          ammonia..ppb.     chlorophyll..ug.L. 
+##              "numeric"              "numeric"              "numeric" 
+##                 DO....          phormidiaceae       streptococcaceae 
+##              "numeric"              "numeric"              "numeric" 
+##           vibrionaceae     enterobacteriaceae    verrucomicrobiaceae 
+##              "numeric"              "numeric"              "numeric" 
+##        chloroflexaceae         aeromonadaceae      staphylococcaceae 
+##              "numeric"              "numeric"              "numeric" 
+##         clostridiaceae     oceanospirillaceae       synechococcaceae 
+##              "numeric"              "numeric"              "numeric" 
+##      rhodospirillaceae               rowNames 
+##              "numeric"              "logical"
+##                  Group                   Site                    Rep 
+##               "factor"               "factor"               "factor" 
+##             Spill.date Sample.collection.date                 labnum 
+##                 "Date"               "factor"              "numeric" 
+##        phosphate..ppb.          ammonia..ppb.     chlorophyll..ug.L. 
+##              "numeric"              "numeric"              "numeric" 
+##                 DO....          phormidiaceae       streptococcaceae 
+##              "numeric"              "numeric"              "numeric" 
+##           vibrionaceae     enterobacteriaceae    verrucomicrobiaceae 
+##              "numeric"              "numeric"              "numeric" 
+##        chloroflexaceae         aeromonadaceae      staphylococcaceae 
+##              "numeric"              "numeric"              "numeric" 
+##         clostridiaceae     oceanospirillaceae       synechococcaceae 
+##              "numeric"              "numeric"              "numeric" 
+##      rhodospirillaceae               rowNames 
+##              "numeric"              "logical"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{How to I append two data sets}
+  \framesubtitle{Lets load a third data set}
+  \begin{block}{Joining table 3 to are merged tables}
+  \begin{itemize}
+  \item We need to be careful to match everything
+  \end{itemize}
+  3%_Follow up data from contaminated site.xlsx
+  \end{block}
+\begin{lstlisting} 
+Sample.ID<-rep(20000,3)
+table3fi<-cbind(table3f,Sample.ID)
+#how many columns I can't count
+ncol(table3fi)
+ncol(m3)
+#now get the cols all right
+table3fii<-table3fi[c(1,2,24,3,4:23)]
+m3i<-m3[c(1:4,19:20,5:18,21:26)]
+setdiff(names(m3i),names(table3fii))
+m3ii<-rename(m3i,c("Sample ID"="Sample.ID"))
+table3fiii<-cbind(table3fii, corynebacteriaceae, porphyromondaceae)
+setdiff(names(m3ii),names(table3fiii))
+
+
+m3ii[,c(7:24)] <- sapply(m3ii[,c(7:24)],as.numeric)
+m3ii[,c(1:4)] <-sapply(m3ii[,c(1:4)],as.character)
+#m3ii[,c("Site")] <-sapply(m3ii[,c("Site")],as.character)
+
+table3fiii[,c(1:4)] <- sapply(table3fiii[,c(1:4)],as.character)
+table3fiii[,c(7:24)] <- sapply(table3fiii[,c(7:24)],as.numeric)
+table4<-rbind(m3ii,table3fiii)
+table4[,1] <- sapply(table4[,1],as.factor)
+\end{lstlisting}
+  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] 24
+## [1] 27
+## [1] "Sample ID"          "corynebacteriaceae" "porphyromondaceae"
+\end{verbatim}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): could not find function "{}rename"{}}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in cbind(table3fii, corynebacteriaceae, porphyromondaceae): object 'corynebacteriaceae' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in as.vector(x): object 'm3ii' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in lapply(X = X, FUN = FUN, ...): object 'm3ii' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in lapply(X = X, FUN = FUN, ...): object 'm3ii' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in lapply(X = X, FUN = FUN, ...): object 'table3fiii' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in lapply(X = X, FUN = FUN, ...): object 'table3fiii' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in rbind(m3ii, table3fiii): object 'm3ii' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in lapply(X = X, FUN = FUN, ...): object 'table4' not found}}\end{kframe}
+\end{knitrout}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Another Break}
+  %\framesubtitle{}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{R package}
   \framesubtitle{RQLlite}
   \begin{block}{RSQLite}
@@ -1619,7 +1775,7 @@ merge(x, y, by = intersect(names(x), names(y)),
 \end{frame}
 
 \section*{Fat or wide}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Reshaping Tables}
   \framesubtitle{reshape2}
   \begin{block}{reshape2}
@@ -1629,6 +1785,15 @@ merge(x, y, by = intersect(names(x), names(y)),
 %  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
 %  @
 \end{frame}  
+
+%https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
+%In tidy data:
+%\begin{itemize}
+%\item Each variable forms a column.
+%\item Each observation forms a row.
+%\item Each type of observational unit forms a table.
+%http://pj.freefaculty.org/R/Rtips.html#toc-Subsection-1.11
+%\end{itemize}
 
 \begin{frame}
   \frametitle{R package}
@@ -1719,14 +1884,7 @@ merge(x, y, by = intersect(names(x), names(y)),
 %afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/")  
 \end{frame}
 
-\begin{frame}
-  \frametitle{How to I append two data sets}
-  %\framesubtitle{}
-\end{frame}
-\begin{frame}
-  \frametitle{Another Break}
-  %\framesubtitle{}
-\end{frame}
+
 
 \begin{frame}
   \frametitle{Now lets have some fun}

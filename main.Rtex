@@ -18,7 +18,7 @@
 \lstloadlanguages{R} 
 
 
-%\geometry{paperwidth=160mm,paperheight=105mm}
+\geometry{paperwidth=160mm,paperheight=125mm}
 \usepackage{pgfpages}
 
 \usepackage{lipsum}
@@ -40,9 +40,11 @@
 
 %-------------------------------------------------------------------------------------
 \begin{document}
-\lstset{language=R,basicstyle=\smaller[2]%}
+\lstset{language=R,basicstyle=\smaller[2]
 ,commentstyle=\rmfamily\smaller,  showstringspaces=false,
-xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1} 
+xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1,
+tabsize=3, 
+showstringspaces=false} 
 \lstset{escapeinside={(*}{*)}}   % for (*\ref{ }*) inside lstlistings (S code) 
 \linewidth=325pt
 \frame{\titlepage}
@@ -207,7 +209,7 @@ xleftmargin=4ex,literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Getting Started}
   \framesubtitle{Basic steps}
 
@@ -223,7 +225,7 @@ summary(X)
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Getting Started}
   \framesubtitle{Help Functions}
 \begin{block}{To access the documentation type}
@@ -242,7 +244,7 @@ example(sd)
   \framesubtitle{Search the Web}
 \begin{block}{To search R documentation}
 RSiteSearch("key phrase")
-%help(adf.test,package="tseries")
+help(adf.test,package="tseries")
 %to search for a tutorial for a package
 %vignette(package="packagename")
 %For an intro to vignettes see
@@ -287,7 +289,7 @@ Some discussion recently on how to work creatively. Research out of  successful 
 \end{frame}  
 
 \section*{Reading our file}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the table}
   \framesubtitle{Check the current directory}
 \begin{block}{Where are we}
@@ -301,7 +303,7 @@ ls()  #This lists the variables
 \end{block}
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the table}
   \framesubtitle{Reading a table}
 \begin{block}{To read a csv table as a table try}
@@ -319,7 +321,7 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
 \end{frame}
 
 \section*{Getting help on packages}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{R Packages}
   \framesubtitle{CRAN}
   
@@ -346,7 +348,7 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
 @  
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the table}
   \framesubtitle{An example}
 \begin{lstlisting} 
@@ -354,21 +356,24 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
 
 "Sheet1",header=FALSE,rowNames=FALSE,transpose=TRUE,endRow=18)
 \end{lstlisting}
-  
+{\bf Loading the xlsx package}  
 <<chunk3,echo=FALSE>>=
 require(xlsx)
 require(xtable)
 setwd("/Users/pcru/SizeDoesMatter1")
 table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=FALSE,transpose=TRUE,endRow=18)
 @
-
+\end{frame}
+\begin{frame}[fragile]
+  \frametitle{Lets read the table}
+  \framesubtitle{The columns are wrong}
 <<chunk3iii,results='asis', echo=FALSE>>=
-print(xtable(head(table1[,1:7])))
+print(xtable(head(table1[,1:7]),size=tiny))
 @
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the table}
   \framesubtitle{Transpose the table}
   \begin{block}{Transposing}
@@ -376,24 +381,37 @@ print(xtable(head(table1[,1:7])))
   \end{block}
 <<chunk6, echo=TRUE>>=
 table1t=setNames(data.frame(t(table1[,-1])),table1[,1])
+@
+\url{http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC}
+\url{http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Fields across many columns}
+  \framesubtitle{Replicating first column}
+\begin{block}{ Lets do it the easy way first}
+\end{block}
+<<chunk6x, echo=TRUE>>=  
 ctridx<-which(table1t$Group=="Control")
 table1t$Group[1:48]<-"Contaminated"
 table1t$Group[(ctridx+1):48]<-"Control"
 @
-\begin{lstlisting}
+\lstset{columns=flexible}
+\lstset{keepspaces=true}
+\begin{lstlisting}(tabsize is 4)
 ttt<-table1t$Site
 for(i in c(2:length(table1t$Site)))
 {
-	temp<-as.character(table1t$Site[i])
-	tempb<-as.character(ttt[i-1])
-	if(table1t$Site[i]=="") 
-	{
-		 ttt[i]<-tempb
- 	}
-	if(!table1t$Site[(i)]=="")
-	{
-		ttt[i]<-temp
-	}
+    temp<-as.character(table1t$Site[i])
+    tempb<-as.character(ttt[i-1])
+    if(table1t$Site[i]=="") 
+    {
+         ttt[i]<-tempb
+    }
+    if(!table1t$Site[(i)]=="")
+    {
+        ttt[i]<-temp
+    }
 }
 table1t$Site<-ttt
 \end{lstlisting}
@@ -421,8 +439,27 @@ print(ttt[i])
 }
 table1t$Site<-ttt
 @
+\clearpage
+\end{frame}
 
-<<chunk6iii, echo=FALSE>>=
+\section*{Working with strings}
+\begin{frame}[fragile]
+  \frametitle{How to work with strings}
+  \framesubtitle{stringer package}
+\begin{itemize}
+\item \begin{lstlisting}
+require(stringr)
+\end{lstlisting}
+  Lets look at this package
+\item \begin{lstlisting} 
+stri_c(str1,str2)
+\end{lstlisting}    concatenates two string
+\item \begin{lstlisting}
+str_len(str)
+\end{lstlisting}
+\end{itemize}
+
+<<chunk6iii, echo=TRUE>>=
 require(stringr)
 table1t$Rep<-str_replace(table1t$Rep,"[rep]{3}?","\\1")
 table1t$Rep<-str_replace(table1t$Rep,"A","1")
@@ -431,24 +468,22 @@ table1t$Rep<-str_replace(table1t$Rep,"C","3")
 table1t$Rep<-as.factor(table1t$Rep)
 @
 
-%{\url http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC}
-\url{http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally}
-<<chunk6i,results='asis', echo=FALSE>>=
-print(xtable(head(table1t[,1:5])))
-print(xtable(summary(table1t[,1:5])))
-@
+%<<chunk6i,results='asis', echo=FALSE>>=
+%print(xtable(head(table1t[,1:5])))
+%print(xtable(summary(table1t[,1:5])))
+%@
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the table}
-  \framesubtitle{Reading a table}
+  \framesubtitle{Reading a table of other types}
 \begin{itemize}  
 \item \url{http://www.statmethods.net/input/importingdata.html}
-\item Input files from Stata
 %table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=TRUE)
-%http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally
-%http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC
+\item \url{http://stackoverflow.com/questions/17288197/reading-a-csv-file-organized-horizontally}
+\item \url{http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=Ecdat/man/read.transpose.Rd&d=R_CC}
+\item Input files from Stata
 \end{itemize}
 \begin{lstlisting} 
 library(foreign)
@@ -457,7 +492,7 @@ mydata <- read.dta("c:/mydata.dta")
 \end{frame}
 
 \section*{Working with Data Types}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Reading a table using xlxs}
 <<chunk7, echo=TRUE>>=
@@ -472,24 +507,18 @@ print(xtable(head(table2[,1:5])))
 \clearpage
 \end{frame}
 
-%https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
-%In tidy data:
-%\begin{itemize}
-%\item Each variable forms a column.
-%\item Each observation forms a row.
-%\item Each type of observational unit forms a table.
-%http://pj.freefaculty.org/R/Rtips.html#toc-Subsection-1.11
-%\end{itemize}
 
-\begin{frame}[fragile, allowframebreaks]
+
+\begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Reading a table}
-%<<chunk7ii, echo=TRUE>>=
-%print(xtable(str(table2)))
-%@
-\begin{alert}{Oh NO}
+  \begin{alert}{Oh NO}
 All columns have been set to factors
 \end{alert}
+<<chunk7ii, echo=TRUE>>=
+str(table2[,1:11])
+@
+
 
 \begin{block}{lets break it down}
 First lets reed a few rows only
@@ -520,7 +549,7 @@ sapply(table2,class)
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Setting the Date Type}
 
@@ -534,7 +563,7 @@ sapply(table2f,class)
 \clearpage
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Lets read the next table}
   \framesubtitle{Setting the Date Type}
 \begin{block}{colClasses}
@@ -561,7 +590,7 @@ dated<-table2bf$Sample.collection.date-table2bf$Spill.date
 \end{frame}
 
 \section*{Working with string}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{How to work with strings}
   \framesubtitle{merge command}
 \begin{itemize}
@@ -581,7 +610,7 @@ str(table2bf)
 \end{frame}  
 
 \section*{How to I merge two data sets}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{How to I merge two data sets}
   \framesubtitle{Using the merge command}
 
@@ -591,13 +620,14 @@ str(table2bf)
 \item Lets start looking at the first 9 lines of the tables and merge them using the Sample ID
 \item Because otherwise its not uniques
 \end{itemize}
+\end{block}
 \begin{lstlisting}
 merge(x, y, by = intersect(names(x), names(y)),
       by.x = by, by.y = by, all = FALSE, all.x = all, all.y = all,
       sort = TRUE, suffixes = c(".x",".y"),
       incomparables = NULL, ...)
 \end{lstlisting}
-\end{block}
+
 <<chunk9i, echo=TRUE>>=
 tab1c<-table1t[1:9,] 
 tab2c<-table2b[1:9,]
@@ -607,15 +637,15 @@ m3<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID","Rep"),by.y=c("Grou
 @
 \end{frame}  
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{How to I append two data sets}
   \framesubtitle{Lets load a third data set}
   \begin{block}{Follow up data from contaminated site}
-  3_Follow up data from contaminated site.xlsx
+  %3_Follow up data from contaminated site.xlsx
+
   \end{block}
 \begin{lstlisting} 
-ttable3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName = "Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)),endRow=4)
-
+table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName ="Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)))
 table3f<-table3
 table3f$Spill.date<-as.Date(table2f$Spill.date,"%d.%m.%y")
 table3f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
@@ -637,14 +667,14 @@ sapply(table3f,class)
 @
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{How to I append two data sets}
   \framesubtitle{Lets load a third data set}
   \begin{block}{Joining table 3 to are merged tables}
   \begin{itemize}
   \item We need to be careful to match everything
   \end{itemize}
-  3_Follow up data from contaminated site.xlsx
+  3%_Follow up data from contaminated site.xlsx
   \end{block}
 \begin{lstlisting} 
 Sample.ID<-rep(20000,3)
@@ -696,12 +726,13 @@ table4<-rbind(m3ii,table3fiii)
 table4[,1] <- sapply(table4[,1],as.factor)
 @ 
 \end{frame}
+
 \begin{frame}
   \frametitle{Another Break}
   %\framesubtitle{}
 \end{frame}
 
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{R package}
   \framesubtitle{RQLlite}
   \begin{block}{RSQLite}
@@ -746,7 +777,7 @@ dbGetQuery(db, "SELECT * from table1")
 \end{frame}
 
 \section*{Fat or wide}
-\begin{frame}[fragile, allowframebreaks]
+\begin{frame}[fragile]
   \frametitle{Reshaping Tables}
   \framesubtitle{reshape2}
   \begin{block}{reshape2}
@@ -756,6 +787,15 @@ dbGetQuery(db, "SELECT * from table1")
 %  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
 %  @
 \end{frame}  
+
+%https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
+%In tidy data:
+%\begin{itemize}
+%\item Each variable forms a column.
+%\item Each observation forms a row.
+%\item Each type of observational unit forms a table.
+%http://pj.freefaculty.org/R/Rtips.html#toc-Subsection-1.11
+%\end{itemize}
 
 \begin{frame}
   \frametitle{R package}
