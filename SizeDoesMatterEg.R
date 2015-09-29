@@ -1,6 +1,16 @@
 require(xlsx)
 require(xtable)
 
+#chunk 1
+
+x<-citation()
+x1<-citation(package="xlsx")
+toBibtex(x)
+
+sessionInfo()
+packages_in_use <- c( sessionInfo()$basePkgs, names( sessionInfo()$loadedOnly ) )
+the_citations_list <- lapply( X=packages_in_use, FUN=citation)
+the_citations_list
 #chunk3
 setwd("/Users/pcru/SizeDoesMatter1")
 table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",header=FALSE,rowNames=FALSE,transpose=TRUE,endRow=18)
@@ -43,13 +53,14 @@ table1t$Rep<-str_replace(table1t$Rep,"C","3")
 table1t$Rep<-as.factor(table1t$Rep)
 
 #chunk7
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
+setwd("/Users/pcru/SizeDoesMatter1")
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName ="Sheet2",header=TRUE,rowNames=FALSE)
 
 #chunk8ii
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
 sapply(table2,mode)
 sapply(table2,class)
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",3),rep("character",2),rep("numeric",6)),endRow=4)
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",3),rep("character",2),rep("numeric",6)),endRow=4)
 
 #chunk8iii
 table2f<-table2
@@ -78,6 +89,13 @@ table2bf$Rep<-str_replace(table2bf$Rep,"B","2")
 table2bf$Rep<-str_replace(table2bf$Rep,"C","3")
 table2bf$Rep<-as.factor(table2bf$Rep)
 str(table2bf)
+table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName = "Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)),endRow=4)
+
+table3f<-table3
+table3f$Spill.date<-as.Date(table3f$Spill.date,"%d.%m.%y")
+table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y")
+sapply(table3f,mode)
+sapply(table3f,class)
 
 
 tab1c<-table1t[1:9,]
@@ -96,6 +114,11 @@ table3fii<-table3fi[c(1,2,24,3,4:23)]
 m3i<-m3[c(1:4,19:20,5:18,21:26)]
 setdiff(names(m3i),names(table3fii))
 m3ii<-rename(m3i,c("Sample ID"="Sample.ID"))
+
+corynebacteriaceae<-rep(NA,nrow(table3fii))
+porphyromondaceae<-rep(NA,nrow(table3fii))
+
+
 table3fiii<-cbind(table3fii, corynebacteriaceae, porphyromondaceae)
 setdiff(names(m3ii),names(table3fiii))
 
@@ -118,24 +141,30 @@ library(DBI)
 require(RSQLite)
 require(gsubfn)
 require(chron)
-require(tcltk)
+#require(tcltk)
 library(sqldf)
-%RSQLite.extfuns
- db <- dbConnect(SQLite(), dbname="Test.sqlite")
+#RSQLite.extfuns
+db <- dbConnect(SQLite(), dbname="Test.sqlite")
+#getConfig()$staged.queries
 # sqldf(attach "Test1.sqlite" as new)
-dbWriteTable(db,"table1",table1t)
+dbBegin(db)
+dbWriteTable(db,"table1",table1t,overwrite=TRUE)
 dbReadTable(db,"table1")
 dbListFields(db,"table1")
 dbListTables(db)
 dbGetQuery(db, "SELECT * from table1")
-#dbDisconnect(db)
+dbRollback(db)
+dbDisconnect(db)
+
+#chunk 10
+numNAs_inData4_rows <- apply(rawData4, 1, function(z) sum(is.na(z)))
+numNAs_inData4_col <- apply(table4, 2, function(z) sum(is.na(z))) # count NAs in Data4
+lessThan20 <- table4[!(numNAs_inData4_rows > 20),]	   #only select the rows contain less Than 20 NAs
+lessThan20col <- table4[,!(numNAs_inData4_col > 20)]
+
+dates4<-table4[,c(5,6)]
+abundance<-table4[,c(7:25)]
+days<-dates4[,2]-dates4[,1]
 
 
-table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName = "Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)),endRow=4)
-
-table3f<-table3
-table3f$Spill.date<-as.Date(table3f$Spill.date,"%d.%m.%y")
-table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y")
-sapply(table3f,mode)
-sapply(table3f,class)
 

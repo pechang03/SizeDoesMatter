@@ -1,7 +1,7 @@
-\documentclass[12pt]{beamer}
+%\documentclass[12pt]{beamer}
 %\documentclass[10pt,handout,english]{beamer}
-%\documentclass{article}
-%\usepackage[envcountsect]{beamerarticle}
+\documentclass{article}
+\usepackage[envcountsect]{beamerarticle}
 
 
 
@@ -18,7 +18,7 @@
 \lstloadlanguages{R} 
 
 
-\geometry{paperwidth=160mm,paperheight=125mm}
+%\geometry{paperwidth=160mm,paperheight=125mm}
 \usepackage{pgfpages}
 
 \usepackage{lipsum}
@@ -327,7 +327,7 @@ str(team)
 \begin{block}{Where are we}
 \begin{lstlisting} 
 getwd()
-setwd("/Users/pcru")
+setwd("/Users/pcru/SizeDoesMatter1")
 dir() #This lists the files
 ls()  #This lists the variables
 \end{lstlisting}
@@ -365,16 +365,25 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
   \end{block}
   
   \begin{block}{Citing Packages}
-%  \begin{itemize}
-%  \item Citing packages
-
-%  x<-citation()
-%  toBibtex(x)
-%See also url 
-\url{https://cran.r-project.org/web/packages/RefManageR/vignettes/TestRmd.html}
-%  \end{itemize}
+  \begin{itemize}
+ \item Citing packages
+   \end{itemize}
   \end{block}
+\begin{lstlisting}
+  x<-citation()
+  x1<-citation(package="RSQLite")
+  toBibtex(x)
+  
+  sessionInfo()
+  packages_in_use <- c( sessionInfo()$basePkgs, names( sessionInfo()$loadedOnly ) )
+the_citations_list <- lapply( X=packages_in_use, FUN=citation)
+the_citations_list
+\end{lstlisting}
+%See also url 
+%\url{https://cran.r-project.org/web/packages/RefManageR/vignettes/TestRmd.html}
+
 <<chunk5>>=
+sessionInfo()
  x<-citation()
  toBibtex(x)
 @  
@@ -714,10 +723,15 @@ table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y
   \begin{block}{Joining table 3 to are merged tables}
   \begin{itemize}
   \item We need to be careful to match everything
-  \end{itemize}
+  \item Install the plyr package This has lots of useful functions for renaming var etc
+  \item This means we need columns for corynebacteriaceae and porphyromondaceae
+  \item should these be NA or 0
+  \item we will do one of each. generally we would use NA but in this case 0 is perhaps better
+ \end{itemize}
   %_Follow up data from contaminated site.xlsx
   \end{block}
 \begin{lstlisting} 
+require(plyr)
 Sample.ID<-rep(20000,3)
 table3fi<-cbind(table3f,Sample.ID)
 #how many columns I can't count
@@ -728,6 +742,8 @@ table3fii<-table3fi[c(1,2,24,3,4:23)]
 m3i<-m3[c(1:4,19:20,5:18,21:26)]
 setdiff(names(m3i),names(table3fii))
 m3ii<-rename(m3i,c("Sample ID"="Sample.ID"))
+corynebacteriaceae<-rep(0,nrow(table3fii))
+porphyromondaceae<-rep(NA,nrow(table3fii))
 table3fiii<-cbind(table3fii, corynebacteriaceae, porphyromondaceae)
 setdiff(names(m3ii),names(table3fiii))
 
@@ -741,7 +757,8 @@ table4<-rbind(m3ii,table3fiii)
 table4[,1] <- sapply(table4[,1],as.factor)
 \end{lstlisting}
   
-<<chunk10ii,echo=FALSE>>=
+<<chunk10ii,echo=TRUE>>=
+require(plyr)
 Sample.ID<-rep(20000,3)
 table3fi<-cbind(table3f,Sample.ID)
 #how many columns I can't count
@@ -752,6 +769,8 @@ table3fii<-table3fi[c(1,2,24,3,4:23)]
 m3i<-m3[c(1:4,19:20,5:18,21:26)]
 setdiff(names(m3i),names(table3fii))
 m3ii<-rename(m3i,c("Sample ID"="Sample.ID"))
+corynebacteriaceae<-rep(0,nrow(table3fii))
+porphyromondaceae<-rep(NA,nrow(table3fii))
 table3fiii<-cbind(table3fii, corynebacteriaceae, porphyromondaceae)
 setdiff(names(m3ii),names(table3fiii))
 
@@ -770,6 +789,19 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \frametitle{Another Break}
   %\framesubtitle{}
 \end{frame}
+
+
+\section*{Fat or wide}
+\begin{frame}[fragile]
+  \frametitle{Reshaping Tables}
+  \framesubtitle{reshape2}
+  \begin{block}{reshape2}
+  vignette(reshape)
+  \end{block}
+%  <<chunk10i, echo=TRUE>>=
+%  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
+%  @
+\end{frame}  
 
 \begin{frame}[fragile]
   \frametitle{R package}
@@ -793,8 +825,10 @@ library(sqldf)
 
 <<chunk9iii, echo=TRUE>>=
  db <- dbConnect(SQLite(), dbname="Test.sqlite")
+#getConfig()$staged.queries
 # sqldf(attach "Test1.sqlite" as new)
-dbWriteTable(db,"table1",table1t)
+dbBegin(db)
+dbWriteTable(db,"table1",table1t,overwrite=TRUE)
 dbReadTable(db,"table1")
 dbListFields(db,"table1")
 dbListTables(db)
@@ -814,19 +848,6 @@ dbGetQuery(db, "SELECT * from table1")
 %https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
 
 \end{frame}
-
-\section*{Fat or wide}
-\begin{frame}[fragile]
-  \frametitle{Reshaping Tables}
-  \framesubtitle{reshape2}
-  \begin{block}{reshape2}
-  vignette(reshape)
-  \end{block}
-%  <<chunk10i, echo=TRUE>>=
-%  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
-%  @
-\end{frame}  
-
 
 
 \begin{frame}
@@ -913,12 +934,16 @@ abundance<-table4[,c(7:25)]
   
 \end{frame}
 
+
 \section*{Centering data}
 \begin{frame}[fragile]
-  \frametitle{centering data}
+  \frametitle{Setting the Relative abundance}
   \framesubtitle{Normalizing data}
   \begin{block}{sapply}
   \begin{itemize}
+  \item Also known as centring the data
+  \item Ecological percentage of the sum of the variables
+  
   \item We an use sweep to centre the data
   \item What about divide by 0
   \end{itemize}
@@ -938,6 +963,14 @@ abundance<-table4[,c(7:25)]
 \begin{frame}
   \frametitle{Now lets have some fun}
   \framesubtitle{Making a heat map}
+  
+  Heat map.
+  A graphical output
+  Titles on R plots
+  
+  A reference on where to go
+  R thumbnails 
+  ggplot2 (scatter plot of 2 var and then 3 plots)
 \end{frame}
 
 \begin{frame}

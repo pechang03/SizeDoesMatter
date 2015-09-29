@@ -1,7 +1,10 @@
-\frametitle{centering data}
+\frametitle{Setting the Relative abundance}
   \framesubtitle{Normalizing data}
   \begin{block}{sapply}
   \begin{itemize}
+  \item Also known as centring the data
+  \item Ecological percentage of the sum of the variables
+
   \item We an use sweep to centre the data
   \item What about divide by 0
   \end{itemize}

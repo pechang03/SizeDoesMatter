@@ -1,4 +1,6 @@
-\documentclass[12pt]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+%\documentclass[12pt]{beamer}
+%\documentclass[10pt,handout,english]{beamer}
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -48,9 +50,7 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
-%\documentclass[10pt,handout,english]{beamer}
-%\documentclass{article}
-%\usepackage[envcountsect]{beamerarticle}
+\usepackage[envcountsect]{beamerarticle}
 
 
 
@@ -67,7 +67,7 @@
 \lstloadlanguages{R} 
 
 
-\geometry{paperwidth=160mm,paperheight=125mm}
+%\geometry{paperwidth=160mm,paperheight=125mm}
 \usepackage{pgfpages}
 
 \usepackage{lipsum}
@@ -402,7 +402,7 @@ Research on how to work creatively based on case studies of  successful R\&D pro
 \begin{block}{Where are we}
 \begin{lstlisting} 
 getwd()
-setwd("/Users/pcru")
+setwd("/Users/pcru/SizeDoesMatter1")
 dir() #This lists the files
 ls()  #This lists the variables
 \end{lstlisting}
@@ -440,17 +440,45 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
   \end{block}
   
   \begin{block}{Citing Packages}
-%  \begin{itemize}
-%  \item Citing packages
-
-%  x<-citation()
-%  toBibtex(x)
-%See also url 
-\url{https://cran.r-project.org/web/packages/RefManageR/vignettes/TestRmd.html}
-%  \end{itemize}
+  \begin{itemize}
+ \item Citing packages
+   \end{itemize}
   \end{block}
+\begin{lstlisting}
+  x<-citation()
+  x1<-citation(package="RSQLite")
+  toBibtex(x)
+  
+  sessionInfo()
+  packages_in_use <- c( sessionInfo()$basePkgs, names( sessionInfo()$loadedOnly ) )
+the_citations_list <- lapply( X=packages_in_use, FUN=citation)
+the_citations_list
+\end{lstlisting}
+%See also url 
+%\url{https://cran.r-project.org/web/packages/RefManageR/vignettes/TestRmd.html}
+
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{sessionInfo}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+## R version 3.1.2 (2014-10-31)
+## Platform: x86_64-apple-darwin13.4.0 (64-bit)
+## 
+## locale:
+## [1] C
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  base     
+## 
+## other attached packages:
+## [1] knitr_1.11
+## 
+## loaded via a namespace (and not attached):
+## [1] evaluate_0.7.2 formatR_1.2    highr_0.5      methods_3.1.2 
+## [5] stringr_0.6.2  tools_3.1.2
+\end{verbatim}
 \begin{alltt}
  \hlstd{x}\hlkwb{<-}\hlkwd{citation}\hlstd{()}
  \hlkwd{toBibtex}\hlstd{(x)}
@@ -497,7 +525,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
   \frametitle{Lets read the table}
   \framesubtitle{The columns are wrong}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Thu Sep 24 22:57:12 2015
+% Tue Sep 29 10:39:04 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -801,7 +829,7 @@ mydata <- read.dta("c:/mydata.dta")
 \end{kframe}
 \end{knitrout}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Thu Sep 24 22:57:12 2015
+% Tue Sep 29 10:39:05 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rllllll}
@@ -1082,10 +1110,15 @@ sapply(table3f,class)
   \begin{block}{Joining table 3 to are merged tables}
   \begin{itemize}
   \item We need to be careful to match everything
-  \end{itemize}
+  \item Install the plyr package This has lots of useful functions for renaming var etc
+  \item This means we need columns for corynebacteriaceae and porphyromondaceae
+  \item should these be NA or 0
+  \item we will do one of each. generally we would use NA but in this case 0 is perhaps better
+ \end{itemize}
   %_Follow up data from contaminated site.xlsx
   \end{block}
 \begin{lstlisting} 
+require(plyr)
 Sample.ID<-rep(20000,3)
 table3fi<-cbind(table3f,Sample.ID)
 #how many columns I can't count
@@ -1096,6 +1129,8 @@ table3fii<-table3fi[c(1,2,24,3,4:23)]
 m3i<-m3[c(1:4,19:20,5:18,21:26)]
 setdiff(names(m3i),names(table3fii))
 m3ii<-rename(m3i,c("Sample ID"="Sample.ID"))
+corynebacteriaceae<-rep(0,nrow(table3fii))
+porphyromondaceae<-rep(NA,nrow(table3fii))
 table3fiii<-cbind(table3fii, corynebacteriaceae, porphyromondaceae)
 setdiff(names(m3ii),names(table3fiii))
 
@@ -1111,30 +1146,56 @@ table4[,1] <- sapply(table4[,1],as.factor)
   
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{require}\hlstd{(plyr)}
+\end{alltt}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: plyr}}\begin{alltt}
+\hlstd{Sample.ID}\hlkwb{<-}\hlkwd{rep}\hlstd{(}\hlnum{20000}\hlstd{,}\hlnum{3}\hlstd{)}
+\hlstd{table3fi}\hlkwb{<-}\hlkwd{cbind}\hlstd{(table3f,Sample.ID)}
+\hlcom{#how many columns I can't count}
+\hlkwd{ncol}\hlstd{(table3fi)}
+\end{alltt}
 \begin{verbatim}
 ## [1] 24
+\end{verbatim}
+\begin{alltt}
+\hlkwd{ncol}\hlstd{(m3)}
+\end{alltt}
+\begin{verbatim}
 ## [1] 27
+\end{verbatim}
+\begin{alltt}
+\hlcom{#now get the cols all right}
+\hlstd{table3fii}\hlkwb{<-}\hlstd{table3fi[}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{,}\hlnum{24}\hlstd{,}\hlnum{3}\hlstd{,}\hlnum{4}\hlopt{:}\hlnum{23}\hlstd{)]}
+\hlstd{m3i}\hlkwb{<-}\hlstd{m3[}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{,}\hlnum{19}\hlopt{:}\hlnum{20}\hlstd{,}\hlnum{5}\hlopt{:}\hlnum{18}\hlstd{,}\hlnum{21}\hlopt{:}\hlnum{26}\hlstd{)]}
+\hlkwd{setdiff}\hlstd{(}\hlkwd{names}\hlstd{(m3i),}\hlkwd{names}\hlstd{(table3fii))}
+\end{alltt}
+\begin{verbatim}
 ## [1] "Sample ID"          "corynebacteriaceae" "porphyromondaceae"
 \end{verbatim}
+\begin{alltt}
+\hlstd{m3ii}\hlkwb{<-}\hlkwd{rename}\hlstd{(m3i,}\hlkwd{c}\hlstd{(}\hlstr{"Sample ID"}\hlstd{=}\hlstr{"Sample.ID"}\hlstd{))}
+\hlstd{corynebacteriaceae}\hlkwb{<-}\hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,}\hlkwd{nrow}\hlstd{(table3fii))}
+\hlstd{porphyromondaceae}\hlkwb{<-}\hlkwd{rep}\hlstd{(}\hlnum{NA}\hlstd{,}\hlkwd{nrow}\hlstd{(table3fii))}
+\hlstd{table3fiii}\hlkwb{<-}\hlkwd{cbind}\hlstd{(table3fii, corynebacteriaceae, porphyromondaceae)}
+\hlkwd{setdiff}\hlstd{(}\hlkwd{names}\hlstd{(m3ii),}\hlkwd{names}\hlstd{(table3fiii))}
+\end{alltt}
+\begin{verbatim}
+## character(0)
+\end{verbatim}
+\begin{alltt}
+\hlstd{m3ii[,}\hlkwd{c}\hlstd{(}\hlnum{7}\hlopt{:}\hlnum{24}\hlstd{)]} \hlkwb{<-} \hlkwd{sapply}\hlstd{(m3ii[,}\hlkwd{c}\hlstd{(}\hlnum{7}\hlopt{:}\hlnum{24}\hlstd{)],as.numeric)}
+\hlstd{m3ii[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{)]} \hlkwb{<-}\hlkwd{sapply}\hlstd{(m3ii[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{)],as.character)}
+\hlcom{#m3ii[,c("Site")] <-sapply(m3ii[,c("Site")],as.character)}
 
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): could not find function "{}rename"{}}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in cbind(table3fii, corynebacteriaceae, porphyromondaceae): object 'corynebacteriaceae' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in as.vector(x): object 'm3ii' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in lapply(X = X, FUN = FUN, ...): object 'm3ii' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in lapply(X = X, FUN = FUN, ...): object 'm3ii' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in lapply(X = X, FUN = FUN, ...): object 'table3fiii' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in lapply(X = X, FUN = FUN, ...): object 'table3fiii' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in rbind(m3ii, table3fiii): object 'm3ii' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in lapply(X = X, FUN = FUN, ...): object 'table4' not found}}\end{kframe}
+\hlstd{table3fiii[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{)]} \hlkwb{<-} \hlkwd{sapply}\hlstd{(table3fiii[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{)],as.character)}
+\hlstd{table3fiii[,}\hlkwd{c}\hlstd{(}\hlnum{7}\hlopt{:}\hlnum{24}\hlstd{)]} \hlkwb{<-} \hlkwd{sapply}\hlstd{(table3fiii[,}\hlkwd{c}\hlstd{(}\hlnum{7}\hlopt{:}\hlnum{24}\hlstd{)],as.numeric)}
+\hlstd{table4}\hlkwb{<-}\hlkwd{rbind}\hlstd{(m3ii,table3fiii)}
+\hlstd{table4[,}\hlnum{1}\hlstd{]} \hlkwb{<-} \hlkwd{sapply}\hlstd{(table4[,}\hlnum{1}\hlstd{],as.factor)}
+\end{alltt}
+\end{kframe}
 \end{knitrout}
 \end{frame}
 
@@ -1142,6 +1203,19 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \frametitle{Another Break}
   %\framesubtitle{}
 \end{frame}
+
+
+\section*{Fat or wide}
+\begin{frame}[fragile]
+  \frametitle{Reshaping Tables}
+  \framesubtitle{reshape2}
+  \begin{block}{reshape2}
+  vignette(reshape)
+  \end{block}
+%  <<chunk10i, echo=TRUE>>=
+%  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
+%  @
+\end{frame}  
 
 \begin{frame}[fragile]
   \frametitle{R package}
@@ -1172,12 +1246,20 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
  \hlstd{db} \hlkwb{<-} \hlkwd{dbConnect}\hlstd{(}\hlkwd{SQLite}\hlstd{(),} \hlkwc{dbname}\hlstd{=}\hlstr{"Test.sqlite"}\hlstd{)}
+\hlcom{#getConfig()$staged.queries}
 \hlcom{# sqldf(attach "Test1.sqlite" as new)}
-\hlkwd{dbWriteTable}\hlstd{(db,}\hlstr{"table1"}\hlstd{,table1t)}
+\hlkwd{dbBegin}\hlstd{(db)}
 \end{alltt}
-
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: Table table1 exists in database, and both overwrite and append are FALSE}}\begin{alltt}
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+\begin{alltt}
+\hlkwd{dbWriteTable}\hlstd{(db,}\hlstr{"table1"}\hlstd{,table1t,}\hlkwc{overwrite}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+\begin{alltt}
 \hlkwd{dbReadTable}\hlstd{(db,}\hlstr{"table1"}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
@@ -1188,12 +1270,12 @@ table4[,1] <- sapply(table4[,1],as.factor)
 ## X5        Contaminated     2     10003     1          7538
 ## X6        Contaminated     2     10004     2          7201
 ## X7        Contaminated     2     10005     3          7538
-## X8        Contaminated     1     10006  rep1          8467
-## X9        Contaminated     1     10007  rep2          7340
-## X10       Contaminated     1     10008  rep3          8467
-## X11       Contaminated     2     10000  rep1          2000
-## X12       Contaminated     2     10001  rep2          2083
-## X13       Contaminated     2     10002  rep3          1899
+## X8        Contaminated     1     10006     1          8467
+## X9        Contaminated     1     10007     2          7340
+## X10       Contaminated     1     10008     3          8467
+## X11       Contaminated     2     10000     1          2000
+## X12       Contaminated     2     10001     2          2083
+## X13       Contaminated     2     10002     3          1899
 ## X14       Contaminated     1     10003     1          1947
 ## X15       Contaminated     1     10004     2          2733
 ## X16       Contaminated     1     10005     3          2385
@@ -1206,31 +1288,31 @@ table4[,1] <- sapply(table4[,1],as.factor)
 ## X23       Contaminated     2     10006     1            46
 ## X24       Contaminated     2     10007     2            62
 ## X25       Contaminated     2     10008     3            94
-## X26       Contaminated     3     10009     A            24
-## X27            Control     3     10010     B            64
-## X28            Control     3     10011     C            21
-## X29            Control     4     10012     A            56
-## X30            Control     4     10013     B            27
-## X31            Control     4     10014     C            53
-## X32            Control     3     10015     A           115
-## X33            Control     3     10016     B            97
-## X34            Control     3     10017     C            45
-## X35            Control     4     10009     A            33
-## X36            Control     4     10010     B            51
-## X37            Control     4     10011     C            47
-## X38            Control     3     10012     A           105
-## X39            Control     3     10013     B            72
-## X40            Control     3     10014     C           115
-## X41            Control     4     10015     A            18
-## X42            Control     4     10016     B            54
-## X43            Control     4     10017     C            33
-## X44            Control     3     10012     A            36
-## X45            Control     3     10013     B            58
-## X46            Control     3     10014     C            36
-## X47            Control     4     10015     A            60
-## X48            Control     4     10016     B           164
-## X49            Control     4     10017     C            79
-## rowNames         FALSE FALSE     FALSE FALSE         FALSE
+## X26       Contaminated     3     10009     1            24
+## X27            Control     3     10010     2            64
+## X28            Control     3     10011     3            21
+## X29            Control     4     10012     1            56
+## X30            Control     4     10013     2            27
+## X31            Control     4     10014     3            53
+## X32            Control     3     10015     1           115
+## X33            Control     3     10016     2            97
+## X34            Control     3     10017     3            45
+## X35            Control     4     10009     1            33
+## X36            Control     4     10010     2            51
+## X37            Control     4     10011     3            47
+## X38            Control     3     10012     1           105
+## X39            Control     3     10013     2            72
+## X40            Control     3     10014     3           115
+## X41            Control     4     10015     1            18
+## X42            Control     4     10016     2            54
+## X43            Control     4     10017     3            33
+## X44            Control     3     10012     1            36
+## X45            Control     3     10013     2            58
+## X46            Control     3     10014     3            36
+## X47            Control     4     10015     1            60
+## X48            Control     4     10016     2           164
+## X49            Control     4     10017     3            79
+## rowNames         FALSE FALSE     FALSE F1LSE         FALSE
 ## transpose         TRUE  TRUE      TRUE  TRUE          TRUE
 ##           streptococcaceae vibrionaceae enterobacteriaceae
 ## X2                      11           33                131
@@ -1517,12 +1599,12 @@ table4[,1] <- sapply(table4[,1],as.factor)
 ## 4         X5 Contaminated     2     10003     1          7538
 ## 5         X6 Contaminated     2     10004     2          7201
 ## 6         X7 Contaminated     2     10005     3          7538
-## 7         X8 Contaminated     1     10006  rep1          8467
-## 8         X9 Contaminated     1     10007  rep2          7340
-## 9        X10 Contaminated     1     10008  rep3          8467
-## 10       X11 Contaminated     2     10000  rep1          2000
-## 11       X12 Contaminated     2     10001  rep2          2083
-## 12       X13 Contaminated     2     10002  rep3          1899
+## 7         X8 Contaminated     1     10006     1          8467
+## 8         X9 Contaminated     1     10007     2          7340
+## 9        X10 Contaminated     1     10008     3          8467
+## 10       X11 Contaminated     2     10000     1          2000
+## 11       X12 Contaminated     2     10001     2          2083
+## 12       X13 Contaminated     2     10002     3          1899
 ## 13       X14 Contaminated     1     10003     1          1947
 ## 14       X15 Contaminated     1     10004     2          2733
 ## 15       X16 Contaminated     1     10005     3          2385
@@ -1535,31 +1617,31 @@ table4[,1] <- sapply(table4[,1],as.factor)
 ## 22       X23 Contaminated     2     10006     1            46
 ## 23       X24 Contaminated     2     10007     2            62
 ## 24       X25 Contaminated     2     10008     3            94
-## 25       X26 Contaminated     3     10009     A            24
-## 26       X27      Control     3     10010     B            64
-## 27       X28      Control     3     10011     C            21
-## 28       X29      Control     4     10012     A            56
-## 29       X30      Control     4     10013     B            27
-## 30       X31      Control     4     10014     C            53
-## 31       X32      Control     3     10015     A           115
-## 32       X33      Control     3     10016     B            97
-## 33       X34      Control     3     10017     C            45
-## 34       X35      Control     4     10009     A            33
-## 35       X36      Control     4     10010     B            51
-## 36       X37      Control     4     10011     C            47
-## 37       X38      Control     3     10012     A           105
-## 38       X39      Control     3     10013     B            72
-## 39       X40      Control     3     10014     C           115
-## 40       X41      Control     4     10015     A            18
-## 41       X42      Control     4     10016     B            54
-## 42       X43      Control     4     10017     C            33
-## 43       X44      Control     3     10012     A            36
-## 44       X45      Control     3     10013     B            58
-## 45       X46      Control     3     10014     C            36
-## 46       X47      Control     4     10015     A            60
-## 47       X48      Control     4     10016     B           164
-## 48       X49      Control     4     10017     C            79
-## 49  rowNames        FALSE FALSE     FALSE FALSE         FALSE
+## 25       X26 Contaminated     3     10009     1            24
+## 26       X27      Control     3     10010     2            64
+## 27       X28      Control     3     10011     3            21
+## 28       X29      Control     4     10012     1            56
+## 29       X30      Control     4     10013     2            27
+## 30       X31      Control     4     10014     3            53
+## 31       X32      Control     3     10015     1           115
+## 32       X33      Control     3     10016     2            97
+## 33       X34      Control     3     10017     3            45
+## 34       X35      Control     4     10009     1            33
+## 35       X36      Control     4     10010     2            51
+## 36       X37      Control     4     10011     3            47
+## 37       X38      Control     3     10012     1           105
+## 38       X39      Control     3     10013     2            72
+## 39       X40      Control     3     10014     3           115
+## 40       X41      Control     4     10015     1            18
+## 41       X42      Control     4     10016     2            54
+## 42       X43      Control     4     10017     3            33
+## 43       X44      Control     3     10012     1            36
+## 44       X45      Control     3     10013     2            58
+## 45       X46      Control     3     10014     3            36
+## 46       X47      Control     4     10015     1            60
+## 47       X48      Control     4     10016     2           164
+## 48       X49      Control     4     10017     3            79
+## 49  rowNames        FALSE FALSE     FALSE F1LSE         FALSE
 ## 50 transpose         TRUE  TRUE      TRUE  TRUE          TRUE
 ##    streptococcaceae vibrionaceae enterobacteriaceae verrucomicrobiaceae
 ## 1                11           33                131                 977
@@ -1785,19 +1867,6 @@ table4[,1] <- sapply(table4[,1],as.factor)
 
 \end{frame}
 
-\section*{Fat or wide}
-\begin{frame}[fragile]
-  \frametitle{Reshaping Tables}
-  \framesubtitle{reshape2}
-  \begin{block}{reshape2}
-  vignette(reshape)
-  \end{block}
-%  <<chunk10i, echo=TRUE>>=
-%  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
-%  @
-\end{frame}  
-
-
 
 \begin{frame}
   \frametitle{R package}
@@ -1879,30 +1948,24 @@ abundance<-table4[,c(7:25)]
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{dates4}\hlkwb{<-}\hlstd{table4[,}\hlkwd{c}\hlstd{(}\hlnum{5}\hlstd{,}\hlnum{6}\hlstd{)]}
-\end{alltt}
-
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'table4' not found}}\begin{alltt}
 \hlstd{abundance}\hlkwb{<-}\hlstd{table4[,}\hlkwd{c}\hlstd{(}\hlnum{7}\hlopt{:}\hlnum{25}\hlstd{)]}
-\end{alltt}
-
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'table4' not found}}\begin{alltt}
  \hlstd{days}\hlkwb{<-}\hlstd{dates4[,}\hlnum{2}\hlstd{]}\hlopt{-}\hlstd{dates4[,}\hlnum{1}\hlstd{]}
 \end{alltt}
-
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'dates4' not found}}\end{kframe}
+\end{kframe}
 \end{knitrout}
   
 \end{frame}
 
+
 \section*{Centering data}
 \begin{frame}[fragile]
-  \frametitle{centering data}
+  \frametitle{Setting the Relative abundance}
   \framesubtitle{Normalizing data}
   \begin{block}{sapply}
   \begin{itemize}
+  \item Also known as centring the data
+  \item Ecological percentage of the sum of the variables
+  
   \item We an use sweep to centre the data
   \item What about divide by 0
   \end{itemize}
@@ -1922,6 +1985,14 @@ abundance<-table4[,c(7:25)]
 \begin{frame}
   \frametitle{Now lets have some fun}
   \framesubtitle{Making a heat map}
+  
+  Heat map.
+  A graphical output
+  Titles on R plots
+  
+  A reference on where to go
+  R thumbnails 
+  ggplot2 (scatter plot of 2 var and then 3 plots)
 \end{frame}
 
 \begin{frame}
