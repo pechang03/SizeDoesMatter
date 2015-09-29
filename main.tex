@@ -439,7 +439,7 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
   \item $install.packages(pkgs)$
   \end{itemize}
   \end{block}
-  
+
   \begin{block}{Citing Packages}
   \begin{itemize}
  \item Citing packages
@@ -460,44 +460,13 @@ the_citations_list
 %See also url 
 %\url{https://cran.r-project.org/web/packages/RefManageR/vignettes/TestRmd.html}
 
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{sessionInfo}\hlstd{()}
-\end{alltt}
-\begin{verbatim}
-## R version 3.1.2 (2014-10-31)
-## Platform: x86_64-apple-darwin13.4.0 (64-bit)
-## 
-## locale:
-## [1] C
-## 
-## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets  base     
-## 
-## other attached packages:
-## [1] knitr_1.11
-## 
-## loaded via a namespace (and not attached):
-## [1] evaluate_0.7.2 formatR_1.2    highr_0.5      methods_3.1.2 
-## [5] stringr_0.6.2  tools_3.1.2
-\end{verbatim}
-\begin{alltt}
- \hlstd{x}\hlkwb{<-}\hlkwd{citation}\hlstd{()}
- \hlkwd{toBibtex}\hlstd{(x)}
-\end{alltt}
-\begin{verbatim}
-## @Manual{,
-##   title = {R: A Language and Environment for Statistical Computing},
-##   author = {{R Core Team}},
-##   organization = {R Foundation for Statistical Computing},
-##   address = {Vienna, Austria},
-##   year = {2014},
-##   url = {http://www.R-project.org/},
-## }
-\end{verbatim}
-\end{kframe}
-\end{knitrout}
+%<<chunk5>>=
+%sessionInfo()
+% x<-citation()
+% toBibtex(x)
+%@  
+%  ggplot2_1.0.0  corrplot_0.73  reshape2_1.4.1 plyr_1.8.1     sqldf_0.4-10   chron_2.3-47   gsubfn_0.6-6   % proto_0.3-10   RSQLite_1.0.0  DBI_0.3.1      stringr_0.6.2  xtable_1.7-4   xlsx_0.5.7     xlsxjars_0.6.1 rJava_0.9-7
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -528,7 +497,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
   \frametitle{Lets read the table}
   \framesubtitle{The columns are wrong}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Tue Sep 29 21:20:21 2015
+% Tue Sep 29 22:13:38 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -832,7 +801,7 @@ mydata <- read.dta("c:/mydata.dta")
 \end{kframe}
 \end{knitrout}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Tue Sep 29 21:20:21 2015
+% Tue Sep 29 22:13:38 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rllllll}
@@ -1249,13 +1218,9 @@ table4[,1] <- sapply(table4[,1],as.factor)
 
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: reshape2}}\begin{alltt}
-\hlstd{matable4}\hlkwb{<-}\hlkwd{melt}\hlstd{(table4[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{,}\hlnum{6}\hlopt{:}\hlnum{25}\hlstd{)],}\hlkwc{variable.name} \hlstd{=} \hlstr{"microbe"}\hlstd{,}\hlkwc{value.name} \hlstd{=}\hlstr{"abundance"}\hlstd{,} \hlkwc{id}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}\hlkwc{factorsAsStrings}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{rm.na}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\hlstd{matable4}\hlkwb{<-}\hlkwd{melt}\hlstd{(table4[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{,}\hlnum{7}\hlopt{:}\hlnum{25}\hlstd{)],}\hlkwc{variable.name} \hlstd{=} \hlstr{"microbe"}\hlstd{,}\hlkwc{value.name} \hlstd{=}\hlstr{"abundance"}\hlstd{,} \hlkwc{id}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}\hlkwc{factorsAsStrings}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{rm.na}\hlstd{=}\hlnum{TRUE}\hlstd{)}
 \end{alltt}
-
-
-{\ttfamily\noindent\color{warningcolor}{\#\# Warning: attributes are not identical across measure variables; they will be dropped}}
-
-{\ttfamily\noindent\color{warningcolor}{\#\# Warning: cannot avoid coercion of factors when measure attributes not identical}}\end{kframe}
+\end{kframe}
 \end{knitrout}
 %reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
 
@@ -1268,7 +1233,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \begin{itemize}
   \item As we have keys we need to specify the x and y
   \item lets make the sites different colors
-  \item The variable names are long so lets flit it with $coord_flip()$
+  \item The variable names are long so lets flit it with $coord\_flip()$
   \item Looks like we have outliers...hmm
   \end{itemize}
   \end{block}
@@ -1299,6 +1264,8 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \begin{block}{Removing Outliers}
   \begin{itemize}
   \item Outliers are defined 1.5 times the interquartile range above the upper quartile
+  \item lets fix the one with phosphate as the 9 is typed twice
+  \item Still issues with ammonia to explore
   \end{itemize}
   \end{block}  
 \begin{knitrout}
@@ -1313,7 +1280,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \end{knitrout}
  
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Tue Sep 29 21:20:23 2015
+% Tue Sep 29 22:13:40 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -1339,6 +1306,27 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \end{kframe}
 \end{knitrout}
 \end{frame}
+\begin{frame}[fragile]
+  \frametitle{Outliers check}
+  \framesubtitle{ Redo the boxplot}
+  \begin{block}{Look again ggplot}
+  \end{block}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{matable4}\hlkwb{<-}\hlkwd{melt}\hlstd{(table4[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{,}\hlnum{7}\hlopt{:}\hlnum{25}\hlstd{)],}\hlkwc{variable.name} \hlstd{=} \hlstr{"microbe"}\hlstd{,}\hlkwc{value.name} \hlstd{=}\hlstr{"abundance"}\hlstd{,}  \hlkwc{id}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}\hlkwc{factorsAsStrings}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{rm.na}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\hlkwd{ggplot}\hlstd{(matable4,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=microbe,}\hlkwc{y}\hlstd{=abundance,}\hlkwc{fill}\hlstd{=Site))} \hlopt{+} \hlkwd{geom_boxplot}\hlstd{()} \hlopt{+}  \hlkwd{coord_flip}\hlstd{()}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: Removed 24 rows containing non-finite values (stat\_boxplot).}}\end{kframe}
+\includegraphics[width=.85\linewidth]{figure/chunk10viii-1} 
+
+\end{knitrout}
+%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
+
+\end{frame} 
 
 \begin{frame}[fragile]
   \frametitle{R package}
@@ -1354,13 +1342,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 
 
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: RSQLite\\\#\# Loading required package: gsubfn\\\#\# Loading required package: proto}}
-
-{\ttfamily\noindent\color{warningcolor}{\#\# Warning in doTryCatch(return(expr), name, parentenv, handler): unable to load shared object '/Library/Frameworks/R.framework/Resources/modules//R\_X11.so':\\\#\#\ \  dlopen(/Library/Frameworks/R.framework/Resources/modules//R\_X11.so, 6): Library not loaded: /opt/X11/lib/libSM.6.dylib\\\#\#\ \  Referenced from: /Library/Frameworks/R.framework/Resources/modules//R\_X11.so\\\#\#\ \  Reason: image not found}}
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Could not load tcltk.\ \ Will use slower R code instead.\\\#\# Loading required package: chron}}
-
-{\ttfamily\noindent\color{warningcolor}{\#\# Warning: package 'chron' was built under R version 3.1.3}}\end{kframe}
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: RSQLite}}\end{kframe}
 \end{knitrout}
 
 \begin{knitrout}
@@ -2003,19 +1985,6 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \end{frame}
 
 
-
-%\begin{frame}
-%  \frametitle{How to I merge two data sets}
-%  \framesubtitle{What if the keys don't match}
-%\begin{block}{SQLite}
-%\begin{itemize}
-%\item dd
-%\end{itemize}
-%\end{block}
-
-  
-%\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -2092,13 +2061,13 @@ abundance<-table4[,c(7:25)]
   \end{itemize}
   \end{block}
   \begin{lstlisting}
-  sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))	
- afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/") 
- table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
- options(digits=1)
- sweep(abundance, 2, colSums(abundance), FUN="/")
+sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))	
+afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/") 
+table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
+options(digits=1)
+sweep(abundance, 2, colSums(abundance), FUN="/")
 scale(abundance, center=FALSE, scale=colSums(abundance))
-  \end{lstlisting}
+ \end{lstlisting}
 
 \end{frame}
 
@@ -2156,7 +2125,7 @@ scale(abundance, center=FALSE, scale=colSums(abundance))
   \framesubtitle{Proposed future talks}
   \begin{block}{Help is on the way}
   \begin{itemize}
-  \item My PhD students
+  \item Parameterized Complexity Research Unit (PCRU) PhD students
   \item PhD student in Bioinformatics from Central South Uni
   \end{itemize}
   \end{block}
@@ -2188,6 +2157,46 @@ scale(abundance, center=FALSE, scale=colSums(abundance))
     \newblock {\tt https://www.sharelatex.com}    
 %    https://www.coursera.org/course/repdata
   \end{thebibliography}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{R Packages Used}
+  \framesubtitle{Session Info}
+\begin{block}{Output of sessionInfo}
+\end{block}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{sessionInfo}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+## R version 3.1.2 (2014-10-31)
+## Platform: x86_64-apple-darwin13.4.0 (64-bit)
+## 
+## locale:
+## [1] C
+## 
+## attached base packages:
+## [1] methods   stats     graphics  grDevices utils     datasets  base     
+## 
+## other attached packages:
+##  [1] corrplot_0.73  RSQLite_1.0.0  DBI_0.3.1      ggplot2_1.0.0 
+##  [5] reshape2_1.4.1 plyr_1.8.1     stringr_0.6.2  xtable_1.7-4  
+##  [9] xlsx_0.5.7     xlsxjars_0.6.1 rJava_0.9-7    knitr_1.11    
+## 
+## loaded via a namespace (and not attached):
+##  [1] MASS_7.3-39      Rcpp_0.11.5      colorspace_1.2-6 digest_0.6.8    
+##  [5] evaluate_0.7.2   formatR_1.2      grid_3.1.2       gtable_0.1.2    
+##  [9] highr_0.5        labeling_0.3     munsell_0.4.2    proto_0.3-10    
+## [13] scales_0.2.4     tools_3.1.2
+\end{verbatim}
+\begin{alltt}
+\hlcom{#  packages_in_use <- c( sessionInfo()$basePkgs, names( sessionInfo()$loadedOnly ) )}
+\hlcom{#the_citations_list <- lapply( X=packages_in_use, FUN=citation)}
+\hlcom{#the_citations_list}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 \end{frame}
 
 %\frame{
@@ -2234,7 +2243,7 @@ scale(abundance, center=FALSE, scale=colSums(abundance))
 
 %\clearpage
 
-The chunk below will not be printed
+%The chunk below will not be printed
 
 %R code imported from external file
 %--------------------------------------------------------------------------------

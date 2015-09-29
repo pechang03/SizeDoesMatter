@@ -364,7 +364,7 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
   \item $install.packages(pkgs)$
   \end{itemize}
   \end{block}
-  
+
   \begin{block}{Citing Packages}
   \begin{itemize}
  \item Citing packages
@@ -385,11 +385,13 @@ the_citations_list
 %See also url 
 %\url{https://cran.r-project.org/web/packages/RefManageR/vignettes/TestRmd.html}
 
-<<chunk5>>=
-sessionInfo()
- x<-citation()
- toBibtex(x)
-@  
+%<<chunk5>>=
+%sessionInfo()
+% x<-citation()
+% toBibtex(x)
+%@  
+%  ggplot2_1.0.0  corrplot_0.73  reshape2_1.4.1 plyr_1.8.1     sqldf_0.4-10   chron_2.3-47   gsubfn_0.6-6   % proto_0.3-10   RSQLite_1.0.0  DBI_0.3.1      stringr_0.6.2  xtable_1.7-4   xlsx_0.5.7     xlsxjars_0.6.1 rJava_0.9-7
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -829,7 +831,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
    \end{lstlisting}
  <<chunk10iii, echo=TRUE>>=
  require(reshape2)
- matable4<-melt(table4[,c(1:4,6:25)],variable.name = "microbe",value.name ="abundance", id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
+ matable4<-melt(table4[,c(1:4,7:25)],variable.name = "microbe",value.name ="abundance", id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
  
 @
 %reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
@@ -843,7 +845,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \begin{itemize}
   \item As we have keys we need to specify the x and y
   \item lets make the sites different colors
-  \item The variable names are long so lets flit it with $coord_flip()$
+  \item The variable names are long so lets flit it with $coord\_flip()$
   \item Looks like we have outliers...hmm
   \end{itemize}
   \end{block}
@@ -862,6 +864,8 @@ require(ggplot2)
   \begin{block}{Removing Outliers}
   \begin{itemize}
   \item Outliers are defined 1.5 times the interquartile range above the upper quartile
+  \item lets fix the one with phosphate as the 9 is typed twice
+  \item Still issues with ammonia to explore
   \end{itemize}
   \end{block}  
 <<chunk10v, echo=TRUE>>=
@@ -879,6 +883,19 @@ require(ggplot2)
  table4[14,"phosphate..ppb."]<-982
 @      
 \end{frame}
+\begin{frame}[fragile]
+  \frametitle{Outliers check}
+  \framesubtitle{ Redo the boxplot}
+  \begin{block}{Look again ggplot}
+  \end{block}
+
+ <<chunk10viii, fig.width=10, fig.height=10, out.width='.85\\linewidth', fig.show='hold', echo=TRUE>>=
+ matable4<-melt(table4[,c(1:4,7:25)],variable.name = "microbe",value.name ="abundance",  id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
+ ggplot(matable4,aes(x=microbe,y=abundance,fill=Site)) + geom_boxplot() +  coord_flip()
+@
+%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
+
+\end{frame} 
 
 \begin{frame}[fragile]
   \frametitle{R package}
@@ -893,10 +910,10 @@ require(ggplot2)
 <<chunk9ii, echo=FALSE>>=
 library(DBI)
 require(RSQLite)
-require(gsubfn)
-require(chron)
+#require(gsubfn)
+#require(chron)
 #require(tcltk)
-library(sqldf)
+#library(sqldf)
 #library(RSQLite.extfuns)
 @
 
@@ -940,19 +957,6 @@ dbGetQuery(db, "SELECT * from table1")
   \end{itemize}
 \end{frame}
 
-
-
-%\begin{frame}
-%  \frametitle{How to I merge two data sets}
-%  \framesubtitle{What if the keys don't match}
-%\begin{block}{SQLite}
-%\begin{itemize}
-%\item dd
-%\end{itemize}
-%\end{block}
-
-  
-%\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1026,13 +1030,13 @@ abundance<-table4[,c(7:25)]
   \end{itemize}
   \end{block}
   \begin{lstlisting}
-  sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))	
- afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/") 
- table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
- options(digits=1)
- sweep(abundance, 2, colSums(abundance), FUN="/")
+sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))	
+afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/") 
+table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
+options(digits=1)
+sweep(abundance, 2, colSums(abundance), FUN="/")
 scale(abundance, center=FALSE, scale=colSums(abundance))
-  \end{lstlisting}
+ \end{lstlisting}
 
 \end{frame}
 
@@ -1079,8 +1083,8 @@ numNAs_inData5_col <- apply(table5, 2, function(z) sum(is.na(z)))
 \end{block}
 %<<boring-plots, fig.width=5, fig.height=5, out.width='.45\\linewidth', fig.show='hold'>>=
 <<chunk12i, echo=FALSE,fig.width=10, fig.height=10, out.width='.85\\linewidth', fig.show='hold'>>=
- abuncor<-cor(t5lessThan20col[,c(6:22)])
- corrplot(abuncor, method = "circle")
+ abuncor<-cor(t5lessThan20col[,c(6:22)],method="spearman")
+ corrplot(abuncor, method = "circle",main="Spearman Correlations")
  @
 \end{frame}
 %http://www.cookbook-r.com/Graphs/Plotting_distributions_(ggplot2)/
@@ -1089,7 +1093,7 @@ numNAs_inData5_col <- apply(table5, 2, function(z) sum(is.na(z)))
   \framesubtitle{Proposed future talks}
   \begin{block}{Help is on the way}
   \begin{itemize}
-  \item My PhD students
+  \item Parameterized Complexity Research Unit (PCRU) PhD students
   \item PhD student in Bioinformatics from Central South Uni
   \end{itemize}
   \end{block}
@@ -1121,6 +1125,19 @@ numNAs_inData5_col <- apply(table5, 2, function(z) sum(is.na(z)))
     \newblock {\tt https://www.sharelatex.com}    
 %    https://www.coursera.org/course/repdata
   \end{thebibliography}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{R Packages Used}
+  \framesubtitle{Session Info}
+\begin{block}{Output of sessionInfo}
+\end{block}
+<<chunk13, echo=TRUE>>=
+sessionInfo()
+#  packages_in_use <- c( sessionInfo()$basePkgs, names( sessionInfo()$loadedOnly ) )
+#the_citations_list <- lapply( X=packages_in_use, FUN=citation)
+#the_citations_list
+@
 \end{frame}
 
 %\frame{
@@ -1167,7 +1184,7 @@ numNAs_inData5_col <- apply(table5, 2, function(z) sum(is.na(z)))
 
 %\clearpage
 
-The chunk below will not be printed
+%The chunk below will not be printed
 
 %R code imported from external file
 %--------------------------------------------------------------------------------

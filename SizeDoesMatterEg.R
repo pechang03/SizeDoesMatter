@@ -198,12 +198,12 @@ require(ggplot2)
  table4[12,"phosphate..ppb."]<-982
  table4[14,"phosphate..ppb."]<-982
 
-phosphate<-table4[,"phosphate..ppb."]
-  upper.limit <- quantile(phosphate)[4] + 1.5*IQR(phosphate)
-  lower.limit <- quantile(phosphate)[2] - 1.5*IQR(phosphate)
+ammonia<-table4[,"ammonia..ppb."]
+  upper.limit <- quantile(ammonia)[4] + 2*IQR(ammonia)
+  lower.limit <- quantile(ammonia)[2] - 2*IQR(ammonia)
   
-  print(xtable(head(table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]),font=small))
+ table4[ammonia> upper.limit,c("Site","ammonia..ppb.")]
 
- table4[12,"phosphate..ppb."]<-982
- table4[14,"phosphate..ppb."]<-982
+ #table4[12,"ammonia..ppb."]<-982
+ #table4[14,"ammonia..ppb."]<-982
  

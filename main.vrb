@@ -1,10 +1,37 @@
-\frametitle{Now lets have some fun}
-  \framesubtitle{Making a heat map}
-\begin{block}{A heat map}
+\frametitle{R Packages Used}
+  \framesubtitle{Session Info}
+\begin{block}{Output of sessionInfo}
 \end{block}
-%<<boring-plots, fig.width=5, fig.height=5, out.width='.45\\linewidth', fig.show='hold'>>=
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-\includegraphics[width=.85\linewidth]{figure/chunk12i-1}
-
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{sessionInfo}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+## R version 3.1.2 (2014-10-31)
+## Platform: x86_64-apple-darwin13.4.0 (64-bit)
+##
+## locale:
+## [1] C
+##
+## attached base packages:
+## [1] methods   stats     graphics  grDevices utils     datasets  base
+##
+## other attached packages:
+##  [1] corrplot_0.73  RSQLite_1.0.0  DBI_0.3.1      ggplot2_1.0.0
+##  [5] reshape2_1.4.1 plyr_1.8.1     stringr_0.6.2  xtable_1.7-4
+##  [9] xlsx_0.5.7     xlsxjars_0.6.1 rJava_0.9-7    knitr_1.11
+##
+## loaded via a namespace (and not attached):
+##  [1] MASS_7.3-39      Rcpp_0.11.5      colorspace_1.2-6 digest_0.6.8
+##  [5] evaluate_0.7.2   formatR_1.2      grid_3.1.2       gtable_0.1.2
+##  [9] highr_0.5        labeling_0.3     munsell_0.4.2    proto_0.3-10
+## [13] scales_0.2.4     tools_3.1.2
+\end{verbatim}
+\begin{alltt}
+\hlcom{#  packages_in_use <- c( sessionInfo()$basePkgs, names( sessionInfo()$loadedOnly ) )}
+\hlcom{#the_citations_list <- lapply( X=packages_in_use, FUN=citation)}
+\hlcom{#the_citations_list}
+\end{alltt}
+\end{kframe}
 \end{knitrout}
