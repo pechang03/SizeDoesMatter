@@ -90,18 +90,18 @@
 \headcommand {\beamer@framepages {31}{31}}
 \headcommand {\slideentry {10}{0}{32}{32/32}{}{0}}
 \headcommand {\beamer@framepages {32}{32}}
-\headcommand {\slideentry {10}{0}{33}{33/33}{}{0}}
+\headcommand {\sectionentry {11}{Fat or wide}{33}{Fat or wide}{0}}
+\headcommand {\beamer@sectionpages {28}{32}}
+\headcommand {\beamer@subsectionpages {28}{32}}
+\headcommand {\slideentry {11}{0}{33}{33/33}{}{0}}
 \headcommand {\beamer@framepages {33}{33}}
-\headcommand {\sectionentry {11}{Fat or wide}{34}{Fat or wide}{0}}
-\headcommand {\beamer@sectionpages {28}{33}}
-\headcommand {\beamer@subsectionpages {28}{33}}
 \headcommand {\slideentry {11}{0}{34}{34/34}{}{0}}
 \headcommand {\beamer@framepages {34}{34}}
 \headcommand {\slideentry {11}{0}{35}{35/35}{}{0}}
 \headcommand {\beamer@framepages {35}{35}}
 \headcommand {\sectionentry {12}{Cleaning things up}{36}{Cleaning things up}{0}}
-\headcommand {\beamer@sectionpages {34}{35}}
-\headcommand {\beamer@subsectionpages {34}{35}}
+\headcommand {\beamer@sectionpages {33}{35}}
+\headcommand {\beamer@subsectionpages {33}{35}}
 \headcommand {\slideentry {12}{0}{36}{36/36}{}{0}}
 \headcommand {\beamer@framepages {36}{36}}
 \headcommand {\slideentry {12}{0}{37}{37/37}{}{0}}
@@ -119,8 +119,10 @@
 \headcommand {\beamer@framepages {41}{41}}
 \headcommand {\slideentry {13}{0}{42}{42/42}{}{0}}
 \headcommand {\beamer@framepages {42}{42}}
-\headcommand {\beamer@partpages {1}{43}}
-\headcommand {\beamer@subsectionpages {39}{43}}
-\headcommand {\beamer@sectionpages {39}{43}}
-\headcommand {\beamer@documentpages {43}}
-\headcommand {\def \inserttotalframenumber {42}}
+\headcommand {\slideentry {13}{0}{43}{43/43}{}{0}}
+\headcommand {\beamer@framepages {43}{43}}
+\headcommand {\beamer@partpages {1}{44}}
+\headcommand {\beamer@subsectionpages {39}{44}}
+\headcommand {\beamer@sectionpages {39}{44}}
+\headcommand {\beamer@documentpages {44}}
+\headcommand {\def \inserttotalframenumber {43}}

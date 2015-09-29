@@ -1,7 +1,8 @@
 %\documentclass[12pt]{beamer}
-%\documentclass[10pt,handout,english]{beamer}
-\documentclass{article}
-\usepackage[envcountsect]{beamerarticle}
+\documentclass[10pt,handout,english]{beamer}
+%\documentclass{article}
+%\DeclareOption{noxcolor}{\PassOptionsToPackage{noxcolor}{beamerbasearticle}}
+%\usepackage[envcountsect]{beamerarticle}
 
 
 
@@ -18,7 +19,7 @@
 \lstloadlanguages{R} 
 
 
-%\geometry{paperwidth=160mm,paperheight=125mm}
+\geometry{paperwidth=160mm,paperheight=125mm}
 \usepackage{pgfpages}
 
 \usepackage{lipsum}
@@ -367,6 +368,8 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
   \begin{block}{Citing Packages}
   \begin{itemize}
  \item Citing packages
+ \item Getting the bibtex entry into endnote
+ \item \url{http://www.lib.uts.edu.au/question/5955/how-can-i-import-bibliography-endnote-bibtex-latex-what-about-converting-other-way}
    \end{itemize}
   \end{block}
 \begin{lstlisting}
@@ -796,7 +799,11 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \frametitle{Reshaping Tables}
   \framesubtitle{reshape2}
   \begin{block}{reshape2}
-  vignette(reshape)
+  \begin{itemize}
+ \item vignette(reshape) doesn't work
+ \item try \url{http://had.co.nz/reshape/}
+  \item and \url{http://seananderson.ca/2013/10/19/reshape.html}
+  \end{itemize}
   \end{block}
 %  <<chunk10i, echo=TRUE>>=
 %  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
@@ -818,7 +825,7 @@ library(DBI)
 require(RSQLite)
 require(gsubfn)
 require(chron)
-require(tcltk)
+#require(tcltk)
 library(sqldf)
 #library(RSQLite.extfuns)
 @
@@ -942,35 +949,69 @@ abundance<-table4[,c(7:25)]
   \begin{block}{sapply}
   \begin{itemize}
   \item Also known as centring the data
-  \item Ecological percentage of the sum of the variables
-  
+  \item Ecological percentage of the sum of the variables 
   \item We an use sweep to centre the data
-  \item What about divide by 0
+  \item $options(digits=1)$ Just to make things pretty
+ % \item What about divide by 0
   \end{itemize}
   \end{block}
   \begin{lstlisting}
   sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))	
  afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/") 
  table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
+ options(digits=1)
+ sweep(abundance, 2, colSums(abundance), FUN="/")
+scale(abundance, center=FALSE, scale=colSums(abundance))
   \end{lstlisting}
-%#Center the Data less than 20, only apply on continuous data set
-%sweepOutContinu<-sweep(subset_continu,2,apply(subset_continu,2,min,na.rm=TRUE))	
-%afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/")  
+
 \end{frame}
 
 
 
-\begin{frame}
+\begin{frame}[fragile]
+  \frametitle{Now lets have some fun}
+  \framesubtitle{Graphics in R}
+\begin{block}{R has nice graphs}
+\begin{itemize}
+\item Lets create a correlation heat map
+\item Heat map.
+\item A graphical output
+\item \url{http://rcharts.io/gallery/}
+\item R Graph gallery currently down try \url{http://rgraphgallery.blogspot.com/}
+%  Titles on R plots
+\item A reference on where to go R thumbnails 
+\item ggplot2 (scatter plot of 2 var and then 3 plots)
+\end{itemize}
+\end{block}  
+\begin{lstlisting}
+ library(corrplot)
+ abuncor<-cor(t5lessThan20col[,c(6:22)])
+ require(corrplot)
+ corrplot(abuncor, method = "circle")
+\end{lstlisting} 
+
+<<chunk12, echo=FALSE>>=
+sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))	
+ afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/") 
+ table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
+numNAs_inData5_col <- apply(table5, 2, function(z) sum(is.na(z)))
+ t5lessThan20col <- table5[,!(numNAs_inData5_col > 20)]
+ ncol(t5lessThan20col)
+ require(corrplot)
+ @
+
+\end{frame}
+ 
+ \begin{frame}[fragile]
   \frametitle{Now lets have some fun}
   \framesubtitle{Making a heat map}
-  
-  Heat map.
-  A graphical output
-  Titles on R plots
-  
-  A reference on where to go
-  R thumbnails 
-  ggplot2 (scatter plot of 2 var and then 3 plots)
+\begin{block}{A heat map}
+\end{block}
+%<<boring-plots, fig.width=5, fig.height=5, out.width='.45\\linewidth', fig.show='hold'>>=
+<<chunk12i, echo=FALSE,fig.width=10, fig.height=10, out.width='.85\\linewidth', fig.show='hold'>>=
+ abuncor<-cor(t5lessThan20col[,c(6:22)])
+ corrplot(abuncor, method = "circle")
+ @
 \end{frame}
 
 \begin{frame}

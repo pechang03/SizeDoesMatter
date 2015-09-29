@@ -166,5 +166,13 @@ dates4<-table4[,c(5,6)]
 abundance<-table4[,c(7:25)]
 days<-dates4[,2]-dates4[,1]
 
-
+sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))	
+ afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/") 
+ table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
+ 
+ numNAs_inData5_col <- apply(table5, 2, function(z) sum(is.na(z)))
+ t5lessThan20col <- table5[,!(numNAs_inData5_col > 20)]
+ ncol(t5lessThan20col)
+ abuncor<-cor(t5lessThan20col[,c(6:22)])
+ 
 

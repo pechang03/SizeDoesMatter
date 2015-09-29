@@ -1,19 +1,10 @@
-\frametitle{Setting the Relative abundance}
-  \framesubtitle{Normalizing data}
-  \begin{block}{sapply}
-  \begin{itemize}
-  \item Also known as centring the data
-  \item Ecological percentage of the sum of the variables
+\frametitle{Now lets have some fun}
+  \framesubtitle{Making a heat map}
+\begin{block}{A heat map}
+\end{block}
+%<<boring-plots, fig.width=5, fig.height=5, out.width='.45\\linewidth', fig.show='hold'>>=
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=.85\linewidth]{figure/chunk12i-1}
 
-  \item We an use sweep to centre the data
-  \item What about divide by 0
-  \end{itemize}
-  \end{block}
-  \begin{lstlisting}
-  sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))
- afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/")
- table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
-  \end{lstlisting}
-%#Center the Data less than 20, only apply on continuous data set
-%sweepOutContinu<-sweep(subset_continu,2,apply(subset_continu,2,min,na.rm=TRUE))
-%afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/")
+\end{knitrout}

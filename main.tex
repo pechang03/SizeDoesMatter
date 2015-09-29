@@ -1,6 +1,5 @@
 %\documentclass[12pt]{beamer}
-%\documentclass[10pt,handout,english]{beamer}
-\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[10pt,handout,english]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -50,7 +49,9 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
-\usepackage[envcountsect]{beamerarticle}
+%\documentclass{article}
+%\DeclareOption{noxcolor}{\PassOptionsToPackage{noxcolor}{beamerbasearticle}}
+%\usepackage[envcountsect]{beamerarticle}
 
 
 
@@ -67,7 +68,7 @@
 \lstloadlanguages{R} 
 
 
-%\geometry{paperwidth=160mm,paperheight=125mm}
+\geometry{paperwidth=160mm,paperheight=125mm}
 \usepackage{pgfpages}
 
 \usepackage{lipsum}
@@ -442,6 +443,8 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
   \begin{block}{Citing Packages}
   \begin{itemize}
  \item Citing packages
+ \item Getting the bibtex entry into endnote
+ \item \url{http://www.lib.uts.edu.au/question/5955/how-can-i-import-bibliography-endnote-bibtex-latex-what-about-converting-other-way}
    \end{itemize}
   \end{block}
 \begin{lstlisting}
@@ -525,7 +528,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
   \frametitle{Lets read the table}
   \framesubtitle{The columns are wrong}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Tue Sep 29 10:39:04 2015
+% Tue Sep 29 17:31:10 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -829,7 +832,7 @@ mydata <- read.dta("c:/mydata.dta")
 \end{kframe}
 \end{knitrout}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Tue Sep 29 10:39:05 2015
+% Tue Sep 29 17:31:10 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rllllll}
@@ -1210,7 +1213,11 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \frametitle{Reshaping Tables}
   \framesubtitle{reshape2}
   \begin{block}{reshape2}
-  vignette(reshape)
+  \begin{itemize}
+ \item vignette(reshape) doesn't work
+ \item try \url{http://had.co.nz/reshape/}
+  \item and \url{http://seananderson.ca/2013/10/19/reshape.html}
+  \end{itemize}
   \end{block}
 %  <<chunk10i, echo=TRUE>>=
 %  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
@@ -1237,9 +1244,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# Could not load tcltk.\ \ Will use slower R code instead.\\\#\# Loading required package: chron}}
 
-{\ttfamily\noindent\color{warningcolor}{\#\# Warning: package 'chron' was built under R version 3.1.3}}
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: tcltk}}\end{kframe}
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: package 'chron' was built under R version 3.1.3}}\end{kframe}
 \end{knitrout}
 
 \begin{knitrout}
@@ -1964,35 +1969,70 @@ abundance<-table4[,c(7:25)]
   \begin{block}{sapply}
   \begin{itemize}
   \item Also known as centring the data
-  \item Ecological percentage of the sum of the variables
-  
+  \item Ecological percentage of the sum of the variables 
   \item We an use sweep to centre the data
-  \item What about divide by 0
+  \item $options(digits=1)$ Just to make things pretty
+ % \item What about divide by 0
   \end{itemize}
   \end{block}
   \begin{lstlisting}
   sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))	
  afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/") 
  table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
+ options(digits=1)
+ sweep(abundance, 2, colSums(abundance), FUN="/")
+scale(abundance, center=FALSE, scale=colSums(abundance))
   \end{lstlisting}
-%#Center the Data less than 20, only apply on continuous data set
-%sweepOutContinu<-sweep(subset_continu,2,apply(subset_continu,2,min,na.rm=TRUE))	
-%afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/")  
+
 \end{frame}
 
 
 
-\begin{frame}
+\begin{frame}[fragile]
+  \frametitle{Now lets have some fun}
+  \framesubtitle{Graphics in R}
+\begin{block}{R has nice graphs}
+\begin{itemize}
+\item Lets create a correlation heat map
+\item Heat map.
+\item A graphical output
+\item \url{http://rcharts.io/gallery/}
+\item R Graph gallery currently down try \url{http://rgraphgallery.blogspot.com/}
+%  Titles on R plots
+\item A reference on where to go R thumbnails 
+\item ggplot2 (scatter plot of 2 var and then 3 plots)
+\end{itemize}
+\end{block}  
+\begin{lstlisting}
+ library(corrplot)
+ abuncor<-cor(t5lessThan20col[,c(6:22)])
+ require(corrplot)
+ corrplot(abuncor, method = "circle")
+\end{lstlisting} 
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] 23
+\end{verbatim}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: corrplot}}\end{kframe}
+\end{knitrout}
+
+\end{frame}
+ 
+ \begin{frame}[fragile]
   \frametitle{Now lets have some fun}
   \framesubtitle{Making a heat map}
-  
-  Heat map.
-  A graphical output
-  Titles on R plots
-  
-  A reference on where to go
-  R thumbnails 
-  ggplot2 (scatter plot of 2 var and then 3 plots)
+\begin{block}{A heat map}
+\end{block}
+%<<boring-plots, fig.width=5, fig.height=5, out.width='.45\\linewidth', fig.show='hold'>>=
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=.85\linewidth]{figure/chunk12i-1} 
+
+\end{knitrout}
 \end{frame}
 
 \begin{frame}
