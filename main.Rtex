@@ -805,10 +805,80 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \item and \url{http://seananderson.ca/2013/10/19/reshape.html}
   \end{itemize}
   \end{block}
-%  <<chunk10i, echo=TRUE>>=
-%  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
-%  @
+  \begin{block}{A small example for melt}
+  \begin{itemize}
+  \item Suppose we what a box plot to see if there are outliers
+  \item We will use ggplot2 box plot
+  \item but box plot needs data in long format to use this
+  \item first melt the data
+  \item We need to specify the unique key, the variable name and the value name
+  \item The key is not unique.
+  \item Then plot it
+  \end{itemize}
+  \end{block}
 \end{frame}  
+  
+\begin{frame}[fragile]
+  \frametitle{Reshaping Tables}
+  \framesubtitle{melt and boxplot}
+  \begin{block}{The code}
+  \end{block}
+    \begin{lstlisting}
+    matable4<-melt(table4[,c(1:4,6:25)],variable.name = "microbe",value.name ="abundance", \\
+    id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
+   \end{lstlisting}
+ <<chunk10iii, echo=TRUE>>=
+ require(reshape2)
+ matable4<-melt(table4[,c(1:4,6:25)],variable.name = "microbe",value.name ="abundance", id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
+ 
+@
+%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
+
+\end{frame}  
+
+\begin{frame}[fragile]
+  \frametitle{Reshaping Tables}
+  \framesubtitle{ boxplot}
+  \begin{block}{Using ggplot}
+  \begin{itemize}
+  \item As we have keys we need to specify the x and y
+  \item lets make the sites different colors
+  \item The variable names are long so lets flit it with $coord_flip()$
+  \item Looks like we have outliers...hmm
+  \end{itemize}
+  \end{block}
+
+ <<chunk10iv, fig.width=10, fig.height=10, out.width='.85\\linewidth', fig.show='hold', echo=TRUE>>=
+require(ggplot2)
+ ggplot(matable4,aes(x=microbe,y=abundance,fill=Site)) + geom_boxplot() +  coord_flip()
+@
+%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
+
+\end{frame}  
+
+\begin{frame}[fragile]
+  \frametitle{Reshaping Tables}
+  \framesubtitle{ boxplot}
+  \begin{block}{Removing Outliers}
+  \begin{itemize}
+  \item Outliers are defined 1.5 times the interquartile range above the upper quartile
+  \end{itemize}
+  \end{block}  
+<<chunk10v, echo=TRUE>>=
+  phosphate<-table4[,"phosphate..ppb."]
+  upper.limit <- quantile(phosphate)[4] + 1.5*IQR(phosphate)
+  lower.limit <- quantile(phosphate)[2] - 1.5*IQR(phosphate)
+  #table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]
+@ 
+ 
+<<chunk10vi,results='asis', echo=FALSE>>=
+  print(xtable(head(table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]),font=small))
+@
+ <<chunk10vii, echo=TRUE>>= 
+ table4[12,"phosphate..ppb."]<-982
+ table4[14,"phosphate..ppb."]<-982
+@      
+\end{frame}
 
 \begin{frame}[fragile]
   \frametitle{R package}
@@ -1013,7 +1083,7 @@ numNAs_inData5_col <- apply(table5, 2, function(z) sum(is.na(z)))
  corrplot(abuncor, method = "circle")
  @
 \end{frame}
-
+%http://www.cookbook-r.com/Graphs/Plotting_distributions_(ggplot2)/
 \begin{frame}
   \frametitle{What next}
   \framesubtitle{Proposed future talks}

@@ -528,7 +528,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
   \frametitle{Lets read the table}
   \framesubtitle{The columns are wrong}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Tue Sep 29 17:31:10 2015
+% Tue Sep 29 21:20:21 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -832,7 +832,7 @@ mydata <- read.dta("c:/mydata.dta")
 \end{kframe}
 \end{knitrout}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Tue Sep 29 17:31:10 2015
+% Tue Sep 29 21:20:21 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rllllll}
@@ -1219,10 +1219,126 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \item and \url{http://seananderson.ca/2013/10/19/reshape.html}
   \end{itemize}
   \end{block}
-%  <<chunk10i, echo=TRUE>>=
-%  reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
-%  @
+  \begin{block}{A small example for melt}
+  \begin{itemize}
+  \item Suppose we what a box plot to see if there are outliers
+  \item We will use ggplot2 box plot
+  \item but box plot needs data in long format to use this
+  \item first melt the data
+  \item We need to specify the unique key, the variable name and the value name
+  \item The key is not unique.
+  \item Then plot it
+  \end{itemize}
+  \end{block}
 \end{frame}  
+  
+\begin{frame}[fragile]
+  \frametitle{Reshaping Tables}
+  \framesubtitle{melt and boxplot}
+  \begin{block}{The code}
+  \end{block}
+    \begin{lstlisting}
+    matable4<-melt(table4[,c(1:4,6:25)],variable.name = "microbe",value.name ="abundance", \\
+    id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
+   \end{lstlisting}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{require}\hlstd{(reshape2)}
+\end{alltt}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: reshape2}}\begin{alltt}
+\hlstd{matable4}\hlkwb{<-}\hlkwd{melt}\hlstd{(table4[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{,}\hlnum{6}\hlopt{:}\hlnum{25}\hlstd{)],}\hlkwc{variable.name} \hlstd{=} \hlstr{"microbe"}\hlstd{,}\hlkwc{value.name} \hlstd{=}\hlstr{"abundance"}\hlstd{,} \hlkwc{id}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}\hlkwc{factorsAsStrings}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{rm.na}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: attributes are not identical across measure variables; they will be dropped}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: cannot avoid coercion of factors when measure attributes not identical}}\end{kframe}
+\end{knitrout}
+%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
+
+\end{frame}  
+
+\begin{frame}[fragile]
+  \frametitle{Reshaping Tables}
+  \framesubtitle{ boxplot}
+  \begin{block}{Using ggplot}
+  \begin{itemize}
+  \item As we have keys we need to specify the x and y
+  \item lets make the sites different colors
+  \item The variable names are long so lets flit it with $coord_flip()$
+  \item Looks like we have outliers...hmm
+  \end{itemize}
+  \end{block}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{require}\hlstd{(ggplot2)}
+\end{alltt}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: ggplot2}}\begin{alltt}
+\hlkwd{ggplot}\hlstd{(matable4,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=microbe,}\hlkwc{y}\hlstd{=abundance,}\hlkwc{fill}\hlstd{=Site))} \hlopt{+} \hlkwd{geom_boxplot}\hlstd{()} \hlopt{+}  \hlkwd{coord_flip}\hlstd{()}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: Removed 24 rows containing non-finite values (stat\_boxplot).}}\end{kframe}
+\includegraphics[width=.85\linewidth]{figure/chunk10iv-1} 
+
+\end{knitrout}
+%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
+
+\end{frame}  
+
+\begin{frame}[fragile]
+  \frametitle{Reshaping Tables}
+  \framesubtitle{ boxplot}
+  \begin{block}{Removing Outliers}
+  \begin{itemize}
+  \item Outliers are defined 1.5 times the interquartile range above the upper quartile
+  \end{itemize}
+  \end{block}  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+  \hlstd{phosphate}\hlkwb{<-}\hlstd{table4[,}\hlstr{"phosphate..ppb."}\hlstd{]}
+  \hlstd{upper.limit} \hlkwb{<-} \hlkwd{quantile}\hlstd{(phosphate)[}\hlnum{4}\hlstd{]} \hlopt{+} \hlnum{1.5}\hlopt{*}\hlkwd{IQR}\hlstd{(phosphate)}
+  \hlstd{lower.limit} \hlkwb{<-} \hlkwd{quantile}\hlstd{(phosphate)[}\hlnum{2}\hlstd{]} \hlopt{-} \hlnum{1.5}\hlopt{*}\hlkwd{IQR}\hlstd{(phosphate)}
+  \hlcom{#table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+ 
+% latex table generated in R 3.1.2 by xtable 1.7-4 package
+% Tue Sep 29 21:20:23 2015
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlr}
+  \hline
+ & Site & phosphate..ppb. \\ 
+  \hline
+1 & 1 & 3020.00 \\ 
+  2 & 1 & 3253.00 \\ 
+  3 & 1 & 3169.00 \\ 
+  12 & 1 & 9982.00 \\ 
+  14 & 1 & 9982.00 \\ 
+  16 & 1 & 1542.00 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{table4[}\hlnum{12}\hlstd{,}\hlstr{"phosphate..ppb."}\hlstd{]}\hlkwb{<-}\hlnum{982}
+\hlstd{table4[}\hlnum{14}\hlstd{,}\hlstr{"phosphate..ppb."}\hlstd{]}\hlkwb{<-}\hlnum{982}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
 
 \begin{frame}[fragile]
   \frametitle{R package}
@@ -2034,7 +2150,7 @@ scale(abundance, center=FALSE, scale=colSums(abundance))
 
 \end{knitrout}
 \end{frame}
-
+%http://www.cookbook-r.com/Graphs/Plotting_distributions_(ggplot2)/
 \begin{frame}
   \frametitle{What next}
   \framesubtitle{Proposed future talks}

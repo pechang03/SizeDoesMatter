@@ -99,30 +99,36 @@
 \headcommand {\beamer@framepages {34}{34}}
 \headcommand {\slideentry {11}{0}{35}{35/35}{}{0}}
 \headcommand {\beamer@framepages {35}{35}}
-\headcommand {\sectionentry {12}{Cleaning things up}{36}{Cleaning things up}{0}}
-\headcommand {\beamer@sectionpages {33}{35}}
-\headcommand {\beamer@subsectionpages {33}{35}}
-\headcommand {\slideentry {12}{0}{36}{36/36}{}{0}}
+\headcommand {\slideentry {11}{0}{36}{36/36}{}{0}}
 \headcommand {\beamer@framepages {36}{36}}
-\headcommand {\slideentry {12}{0}{37}{37/37}{}{0}}
+\headcommand {\slideentry {11}{0}{37}{37/37}{}{0}}
 \headcommand {\beamer@framepages {37}{37}}
-\headcommand {\slideentry {12}{0}{38}{38/38}{}{0}}
+\headcommand {\slideentry {11}{0}{38}{38/38}{}{0}}
 \headcommand {\beamer@framepages {38}{38}}
-\headcommand {\sectionentry {13}{Centering data}{39}{Centering data}{0}}
-\headcommand {\beamer@sectionpages {36}{38}}
-\headcommand {\beamer@subsectionpages {36}{38}}
-\headcommand {\slideentry {13}{0}{39}{39/39}{}{0}}
+\headcommand {\sectionentry {12}{Cleaning things up}{39}{Cleaning things up}{0}}
+\headcommand {\beamer@sectionpages {33}{38}}
+\headcommand {\beamer@subsectionpages {33}{38}}
+\headcommand {\slideentry {12}{0}{39}{39/39}{}{0}}
 \headcommand {\beamer@framepages {39}{39}}
-\headcommand {\slideentry {13}{0}{40}{40/40}{}{0}}
+\headcommand {\slideentry {12}{0}{40}{40/40}{}{0}}
 \headcommand {\beamer@framepages {40}{40}}
-\headcommand {\slideentry {13}{0}{41}{41/41}{}{0}}
+\headcommand {\slideentry {12}{0}{41}{41/41}{}{0}}
 \headcommand {\beamer@framepages {41}{41}}
+\headcommand {\sectionentry {13}{Centering data}{42}{Centering data}{0}}
+\headcommand {\beamer@sectionpages {39}{41}}
+\headcommand {\beamer@subsectionpages {39}{41}}
 \headcommand {\slideentry {13}{0}{42}{42/42}{}{0}}
 \headcommand {\beamer@framepages {42}{42}}
 \headcommand {\slideentry {13}{0}{43}{43/43}{}{0}}
 \headcommand {\beamer@framepages {43}{43}}
-\headcommand {\beamer@partpages {1}{44}}
-\headcommand {\beamer@subsectionpages {39}{44}}
-\headcommand {\beamer@sectionpages {39}{44}}
-\headcommand {\beamer@documentpages {44}}
-\headcommand {\def \inserttotalframenumber {43}}
+\headcommand {\slideentry {13}{0}{44}{44/44}{}{0}}
+\headcommand {\beamer@framepages {44}{44}}
+\headcommand {\slideentry {13}{0}{45}{45/45}{}{0}}
+\headcommand {\beamer@framepages {45}{45}}
+\headcommand {\slideentry {13}{0}{46}{46/46}{}{0}}
+\headcommand {\beamer@framepages {46}{46}}
+\headcommand {\beamer@partpages {1}{47}}
+\headcommand {\beamer@subsectionpages {42}{47}}
+\headcommand {\beamer@sectionpages {42}{47}}
+\headcommand {\beamer@documentpages {47}}
+\headcommand {\def \inserttotalframenumber {46}}

@@ -169,10 +169,41 @@ days<-dates4[,2]-dates4[,1]
 sweepOutContinu<-sweep(abundance,2,apply(abundance,2,min,na.rm=TRUE))	
  afterSweepContinu<-sweep(sweepOutContinu,2,apply(sweepOutContinu,2,max,na.rm=TRUE),"/") 
  table5<-cbind(table4[,c(1:6)],afterSweepContinu,days)
- 
+
+require(corrplot) 
  numNAs_inData5_col <- apply(table5, 2, function(z) sum(is.na(z)))
  t5lessThan20col <- table5[,!(numNAs_inData5_col > 20)]
  ncol(t5lessThan20col)
  abuncor<-cor(t5lessThan20col[,c(6:22)])
+ corrplot(abuncor, method = "circle")
  
+ #chunk10iv to 10 vi,
+ #refactor2
+ melt(abundance)
+ 
+ names(table4)
+ 
+ matable4<-melt(table4[,c(1:4,6:25)],variable.name = "microbe",value.name ="abundance", id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
+require(ggplot2)
+ ggplot(matable4,aes(x=microbe,y=abundance)) + geom_boxplot()
+ 
+ ggplot(matable4,aes(x=microbe,y=abundance,fill=Site)) + geom_boxplot() +  coord_flip()
+ 
+  phosphate<-table4[,"phosphate..ppb."]
+  upper.limit <- quantile(phosphate)[4] + 1.5*IQR(phosphate)
+  lower.limit <- quantile(phosphate)[2] - 1.5*IQR(phosphate)
+  
+  print(xtable(head(table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]),font=small))
 
+ table4[12,"phosphate..ppb."]<-982
+ table4[14,"phosphate..ppb."]<-982
+
+phosphate<-table4[,"phosphate..ppb."]
+  upper.limit <- quantile(phosphate)[4] + 1.5*IQR(phosphate)
+  lower.limit <- quantile(phosphate)[2] - 1.5*IQR(phosphate)
+  
+  print(xtable(head(table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]),font=small))
+
+ table4[12,"phosphate..ppb."]<-982
+ table4[14,"phosphate..ppb."]<-982
+ 
