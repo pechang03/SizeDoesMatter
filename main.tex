@@ -246,13 +246,30 @@ showstringspaces=false}
   \end{thebibliography}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Getting Started}
+  \framesubtitle{Todays Files}
+\begin{block}{Workshop files on Github}
+\url{https://github.com/pechang03/SizeDoesMatter}
+\end{block}
+
+\begin{itemize}
+\item The slides. {\bf main.pdf}
+\item The handouts {\bf handout.pdf}
+\item The R code {\bf SizeDoesMatterEg.R}
+\item The spreadsheets
+\begin{itemize}
+\item \url{1_R Wkshp_dummy data_OTU table.xlsx}
+\item \url{2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx}
+\item \url{3_Follow up data from contaminated site_MK.xlsx}
+\end{itemize}
+\end{itemize}
+\end{frame}
 
 \begin{frame}
   \frametitle{Getting Started}
   \framesubtitle{Installing R!}
-\begin{block}{Workshop files on Github}
-\url{https://github.com/pechang03/SizeDoesMatter}
-\end{block}
+
   \begin{block}{Download it}
   \begin{itemize}
     \item Open \url{http://www.r-project.org}
@@ -518,7 +535,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
   \frametitle{Reading an excel table}
   \framesubtitle{The columns types are wrong}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 18:09:59 2015
+% Wed Sep 30 18:27:48 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -824,7 +841,7 @@ mydata <- read.dta("c:/mydata.dta")
 \end{kframe}
 \end{knitrout}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 18:10:00 2015
+% Wed Sep 30 18:27:49 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rllllll}
@@ -1281,23 +1298,6 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \end{knitrout}
 \end{frame}  
 
-%\begin{frame}[fragile]
-%  \frametitle{Finding Outliers}
-%  \framesubtitle{Interquartile range}
-%  \begin{block}{Removing Outliers}
-%  \begin{itemize}
-%  \item Outliers are defined 1.5 times the interquartile range above the upper quartile
-%  \item Assume that  rows 12 and 14 in phosphate are errors as the 9 is typed twice
-%  \item Still issues with ammonia to explore
-%  \end{itemize}
-%  \end{block}  
-%<<chunk10v, echo=TRUE>>=
-%  phosphate<-table4[,"phosphate..ppb."]
-%  upper.limit <- quantile(phosphate)[4] + 1.5*IQR(phosphate)
-%  lower.limit <- quantile(phosphate)[2] - 1.5*IQR(phosphate)
-%  #table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]
-%@ 
-% \end{frame}  
 
 \begin{frame}[fragile]
   \frametitle{Finding Outliers}
@@ -1327,7 +1327,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \begin{block}{Removing Outliers}
    \end{block}   
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 18:10:02 2015
+% Wed Sep 30 18:27:51 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -1362,14 +1362,6 @@ table4[,1] <- sapply(table4[,1],as.factor)
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{matable4}\hlkwb{<-}\hlkwd{melt}\hlstd{(table4[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{,}\hlnum{7}\hlopt{:}\hlnum{25}\hlstd{)],}\hlkwc{variable.name} \hlstd{=} \hlstr{"microbe"}\hlstd{,}
-\hlkwc{value.name} \hlstd{=}\hlstr{"abundance"}\hlstd{,}  \hlkwc{id}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}
-\hlkwc{factorsAsStrings}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{rm.na}\hlstd{=}\hlnum{TRUE}\hlstd{)}
-
-\hlkwd{ggplot}\hlstd{(matable4,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=microbe,}\hlkwc{y}\hlstd{=abundance,}\hlkwc{fill}\hlstd{=Site))} \hlopt{+}
-\hlkwd{geom_boxplot}\hlstd{()} \hlopt{+}  \hlkwd{coord_flip}\hlstd{()}
-\end{alltt}
 
 
 {\ttfamily\noindent\color{warningcolor}{\#\# Warning: Removed 24 rows containing non-finite values (stat\_boxplot).}}\end{kframe}

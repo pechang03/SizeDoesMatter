@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.23)  30 SEP 2015 18:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.23)  30 SEP 2015 18:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1216,28 +1216,28 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
 [4
 
  </usr/local/texlive/2013/texmf-dist/tex/latex/beamer/art/beamericonbook.pdf>]
-LaTeX Font Info:    Try loading font information for OT1+zi4 on input line 279.
+LaTeX Font Info:    Try loading font information for OT1+zi4 on input line 267.
 
  (/usr/local/texlive/2013/texmf-dist/tex/latex/inconsolata/ot1zi4.fd
 File: ot1zi4.fd 2013/06/09 OT1/zi4 (Inconsolata)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 279.
+LaTeX Font Info:    Try loading font information for U+msa on input line 267.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 279.
+LaTeX Font Info:    Try loading font information for U+msb on input line 267.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+wasy on input line 279.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 267.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 279.
+line 267.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
@@ -1257,6 +1257,13 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
 [6
 
 ]
+Overfull \hbox (456.18155pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[7
+
+]
 \openout4 = `main.vrb'.
 
  (./main.vrb
@@ -1271,7 +1278,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[7
+[8
 
 
 ]
@@ -1282,15 +1289,8 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[8
-
-
-]
-Overfull \hbox (456.18155pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
-
 [9
+
 
 ]
 Overfull \hbox (456.18155pt too wide) has occurred while \output is active
@@ -1298,6 +1298,13 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
  []
 
 [10
+
+]
+Overfull \hbox (456.18155pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[11
 
 ]
 \openout4 = `main.vrb'.
@@ -1323,16 +1330,6 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[11
-
-]
-\openout4 = `main.vrb'.
-
- (./main.vrb)
-Overfull \hbox (456.18155pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
-
 [12
 
 ]
@@ -1344,6 +1341,16 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
  []
 
 [13
+
+]
+\openout4 = `main.vrb'.
+
+ (./main.vrb)
+Overfull \hbox (456.18155pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[14
 
 ]
 \openout4 = `main.vrb'.
@@ -1373,7 +1380,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[14
+[15
 
 ]
 \openout4 = `main.vrb'.
@@ -1393,7 +1400,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[15
+[16
 
 ]
 \openout4 = `main.vrb'.
@@ -1408,7 +1415,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[16
+[17
 
 
 ]
@@ -1426,7 +1433,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[17
+[18
 
 ]
 \openout4 = `main.vrb'.
@@ -1445,7 +1452,7 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              for symbol `textbraceleft' on input line 19.
 
 )
-Overfull \vbox (2110.7924pt too high) detected at line 746
+Overfull \vbox (2110.7924pt too high) detected at line 763
  []
 
 
@@ -1453,7 +1460,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[18
+[19
 
 
 ]
@@ -1481,7 +1488,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[19
+[20
 
 
 ]
@@ -1492,14 +1499,14 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[20
+[21
 
 ]
 Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[21
+[22
 
 ]
 \openout4 = `main.vrb'.
@@ -1522,7 +1529,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[22
+[23
 
 
 ]
@@ -1599,7 +1606,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[23
+[24
 
 ]
 \openout4 = `main.vrb'.
@@ -1653,7 +1660,7 @@ Overfull \hbox (48.39432pt too wide) in paragraph at lines 27--27
  []
 
 )
-Overfull \vbox (7.9695pt too high) detected at line 916
+Overfull \vbox (7.9695pt too high) detected at line 933
  []
 
 
@@ -1661,7 +1668,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[24
+[25
 
 
 ]
@@ -1705,7 +1712,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[25
+[26
 
 
 ]
@@ -1743,7 +1750,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[26
+[27
 
 
 ]
@@ -1786,7 +1793,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[27
+[28
 
 ]
 \openout4 = `main.vrb'.
@@ -1853,7 +1860,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[28
+[29
 
 
 ]
@@ -1940,7 +1947,7 @@ FALSE FALSE ...[]
  []
 
 )
-Overfull \vbox (39.9278pt too high) detected at line 1071
+Overfull \vbox (39.9278pt too high) detected at line 1088
  []
 
 
@@ -1948,7 +1955,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[29
+[30
 
 ]
 \openout4 = `main.vrb'.
@@ -1985,14 +1992,14 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[30
+[31
 
 ]
 Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[31
+[32
 
 ]
 \openout4 = `main.vrb'.
@@ -2012,7 +2019,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[32
+[33
 
 ]
 \openout4 = `main.vrb'.
@@ -2022,7 +2029,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[33
+[34
 
 ]
 \openout4 = `main.vrb'.
@@ -2049,7 +2056,7 @@ ndaceae"[]
  []
 
 )
-Overfull \vbox (40.7598pt too high) detected at line 1194
+Overfull \vbox (40.7598pt too high) detected at line 1211
  []
 
 
@@ -2057,14 +2064,14 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[34
+[35
 
 ]
 Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[35
+[36
 
 ]
 \openout4 = `main.vrb'.
@@ -2074,7 +2081,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[36
+[37
 
 ]
 \openout4 = `main.vrb'.
@@ -2108,7 +2115,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[37
+[38
 
 ]
 \openout4 = `main.vrb'.
@@ -2121,14 +2128,14 @@ es[][]\OT1/zi4/m/it/12 ([][]x[][]=microbe,[][]y[][]=abundance,[][]fill[][]=Site
 1/zi4/b/n/12 coord_flip[][]\OT1/zi4/m/it/12 ()[][] 
  []
 
-<figure/chunk10iv-1.pdf, id=1455, 722.7pt x 722.7pt>
+<figure/chunk10iv-1.pdf, id=1494, 722.7pt x 722.7pt>
 File: figure/chunk10iv-1.pdf Graphic file (type pdf)
 
 <use figure/chunk10iv-1.pdf>
 Package pdftex.def Info: figure/chunk10iv-1.pdf used on input line 25.
 (pdftex.def)             Requested size: 276.25198pt x 276.2499pt.
 )
-Overfull \vbox (198.70763pt too high) detected at line 1282
+Overfull \vbox (198.70763pt too high) detected at line 1299
  []
 
 
@@ -2136,7 +2143,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[38
+[39
 
  <./figure/chunk10iv-1.pdf>]
 \openout4 = `main.vrb'.
@@ -2166,7 +2173,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[39
+[40
 
 ]
 \openout4 = `main.vrb'.
@@ -2176,40 +2183,19 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[40
+[41
 
 ]
 \openout4 = `main.vrb'.
 
- (./main.vrb
-Overfull \hbox (44.6pt too wide) in paragraph at lines 9--9
-[][]\OT1/zi4/m/it/12 matable4[][]<-[][]\OT1/zi4/b/n/12 melt[][]\OT1/zi4/m/it/12
- (table4[,[][]\OT1/zi4/b/n/12 c[][]\OT1/zi4/m/it/12 ([][]1[][]:[][]4[][],[][]7[
-][]:[][]25[][])],[][]variable.name[] []=[] []"microbe"[][],[][] 
- []
-
-
-Overfull \hbox (61.40001pt too wide) in paragraph at lines 10--10
-[][]\OT1/zi4/m/it/12 value.name[] []=[][]"abundance"[][],[]  []id[][]=[][]\OT1/
-zi4/b/n/12 c[][]\OT1/zi4/m/it/12 ([][]"Group"[][],[][]"Site"[][],[][]"Sample.ID
-"[][],[][]"Rep"[][]),[][] 
- []
-
-
-Overfull \hbox (3.8pt too wide) in paragraph at lines 13--13
-[][]\OT1/zi4/b/n/12 ggplot[][]\OT1/zi4/m/it/12 (matable4,[][]\OT1/zi4/b/n/12 ae
-s[][]\OT1/zi4/m/it/12 ([][]x[][]=microbe,[][]y[][]=abundance,[][]fill[][]=Site)
-)[] []+[][] 
- []
-
-<figure/chunk10viii-1.pdf, id=1572, 722.7pt x 722.7pt>
+ (./main.vrb <figure/chunk10viii-1.pdf, id=1611, 1084.05pt x 1084.05pt>
 File: figure/chunk10viii-1.pdf Graphic file (type pdf)
 
 <use figure/chunk10viii-1.pdf>
-Package pdftex.def Info: figure/chunk10viii-1.pdf used on input line 19.
-(pdftex.def)             Requested size: 276.25198pt x 276.2499pt.
+Package pdftex.def Info: figure/chunk10viii-1.pdf used on input line 11.
+(pdftex.def)             Requested size: 276.25198pt x 276.25542pt.
 )
-Overfull \vbox (161.37431pt too high) detected at line 1379
+Overfull \vbox (61.36783pt too high) detected at line 1371
  []
 
 
@@ -2217,7 +2203,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[41
+[42
 
  <./figure/chunk10viii-1.pdf>]
 \openout4 = `main.vrb'.
@@ -3669,7 +3655,7 @@ Overfull \hbox (21.80002pt too wide) in paragraph at lines 520--520
  []
 
 )
-Overfull \vbox (8409.91399pt too high) detected at line 2009
+Overfull \vbox (8409.91399pt too high) detected at line 2001
  []
 
 
@@ -3677,7 +3663,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[42
+[43
 
 ]
 \openout4 = `main.vrb'.
@@ -3702,10 +3688,10 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[43
+[44
 
 ]
-Overfull \hbox (111.49976pt too wide) in paragraph at lines 2044--2044
+Overfull \hbox (111.49976pt too wide) in paragraph at lines 2036--2036
 \OT1/zi4/m/it/12 my-[]experience-[]of-[]learning-[]r-[]from-[]basic-[]graphs-[]
 to-[]performance-[]tuning/$[]  
  []
@@ -3715,7 +3701,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[44
+[45
 
 ]
 \openout4 = `main.vrb'.
@@ -3749,16 +3735,6 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[45
-
-]
-\openout4 = `main.vrb'.
-
- (./main.vrb)
-Overfull \hbox (456.18155pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
-
 [46
 
 ]
@@ -3770,6 +3746,16 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
  []
 
 [47
+
+]
+\openout4 = `main.vrb'.
+
+ (./main.vrb)
+Overfull \hbox (456.18155pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[48
 
 ]
 \openout4 = `main.vrb'.
@@ -3789,7 +3775,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[48
+[49
 
 ]
 \openout4 = `main.vrb'.
@@ -3799,41 +3785,41 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[49
+[50
 
 ]
 \openout4 = `main.vrb'.
 
- (./main.vrb <figure/chunk12i-1.pdf, id=1927, 722.7pt x 722.7pt>
+ (./main.vrb <figure/chunk12i-1.pdf, id=1967, 722.7pt x 722.7pt>
 File: figure/chunk12i-1.pdf Graphic file (type pdf)
 
 <use figure/chunk12i-1.pdf>
 Package pdftex.def Info: figure/chunk12i-1.pdf used on input line 8.
 (pdftex.def)             Requested size: 276.25198pt x 276.2499pt.
 )
-Overfull \vbox (14.2223pt too high) detected at line 2181
+Overfull \vbox (14.2223pt too high) detected at line 2173
  []
 
 
-Overfull \hbox (456.18155pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
-
-[50
-
- <./figure/chunk12i-1.pdf>]
 Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [51
 
-]
+ <./figure/chunk12i-1.pdf>]
 Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [52
+
+]
+Overfull \hbox (456.18155pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[53
 
  </usr/local/texlive/2013/texmf-dist/tex/latex/beamer/art/beamericonarticle.pdf
 >]
@@ -3894,7 +3880,7 @@ tion)[][]
  []
 
 )
-Overfull \vbox (111.74396pt too high) detected at line 2260
+Overfull \vbox (111.74396pt too high) detected at line 2252
  []
 
 
@@ -3902,7 +3888,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[53
+[54
 
 ]
 \tf@nav=\write7
@@ -3914,11 +3900,11 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
 \tf@snm=\write9
 \openout9 = `main.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2333.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2333.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2325.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2325.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2333.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2333.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2325.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2325.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -3930,14 +3916,17 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2333.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2325.
  ) 
 Here is how much of TeX's memory you used:
- 20446 strings out of 493308
- 371092 string characters out of 6137816
- 1041292 words of memory out of 5000000
- 23146 multiletter control sequences out of 15000+600000
- 16928 words of font info for 63 fonts, out of 8000000 for 9000
+ 20486 strings out of 493308
+ 372119 string characters out of 6137816
+ 1041310 words of memory out of 5000000
+ 23183 multiletter control sequences out of 15000+600000
+ 18789 words of font info for 70 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,20n,65p,460b,1674s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
@@ -3959,10 +3948,10 @@ b></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
 usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></us
 r/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb>
-Output written on main.pdf (53 pages, 1322371 bytes).
+Output written on main.pdf (54 pages, 1325327 bytes).
 PDF statistics:
- 2175 PDF objects out of 2487 (max. 8388607)
- 2049 compressed objects within 21 object streams
- 124 named destinations out of 1000 (max. 500000)
+ 2214 PDF objects out of 2487 (max. 8388607)
+ 2087 compressed objects within 21 object streams
+ 126 named destinations out of 1000 (max. 500000)
  87 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -196,13 +196,30 @@ showstringspaces=false}
   \end{thebibliography}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Getting Started}
+  \framesubtitle{Todays Files}
+\begin{block}{Workshop files on Github}
+\url{https://github.com/pechang03/SizeDoesMatter}
+\end{block}
+
+\begin{itemize}
+\item The slides. {\bf main.pdf}
+\item The handouts {\bf handout.pdf}
+\item The R code {\bf SizeDoesMatterEg.R}
+\item The spreadsheets
+\begin{itemize}
+\item \url{1_R Wkshp_dummy data_OTU table.xlsx}
+\item \url{2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx}
+\item \url{3_Follow up data from contaminated site_MK.xlsx}
+\end{itemize}
+\end{itemize}
+\end{frame}
 
 \begin{frame}
   \frametitle{Getting Started}
   \framesubtitle{Installing R!}
-\begin{block}{Workshop files on Github}
-\url{https://github.com/pechang03/SizeDoesMatter}
-\end{block}
+
   \begin{block}{Download it}
   \begin{itemize}
     \item Open \url{http://www.r-project.org}
@@ -922,23 +939,6 @@ require(ggplot2)
 @
 \end{frame}  
 
-%\begin{frame}[fragile]
-%  \frametitle{Finding Outliers}
-%  \framesubtitle{Interquartile range}
-%  \begin{block}{Removing Outliers}
-%  \begin{itemize}
-%  \item Outliers are defined 1.5 times the interquartile range above the upper quartile
-%  \item Assume that  rows 12 and 14 in phosphate are errors as the 9 is typed twice
-%  \item Still issues with ammonia to explore
-%  \end{itemize}
-%  \end{block}  
-%<<chunk10v, echo=TRUE>>=
-%  phosphate<-table4[,"phosphate..ppb."]
-%  upper.limit <- quantile(phosphate)[4] + 1.5*IQR(phosphate)
-%  lower.limit <- quantile(phosphate)[2] - 1.5*IQR(phosphate)
-%  #table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]
-%@ 
-% \end{frame}  
 
 \begin{frame}[fragile]
   \frametitle{Finding Outliers}
@@ -978,12 +978,12 @@ require(ggplot2)
   \begin{block}{Look again ggplot}
   \end{block}
 
- <<chunk10viii, fig.width=10, fig.height=10, out.width='.85\\linewidth', fig.show='hold', echo=TRUE>>=
- matable4<-melt(table4[,c(1:4,7:25)],variable.name = "microbe",
+ <<chunk10viii, fig.width=15, fig.height=15, out.width='.85\\linewidth', fig.show='hold', echo=FALSE>>=
+ matable4b<-melt(table4[,c(1:4,7:25)],variable.name = "microbe",
  value.name ="abundance",  id=c("Group","Site","Sample.ID","Rep"),
  factorsAsStrings=FALSE,rm.na=TRUE)
  
- ggplot(matable4,aes(x=microbe,y=abundance,fill=Site)) + 
+ ggplot(matable4b,aes(x=microbe,y=abundance,fill=Site)) + 
  geom_boxplot() +  coord_flip()
 @
 \end{frame} 
