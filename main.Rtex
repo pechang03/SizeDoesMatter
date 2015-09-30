@@ -7,6 +7,7 @@
 
 
 \usetheme{Air}
+%\usetheme{Oxygen}
 \usepackage{thumbpdf}
 \usepackage{wasysym}
 \usepackage{ucs}
@@ -17,7 +18,8 @@
 \usepackage{listings,relsize} 
 \usepackage{url}
 \lstloadlanguages{R} 
-
+%\frame{}[shrink=10]
+%\pgfdeclareimage[width=\paperwidth]{oxygen-header}{mycollege-header}
 
 \geometry{paperwidth=160mm,paperheight=125mm}
 \usepackage{pgfpages}
@@ -30,7 +32,7 @@
   /Creator     (Peter Shaw)
   /Author      (Peter Shaw)
 }
-%\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]
+\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]
 %\pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm,landscape]
 %\pgfpagesuselayout{1 on 1 with notes}[a4paper,border shrink=5mm]
 %\pgfpagesuselayout{2 on 1 with notes landscape}[a4paper,border shrink=5mm]
@@ -117,7 +119,7 @@ showstringspaces=false}
   \begin{block}{Why not use a spreadsheet?}
   \begin{itemize}
     \item Data manipulation in Excel is VERY risk and time consuming
-    \item A rage of software packages are available for Excel
+    \item A range of software packages are available for Excel
     \item Large data sets can exceed the size limits of standard programs
     \item Spreadsheets don't have the inherent understanding of statistics that R has
     \item For example handling of N\/A's
@@ -278,20 +280,20 @@ example(sd)
 
 \end{frame}
 
-\section*{Some manners}
+\subsection*{Some manners}
 \begin{frame}
   \frametitle{Iterative development}
   \framesubtitle{Working Creatively}
 Research on how to work creatively based on case studies of  successful R\&D projects developed into Agile
 \begin{itemize}
-\item Keep the manages away
+\item Keep the ``manages'' away
 \item Work sustainably
 \item People over process
 \item Iterative development
 \end{itemize}
 \end{frame}
 
-\section*{Basic R Data types}
+\subsection*{Basic R Data types}
 \begin{frame}[fragile]
   \frametitle{R Data types}
   \framesubtitle{Lists, frames and tables}
@@ -321,9 +323,9 @@ str(team)
  
 \end{frame}  
 
-\section*{Reading our file}
+\section*{Reading files}
 \begin{frame}[fragile]
-  \frametitle{Lets read the table}
+  \frametitle{Let's read the first table}
   \framesubtitle{Check the current directory}
 \begin{block}{Where are we}
 \begin{lstlisting} 
@@ -337,8 +339,8 @@ ls()  #This lists the variables
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Lets read the table}
-  \framesubtitle{Reading a table}
+  \frametitle{Reading a table from a file}
+  \framesubtitle{Reading an excel table}
 \begin{block}{To read a csv table as a table try}
 \begin{lstlisting} 
 tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
@@ -348,11 +350,14 @@ tab1 <- as.matrix(read.csv(file="filetable.csv", sep=",", header=FALSE))
 \begin{itemize}
 \item What about a package?
 \item \url{http://www.thertrader.com/2014/02/11/a-million-ways-to-connect-r-and-excel/}
-\item Lets use the R package xlsx
+\item Installing the R package xlsx
+\item CRAN mirror \url{http://cran.csiro.au}
+\item Change in preferences
 \end{itemize}
 \end{block}
 \end{frame}
 
+%\section*[Help]{Getting help on packages}
 \section*{Getting help on packages}
 \begin{frame}[fragile]
   \frametitle{R Packages}
@@ -395,7 +400,7 @@ the_citations_list
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Lets read the table}
+  \frametitle{Reading an excel table}
   \framesubtitle{An example}
 \begin{lstlisting} 
 table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = 
@@ -411,8 +416,8 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName = "Sheet1",h
 @
 \end{frame}
 \begin{frame}[fragile]
-  \frametitle{Lets read the table}
-  \framesubtitle{The columns are wrong}
+  \frametitle{Reading an excel table}
+  \framesubtitle{The columns types are wrong}
 <<chunk3iii,results='asis', echo=FALSE>>=
 print(xtable(head(table1[,1:7]),size=tiny))
 @
@@ -420,7 +425,7 @@ print(xtable(head(table1[,1:7]),size=tiny))
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Lets read the table}
+  \frametitle{Reading an excel table}
   \framesubtitle{Transpose the table}
   \begin{block}{Transposing}
   We need to transpose the table and set the column names correctly
@@ -435,7 +440,7 @@ table1t=setNames(data.frame(t(table1[,-1])),table1[,1])
 \begin{frame}[fragile]
   \frametitle{Fields across many columns}
   \framesubtitle{Replicating first column}
-\begin{block}{ Lets do it the easy way first}
+\begin{block}{ TDD -- First do it the easy way first}
 \end{block}
 <<chunk6x, echo=TRUE>>=  
 ctridx<-which(table1t$Group=="Control")
@@ -488,15 +493,16 @@ table1t$Site<-ttt
 \clearpage
 \end{frame}
 
-\section*{Working with strings}
+%\section*[Strings]{Working with strings}
+\section*{Strings}
 \begin{frame}[fragile]
   \frametitle{How to work with strings}
-  \framesubtitle{stringer package}
+  \framesubtitle{stringr package}
 \begin{itemize}
 \item \begin{lstlisting}
 require(stringr)
 \end{lstlisting}
-  Lets look at this package
+  A look at the stringer package
 \item \begin{lstlisting} 
 stri_c(str1,str2)
 \end{lstlisting}    concatenates two string
@@ -522,7 +528,7 @@ table1t$Rep<-as.factor(table1t$Rep)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Lets read the table}
+  \frametitle{Reading Tables}
   \framesubtitle{Reading a table of other types}
 \begin{itemize}  
 \item \url{http://www.statmethods.net/input/importingdata.html}
@@ -543,9 +549,10 @@ mydata <- read.dta("c:/mydata.dta")
   {\bf Need coffee !!} 
 \end{frame}
 
-\section*{Working with Data Types}
+%\section*[Types]{Working with Data Types}
+\section*{Types}
 \begin{frame}[fragile]
-  \frametitle{Lets read the next table}
+  \frametitle{Let's read the next table}
   \framesubtitle{Reading a table using xlxs}
 <<chunk7, echo=TRUE>>=
 setwd("/Users/pcru/SizeDoesMatter1")
@@ -560,7 +567,7 @@ print(xtable(head(table2[,1:6]),font=small))
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Lets read the next table}
+  \frametitle{Reading the next table}
   \framesubtitle{Reading a table}
   \begin{alert}{Oh NO}
 \begin{itemize}  
@@ -573,8 +580,8 @@ str(table2[,1:11])
 @
 
 
-\begin{block}{Lets break it down}
-First lets reed a few rows only
+\begin{block}{Break it down}
+First read a few rows only
 \end{block}
 <<chunk8ii, echo=TRUE>>=
 table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
@@ -585,13 +592,13 @@ sapply(table2,class)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Lets read the next table}
+  \frametitle{Reading the next table}
   \framesubtitle{Setting the data types}
 \begin{block}{colClasses}
 \begin{itemize}
 \item The variable colClasses can be used to specify the row types.
 \item We need to set {\bf stringsAsFactor=FALSE} or all columns with be loaded as factors
-\item The dates are in a non standard format so we need to read them as chars first
+\item The dates are in a non-standard format so we need to read them as chars first
 \end{itemize}
 \end{block}
 
@@ -603,7 +610,7 @@ sapply(table2,class)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Lets read the next table}
+  \frametitle{Reading table 2}
   \framesubtitle{Setting the Date Type}
 
  <<chunk8iii, echo=TRUE>>=
@@ -617,8 +624,8 @@ sapply(table2f,class)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Lets read the next table}
-  \framesubtitle{Setting the Date Type}
+  \frametitle{Reading table 2}
+  \framesubtitle{Setting the Date Type Correctly}
 \begin{block}{colClasses}
 \begin{itemize}
 \item The as.Data method can take a format string as the second variable 
@@ -642,9 +649,10 @@ dated<-table2bf$Sample.collection.date-table2bf$Spill.date
 \clearpage
 \end{frame}
 
-\section*{Working with string}
+%\section*[Strings]{Working with strings}
+\section*{Strings}
 \begin{frame}[fragile]
-  \frametitle{Lets read the next table}
+  \frametitle{Reading table 2}
   \framesubtitle{Just fix the Rep column using the stringer package again}
 
 <<chunk8iv, echo=TRUE>>=
@@ -657,17 +665,17 @@ table2bf$Rep<-as.factor(table2bf$Rep)
 str(table2bf)
 @
 \end{frame}  
-
-\section*{How to I merge two data sets}
+%\section*[Merge]{How to I merge two data sets}
+\section*{Merging Tables}
 \begin{frame}[fragile]
-  \frametitle{How to I merge two data sets}
+  \frametitle{How to I merge two data sets?}
   \framesubtitle{Using the merge command}
 
 \begin{block}{The inbuilt command merge}
 \begin{itemize}
 \item R has a command merge
-\item Lets start looking at the first 9 lines of the tables and merge them using the Sample ID
-\item Because otherwise its not uniques
+\item To begin, start looking at the first 9 lines of the tables and merge them 
+\item Need to use Group, Site, Sample.ID because otherwise it's not uniques
 \end{itemize}
 \end{block}
 \begin{lstlisting}
@@ -693,8 +701,8 @@ m3<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID","Rep"),by.y=c("Grou
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{How to I append two data sets}
-  \framesubtitle{Lets load a third data set}
+  \frametitle{How do I append two data sets?}
+  \framesubtitle{To begin load the third data set}
   \begin{block}{Follow up data from contaminated site}
   %3_Follow up data from contaminated site.xlsx
 
@@ -723,15 +731,16 @@ table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{How to I append two data sets}
-  \framesubtitle{Lets load a third data set}
+  \frametitle{How do I append two data sets?}
+  \framesubtitle{Loading the third data set}
   \begin{block}{Joining table 3 to are merged tables}
   \begin{itemize}
   \item We need to be careful to match everything
   \item Install the plyr package This has lots of useful functions for renaming var etc
   \item This means we need columns for corynebacteriaceae and porphyromondaceae
-  \item should these be NA or 0
-  \item we will do one of each. generally we would use NA but in this case 0 is perhaps better
+  \item Should these values be NA or 0?
+  \item We will do one of each. 
+  \item Generally we would use NA but in this case 0 is better as its likely the rows were missing as non were detected
  \end{itemize}
   %_Follow up data from contaminated site.xlsx
   \end{block}
@@ -796,6 +805,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \end{frame}
 
 
+%\section*[Reshape]{Fat or wide}
 \section*{Fat or wide}
 \begin{frame}[fragile]
   \frametitle{Reshaping Tables}
@@ -811,8 +821,8 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \begin{itemize}
   \item Suppose we what a box plot to see if there are outliers
   \item We will use ggplot2 box plot
-  \item but box plot needs data in long format to use this
-  \item first melt the data
+  \item The box plot needs data in long format. 
+  \item To use this first {\bf melt} the data
   \item We need to specify the unique key, the variable name and the value name
   \item The key is not unique.
   \item Then plot it
@@ -844,8 +854,8 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \begin{block}{Using ggplot}
   \begin{itemize}
   \item As we have keys we need to specify the x and y
-  \item lets make the sites different colors
-  \item The variable names are long so lets flit it with $coord\_flip()$
+  \item Let's make the sites different colors
+  \item The variable names are long so flip it with $coord\_flip()$
   \item Looks like we have outliers...hmm
   \end{itemize}
   \end{block}
@@ -864,7 +874,7 @@ require(ggplot2)
   \begin{block}{Removing Outliers}
   \begin{itemize}
   \item Outliers are defined 1.5 times the interquartile range above the upper quartile
-  \item lets fix the one with phosphate as the 9 is typed twice
+  \item Assume that  rows 12 and 14 in phosphate are errors as the 9 is typed twice
   \item Still issues with ammonia to explore
   \end{itemize}
   \end{block}  
@@ -903,7 +913,7 @@ require(ggplot2)
   \begin{block}{RSQLite}
   \begin{itemize}
   \item Suppose merge is not enough? I know about SQL and want to do joins
-  \item Lets Install RSQLite
+  \item Install RSQLite
   \item We also need to install DBI
   \end{itemize}
   \end{block}
@@ -961,6 +971,7 @@ dbGetQuery(db, "SELECT * from table1")
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%\section*[Dropping Columns]{Cleaning things up}
 \section*{Cleaning things up}
 \begin{frame}[fragile]
   \frametitle{Dropping row and columns}
@@ -1016,9 +1027,10 @@ abundance<-table4[,c(7:25)]
 \end{frame}
 
 
-\section*{Centering data}
+%\section*[Normalizeing]{Setting the Relative Abundance}
+\section*{Setting the relative abundance}
 \begin{frame}[fragile]
-  \frametitle{Setting the Relative abundance}
+  \frametitle{Setting the relative abundance}
   \framesubtitle{Normalizing data}
   \begin{block}{sapply}
   \begin{itemize}
@@ -1043,18 +1055,17 @@ scale(abundance, center=FALSE, scale=colSums(abundance))
 
 
 \begin{frame}[fragile]
-  \frametitle{Now lets have some fun}
+  \frametitle{Now let's have some fun}
   \framesubtitle{Graphics in R}
 \begin{block}{R has nice graphs}
 \begin{itemize}
-\item Lets create a correlation heat map
-\item Heat map.
 \item A graphical output
 \item \url{http://rcharts.io/gallery/}
 \item R Graph gallery currently down try \url{http://rgraphgallery.blogspot.com/}
 %  Titles on R plots
 \item A reference on where to go R thumbnails 
 \item ggplot2 (scatter plot of 2 var and then 3 plots)
+\item To create a correlation heat map
 \end{itemize}
 \end{block}  
 \begin{lstlisting}
@@ -1077,7 +1088,7 @@ numNAs_inData5_col <- apply(table5, 2, function(z) sum(is.na(z)))
 \end{frame}
  
  \begin{frame}[fragile]
-  \frametitle{Now lets have some fun}
+  \frametitle{Now let's have some fun}
   \framesubtitle{Making a heat map}
 \begin{block}{A heat map}
 \end{block}

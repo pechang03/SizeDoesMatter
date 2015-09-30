@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.23)  29 SEP 2015 22:13
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.23)  30 SEP 2015 14:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -899,27 +899,31 @@ LaTeX Info: Redefining \addtolength on input line 77.
 Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count171
 )
+\pgfpages@box@1=\box57
+\pgfpages@box@2=\box58
+\pgfpages@box@3=\box59
+\pgfpages@box@4=\box60
+
 (/usr/local/texlive/2013/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
-)
-No file main.aux.
+) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -958,7 +962,7 @@ LaTeX Font Info:    ... okay on input line 93.
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count172
 \scratchdimen=\dimen207
-\scratchbox=\box57
+\scratchbox=\box61
 \nofMPsegments=\count173
 \nofMParguments=\count174
 \everyMPshowfont=\toks46
@@ -983,8 +987,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box58
-Package hyperref Info: Link coloring OFF on input line 93.
+\AtBeginShipoutBox=\box62
+Package hyperref Info: Link coloring OFF on input line 95.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -994,64 +998,66 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count178
 )
-LaTeX Info: Redefining \ref on input line 93.
-LaTeX Info: Redefining \pageref on input line 93.
-LaTeX Info: Redefining \nameref on input line 93.
+LaTeX Info: Redefining \ref on input line 95.
+LaTeX Info: Redefining \pageref on input line 95.
+LaTeX Info: Redefining \nameref on input line 95.
+
+(./main.out) (./main.out)
 \@outlinefile=\write6
 \openout6 = `main.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 93.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 95.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 93.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 95.
 \symnumbers=\mathgroup7
 \sympureletters=\mathgroup8
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 93.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 93.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 95.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 93.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 93.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 93.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 95.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 93.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 93.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 93.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 95.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 93.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 93.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 93.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 95.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 93.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 93.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 95.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 93.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 95.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 93.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 93.
+(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 93.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 93.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 93.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 95.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 93.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 93.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 95.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 95.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 9
-3.
+5.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 
-93.
+95.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 93.
+ut line 95.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/beamer/translator/dicts/translato
 r-basic-dictionary/translator-basic-dictionary-English.dict
@@ -1077,7 +1083,7 @@ Dictionary: translator-numbers-dictionary, Language: English
 r-theorem-dictionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 93.
+LaTeX Info: Redefining \includegraphics on input line 95.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
@@ -1165,150 +1171,133 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 )
 \c@lstlisting=\count179
  (./main.nav)
-Overfull \hbox (575.11295pt too wide) detected at line 93
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) detected at line 95
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 101.
+(Font)              size <5> substituted on input line 103.
 
 
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
- <./air-header.png>]
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[2
 
-]
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[3
 
-]
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[4
-
- </usr/local/texlive/2013/texmf-dist/tex/latex/beamer/art/beamericonbook.pdf>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 261.
- (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Try loading font information for U+msa on input line 263.
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 261.
+LaTeX Font Info:    Try loading font information for U+msb on input line 263.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+wasy on input line 261.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 263.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 261.
+line 263.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+) [5{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+
+
+ <./air-header.png> </usr/local/texlive/2013/texmf-dist/tex/latex/beamer/art/be
+americonbook.pdf>]
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[5
 
-]
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[6
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 17.
 )
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[7
-
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
-
-[8
-
-
-]
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+(./main.vrb)
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [9
 
+
+
+
+
+
 ]
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[10
 
-]
-\openout4 = `main.vrb'.
-
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[11
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+(./main.vrb)
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[12
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+(./main.vrb)
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[13
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb) [13
+
+
+
+
+]
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+\openout4 = `main.vrb'.
+
+(./main.vrb
 Overfull \hbox (58.15768pt too wide) in paragraph at lines 15--16
 \OT1/cmtt/m/n/10 how-[]can-[]i-[]import-[]bibliography-[]endnote-[]bibtex-[]lat
 ex-[]what-[]about-[]converting-[]other-[]way$[]  
@@ -1324,47 +1313,40 @@ Overfull \hbox (53.37766pt too wide) in paragraph at lines 24--25
  []
 
 )
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[14
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+(./main.vrb)
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[15
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+(./main.vrb)
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[16
+\openout4 = `main.vrb'.
+
+(./main.vrb) [17
+
+
+
 
 
 ]
-\openout4 = `main.vrb'.
-
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[17
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 
 Package Listings Warning: Text dropped after begin of listing on input line 16.
 
@@ -1378,21 +1360,17 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              for symbol `textbraceleft' on input line 19.
 
 )
-Overfull \vbox (1703.02779pt too high) detected at line 725
+Overfull \vbox (1703.02779pt too high) detected at line 730
  []
 
 
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[18
-
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 24.
 
 
@@ -1402,34 +1380,32 @@ File: omscmtt.fd
 LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
 )
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[19
-
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
-
-[20
-
-]
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+(./main.vrb)
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [21
 
+
+
+
+
+
 ]
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (304.9945pt too wide) in paragraph at lines 8--8
 [][]\OT1/cmtt/m/n/10 table2[][]<-[][]read.xlsx2[][]([][]"2_R Wkshp_dummy data_E
 nv Data_incl2outliersMK.xlsx"[][],[] []sheetName[] []=[][]"Sheet2"[][],[][]head
@@ -1437,17 +1413,13 @@ er[][]=[][]TRUE[][],[][]rowNames[][]=[][]FALSE[][])[][]
  []
 
 )
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[22
-
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (152.74583pt too wide) in paragraph at lines 16--16
 []\OT1/cmtt/m/n/10 ##  $ Group                 : Factor w/ 2 levels "Contaminat
 ed",..: 1 1 1 1 1 1 1 1 1 1 ...[] 
@@ -1549,21 +1521,17 @@ Overfull \hbox (52.9967pt too wide) in paragraph at lines 52--52
  []
 
 )
-Overfull \vbox (150.69443pt too high) detected at line 884
+Overfull \vbox (150.69443pt too high) detected at line 891
  []
 
 
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[23
-
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (1108.2375pt too wide) in paragraph at lines 14--14
 [][]\OT1/cmtt/m/n/10 table2b[][]<-[][]read.xlsx2[][]([][]"2_R Wkshp_dummy data_
 Env Data_incl2outliersMK.xlsx"[][],[] []sheetName[] []=[] []"Sheet2"[][],[][]he
@@ -1587,17 +1555,13 @@ Overfull \hbox (52.9967pt too wide) in paragraph at lines 19--19
  []
 
 )
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[24
-
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (105.49625pt too wide) in paragraph at lines 9--9
 [][]\OT1/cmtt/m/n/10 table2f[][]$[][]Sample.collection.date[][]<-[][]as.Date[][
 ](table2f[][]$[][]Sample.collection.date,[][]"%d.%m.%y"[][])[][] 
@@ -1625,18 +1589,22 @@ Overfull \hbox (52.9967pt too wide) in paragraph at lines 19--19
       "Date"[] 
  []
 
-)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
+) [25
 
-[25
+
+
+
+
 
 
 ]
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (289.24464pt too wide) in paragraph at lines 18--18
 [][]\OT1/cmtt/m/n/10 table2bf[][]$[][]Sample.collection.date[][]<-[][]as.Date[]
 []([][]ifelse[][]([][]![][]is.na[][](cdate1),[][]as.Date[][](cdate1),[][]as.Dat
@@ -1698,21 +1666,17 @@ Overfull \hbox (47.74675pt too wide) in paragraph at lines 32--32
  []
 
 )
-Overfull \vbox (71.58334pt too high) detected at line 984
+Overfull \vbox (71.58334pt too high) detected at line 991
  []
 
 
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[26
-
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (152.74583pt too wide) in paragraph at lines 17--17
 []\OT1/cmtt/m/n/10 ##  $ Group                 : Factor w/ 2 levels "Contaminat
 ed",..: 1 1 1 1 1 1 1 1 1 1 ...[] 
@@ -1785,16 +1749,13 @@ FALSE FALSE ...[]
  []
 
 )
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[27
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (184.24556pt too wide) in paragraph at lines 24--24
 [][]\OT1/cmtt/m/n/10 m2[][]<-[][]merge[][](table1t,table2bf,[][]by.x[][]=[][]c[
 ][]([][]"Group"[][],[][]"Site"[][],[][]"Sample ID"[][]),[][]by.y[][]=[][]c[][](
@@ -1810,23 +1771,25 @@ Overfull \hbox (247.24501pt too wide) in paragraph at lines 25--25
  []
 
 )
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
-
-[28
-
-]
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [29
 
+
+
+
+
+
 ]
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (517.48813pt too wide) in paragraph at lines 8--9
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][] 
@@ -1838,16 +1801,13 @@ Overfull \hbox (48.91505pt too wide) in paragraph at lines 11--12
  []
 
 )
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[30
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -1876,37 +1836,34 @@ pply[][](table3fiii[,[][]c[][]([][]7[][]:[][]24[][])],as.numeric)[][]
  []
 
 )
-Overfull \vbox (450.25pt too high) detected at line 1172
+Overfull \vbox (451.80556pt too high) detected at line 1180
  []
 
 
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[31
 
-]
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[32
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
+(./main.vrb) [33
 
-[33
+
+
 
 ]
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (98.00366pt too wide) in paragraph at lines 6--7
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1926,53 +1883,44 @@ e"[][],[][]"Sample.ID"[][],[][]"Rep"[][]),[][]factorsAsStrings[][]=[][]FALSE[][
  []
 
 )
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[34
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (126.49606pt too wide) in paragraph at lines 20--20
 [][]\OT1/cmtt/m/n/10 ggplot[][](matable4,[][]aes[][]([][]x[][]=microbe,[][]y[][
 ]=abundance,[][]fill[][]=Site))[] []+[] []geom_boxplot[][]()[] []+[]  []coord_f
 lip[][]()[][] 
  []
 
-<figure/chunk10iv-1.pdf, id=721, 722.7pt x 722.7pt>
+<figure/chunk10iv-1.pdf, id=523, 722.7pt x 722.7pt>
 File: figure/chunk10iv-1.pdf Graphic file (type pdf)
 
 <use figure/chunk10iv-1.pdf>
 Package pdftex.def Info: figure/chunk10iv-1.pdf used on input line 25.
 (pdftex.def)             Requested size: 276.25198pt x 276.2499pt.
 )
-Overfull \vbox (164.11101pt too high) detected at line 1259
+Overfull \vbox (164.11101pt too high) detected at line 1268
  []
 
 
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[35
-
- <./figure/chunk10iv-1.pdf>]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+(./main.vrb)
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[36
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (520.24263pt too wide) in paragraph at lines 9--9
 [][]\OT1/cmtt/m/n/10 matable4[][]<-[][]melt[][](table4[,[][]c[][]([][]1[][]:[][
 ]4[][],[][]7[][]:[][]25[][])],[][]variable.name[] []=[] []"microbe"[][],[][]val
@@ -1988,27 +1936,29 @@ Overfull \hbox (126.49606pt too wide) in paragraph at lines 10--10
 lip[][]()[][] 
  []
 
-<figure/chunk10viii-1.pdf, id=765, 722.7pt x 722.7pt>
+<figure/chunk10viii-1.pdf, id=546, 722.7pt x 722.7pt>
 File: figure/chunk10viii-1.pdf Graphic file (type pdf)
 
 <use figure/chunk10viii-1.pdf>
 Package pdftex.def Info: figure/chunk10viii-1.pdf used on input line 15.
 (pdftex.def)             Requested size: 276.25198pt x 276.2499pt.
 )
-Overfull \vbox (84.16656pt too high) detected at line 1329
- []
-
-
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \vbox (84.16656pt too high) detected at line 1338
  []
 
 [37
 
- <./figure/chunk10viii-1.pdf>]
+
+
+
+ <./figure/chunk10iv-1.pdf>]
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (5.74712pt too wide) in paragraph at lines 140--140
 []\OT1/cmtt/m/n/10 ##           verrucomicrobiaceae chloroflexaceae aeromonadac
 eae[] 
@@ -3875,33 +3825,28 @@ Overfull \hbox (37.24684pt too wide) in paragraph at lines 519--519
  []
 
 )
-Overfull \vbox (6903.8333pt too high) detected at line 1971
+Overfull \vbox (6903.8333pt too high) detected at line 1980
  []
 
 
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[38
 
-]
-Overfull \hbox (56.99692pt too wide) in paragraph at lines 1985--1985
+Overfull \hbox (56.99692pt too wide) in paragraph at lines 1994--1994
 \OT1/cmtt/m/n/10 my-[]experience-[]of-[]learning-[]r-[]from-[]basic-[]graphs-[]
 to-[]performance-[]tuning/$[]  
  []
 
 
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[39
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (66.76546pt too wide) in paragraph at lines 7--8
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
@@ -3921,96 +3866,83 @@ Overfull \hbox (129.24187pt too wide) in paragraph at lines 8--9
  []
 
 )
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[40
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+(./main.vrb) [41
+
+
+
+
+ <./figure/chunk10viii-1.pdf>]
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[41
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+(./main.vrb)
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[42
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (71.22806pt too wide) in paragraph at lines 14--15
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 )
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[43
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+(./main.vrb)
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[44
-
-]
 \openout4 = `main.vrb'.
 
- (./main.vrb <figure/chunk12i-1.pdf, id=933, 722.7pt x 722.7pt>
+(./main.vrb <figure/chunk12i-1.pdf, id=674, 722.7pt x 722.7pt>
 File: figure/chunk12i-1.pdf Graphic file (type pdf)
 
 <use figure/chunk12i-1.pdf>
 Package pdftex.def Info: figure/chunk12i-1.pdf used on input line 8.
 (pdftex.def)             Requested size: 276.25198pt x 276.2499pt.
 )
-Overfull \vbox (8.9999pt too high) detected at line 2121
- []
-
-
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \vbox (8.9999pt too high) detected at line 2131
  []
 
 [45
 
- <./figure/chunk12i-1.pdf>]
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
- []
 
-[46
+
 
 ]
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[47
 
- </usr/local/texlive/2013/texmf-dist/tex/latex/beamer/art/beamericonarticle.pdf
->]
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
 \openout4 = `main.vrb'.
 
- (./main.vrb
+(./main.vrb
 Overfull \hbox (47.74675pt too wide) in paragraph at lines 18--18
 []\OT1/cmtt/m/n/10 ## [1] methods   stats     graphics  grDevices utils     dat
 asets  base[] 
@@ -4065,17 +3997,14 @@ ation)[][]
  []
 
 )
-Overfull \vbox (42.09024pt too high) detected at line 2200
+Overfull \vbox (42.09024pt too high) detected at line 2210
  []
 
 
-Overfull \hbox (575.11295pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (386.6527pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[48
-
-]
 \tf@nav=\write7
 \openout7 = `main.nav'.
 
@@ -4085,21 +4014,22 @@ Overfull \hbox (575.11295pt too wide) has occurred while \output is active
 \tf@snm=\write9
 \openout9 = `main.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2273.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2273.
+[49
+
+
+
+
+ <./figure/chunk12i-1.pdf> </usr/local/texlive/2013/texmf-dist/tex/latex/beamer
+/art/beamericonarticle.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2283.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2283.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2273.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2273.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2283.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2283.
 
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
@@ -4107,40 +4037,70 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2273.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2283.
  ) 
 Here is how much of TeX's memory you used:
- 20324 strings out of 493308
- 369976 string characters out of 6137816
- 1039436 words of memory out of 5000000
- 23067 multiletter control sequences out of 15000+600000
+ 20330 strings out of 493308
+ 370743 string characters out of 6137816
+ 1102421 words of memory out of 5000000
+ 23128 multiletter control sequences out of 15000+600000
  10942 words of font info for 41 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,20n,65p,789b,1674s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb
-></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
-usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr
-/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/
-local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/l
-ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/loc
-al/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/lo
-cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/lo
-cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
-al/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local
-/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/t
-exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/te
-xlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0500.pfb></usr/local/texl
-ive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx0700.pfb></usr/local/texliv
-e/2013/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (48 pages, 1253066 bytes).
+pdfTeX warning (dest): name{Navigation1} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation48} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation43} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation40} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation28} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation27} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation22} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation19} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation14} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation12} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation2} has been referenced but does not exist
+, replaced by a fixed one
+
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<
+/usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb><
+/usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
+r/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/l
+ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/lo
+cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/loc
+al/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local
+/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/loca
+l/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/loca
+l/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/t
+exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
+live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texl
+ive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0500.pfb></usr/local/texliv
+e/2013/texmf-dist/fonts/type1/public/cm-super/sfsx0700.pfb></usr/local/texlive/
+2013/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on main.pdf (12 pages, 1213896 bytes).
 PDF statistics:
- 1102 PDF objects out of 1200 (max. 8388607)
- 990 compressed objects within 10 object streams
- 114 named destinations out of 1000 (max. 500000)
+ 814 PDF objects out of 1000 (max. 8388607)
+ 742 compressed objects within 8 object streams
+ 53 named destinations out of 1000 (max. 500000)
  87 words of extra memory for PDF output out of 10000 (max. 10000000)
 
