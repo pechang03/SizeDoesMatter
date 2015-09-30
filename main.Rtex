@@ -568,7 +568,7 @@ print(xtable(head(table2[,1:6]),font=small))
 
 \begin{frame}[fragile]
   \frametitle{Reading the next table}
-  \framesubtitle{Reading a table}
+  \framesubtitle{Reading a table I}
   \begin{alert}{Oh NO}
 \begin{itemize}  
 \item All columns have been set to factors
@@ -579,7 +579,11 @@ print(xtable(head(table2[,1:6]),font=small))
 str(table2[,1:11])
 @
 
+\end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Reading the next table}
+  \framesubtitle{Reading a table II}
 \begin{block}{Break it down}
 First read a few rows only
 \end{block}
@@ -642,9 +646,19 @@ cdate2<-as.Date(table2bf$Sample.collection.date,"%d/%m/%y")
 table2bf$Sample.collection.date<-as.Date(ifelse(!is.na(cdate1),as.Date(cdate1),as.Date(cdate2)), origin="1970-01-01")
 table2bf$Group<-as.factor(table2bf$Group)
 table2bf$Rep<-as.factor(table2bf$Rep)
+dated<-table2bf$Sample.collection.date-table2bf$Spill.date
+@
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Reading table 2}
+  \framesubtitle{Setting the Date Type Correctly}
+\begin{block}{Count the NAs}
+\end{block}
+ <<chunk8vib, echo=TRUE>>=
 na_count <-sapply(table2bf, function(y) sum(length(which(is.na(y)))))
 na_count
-dated<-table2bf$Sample.collection.date-table2bf$Spill.date
+
 @
 \clearpage
 \end{frame}
@@ -708,7 +722,9 @@ m3<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID","Rep"),by.y=c("Grou
 
   \end{block}
 \begin{lstlisting} 
-table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName ="Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)))
+table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName ="Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),
+
+rep("character",2),rep("numeric",18)))
 table3f<-table3
 table3f$Spill.date<-as.Date(table3f$Spill.date,"%d.%m.%y")
 table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y")
@@ -744,6 +760,11 @@ table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y
  \end{itemize}
   %_Follow up data from contaminated site.xlsx
   \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{How do I append two data sets?}
+  \framesubtitle{Appending the third set}  
 \begin{lstlisting} 
 require(plyr)
 Sample.ID<-rep(20000,3)
@@ -771,7 +792,7 @@ table4<-rbind(m3ii,table3fiii)
 table4[,1] <- sapply(table4[,1],as.factor)
 \end{lstlisting}
   
-<<chunk10ii,echo=TRUE>>=
+<<chunk10ii,echo=FALSE>>=
 require(plyr)
 Sample.ID<-rep(20000,3)
 table3fi<-cbind(table3f,Sample.ID)
@@ -939,17 +960,26 @@ dbListTables(db)
 dbGetQuery(db, "SELECT * from table1")
 #dbDisconnect(db)
 @  
-%{\url http://stackoverflow.com/questions/12307685/join-more-than-2-tables-in-r-using-rsqlite}
-%select coalesce(fileA,fileB),valA,valB
-%               from t1 LEFT OUTER JOIN t2 On t1.fileA= t2.fileB
-%UNION select coalesce(fileA,fileB),valA,valB
-%               from t2 LEFT OUTER JOIN t1 ON t1.fileA= t2.fileB
-%(CREATE TABLE all_files AS SELECT fileA FROM t1 UNION SELECT fileB from t2 UNION ...). 
-               
+\end{frame} 
 
-%https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages
-
-%https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+\begin{frame}[fragile]
+  \frametitle{R package}
+  \framesubtitle{RQLlite}
+  \begin{block}{RSQLite}
+  \begin{itemize}
+  \item Some links to RSQL ideas
+\item \url{http://stackoverflow.com/questions/12307685/join-more-than-2-tables-in-r-using-rsqlite}
+\item \url{https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages}
+\item \url{https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html}
+\end{itemize}
+\end{block}
+ \begin{lstlisting}
+select coalesce(fileA,fileB),valA,valB
+               from t1 LEFT OUTER JOIN t2 On t1.fileA= t2.fileB
+UNION select coalesce(fileA,fileB),valA,valB
+               from t2 LEFT OUTER JOIN t1 ON t1.fileA= t2.fileB
+(CREATE TABLE all_files AS SELECT fileA FROM t1 UNION SELECT fileB from t2 UNION ...).             
+ \end{lstlisting}
 
 \end{frame}
 

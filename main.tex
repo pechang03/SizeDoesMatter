@@ -502,7 +502,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
   \frametitle{Reading an excel table}
   \framesubtitle{The columns types are wrong}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 14:26:15 2015
+% Wed Sep 30 14:49:48 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -808,7 +808,7 @@ mydata <- read.dta("c:/mydata.dta")
 \end{kframe}
 \end{knitrout}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 14:26:15 2015
+% Wed Sep 30 14:49:48 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rllllll}
@@ -831,7 +831,7 @@ mydata <- read.dta("c:/mydata.dta")
 
 \begin{frame}[fragile]
   \frametitle{Reading the next table}
-  \framesubtitle{Reading a table}
+  \framesubtitle{Reading a table I}
   \begin{alert}{Oh NO}
 \begin{itemize}  
 \item All columns have been set to factors
@@ -860,7 +860,11 @@ mydata <- read.dta("c:/mydata.dta")
 \end{kframe}
 \end{knitrout}
 
+\end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Reading the next table}
+  \framesubtitle{Reading a table II}
 \begin{block}{Break it down}
 First read a few rows only
 \end{block}
@@ -967,6 +971,20 @@ First read a few rows only
 \hlstd{table2bf}\hlopt{$}\hlstd{Sample.collection.date}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(}\hlkwd{ifelse}\hlstd{(}\hlopt{!}\hlkwd{is.na}\hlstd{(cdate1),}\hlkwd{as.Date}\hlstd{(cdate1),}\hlkwd{as.Date}\hlstd{(cdate2)),} \hlkwc{origin}\hlstd{=}\hlstr{"1970-01-01"}\hlstd{)}
 \hlstd{table2bf}\hlopt{$}\hlstd{Group}\hlkwb{<-}\hlkwd{as.factor}\hlstd{(table2bf}\hlopt{$}\hlstd{Group)}
 \hlstd{table2bf}\hlopt{$}\hlstd{Rep}\hlkwb{<-}\hlkwd{as.factor}\hlstd{(table2bf}\hlopt{$}\hlstd{Rep)}
+\hlstd{dated}\hlkwb{<-}\hlstd{table2bf}\hlopt{$}\hlstd{Sample.collection.date}\hlopt{-}\hlstd{table2bf}\hlopt{$}\hlstd{Spill.date}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Reading table 2}
+  \framesubtitle{Setting the Date Type Correctly}
+\begin{block}{Count the NAs}
+\end{block}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
 \hlstd{na_count} \hlkwb{<-}\hlkwd{sapply}\hlstd{(table2bf,} \hlkwa{function}\hlstd{(}\hlkwc{y}\hlstd{)} \hlkwd{sum}\hlstd{(}\hlkwd{length}\hlstd{(}\hlkwd{which}\hlstd{(}\hlkwd{is.na}\hlstd{(y)))))}
 \hlstd{na_count}
 \end{alltt}
@@ -982,9 +1000,6 @@ First read a few rows only
 ##          as.Data.frame 
 ##                      0
 \end{verbatim}
-\begin{alltt}
-\hlstd{dated}\hlkwb{<-}\hlstd{table2bf}\hlopt{$}\hlstd{Sample.collection.date}\hlopt{-}\hlstd{table2bf}\hlopt{$}\hlstd{Spill.date}
-\end{alltt}
 \end{kframe}
 \end{knitrout}
 \clearpage
@@ -1073,7 +1088,9 @@ merge(x, y, by = intersect(names(x), names(y)),
 
   \end{block}
 \begin{lstlisting} 
-table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName ="Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)))
+table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName ="Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),
+
+rep("character",2),rep("numeric",18)))
 table3f<-table3
 table3f$Spill.date<-as.Date(table3f$Spill.date,"%d.%m.%y")
 table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y")
@@ -1092,11 +1109,17 @@ sapply(table3f,class)
   \item We need to be careful to match everything
   \item Install the plyr package This has lots of useful functions for renaming var etc
   \item This means we need columns for corynebacteriaceae and porphyromondaceae
-  \item should these be NA or 0
-  \item we will do one of each. generally we would use NA but in this case 0 is perhaps better
+  \item Should these values be NA or 0?
+  \item We will do one of each. 
+  \item Generally we would use NA but in this case 0 is better as its likely the rows were missing as non were detected
  \end{itemize}
   %_Follow up data from contaminated site.xlsx
   \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{How do I append two data sets?}
+  \framesubtitle{Appending the third set}  
 \begin{lstlisting} 
 require(plyr)
 Sample.ID<-rep(20000,3)
@@ -1126,55 +1149,14 @@ table4[,1] <- sapply(table4[,1],as.factor)
   
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{require}\hlstd{(plyr)}
-\end{alltt}
 
 
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: plyr}}\begin{alltt}
-\hlstd{Sample.ID}\hlkwb{<-}\hlkwd{rep}\hlstd{(}\hlnum{20000}\hlstd{,}\hlnum{3}\hlstd{)}
-\hlstd{table3fi}\hlkwb{<-}\hlkwd{cbind}\hlstd{(table3f,Sample.ID)}
-\hlcom{#how many columns I can't count}
-\hlkwd{ncol}\hlstd{(table3fi)}
-\end{alltt}
-\begin{verbatim}
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: plyr}}\begin{verbatim}
 ## [1] 24
-\end{verbatim}
-\begin{alltt}
-\hlkwd{ncol}\hlstd{(m3)}
-\end{alltt}
-\begin{verbatim}
 ## [1] 27
-\end{verbatim}
-\begin{alltt}
-\hlcom{#now get the cols all right}
-\hlstd{table3fii}\hlkwb{<-}\hlstd{table3fi[}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{,}\hlnum{24}\hlstd{,}\hlnum{3}\hlstd{,}\hlnum{4}\hlopt{:}\hlnum{23}\hlstd{)]}
-\hlstd{m3i}\hlkwb{<-}\hlstd{m3[}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{,}\hlnum{19}\hlopt{:}\hlnum{20}\hlstd{,}\hlnum{5}\hlopt{:}\hlnum{18}\hlstd{,}\hlnum{21}\hlopt{:}\hlnum{26}\hlstd{)]}
-\hlkwd{setdiff}\hlstd{(}\hlkwd{names}\hlstd{(m3i),}\hlkwd{names}\hlstd{(table3fii))}
-\end{alltt}
-\begin{verbatim}
 ## [1] "Sample ID"          "corynebacteriaceae" "porphyromondaceae"
-\end{verbatim}
-\begin{alltt}
-\hlstd{m3ii}\hlkwb{<-}\hlkwd{rename}\hlstd{(m3i,}\hlkwd{c}\hlstd{(}\hlstr{"Sample ID"}\hlstd{=}\hlstr{"Sample.ID"}\hlstd{))}
-\hlstd{corynebacteriaceae}\hlkwb{<-}\hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,}\hlkwd{nrow}\hlstd{(table3fii))}
-\hlstd{porphyromondaceae}\hlkwb{<-}\hlkwd{rep}\hlstd{(}\hlnum{NA}\hlstd{,}\hlkwd{nrow}\hlstd{(table3fii))}
-\hlstd{table3fiii}\hlkwb{<-}\hlkwd{cbind}\hlstd{(table3fii, corynebacteriaceae, porphyromondaceae)}
-\hlkwd{setdiff}\hlstd{(}\hlkwd{names}\hlstd{(m3ii),}\hlkwd{names}\hlstd{(table3fiii))}
-\end{alltt}
-\begin{verbatim}
 ## character(0)
 \end{verbatim}
-\begin{alltt}
-\hlstd{m3ii[,}\hlkwd{c}\hlstd{(}\hlnum{7}\hlopt{:}\hlnum{24}\hlstd{)]} \hlkwb{<-} \hlkwd{sapply}\hlstd{(m3ii[,}\hlkwd{c}\hlstd{(}\hlnum{7}\hlopt{:}\hlnum{24}\hlstd{)],as.numeric)}
-\hlstd{m3ii[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{)]} \hlkwb{<-}\hlkwd{sapply}\hlstd{(m3ii[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{)],as.character)}
-\hlcom{#m3ii[,c("Site")] <-sapply(m3ii[,c("Site")],as.character)}
-
-\hlstd{table3fiii[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{)]} \hlkwb{<-} \hlkwd{sapply}\hlstd{(table3fiii[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{)],as.character)}
-\hlstd{table3fiii[,}\hlkwd{c}\hlstd{(}\hlnum{7}\hlopt{:}\hlnum{24}\hlstd{)]} \hlkwb{<-} \hlkwd{sapply}\hlstd{(table3fiii[,}\hlkwd{c}\hlstd{(}\hlnum{7}\hlopt{:}\hlnum{24}\hlstd{)],as.numeric)}
-\hlstd{table4}\hlkwb{<-}\hlkwd{rbind}\hlstd{(m3ii,table3fiii)}
-\hlstd{table4[,}\hlnum{1}\hlstd{]} \hlkwb{<-} \hlkwd{sapply}\hlstd{(table4[,}\hlnum{1}\hlstd{],as.factor)}
-\end{alltt}
 \end{kframe}
 \end{knitrout}
 \end{frame}
@@ -1201,8 +1183,8 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \begin{itemize}
   \item Suppose we what a box plot to see if there are outliers
   \item We will use ggplot2 box plot
-  \item but box plot needs data in long format to use this
-  \item first melt the data
+  \item The box plot needs data in long format. 
+  \item To use this first {\bf melt} the data
   \item We need to specify the unique key, the variable name and the value name
   \item The key is not unique.
   \item Then plot it
@@ -1289,7 +1271,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \end{knitrout}
  
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 14:26:17 2015
+% Wed Sep 30 14:49:50 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -1965,17 +1947,26 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-%{\url http://stackoverflow.com/questions/12307685/join-more-than-2-tables-in-r-using-rsqlite}
-%select coalesce(fileA,fileB),valA,valB
-%               from t1 LEFT OUTER JOIN t2 On t1.fileA= t2.fileB
-%UNION select coalesce(fileA,fileB),valA,valB
-%               from t2 LEFT OUTER JOIN t1 ON t1.fileA= t2.fileB
-%(CREATE TABLE all_files AS SELECT fileA FROM t1 UNION SELECT fileB from t2 UNION ...). 
-               
+\end{frame} 
 
-%https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages
-
-%https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+\begin{frame}[fragile]
+  \frametitle{R package}
+  \framesubtitle{RQLlite}
+  \begin{block}{RSQLite}
+  \begin{itemize}
+  \item Some links to RSQL ideas
+\item \url{http://stackoverflow.com/questions/12307685/join-more-than-2-tables-in-r-using-rsqlite}
+\item \url{https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages}
+\item \url{https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html}
+\end{itemize}
+\end{block}
+ \begin{lstlisting}
+select coalesce(fileA,fileB),valA,valB
+               from t1 LEFT OUTER JOIN t2 On t1.fileA= t2.fileB
+UNION select coalesce(fileA,fileB),valA,valB
+               from t2 LEFT OUTER JOIN t1 ON t1.fileA= t2.fileB
+(CREATE TABLE all_files AS SELECT fileA FROM t1 UNION SELECT fileB from t2 UNION ...).             
+ \end{lstlisting}
 
 \end{frame}
 
@@ -2058,9 +2049,9 @@ abundance<-table4[,c(7:25)]
 
 
 %\section*[Normalizeing]{Setting the Relative Abundance}
-\section*{Setting the Relative Abundance}
+\section*{Setting the relative abundance}
 \begin{frame}[fragile]
-  \frametitle{Setting the Relative abundance}
+  \frametitle{Setting the relative abundance}
   \framesubtitle{Normalizing data}
   \begin{block}{sapply}
   \begin{itemize}
