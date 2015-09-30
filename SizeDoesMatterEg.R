@@ -97,7 +97,7 @@ table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y
 sapply(table3f,mode)
 sapply(table3f,class)
 
-
+require(plyr)
 tab1c<-table1t[1:9,]
 tab2c<-table2b[1:9,]
 m1<-merge(tab1c,tab2c,by.x="Sample ID",by.y="Sample.ID")
@@ -132,7 +132,36 @@ table3fiii[,c(7:24)] <- sapply(table3fiii[,c(7:24)],as.numeric)
 table4<-rbind(m3ii,table3fiii)
 table4[,1] <- sapply(table4[,1],as.factor)
 
+ #chunk10iv to 10 vi,
+ #refactor2
+ require(reshape2)
+ melt(abundance)
+ 
+ names(table4)
+ 
+ matable4<-melt(table4[,c(1:4,6:25)],variable.name = "microbe",value.name ="abundance", id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
+require(ggplot2)
+ ggplot(matable4,aes(x=microbe,y=abundance)) + geom_boxplot()
+ 
+ ggplot(matable4,aes(x=microbe,y=abundance,fill=Site)) + geom_boxplot() +  coord_flip()
+ 
+  phosphate<-table4[,"phosphate..ppb."]
+  upper.limit <- quantile(phosphate)[4] + 1.5*IQR(phosphate)
+  lower.limit <- quantile(phosphate)[2] - 1.5*IQR(phosphate)
+  
+  print(xtable(head(table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]),font=small))
 
+ table4[12,"phosphate..ppb."]<-982
+ table4[14,"phosphate..ppb."]<-982
+
+ammonia<-table4[,"ammonia..ppb."]
+  upper.limit <- quantile(ammonia)[4] + 2*IQR(ammonia)
+  lower.limit <- quantile(ammonia)[2] - 2*IQR(ammonia)
+  
+ table4[ammonia> upper.limit,c("Site","ammonia..ppb.")]
+
+ #table4[12,"ammonia..ppb."]<-982
+ #table4[14,"ammonia..ppb."]<-982
 
 #chunk9
 tab1c<-table1t[1:9,]
@@ -177,33 +206,6 @@ require(corrplot)
  abuncor<-cor(t5lessThan20col[,c(6:22)])
  corrplot(abuncor, method = "circle")
  
- #chunk10iv to 10 vi,
- #refactor2
- melt(abundance)
- 
- names(table4)
- 
- matable4<-melt(table4[,c(1:4,6:25)],variable.name = "microbe",value.name ="abundance", id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
-require(ggplot2)
- ggplot(matable4,aes(x=microbe,y=abundance)) + geom_boxplot()
- 
- ggplot(matable4,aes(x=microbe,y=abundance,fill=Site)) + geom_boxplot() +  coord_flip()
- 
-  phosphate<-table4[,"phosphate..ppb."]
-  upper.limit <- quantile(phosphate)[4] + 1.5*IQR(phosphate)
-  lower.limit <- quantile(phosphate)[2] - 1.5*IQR(phosphate)
-  
-  print(xtable(head(table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]),font=small))
-
- table4[12,"phosphate..ppb."]<-982
- table4[14,"phosphate..ppb."]<-982
-
-ammonia<-table4[,"ammonia..ppb."]
-  upper.limit <- quantile(ammonia)[4] + 2*IQR(ammonia)
-  lower.limit <- quantile(ammonia)[2] - 2*IQR(ammonia)
-  
- table4[ammonia> upper.limit,c("Site","ammonia..ppb.")]
-
- #table4[12,"ammonia..ppb."]<-982
- #table4[14,"ammonia..ppb."]<-982
+#chunk 12 t-test
+t.test(t5lessThan20col[,12],t5lessThan20col[,8])
  

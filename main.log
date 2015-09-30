@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.23)  30 SEP 2015 18:27
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.23)  30 SEP 2015 19:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -988,7 +988,8 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
-) (./main.aux)
+)
+No file main.aux.
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
@@ -1090,8 +1091,6 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 108.
 LaTeX Info: Redefining \pageref on input line 108.
 LaTeX Info: Redefining \nameref on input line 108.
-
-(./main.out) (./main.out)
 \@outlinefile=\write6
 \openout6 = `main.out'.
 
@@ -3808,6 +3807,20 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
 [51
 
  <./figure/chunk12i-1.pdf>]
+\openout4 = `main.vrb'.
+
+ (./main.vrb
+Overfull \hbox (2.60002pt too wide) in paragraph at lines 18--18
+[]\OT1/zi4/m/it/12 ## data:  t5lessThan20col[, 12] and t5lessThan20col[, 8][] 
+ []
+
+
+Overfull \hbox (75.80003pt too wide) in paragraph at lines 20--20
+[]\OT1/zi4/m/it/12 ## alternative hypothesis: true difference in means is not e
+qual to 0[] 
+ []
+
+)
 Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
@@ -3820,6 +3833,13 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
  []
 
 [53
+
+]
+Overfull \hbox (456.18155pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[54
 
  </usr/local/texlive/2013/texmf-dist/tex/latex/beamer/art/beamericonarticle.pdf
 >]
@@ -3880,7 +3900,7 @@ tion)[][]
  []
 
 )
-Overfull \vbox (111.74396pt too high) detected at line 2252
+Overfull \vbox (111.74396pt too high) detected at line 2285
  []
 
 
@@ -3888,7 +3908,7 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
   [] [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
-[54
+[55
 
 ]
 \tf@nav=\write7
@@ -3900,15 +3920,21 @@ Overfull \hbox (456.18155pt too wide) has occurred while \output is active
 \tf@snm=\write9
 \openout9 = `main.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2325.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2325.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2358.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2358.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2325.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2325.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2358.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2358.
 
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
@@ -3919,13 +3945,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2325.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2358.
  ) 
 Here is how much of TeX's memory you used:
- 20486 strings out of 493308
- 372119 string characters out of 6137816
- 1041310 words of memory out of 5000000
- 23183 multiletter control sequences out of 15000+600000
+ 20485 strings out of 493308
+ 372113 string characters out of 6137816
+ 1041300 words of memory out of 5000000
+ 23184 multiletter control sequences out of 15000+600000
  18789 words of font info for 70 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,20n,65p,460b,1674s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -3948,10 +3974,10 @@ b></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
 usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></us
 r/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb>
-Output written on main.pdf (54 pages, 1325327 bytes).
+Output written on main.pdf (55 pages, 1329141 bytes).
 PDF statistics:
- 2214 PDF objects out of 2487 (max. 8388607)
- 2087 compressed objects within 21 object streams
- 126 named destinations out of 1000 (max. 500000)
+ 2254 PDF objects out of 2487 (max. 8388607)
+ 2125 compressed objects within 22 object streams
+ 128 named destinations out of 1000 (max. 500000)
  87 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1189,6 +1189,22 @@ numNAs_inData5_col <- apply(table5, 2, function(z) sum(is.na(z)))
  @
 \end{frame}
 %http://www.cookbook-r.com/Graphs/Plotting_distributions_(ggplot2)/
+
+
+ \begin{frame}[fragile]
+  \frametitle{Simple Tests}
+  \framesubtitle{ttests}
+\begin{block}{t tests}
+There are many $t-tests$ available in R
+\url{http://www.statmethods.net/stats/ttest.html}
+\end{block}
+
+<<chunk13, echo=TRUE>>=
+# independent 2-group t-test
+t.test(t5lessThan20col[,12],t5lessThan20col[,8])
+ @
+\end{frame}
+
 \begin{frame}
   \frametitle{What next}
   \framesubtitle{Proposed future talks}
@@ -1233,7 +1249,7 @@ numNAs_inData5_col <- apply(table5, 2, function(z) sum(is.na(z)))
   \framesubtitle{Session Info}
 \begin{block}{Output of sessionInfo}
 \end{block}
-<<chunk13, echo=TRUE>>=
+<<chunk14, echo=TRUE>>=
 sessionInfo()
 #  packages_in_use <- c( sessionInfo()$basePkgs, names( sessionInfo()$loadedOnly ) )
 #the_citations_list <- lapply( X=packages_in_use, FUN=citation)

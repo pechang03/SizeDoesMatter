@@ -535,7 +535,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
   \frametitle{Reading an excel table}
   \framesubtitle{The columns types are wrong}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 18:27:48 2015
+% Wed Sep 30 19:56:00 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -841,7 +841,7 @@ mydata <- read.dta("c:/mydata.dta")
 \end{kframe}
 \end{knitrout}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 18:27:49 2015
+% Wed Sep 30 19:56:00 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rllllll}
@@ -1327,7 +1327,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \begin{block}{Removing Outliers}
    \end{block}   
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 18:27:51 2015
+% Wed Sep 30 19:56:02 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -2172,6 +2172,39 @@ scale(abundance, center=FALSE, scale=colSums(abundance))
 \end{knitrout}
 \end{frame}
 %http://www.cookbook-r.com/Graphs/Plotting_distributions_(ggplot2)/
+
+
+ \begin{frame}[fragile]
+  \frametitle{Simple Tests}
+  \framesubtitle{ttests}
+\begin{block}{t tests}
+There are many $t-tests$ available in R
+\url{http://www.statmethods.net/stats/ttest.html}
+\end{block}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# independent 2-group t-test}
+\hlkwd{t.test}\hlstd{(t5lessThan20col[,}\hlnum{12}\hlstd{],t5lessThan20col[,}\hlnum{8}\hlstd{])}
+\end{alltt}
+\begin{verbatim}
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  t5lessThan20col[, 12] and t5lessThan20col[, 8]
+## t = -3.4052, df = 180.441, p-value = 0.0008149
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.20589367 -0.05481872
+## sample estimates:
+## mean of x mean of y 
+## 0.2725146 0.4028708
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
 \begin{frame}
   \frametitle{What next}
   \framesubtitle{Proposed future talks}
