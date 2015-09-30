@@ -1,5 +1,5 @@
-%\documentclass[12pt]{beamer}
-\documentclass[10pt,handout,english]{beamer}
+\documentclass[12pt]{beamer}
+%\documentclass[10pt,handout,english]{beamer}
 %\documentclass{article}
 %\DeclareOption{noxcolor}{\PassOptionsToPackage{noxcolor}{beamerbasearticle}}
 %\usepackage[envcountsect]{beamerarticle}
@@ -26,13 +26,26 @@
 
 \usepackage{lipsum}
 
+\usepackage{inconsolata}
+%
+%<<echo=FALSE>>=
+%  options(width=60)
+%
+%  listing <- function(x, options) {
+%    paste("\\begin{lstlisting}[basicstyle=\\ttfamily,breaklines=true]\n",
+%      x, "\\end{lstlisting}\n", sep = "")
+%  }
+%  knit_hooks$set(source=listing, output=listing)
+%@
+
+
 \pdfinfo
 {
   /Title       (Data manipulation in R: a program to use when size matters)
   /Creator     (Peter Shaw)
   /Author      (Peter Shaw)
 }
-\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]
+%\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]
 %\pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm,landscape]
 %\pgfpagesuselayout{1 on 1 with notes}[a4paper,border shrink=5mm]
 %\pgfpagesuselayout{2 on 1 with notes landscape}[a4paper,border shrink=5mm]
@@ -112,7 +125,8 @@ showstringspaces=false}
 \begin{itemize}
 \item A common scenario
 \item A friend has emailed you her data in a spreadsheet
-\item Todays workshop is not about impressing with R code
+\item Todays workshop is about how to get started.
+\item It's not about impressing with R code
 \end{itemize}
 
 \end{block}
@@ -132,8 +146,8 @@ showstringspaces=false}
   \frametitle{Why use R?}
   \begin{block}{Why use R?}
   \begin{itemize}
-    \item Its free
-    \item Its available on most operating systems Windows, OS X, Linux
+    \item R is free
+    \item R is available on most operating systems Windows, OS X, Linux
     \item There are huge numbers of packages available
     \item Its becoming the international standard for statistics
   \end{itemize}
@@ -186,7 +200,9 @@ showstringspaces=false}
 \begin{frame}
   \frametitle{Getting Started}
   \framesubtitle{Installing R!}
-
+\begin{block}{Workshop files on Github}
+\url{https://github.com/pechang03/SizeDoesMatter}
+\end{block}
   \begin{block}{Download it}
   \begin{itemize}
     \item Open \url{http://www.r-project.org}
@@ -286,7 +302,7 @@ example(sd)
   \framesubtitle{Working Creatively}
 Research on how to work creatively based on case studies of  successful R\&D projects developed into Agile
 \begin{itemize}
-\item Keep the ``manages'' away
+\item Keep the `manager' away
 \item Work sustainably
 \item People over process
 \item Iterative development
@@ -587,11 +603,16 @@ str(table2[,1:11])
 \begin{block}{Break it down}
 First read a few rows only
 \end{block}
-<<chunk8ii, echo=TRUE>>=
-table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:5),stringsAsFactors=FALSE,colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
+\begin{small}
+<<chunk8ii, echo=TRUE,tidy=TRUE,highlight=TRUE>>=
+table2<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx",
+ sheetName ="Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,
+ colIndex=c(1:5),stringsAsFactors=FALSE,
+ colClasses=c("character","numeric","numeric",rep("character",2)),endRow=4)
 sapply(table2,mode)
 sapply(table2,class)
 @
+\end{small}
 \clearpage
 \end{frame}
 
@@ -607,7 +628,10 @@ sapply(table2,class)
 \end{block}
 
 <<chunk8v, echo=TRUE>>=
-table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,colIndex=c(1:11),stringsAsFactors=FALSE,colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))
+table2b<-read.xlsx2("2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx", 
+sheetName = "Sheet2",header=TRUE,rowNames=FALSE,as.Data.frame=FALSE,
+colIndex=c(1:11),stringsAsFactors=FALSE,
+colClasses=c("character",rep("numeric",2),"character",rep("character",2),rep("numeric",6)))
 sapply(table2,class)
 @
 \clearpage
@@ -617,7 +641,10 @@ sapply(table2,class)
   \frametitle{Reading table 2}
   \framesubtitle{Setting the Date Type}
 
- <<chunk8iii, echo=TRUE>>=
+%<<setup, include=FALSE, cache=FALSE, tidy=TRUE>>=
+%options(tidy=TRUE, width=30)
+%@
+ <<chunk8iii, echo=TRUE,tidy=TRUE,width=30>>=
 table2f<-table2
 table2f$Spill.date<-as.Date(table2f$Spill.date,"%d-%b-%y")
 table2f$Sample.collection.date<-as.Date(table2f$Sample.collection.date,"%d.%m.%y")
@@ -643,7 +670,8 @@ table2bf<-table2b
 table2bf$Spill.date<-as.Date(table2bf$Spill.date,"%d-%b-%y")
 cdate1<-as.Date(table2bf$Sample.collection.date,"%d.%m.%y")
 cdate2<-as.Date(table2bf$Sample.collection.date,"%d/%m/%y")
-table2bf$Sample.collection.date<-as.Date(ifelse(!is.na(cdate1),as.Date(cdate1),as.Date(cdate2)), origin="1970-01-01")
+table2bf$Sample.collection.date<-as.Date(ifelse
+(!is.na(cdate1),as.Date(cdate1),as.Date(cdate2)), origin="1970-01-01")
 table2bf$Group<-as.factor(table2bf$Group)
 table2bf$Rep<-as.factor(table2bf$Rep)
 dated<-table2bf$Sample.collection.date-table2bf$Spill.date
@@ -682,14 +710,14 @@ str(table2bf)
 %\section*[Merge]{How to I merge two data sets}
 \section*{Merging Tables}
 \begin{frame}[fragile]
-  \frametitle{How to I merge two data sets?}
+  \frametitle{How to merge two data sets?}
   \framesubtitle{Using the merge command}
 
 \begin{block}{The inbuilt command merge}
 \begin{itemize}
 \item R has a command merge
 \item To begin, start looking at the first 9 lines of the tables and merge them 
-\item Need to use Group, Site, Sample.ID because otherwise it's not uniques
+\item Need to use Group, Site, Sample.ID because otherwise it's not unique
 \end{itemize}
 \end{block}
 \begin{lstlisting}
@@ -703,8 +731,10 @@ merge(x, y, by = intersect(names(x), names(y)),
 tab1c<-table1t[1:9,] 
 tab2c<-table2b[1:9,]
 m1<-merge(tab1c,tab2c,by.x="Sample ID",by.y="Sample.ID")
-m2<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID"),by.y=c("Group","Site","Sample.ID"))
-m3<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID","Rep"),by.y=c("Group","Site","Sample.ID","Rep"))
+m2<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID"),
+by.y=c("Group","Site","Sample.ID"))
+m3<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID","Rep"),
+by.y=c("Group","Site","Sample.ID","Rep"))
 @
 \end{frame}  
 
@@ -722,7 +752,9 @@ m3<-merge(table1t,table2bf,by.x=c("Group","Site","Sample ID","Rep"),by.y=c("Grou
 
   \end{block}
 \begin{lstlisting} 
-table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName ="Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),
+table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx",
+ sheetName ="Sheet1",header=TRUE,rowNames=FALSE,
+ colClasses=c(rep("character",3),
 
 rep("character",2),rep("numeric",18)))
 table3f<-table3
@@ -736,7 +768,9 @@ sapply(table3f,class)
 require(xlsx)
 require(xtable)
 setwd("/Users/pcru/SizeDoesMatter1")
-table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName = "Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)))
+table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", 
+sheetName = "Sheet1",header=TRUE,rowNames=FALSE,
+colClasses=c(rep("character",3),rep("character",2),rep("numeric",18)))
 
 table3f<-table3
 table3f$Spill.date<-as.Date(table3f$Spill.date,"%d.%m.%y")
@@ -749,14 +783,14 @@ table3f$Sample.collection.date<-as.Date(table3f$Sample.collection.date,"%d.%m.%y
 \begin{frame}[fragile]
   \frametitle{How do I append two data sets?}
   \framesubtitle{Loading the third data set}
-  \begin{block}{Joining table 3 to are merged tables}
+  \begin{block}{Joining table 3 to the other merged tables}
   \begin{itemize}
   \item We need to be careful to match everything
-  \item Install the plyr package This has lots of useful functions for renaming var etc
+  \item Install the {\bf plyr} package This has lots of useful functions for renaming var etc
   \item This means we need columns for corynebacteriaceae and porphyromondaceae
   \item Should these values be NA or 0?
   \item We will do one of each. 
-  \item Generally we would use NA but in this case 0 is better as its likely the rows were missing as non were detected
+  \item Generally we would use NA but in this case 0 is better as its likely the rows were missing as none were detected
  \end{itemize}
   %_Follow up data from contaminated site.xlsx
   \end{block}
@@ -857,21 +891,22 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \begin{block}{The code}
   \end{block}
     \begin{lstlisting}
-    matable4<-melt(table4[,c(1:4,6:25)],variable.name = "microbe",value.name ="abundance", \\
-    id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
+    matable4<-melt(table4[,c(1:4,6:25)],variable.name = "microbe",
+    value.name ="abundance", id=c("Group","Site","Sample.ID","Rep"),
+    factorsAsStrings=FALSE,rm.na=TRUE)
    \end{lstlisting}
+   
  <<chunk10iii, echo=TRUE>>=
  require(reshape2)
- matable4<-melt(table4[,c(1:4,7:25)],variable.name = "microbe",value.name ="abundance", id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
- 
+ matable4<-melt(table4[,c(1:4,7:25)],variable.name = "microbe",
+ value.name ="abundance", id=c("Group","Site","Sample.ID","Rep"),
+ factorsAsStrings=FALSE,rm.na=TRUE)
 @
-%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
-
 \end{frame}  
 
 \begin{frame}[fragile]
   \frametitle{Reshaping Tables}
-  \framesubtitle{ boxplot}
+  \framesubtitle{Boxplot cont}
   \begin{block}{Using ggplot}
   \begin{itemize}
   \item As we have keys we need to specify the x and y
@@ -881,31 +916,53 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \end{itemize}
   \end{block}
 
- <<chunk10iv, fig.width=10, fig.height=10, out.width='.85\\linewidth', fig.show='hold', echo=TRUE>>=
+<<chunk10iv, fig.width=10, fig.height=10, out.width='.85\\linewidth', fig.show='hold', echo=TRUE>>=
 require(ggplot2)
  ggplot(matable4,aes(x=microbe,y=abundance,fill=Site)) + geom_boxplot() +  coord_flip()
 @
-%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
-
 \end{frame}  
 
+%\begin{frame}[fragile]
+%  \frametitle{Finding Outliers}
+%  \framesubtitle{Interquartile range}
+%  \begin{block}{Removing Outliers}
+%  \begin{itemize}
+%  \item Outliers are defined 1.5 times the interquartile range above the upper quartile
+%  \item Assume that  rows 12 and 14 in phosphate are errors as the 9 is typed twice
+%  \item Still issues with ammonia to explore
+%  \end{itemize}
+%  \end{block}  
+%<<chunk10v, echo=TRUE>>=
+%  phosphate<-table4[,"phosphate..ppb."]
+%  upper.limit <- quantile(phosphate)[4] + 1.5*IQR(phosphate)
+%  lower.limit <- quantile(phosphate)[2] - 1.5*IQR(phosphate)
+%  #table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]
+%@ 
+% \end{frame}  
+
 \begin{frame}[fragile]
-  \frametitle{Reshaping Tables}
-  \framesubtitle{ boxplot}
-  \begin{block}{Removing Outliers}
+  \frametitle{Finding Outliers}
+  \framesubtitle{Interquartile range}
+  \begin{block}{Finding Outliers}
   \begin{itemize}
   \item Outliers are defined 1.5 times the interquartile range above the upper quartile
   \item Assume that  rows 12 and 14 in phosphate are errors as the 9 is typed twice
   \item Still issues with ammonia to explore
-  \end{itemize}
-  \end{block}  
-<<chunk10v, echo=TRUE>>=
+  \end{itemize} 
+   \end{block}   
+ <<chunk10v, echo=TRUE>>=
   phosphate<-table4[,"phosphate..ppb."]
   upper.limit <- quantile(phosphate)[4] + 1.5*IQR(phosphate)
   lower.limit <- quantile(phosphate)[2] - 1.5*IQR(phosphate)
   #table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]
-@ 
- 
+@  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Reshaping Tables}
+  \framesubtitle{Finding Outliers}
+  \begin{block}{Removing Outliers}
+   \end{block}   
 <<chunk10vi,results='asis', echo=FALSE>>=
   print(xtable(head(table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]),font=small))
 @
@@ -914,6 +971,7 @@ require(ggplot2)
  table4[14,"phosphate..ppb."]<-982
 @      
 \end{frame}
+
 \begin{frame}[fragile]
   \frametitle{Outliers check}
   \framesubtitle{ Redo the boxplot}
@@ -921,11 +979,13 @@ require(ggplot2)
   \end{block}
 
  <<chunk10viii, fig.width=10, fig.height=10, out.width='.85\\linewidth', fig.show='hold', echo=TRUE>>=
- matable4<-melt(table4[,c(1:4,7:25)],variable.name = "microbe",value.name ="abundance",  id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
- ggplot(matable4,aes(x=microbe,y=abundance,fill=Site)) + geom_boxplot() +  coord_flip()
+ matable4<-melt(table4[,c(1:4,7:25)],variable.name = "microbe",
+ value.name ="abundance",  id=c("Group","Site","Sample.ID","Rep"),
+ factorsAsStrings=FALSE,rm.na=TRUE)
+ 
+ ggplot(matable4,aes(x=microbe,y=abundance,fill=Site)) + 
+ geom_boxplot() +  coord_flip()
 @
-%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
-
 \end{frame} 
 
 \begin{frame}[fragile]

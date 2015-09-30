@@ -1,5 +1,4 @@
-%\documentclass[12pt]{beamer}
-\documentclass[10pt,handout,english]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[12pt]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -49,6 +48,7 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
+%\documentclass[10pt,handout,english]{beamer}
 %\documentclass{article}
 %\DeclareOption{noxcolor}{\PassOptionsToPackage{noxcolor}{beamerbasearticle}}
 %\usepackage[envcountsect]{beamerarticle}
@@ -75,13 +75,26 @@
 
 \usepackage{lipsum}
 
+\usepackage{inconsolata}
+%
+%<<echo=FALSE>>=
+%  options(width=60)
+%
+%  listing <- function(x, options) {
+%    paste("\\begin{lstlisting}[basicstyle=\\ttfamily,breaklines=true]\n",
+%      x, "\\end{lstlisting}\n", sep = "")
+%  }
+%  knit_hooks$set(source=listing, output=listing)
+%@
+
+
 \pdfinfo
 {
   /Title       (Data manipulation in R: a program to use when size matters)
   /Creator     (Peter Shaw)
   /Author      (Peter Shaw)
 }
-\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]
+%\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]
 %\pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm,landscape]
 %\pgfpagesuselayout{1 on 1 with notes}[a4paper,border shrink=5mm]
 %\pgfpagesuselayout{2 on 1 with notes landscape}[a4paper,border shrink=5mm]
@@ -162,7 +175,8 @@ showstringspaces=false}
 \begin{itemize}
 \item A common scenario
 \item A friend has emailed you her data in a spreadsheet
-\item Todays workshop is not about impressing with R code
+\item Todays workshop is about how to get started.
+\item It's not about impressing with R code
 \end{itemize}
 
 \end{block}
@@ -182,8 +196,8 @@ showstringspaces=false}
   \frametitle{Why use R?}
   \begin{block}{Why use R?}
   \begin{itemize}
-    \item Its free
-    \item Its available on most operating systems Windows, OS X, Linux
+    \item R is free
+    \item R is available on most operating systems Windows, OS X, Linux
     \item There are huge numbers of packages available
     \item Its becoming the international standard for statistics
   \end{itemize}
@@ -236,7 +250,9 @@ showstringspaces=false}
 \begin{frame}
   \frametitle{Getting Started}
   \framesubtitle{Installing R!}
-
+\begin{block}{Workshop files on Github}
+\url{https://github.com/pechang03/SizeDoesMatter}
+\end{block}
   \begin{block}{Download it}
   \begin{itemize}
     \item Open \url{http://www.r-project.org}
@@ -351,7 +367,7 @@ example(sd)
   \framesubtitle{Working Creatively}
 Research on how to work creatively based on case studies of  successful R\&D projects developed into Agile
 \begin{itemize}
-\item Keep the ``manages'' away
+\item Keep the `manager' away
 \item Work sustainably
 \item People over process
 \item Iterative development
@@ -502,7 +518,7 @@ table1<-read.xlsx2("1_R Wkshp_dummy data_OTU table.xlsx", sheetName =
   \frametitle{Reading an excel table}
   \framesubtitle{The columns types are wrong}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 14:49:48 2015
+% Wed Sep 30 18:09:59 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllllll}
@@ -808,7 +824,7 @@ mydata <- read.dta("c:/mydata.dta")
 \end{kframe}
 \end{knitrout}
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 14:49:48 2015
+% Wed Sep 30 18:10:00 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rllllll}
@@ -868,11 +884,15 @@ mydata <- read.dta("c:/mydata.dta")
 \begin{block}{Break it down}
 First read a few rows only
 \end{block}
+\begin{small}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{table2}\hlkwb{<-}\hlkwd{read.xlsx2}\hlstd{(}\hlstr{"2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx"}\hlstd{,} \hlkwc{sheetName} \hlstd{=} \hlstr{"Sheet2"}\hlstd{,}\hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{rowNames}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{as.Data.frame}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colIndex}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{5}\hlstd{),}\hlkwc{stringsAsFactors}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colClasses}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlstr{"numeric"}\hlstd{,}\hlstr{"numeric"}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlnum{2}\hlstd{)),}\hlkwc{endRow}\hlstd{=}\hlnum{4}\hlstd{)}
-\hlkwd{sapply}\hlstd{(table2,mode)}
+\hlstd{table2} \hlkwb{<-} \hlkwd{read.xlsx2}\hlstd{(}\hlstr{"2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx"}\hlstd{,} \hlkwc{sheetName} \hlstd{=} \hlstr{"Sheet2"}\hlstd{,}
+    \hlkwc{header} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{rowNames} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{as.Data.frame} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{colIndex} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{5}\hlstd{),}
+    \hlkwc{stringsAsFactors} \hlstd{=} \hlnum{FALSE}\hlstd{,} \hlkwc{colClasses} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"character"}\hlstd{,} \hlstr{"numeric"}\hlstd{,} \hlstr{"numeric"}\hlstd{,}
+        \hlkwd{rep}\hlstd{(}\hlstr{"character"}\hlstd{,} \hlnum{2}\hlstd{)),} \hlkwc{endRow} \hlstd{=} \hlnum{4}\hlstd{)}
+\hlkwd{sapply}\hlstd{(table2, mode)}
 \end{alltt}
 \begin{verbatim}
 ##         Group          Site     Sample.ID           Rep    Spill.date 
@@ -881,7 +901,7 @@ First read a few rows only
 ##     "logical"     "logical"
 \end{verbatim}
 \begin{alltt}
-\hlkwd{sapply}\hlstd{(table2,class)}
+\hlkwd{sapply}\hlstd{(table2, class)}
 \end{alltt}
 \begin{verbatim}
 ##         Group          Site     Sample.ID           Rep    Spill.date 
@@ -891,6 +911,7 @@ First read a few rows only
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
+\end{small}
 \clearpage
 \end{frame}
 
@@ -908,7 +929,10 @@ First read a few rows only
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{table2b}\hlkwb{<-}\hlkwd{read.xlsx2}\hlstd{(}\hlstr{"2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx"}\hlstd{,} \hlkwc{sheetName} \hlstd{=} \hlstr{"Sheet2"}\hlstd{,}\hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{rowNames}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{as.Data.frame}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colIndex}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{11}\hlstd{),}\hlkwc{stringsAsFactors}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{colClasses}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlstr{"numeric"}\hlstd{,}\hlnum{2}\hlstd{),}\hlstr{"character"}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlnum{2}\hlstd{),}\hlkwd{rep}\hlstd{(}\hlstr{"numeric"}\hlstd{,}\hlnum{6}\hlstd{)))}
+\hlstd{table2b}\hlkwb{<-}\hlkwd{read.xlsx2}\hlstd{(}\hlstr{"2_R Wkshp_dummy data_Env Data_incl2outliersMK.xlsx"}\hlstd{,}
+\hlkwc{sheetName} \hlstd{=} \hlstr{"Sheet2"}\hlstd{,}\hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{,}\hlkwc{rowNames}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{as.Data.frame}\hlstd{=}\hlnum{FALSE}\hlstd{,}
+\hlkwc{colIndex}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{11}\hlstd{),}\hlkwc{stringsAsFactors}\hlstd{=}\hlnum{FALSE}\hlstd{,}
+\hlkwc{colClasses}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlstr{"numeric"}\hlstd{,}\hlnum{2}\hlstd{),}\hlstr{"character"}\hlstd{,}\hlkwd{rep}\hlstd{(}\hlstr{"character"}\hlstd{,}\hlnum{2}\hlstd{),}\hlkwd{rep}\hlstd{(}\hlstr{"numeric"}\hlstd{,}\hlnum{6}\hlstd{)))}
 \hlkwd{sapply}\hlstd{(table2,class)}
 \end{alltt}
 \begin{verbatim}
@@ -926,18 +950,21 @@ First read a few rows only
   \frametitle{Reading table 2}
   \framesubtitle{Setting the Date Type}
 
+%<<setup, include=FALSE, cache=FALSE, tidy=TRUE>>=
+%options(tidy=TRUE, width=30)
+%@
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{table2f}\hlkwb{<-}\hlstd{table2}
-\hlstd{table2f}\hlopt{$}\hlstd{Spill.date}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(table2f}\hlopt{$}\hlstd{Spill.date,}\hlstr{"%d-%b-%y"}\hlstd{)}
-\hlstd{table2f}\hlopt{$}\hlstd{Sample.collection.date}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(table2f}\hlopt{$}\hlstd{Sample.collection.date,}\hlstr{"%d.%m.%y"}\hlstd{)}
+\hlstd{table2f} \hlkwb{<-} \hlstd{table2}
+\hlstd{table2f}\hlopt{$}\hlstd{Spill.date} \hlkwb{<-} \hlkwd{as.Date}\hlstd{(table2f}\hlopt{$}\hlstd{Spill.date,} \hlstr{"%d-%b-%y"}\hlstd{)}
+\hlstd{table2f}\hlopt{$}\hlstd{Sample.collection.date} \hlkwb{<-} \hlkwd{as.Date}\hlstd{(table2f}\hlopt{$}\hlstd{Sample.collection.date,} \hlstr{"%d.%m.%y"}\hlstd{)}
 \end{alltt}
 
 
 {\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in as.Date.default(table2f\$Sample.collection.date, "{}\%d.\%m.\%y"{}): do not know how to convert 'table2f\$Sample.collection.date' to class "{}Date"{}}}\begin{alltt}
-\hlcom{#sapply(table2f,mode)}
-\hlkwd{sapply}\hlstd{(table2f,class)}
+\hlcom{# sapply(table2f,mode)}
+\hlkwd{sapply}\hlstd{(table2f, class)}
 \end{alltt}
 \begin{verbatim}
 ##         Group          Site     Sample.ID           Rep    Spill.date 
@@ -968,7 +995,8 @@ First read a few rows only
 \hlstd{table2bf}\hlopt{$}\hlstd{Spill.date}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(table2bf}\hlopt{$}\hlstd{Spill.date,}\hlstr{"%d-%b-%y"}\hlstd{)}
 \hlstd{cdate1}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(table2bf}\hlopt{$}\hlstd{Sample.collection.date,}\hlstr{"%d.%m.%y"}\hlstd{)}
 \hlstd{cdate2}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(table2bf}\hlopt{$}\hlstd{Sample.collection.date,}\hlstr{"%d/%m/%y"}\hlstd{)}
-\hlstd{table2bf}\hlopt{$}\hlstd{Sample.collection.date}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(}\hlkwd{ifelse}\hlstd{(}\hlopt{!}\hlkwd{is.na}\hlstd{(cdate1),}\hlkwd{as.Date}\hlstd{(cdate1),}\hlkwd{as.Date}\hlstd{(cdate2)),} \hlkwc{origin}\hlstd{=}\hlstr{"1970-01-01"}\hlstd{)}
+\hlstd{table2bf}\hlopt{$}\hlstd{Sample.collection.date}\hlkwb{<-}\hlkwd{as.Date}\hlstd{(}\hlkwd{ifelse}
+\hlstd{(}\hlopt{!}\hlkwd{is.na}\hlstd{(cdate1),}\hlkwd{as.Date}\hlstd{(cdate1),}\hlkwd{as.Date}\hlstd{(cdate2)),} \hlkwc{origin}\hlstd{=}\hlstr{"1970-01-01"}\hlstd{)}
 \hlstd{table2bf}\hlopt{$}\hlstd{Group}\hlkwb{<-}\hlkwd{as.factor}\hlstd{(table2bf}\hlopt{$}\hlstd{Group)}
 \hlstd{table2bf}\hlopt{$}\hlstd{Rep}\hlkwb{<-}\hlkwd{as.factor}\hlstd{(table2bf}\hlopt{$}\hlstd{Rep)}
 \hlstd{dated}\hlkwb{<-}\hlstd{table2bf}\hlopt{$}\hlstd{Sample.collection.date}\hlopt{-}\hlstd{table2bf}\hlopt{$}\hlstd{Spill.date}
@@ -1044,14 +1072,14 @@ First read a few rows only
 %\section*[Merge]{How to I merge two data sets}
 \section*{Merging Tables}
 \begin{frame}[fragile]
-  \frametitle{How to I merge two data sets?}
+  \frametitle{How to merge two data sets?}
   \framesubtitle{Using the merge command}
 
 \begin{block}{The inbuilt command merge}
 \begin{itemize}
 \item R has a command merge
 \item To begin, start looking at the first 9 lines of the tables and merge them 
-\item Need to use Group, Site, Sample.ID because otherwise it's not uniques
+\item Need to use Group, Site, Sample.ID because otherwise it's not unique
 \end{itemize}
 \end{block}
 \begin{lstlisting}
@@ -1067,8 +1095,10 @@ merge(x, y, by = intersect(names(x), names(y)),
 \hlstd{tab1c}\hlkwb{<-}\hlstd{table1t[}\hlnum{1}\hlopt{:}\hlnum{9}\hlstd{,]}
 \hlstd{tab2c}\hlkwb{<-}\hlstd{table2b[}\hlnum{1}\hlopt{:}\hlnum{9}\hlstd{,]}
 \hlstd{m1}\hlkwb{<-}\hlkwd{merge}\hlstd{(tab1c,tab2c,}\hlkwc{by.x}\hlstd{=}\hlstr{"Sample ID"}\hlstd{,}\hlkwc{by.y}\hlstd{=}\hlstr{"Sample.ID"}\hlstd{)}
-\hlstd{m2}\hlkwb{<-}\hlkwd{merge}\hlstd{(table1t,table2bf,}\hlkwc{by.x}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample ID"}\hlstd{),}\hlkwc{by.y}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{))}
-\hlstd{m3}\hlkwb{<-}\hlkwd{merge}\hlstd{(table1t,table2bf,}\hlkwc{by.x}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}\hlkwc{by.y}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{))}
+\hlstd{m2}\hlkwb{<-}\hlkwd{merge}\hlstd{(table1t,table2bf,}\hlkwc{by.x}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample ID"}\hlstd{),}
+\hlkwc{by.y}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{))}
+\hlstd{m3}\hlkwb{<-}\hlkwd{merge}\hlstd{(table1t,table2bf,}\hlkwc{by.x}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}
+\hlkwc{by.y}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1088,7 +1118,9 @@ merge(x, y, by = intersect(names(x), names(y)),
 
   \end{block}
 \begin{lstlisting} 
-table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx", sheetName ="Sheet1",header=TRUE,rowNames=FALSE,colClasses=c(rep("character",3),
+table3<-read.xlsx2("3_Follow up data from contaminated site_MK.xlsx",
+ sheetName ="Sheet1",header=TRUE,rowNames=FALSE,
+ colClasses=c(rep("character",3),
 
 rep("character",2),rep("numeric",18)))
 table3f<-table3
@@ -1104,14 +1136,14 @@ sapply(table3f,class)
 \begin{frame}[fragile]
   \frametitle{How do I append two data sets?}
   \framesubtitle{Loading the third data set}
-  \begin{block}{Joining table 3 to are merged tables}
+  \begin{block}{Joining table 3 to the other merged tables}
   \begin{itemize}
   \item We need to be careful to match everything
-  \item Install the plyr package This has lots of useful functions for renaming var etc
+  \item Install the {\bf plyr} package This has lots of useful functions for renaming var etc
   \item This means we need columns for corynebacteriaceae and porphyromondaceae
   \item Should these values be NA or 0?
   \item We will do one of each. 
-  \item Generally we would use NA but in this case 0 is better as its likely the rows were missing as non were detected
+  \item Generally we would use NA but in this case 0 is better as its likely the rows were missing as none were detected
  \end{itemize}
   %_Follow up data from contaminated site.xlsx
   \end{block}
@@ -1198,9 +1230,11 @@ table4[,1] <- sapply(table4[,1],as.factor)
   \begin{block}{The code}
   \end{block}
     \begin{lstlisting}
-    matable4<-melt(table4[,c(1:4,6:25)],variable.name = "microbe",value.name ="abundance", \\
-    id=c("Group","Site","Sample.ID","Rep"),factorsAsStrings=FALSE,rm.na=TRUE)
+    matable4<-melt(table4[,c(1:4,6:25)],variable.name = "microbe",
+    value.name ="abundance", id=c("Group","Site","Sample.ID","Rep"),
+    factorsAsStrings=FALSE,rm.na=TRUE)
    \end{lstlisting}
+   
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -1209,17 +1243,17 @@ table4[,1] <- sapply(table4[,1],as.factor)
 
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: reshape2}}\begin{alltt}
-\hlstd{matable4}\hlkwb{<-}\hlkwd{melt}\hlstd{(table4[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{,}\hlnum{7}\hlopt{:}\hlnum{25}\hlstd{)],}\hlkwc{variable.name} \hlstd{=} \hlstr{"microbe"}\hlstd{,}\hlkwc{value.name} \hlstd{=}\hlstr{"abundance"}\hlstd{,} \hlkwc{id}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}\hlkwc{factorsAsStrings}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{rm.na}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\hlstd{matable4}\hlkwb{<-}\hlkwd{melt}\hlstd{(table4[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{,}\hlnum{7}\hlopt{:}\hlnum{25}\hlstd{)],}\hlkwc{variable.name} \hlstd{=} \hlstr{"microbe"}\hlstd{,}
+\hlkwc{value.name} \hlstd{=}\hlstr{"abundance"}\hlstd{,} \hlkwc{id}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}
+\hlkwc{factorsAsStrings}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{rm.na}\hlstd{=}\hlnum{TRUE}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
-
 \end{frame}  
 
 \begin{frame}[fragile]
   \frametitle{Reshaping Tables}
-  \framesubtitle{ boxplot}
+  \framesubtitle{Boxplot cont}
   \begin{block}{Using ggplot}
   \begin{itemize}
   \item As we have keys we need to specify the x and y
@@ -1237,7 +1271,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
 
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: ggplot2}}\begin{alltt}
-\hlkwd{ggplot}\hlstd{(matable4,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=microbe,}\hlkwc{y}\hlstd{=abundance,}\hlkwc{fill}\hlstd{=Site))} \hlopt{+} \hlkwd{geom_boxplot}\hlstd{()} \hlopt{+}  \hlkwd{coord_flip}\hlstd{()}
+ \hlkwd{ggplot}\hlstd{(matable4,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=microbe,}\hlkwc{y}\hlstd{=abundance,}\hlkwc{fill}\hlstd{=Site))} \hlopt{+} \hlkwd{geom_boxplot}\hlstd{()} \hlopt{+}  \hlkwd{coord_flip}\hlstd{()}
 \end{alltt}
 
 
@@ -1245,33 +1279,55 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \includegraphics[width=.85\linewidth]{figure/chunk10iv-1} 
 
 \end{knitrout}
-%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
-
 \end{frame}  
 
+%\begin{frame}[fragile]
+%  \frametitle{Finding Outliers}
+%  \framesubtitle{Interquartile range}
+%  \begin{block}{Removing Outliers}
+%  \begin{itemize}
+%  \item Outliers are defined 1.5 times the interquartile range above the upper quartile
+%  \item Assume that  rows 12 and 14 in phosphate are errors as the 9 is typed twice
+%  \item Still issues with ammonia to explore
+%  \end{itemize}
+%  \end{block}  
+%<<chunk10v, echo=TRUE>>=
+%  phosphate<-table4[,"phosphate..ppb."]
+%  upper.limit <- quantile(phosphate)[4] + 1.5*IQR(phosphate)
+%  lower.limit <- quantile(phosphate)[2] - 1.5*IQR(phosphate)
+%  #table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]
+%@ 
+% \end{frame}  
+
 \begin{frame}[fragile]
-  \frametitle{Reshaping Tables}
-  \framesubtitle{ boxplot}
-  \begin{block}{Removing Outliers}
+  \frametitle{Finding Outliers}
+  \framesubtitle{Interquartile range}
+  \begin{block}{Finding Outliers}
   \begin{itemize}
   \item Outliers are defined 1.5 times the interquartile range above the upper quartile
   \item Assume that  rows 12 and 14 in phosphate are errors as the 9 is typed twice
   \item Still issues with ammonia to explore
-  \end{itemize}
-  \end{block}  
+  \end{itemize} 
+   \end{block}   
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlstd{phosphate}\hlkwb{<-}\hlstd{table4[,}\hlstr{"phosphate..ppb."}\hlstd{]}
-  \hlstd{upper.limit} \hlkwb{<-} \hlkwd{quantile}\hlstd{(phosphate)[}\hlnum{4}\hlstd{]} \hlopt{+} \hlnum{1.5}\hlopt{*}\hlkwd{IQR}\hlstd{(phosphate)}
-  \hlstd{lower.limit} \hlkwb{<-} \hlkwd{quantile}\hlstd{(phosphate)[}\hlnum{2}\hlstd{]} \hlopt{-} \hlnum{1.5}\hlopt{*}\hlkwd{IQR}\hlstd{(phosphate)}
-  \hlcom{#table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]}
+ \hlstd{phosphate}\hlkwb{<-}\hlstd{table4[,}\hlstr{"phosphate..ppb."}\hlstd{]}
+ \hlstd{upper.limit} \hlkwb{<-} \hlkwd{quantile}\hlstd{(phosphate)[}\hlnum{4}\hlstd{]} \hlopt{+} \hlnum{1.5}\hlopt{*}\hlkwd{IQR}\hlstd{(phosphate)}
+ \hlstd{lower.limit} \hlkwb{<-} \hlkwd{quantile}\hlstd{(phosphate)[}\hlnum{2}\hlstd{]} \hlopt{-} \hlnum{1.5}\hlopt{*}\hlkwd{IQR}\hlstd{(phosphate)}
+ \hlcom{#table4[phosphate> upper.limit,c("Site","phosphate..ppb.")]}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
- 
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Reshaping Tables}
+  \framesubtitle{Finding Outliers}
+  \begin{block}{Removing Outliers}
+   \end{block}   
 % latex table generated in R 3.1.2 by xtable 1.7-4 package
-% Wed Sep 30 14:49:50 2015
+% Wed Sep 30 18:10:02 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -1297,6 +1353,7 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \end{kframe}
 \end{knitrout}
 \end{frame}
+
 \begin{frame}[fragile]
   \frametitle{Outliers check}
   \framesubtitle{ Redo the boxplot}
@@ -1306,8 +1363,12 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{matable4}\hlkwb{<-}\hlkwd{melt}\hlstd{(table4[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{,}\hlnum{7}\hlopt{:}\hlnum{25}\hlstd{)],}\hlkwc{variable.name} \hlstd{=} \hlstr{"microbe"}\hlstd{,}\hlkwc{value.name} \hlstd{=}\hlstr{"abundance"}\hlstd{,}  \hlkwc{id}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}\hlkwc{factorsAsStrings}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{rm.na}\hlstd{=}\hlnum{TRUE}\hlstd{)}
-\hlkwd{ggplot}\hlstd{(matable4,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=microbe,}\hlkwc{y}\hlstd{=abundance,}\hlkwc{fill}\hlstd{=Site))} \hlopt{+} \hlkwd{geom_boxplot}\hlstd{()} \hlopt{+}  \hlkwd{coord_flip}\hlstd{()}
+\hlstd{matable4}\hlkwb{<-}\hlkwd{melt}\hlstd{(table4[,}\hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{4}\hlstd{,}\hlnum{7}\hlopt{:}\hlnum{25}\hlstd{)],}\hlkwc{variable.name} \hlstd{=} \hlstr{"microbe"}\hlstd{,}
+\hlkwc{value.name} \hlstd{=}\hlstr{"abundance"}\hlstd{,}  \hlkwc{id}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"Group"}\hlstd{,}\hlstr{"Site"}\hlstd{,}\hlstr{"Sample.ID"}\hlstd{,}\hlstr{"Rep"}\hlstd{),}
+\hlkwc{factorsAsStrings}\hlstd{=}\hlnum{FALSE}\hlstd{,}\hlkwc{rm.na}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+
+\hlkwd{ggplot}\hlstd{(matable4,}\hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=microbe,}\hlkwc{y}\hlstd{=abundance,}\hlkwc{fill}\hlstd{=Site))} \hlopt{+}
+\hlkwd{geom_boxplot}\hlstd{()} \hlopt{+}  \hlkwd{coord_flip}\hlstd{()}
 \end{alltt}
 
 
@@ -1315,8 +1376,6 @@ table4[,1] <- sapply(table4[,1],as.factor)
 \includegraphics[width=.85\linewidth]{figure/chunk10viii-1} 
 
 \end{knitrout}
-%reshape(table1t, idvar = c("Group","Site","Sample ID"),direction="long")
-
 \end{frame} 
 
 \begin{frame}[fragile]
